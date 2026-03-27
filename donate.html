@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Give Back | Support MOSA</title>
+    <script src="js/main.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        body { background-color: #f9fafb; font-family: 'Inter', sans-serif; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        .donate-radio:checked + label {
+            background-color: #CC0000;
+            color: white;
+            border-color: #CC0000;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <div id="header-placeholder"></div>
+
+    <main class="flex-grow">
+        <!-- 🎁 HERO SECTION -->
+        <section class="relative bg-mosaBlack text-white py-24 lg:py-32">
+            <div class="absolute inset-0 z-0 opacity-40">
+                <img src="mosa-logo.png" alt="Students learning" class="w-full h-full object-cover">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-r from-mosaBlack via-mosaBlack/80 to-transparent z-10"></div>
+            
+            <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-mosaGold font-bold tracking-widest uppercase mb-2 block"><i class="fas fa-hand-holding-heart mr-2"></i>Give Back</span>
+                    <h1 class="font-serif text-5xl md:text-6xl font-bold mb-6 leading-tight">Empower the Next Generation.</h1>
+                    <p class="text-xl text-gray-300 mb-8 font-light">
+                        Your contribution to MOSA directly impacts Mengo Senior School. Help us build modern facilities, fund scholarships, and preserve our 130-year legacy of excellence.
+                    </p>
+                    <div class="flex items-center gap-4 text-sm font-semibold text-gray-300">
+                        <span><i class="fas fa-shield-alt text-mosaGold text-xl mr-2"></i> 100% Secure</span>
+                        <span><i class="fas fa-file-invoice-dollar text-mosaGold text-xl mr-2"></i> Tax Deductible</span>
+                    </div>
+                </div>
+
+                <!-- 💳 DONATION FORM CARD -->
+                <div class="glass-panel p-8 rounded-2xl relative text-mosaBlack transform md:translate-y-12">
+                    <h3 class="font-serif text-2xl font-bold mb-6 text-center">Make a Donation</h3>
+                    
+                    <form onsubmit="event.preventDefault(); alert('Redirecting to secure payment gateway...');">
+                        <!-- Frequency -->
+                        <div class="flex border border-gray-200 rounded-lg overflow-hidden mb-6 bg-gray-50 p-1">
+                            <label class="flex-1 text-center py-2 cursor-pointer relative">
+                                <input type="radio" name="frequency" class="peer sr-only" checked>
+                                <span class="block w-full text-sm font-bold peer-checked:bg-white peer-checked:shadow-sm peer-checked:text-mosaRed py-2 rounded-md transition">One-time</span>
+                            </label>
+                            <label class="flex-1 text-center py-2 cursor-pointer relative">
+                                <input type="radio" name="frequency" class="peer sr-only">
+                                <span class="block w-full text-sm font-bold peer-checked:bg-white peer-checked:shadow-sm peer-checked:text-mosaRed py-2 rounded-md transition">Monthly</span>
+                            </label>
+                        </div>
+
+                        <!-- Amount Selection -->
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6 relative">
+                            <div>
+                                <input type="radio" name="amount" id="amt-50" class="donate-radio sr-only" value="50000" checked>
+                                <label for="amt-50" class="block text-center py-3 border-2 border-gray-200 rounded-lg cursor-pointer font-bold text-gray-600 transition hover:border-mosaRed/50">Ugx 50K</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="amount" id="amt-100" class="donate-radio sr-only" value="100000">
+                                <label for="amt-100" class="block text-center py-3 border-2 border-gray-200 rounded-lg cursor-pointer font-bold text-gray-600 transition hover:border-mosaRed/50">Ugx 100K</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="amount" id="amt-500" class="donate-radio sr-only" value="500000">
+                                <label for="amt-500" class="block text-center py-3 border-2 border-gray-200 rounded-lg cursor-pointer font-bold text-gray-600 transition hover:border-mosaRed/50">Ugx 500K</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="amount" id="amt-custom" class="donate-radio sr-only" value="custom">
+                                <label for="amt-custom" class="block text-center py-3 border-2 border-gray-200 rounded-lg cursor-pointer font-bold text-gray-600 transition hover:border-mosaRed/50">Other</label>
+                            </div>
+                        </div>
+
+                        <!-- Custom Amount Input (Hidden by default, shown via CSS/JS ideally, but left styled for mockup) -->
+                        <div class="mb-6 relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <span class="text-gray-500 font-bold">Ugx</span>
+                            </div>
+                            <input type="number" class="w-full pl-14 pr-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-mosaRed bg-gray-50 font-bold text-lg" placeholder="1,000,000">
+                        </div>
+
+                        <!-- Designation -->
+                        <div class="mb-6">
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Fund Designation</label>
+                            <select class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-mosaRed bg-gray-50 text-gray-700 font-medium">
+                                <option>General Alumni Fund (Greatest Need)</option>
+                                <option>Infrastructure & Development</option>
+                                <option>Student Scholarships</option>
+                                <option>Sports & Extracurriculars</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="w-full bg-mosaGold text-mosaBlack px-8 py-4 rounded-lg font-bold hover:bg-yellow-400 transition shadow-lg text-lg flex items-center justify-center gap-2">
+                            Donate Now <i class="fas fa-heart"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🎯 IMPACT BREAKDOWN -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:mt-16">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl text-mosaBlack font-bold mb-4">Where Your Money Goes</h2>
+                <div class="w-20 h-1 bg-mosaRed mx-auto mb-6"></div>
+                <p class="text-lg text-gray-500 max-w-2xl mx-auto">
+                    Transparency is our core value. 100% of all designated funds go directly into the projects you choose. Here is the impact you created last year.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover-lift">
+                    <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto text-3xl mb-6 shadow-inner">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="font-bold text-2xl text-mosaBlack mb-2">Ugx 50M+</h3>
+                    <p class="text-mosaRed font-bold text-sm uppercase mb-4">Scholarships</p>
+                    <p class="text-gray-600 text-sm">Provided full tuition coverage for 45 brilliant but underprivileged students.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover-lift relative overflow-hidden">
+                    <div class="w-16 h-16 bg-green-50 text-green-600 rounded-full flex items-center justify-center mx-auto text-3xl mb-6 shadow-inner relative z-10">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="font-bold text-2xl text-mosaBlack mb-2 relative z-10">Ugx 850M+</h3>
+                    <p class="text-mosaRed font-bold text-sm uppercase mb-4 relative z-10">Infrastructure</p>
+                    <p class="text-gray-600 text-sm relative z-10">Constructed the new Science Complex and renovated the historic main hall.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover-lift">
+                    <div class="w-16 h-16 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center mx-auto text-3xl mb-6 shadow-inner">
+                        <i class="fas fa-basketball-ball"></i>
+                    </div>
+                    <h3 class="font-bold text-2xl text-mosaBlack mb-2">Ugx 25M+</h3>
+                    <p class="text-mosaRed font-bold text-sm uppercase mb-4">Sports & Arts</p>
+                    <p class="text-gray-600 text-sm">Procured brand new athletic gear and funded the state-of-the-art music studio.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+</body>
+</html>

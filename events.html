@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events & Reunions | MOSA</title>
+    <script src="js/main.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        body { background-color: #f9fafb; font-family: 'Inter', sans-serif; }
+        .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .date-box { background: linear-gradient(135deg, #FFD700 0%, #D4AF37 100%); }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <div id="header-placeholder"></div>
+
+    <main class="flex-grow">
+        <!-- 📅 PAGE HEADER -->
+        <section class="bg-mosaBlack text-white py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-end">
+                <div>
+                    <span class="text-mosaGold font-bold tracking-widest uppercase mb-2 block text-sm">Reconnect & Celebrate</span>
+                    <h1 class="font-serif text-4xl md:text-5xl font-bold">Upcoming Events</h1>
+                </div>
+                <div class="mt-6 md:mt-0 flex gap-4">
+                    <button class="bg-white/10 text-white border border-white/20 px-6 py-2 rounded-lg hover:bg-white/20 transition backdrop-blur-sm"><i class="fas fa-filter mr-2"></i>Filter</button>
+                    <button class="bg-mosaRed text-white px-6 py-2 rounded-lg font-bold shadow-lg hover:bg-red-800 transition"><i class="fas fa-calendar-plus mr-2"></i>Host an Event</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ⭐ FEATURED EVENT -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 -mt-8 relative z-10">
+            <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden flex flex-col md:flex-row">
+                <div class="md:w-1/2 h-64 md:h-auto relative">
+                    <img src="mosa-logo.png" alt="Gala Dinner" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-8">
+                        <span class="bg-mosaGold text-mosaBlack font-bold text-xs uppercase px-3 py-1 rounded-sm shadow mb-4">Featured</span>
+                    </div>
+                </div>
+                <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center bg-white relative">
+                    <!-- Date badge inside content -->
+                    <div class="absolute top-8 right-8 text-center text-mosaBlack bg-mosaGold p-3 rounded-lg shadow-md leading-none border border-yellow-400">
+                        <span class="block text-xs font-bold uppercase mb-1">Nov</span>
+                        <span class="block text-3xl font-serif font-black">15</span>
+                    </div>
+
+                    <h2 class="font-serif text-3xl font-bold text-mosaBlack pr-20 mb-3">MOSA Annual Grand Gala Dinner</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Join us for our biggest night of the year. Reconnect with old friends, celebrate outstanding alumni achievements, and help us raise funds for the Mengo Senior School Innovation Hub. Featuring a 3-course dinner, live band, and charity auction.
+                    </p>
+                    
+                    <div class="space-y-3 mb-8 text-sm font-medium text-gray-700">
+                        <p class="flex items-center"><i class="fas fa-clock w-6 text-mosaRed"></i> 6:00 PM - 11:30 PM EAT</p>
+                        <p class="flex items-center"><i class="fas fa-map-marker-alt w-6 text-mosaRed"></i> Kampala Serena Hotel, Victoria Hall</p>
+                        <p class="flex items-center"><i class="fas fa-ticket-alt w-6 text-mosaRed"></i> Ugx 150,000 / $40 Early Bird</p>
+                    </div>
+
+                    <!-- RSVP form mockup inside the featured event -->
+                    <form class="flex flex-col sm:flex-row gap-3" onsubmit="event.preventDefault(); alert('RSVP successful! Directing to payment...');">
+                        <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-mosaRed bg-gray-50 text-sm" required>
+                        <button type="submit" class="bg-mosaRed text-white px-8 py-3 rounded-lg font-bold hover:bg-red-800 transition shadow-md sm:w-auto text-sm flex items-center justify-center">
+                            RSVP Now <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 📅 ALL UPCOMING EVENTS GRID -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            
+            <div class="flex justify-between items-center mb-8 border-b border-gray-200 pb-4">
+                <h3 class="font-serif text-2xl font-bold text-mosaBlack">Upcoming Schedule</h3>
+                
+                <!-- Quick filter pills -->
+                <div class="hidden sm:flex space-x-2">
+                    <button class="px-4 py-1.5 rounded-full bg-mosaBlack text-white text-xs font-bold shadow-sm">All</button>
+                    <button class="px-4 py-1.5 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 text-xs font-bold transition">Reunions</button>
+                    <button class="px-4 py-1.5 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 text-xs font-bold transition">Fundraisers</button>
+                    <button class="px-4 py-1.5 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 text-xs font-bold transition">Chapter Meetings</button>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-20">
+                <!-- Event Card 1 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover-lift flex flex-col">
+                    <img src="mosa-logo.png" alt="Reunion" class="h-48 w-full object-cover">
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="text-xs font-bold text-mosaRed uppercase tracking-wide bg-red-50 px-2 py-1 rounded">Reunion</span>
+                            <span class="text-xs text-gray-500 font-semibold"><i class="far fa-calendar-alt mr-1"></i> Dec 2, 2026</span>
+                        </div>
+                        <h4 class="font-bold text-xl text-mosaBlack mb-2 line-clamp-2">Class of 2000 Silver Jubilee</h4>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-2">A special 25-year reunion for the millennium class. Reconnect with old friends and tour the modernized campus.</p>
+                        
+                        <div class="mt-auto pt-4 border-t border-gray-100 flex justify-between items-center text-sm">
+                            <span class="text-gray-500"><i class="fas fa-map-marker-alt text-mosaGold w-4"></i> Mengo Campus</span>
+                            <a href="#" class="text-mosaRed font-bold hover:underline">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Card 2 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover-lift flex flex-col">
+                    <img src="mosa-logo.png" alt="Meeting" class="h-48 w-full object-cover">
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="text-xs font-bold text-blue-600 uppercase tracking-wide bg-blue-50 px-2 py-1 rounded">Chapter Meeting</span>
+                            <span class="text-xs text-gray-500 font-semibold"><i class="far fa-calendar-alt mr-1"></i> Jan 12, 2027</span>
+                        </div>
+                        <h4 class="font-bold text-xl text-mosaBlack mb-2 line-clamp-2">UK Chapter Networking Mixer</h4>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-2">Start the new year by expanding your professional network with fellow Mengonians living and working in London.</p>
+                        
+                        <div class="mt-auto pt-4 border-t border-gray-100 flex justify-between items-center text-sm">
+                            <span class="text-gray-500"><i class="fas fa-map-marker-alt text-mosaGold w-4"></i> Canary Wharf, London</span>
+                            <a href="#" class="text-mosaRed font-bold hover:underline">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Card 3 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover-lift flex flex-col">
+                    <img src="mosa-logo.png" alt="Sports" class="h-48 w-full object-cover">
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="text-xs font-bold text-green-600 uppercase tracking-wide bg-green-50 px-2 py-1 rounded">Sports & Wellness</span>
+                            <span class="text-xs text-gray-500 font-semibold"><i class="far fa-calendar-alt mr-1"></i> Feb 28, 2027</span>
+                        </div>
+                        <h4 class="font-bold text-xl text-mosaBlack mb-2 line-clamp-2">Annual Mengo Alumni Marathon</h4>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-2">Lace up your running shoes! Join the 10km charity run to support the school's sports department and athletic scholarships.</p>
+                        
+                        <div class="mt-auto pt-4 border-t border-gray-100 flex justify-between items-center text-sm">
+                            <span class="text-gray-500"><i class="fas fa-map-marker-alt text-mosaGold w-4"></i> Kololo Ceremonial Grounds</span>
+                            <a href="#" class="text-mosaRed font-bold hover:underline">Register Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View Past Events -->
+            <div class="text-center pb-12">
+                <button class="border-2 border-gray-300 text-gray-600 px-8 py-3 rounded-lg font-bold hover:border-mosaBlack hover:text-mosaBlack transition">
+                    View Past Events Repository
+                </button>
+            </div>
+            
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+</body>
+</html>

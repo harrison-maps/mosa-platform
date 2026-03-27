@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mengo Old Students Association (MOSA) | Obunnamengo Bwa Lubeerera</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="js/main.js"></script>
+    <style>
+        /* Smooth scrolling and hover transitions */
+        html { scroll-behavior: smooth; }
+        .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50 antialiased">
+
+    <!-- 🌟 STICKY HEADER PLACEHOLDER -->
+    <div id="header-placeholder"></div>
+
+    <!-- 🎓 HERO SECTION -->
+    <section class="relative bg-mosaBlack text-white overflow-hidden">
+        <!-- Background Overlay Image -->
+        <div class="absolute inset-0 opacity-40 bg-cover bg-center" style="background-image: url('mosa-logo.png');"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-mosaBlack via-mosaBlack/80 to-transparent"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-48 flex flex-col justify-center">
+            <span class="text-mosaGold font-bold tracking-widest uppercase mb-2 block"><i class="fas fa-globe-africa mr-2"></i>Obunnamengo Bwa Lubeerera</span>
+            <h1 class="font-serif text-5xl md:text-7xl font-bold mb-4 leading-tight">
+                Mengo Old Students <br> <span class="text-mosaGold">Association</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl font-light">
+                Connecting Mengonians Around the World. Preserving our legacy, celebrating achievements, and building the future of Mengo Senior School.
+            </p>
+            <div class="flex flex-wrap gap-4">
+                <a href="register.html" class="bg-mosaGold text-mosaBlack font-bold px-8 py-4 rounded hover:bg-yellow-500 transition shadow-lg text-lg">Join MOSA</a>
+                <a href="directory.html" class="bg-white/10 border border-white/30 text-white font-bold px-8 py-4 rounded hover:bg-white/20 transition backdrop-blur-sm text-lg">Explore Directory</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 📊 TRUST & IMPACT STATS -->
+    <section class="bg-mosaGold py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-mosaBlack divide-x divide-black/20">
+                <div>
+                    <h3 class="font-serif text-4xl font-bold">12,000+</h3>
+                    <p class="text-sm font-semibold uppercase mt-1">Registered Alumni</p>
+                </div>
+                <div>
+                    <h3 class="font-serif text-4xl font-bold">45</h3>
+                    <p class="text-sm font-semibold uppercase mt-1">Global Chapters</p>
+                </div>
+                <div>
+                    <h3 class="font-serif text-4xl font-bold">1895</h3>
+                    <p class="text-sm font-semibold uppercase mt-1">Year Founded</p>
+                </div>
+                <div>
+                    <h3 class="font-serif text-4xl font-bold">UGX 2B+</h3>
+                    <p class="text-sm font-semibold uppercase mt-1">Given Back</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 📖 ABOUT MOSA -->
+    <section class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <h2 class="font-serif text-4xl text-mosaBlack font-bold mb-6">Our Legacy & Mission</h2>
+            <div class="w-24 h-1 bg-mosaRed mx-auto mb-8"></div>
+            <p class="text-lg text-gray-600 leading-relaxed">
+                Mengo Old Students Association (MOSA) is a prestigious global network of alumni dedicated to preserving the rich heritage of Mengo Senior School. We exist to foster lifelong connections among former students, promote professional excellence, and actively give back to ensure our alma mater remains a beacon of premier education in Uganda and beyond.
+            </p>
+        </div>
+    </section>
+
+    <!-- 🌟 FEATURED ALUMNI -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="font-serif text-4xl text-mosaBlack font-bold">Featured Mengonians</h2>
+                    <p class="text-gray-600 mt-2">Excellence across the globe.</p>
+                </div>
+                <a href="directory.html" class="text-mosaRed font-bold hover:underline hidden md:block">View Full Directory &rarr;</a>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Alumni 1 -->
+                <div class="bg-white rounded-lg overflow-hidden hover-lift border border-gray-100">
+                    <img src="mosa-logo.png" alt="Alumni" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl text-mosaBlack">Dr. Sarah Namazzi</h3>
+                        <p class="text-mosaRed font-semibold text-sm mb-3">Class of 2005</p>
+                        <p class="text-gray-600 mb-2"><i class="fas fa-briefcase mr-2 text-mosaGold"></i>Chief of Surgery</p>
+                        <p class="text-gray-600"><i class="fas fa-map-marker-alt mr-2 text-mosaGold"></i>London, UK</p>
+                    </div>
+                </div>
+                <!-- Alumni 2 -->
+                <div class="bg-white rounded-lg overflow-hidden hover-lift border border-gray-100">
+                    <img src="mosa-logo.png" alt="Alumni" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl text-mosaBlack">Eng. David Kigozi</h3>
+                        <p class="text-mosaRed font-semibold text-sm mb-3">Class of 1998</p>
+                        <p class="text-gray-600 mb-2"><i class="fas fa-briefcase mr-2 text-mosaGold"></i>Civil Engineer & CEO</p>
+                        <p class="text-gray-600"><i class="fas fa-map-marker-alt mr-2 text-mosaGold"></i>Kampala, UG</p>
+                    </div>
+                </div>
+                <!-- Alumni 3 -->
+                <div class="bg-white rounded-lg overflow-hidden hover-lift border border-gray-100">
+                    <img src="mosa-logo.png" alt="Alumni" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl text-mosaBlack">Grace Atim</h3>
+                        <p class="text-mosaRed font-semibold text-sm mb-3">Class of 2012</p>
+                        <p class="text-gray-600 mb-2"><i class="fas fa-briefcase mr-2 text-mosaGold"></i>Tech Entrepreneur</p>
+                        <p class="text-gray-600"><i class="fas fa-map-marker-alt mr-2 text-mosaGold"></i>San Francisco, USA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 📅 UPCOMING EVENTS -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="font-serif text-4xl text-mosaBlack font-bold mb-12 text-center">Upcoming Events</h2>
+            
+            <div class="space-y-6">
+                <!-- Event 1 -->
+                <div class="flex flex-col md:flex-row bg-white border border-gray-200 rounded-lg overflow-hidden hover-lift">
+                    <div class="bg-mosaBlack text-mosaGold flex flex-col justify-center items-center w-full md:w-48 py-6">
+                        <span class="text-lg font-bold uppercase">Nov</span>
+                        <span class="text-5xl font-serif font-bold">15</span>
+                        <span class="text-sm mt-1">2026</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-center">
+                        <h3 class="text-2xl font-bold text-mosaBlack mb-2">Annual Grand Alumni Dinner</h3>
+                        <p class="text-gray-600 mb-4">Join us for a night of networking, celebrating achievements, and raising funds for the new ICT block.</p>
+                        <div class="flex items-center text-sm text-gray-500 gap-4">
+                            <span><i class="fas fa-clock mr-1 text-mosaRed"></i> 6:00 PM EAT</span>
+                            <span><i class="fas fa-map-marker-alt mr-1 text-mosaRed"></i> Kampala Serena Hotel</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex items-center justify-center md:border-l border-gray-100">
+                        <a href="events.html" class="bg-mosaRed text-white px-6 py-3 rounded font-bold hover:bg-red-800 transition w-full text-center">RSVP Now</a>
+                    </div>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="flex flex-col md:flex-row bg-white border border-gray-200 rounded-lg overflow-hidden hover-lift">
+                    <div class="bg-mosaBlack text-mosaGold flex flex-col justify-center items-center w-full md:w-48 py-6">
+                        <span class="text-lg font-bold uppercase">Dec</span>
+                        <span class="text-5xl font-serif font-bold">02</span>
+                        <span class="text-sm mt-1">2026</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-center">
+                        <h3 class="text-2xl font-bold text-mosaBlack mb-2">Class of 2000 Silver Jubilee</h3>
+                        <p class="text-gray-600 mb-4">A special reunion for the millennium class. Reconnect with old friends and tour the modernized campus.</p>
+                        <div class="flex items-center text-sm text-gray-500 gap-4">
+                            <span><i class="fas fa-clock mr-1 text-mosaRed"></i> 10:00 AM EAT</span>
+                            <span><i class="fas fa-map-marker-alt mr-1 text-mosaRed"></i> Mengo Senior School Main Hall</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex items-center justify-center md:border-l border-gray-100">
+                        <a href="events.html" class="border-2 border-mosaBlack text-mosaBlack px-6 py-3 rounded font-bold hover:bg-mosaBlack hover:text-white transition w-full text-center">Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-10">
+                <a href="events.html" class="text-mosaRed font-bold hover:underline">View Event Calendar &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🚀 CALL TO ACTION -->
+    <section class="py-24 bg-mosaRed text-white text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="font-serif text-4xl md:text-5xl font-bold mb-6">Join the MOSA Network Today</h2>
+            <p class="text-xl mb-10 text-red-100">Unlock access to a global directory, exclusive events, mentorship opportunities, and the power of the Mengo brotherhood/sisterhood.</p>
+            <a href="register.html" class="bg-mosaGold text-mosaBlack font-bold text-xl px-10 py-4 rounded shadow-lg hover:bg-yellow-400 transition">Register / Update Profile</a>
+        </div>
+    </section>
+
+    <!-- 🌍 FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder"></div>
+
+</body>
+</html>

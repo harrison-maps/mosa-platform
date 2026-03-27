@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Directory | MOSA</title>
+    <script src="js/main.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        body { background-color: #f9fafb; font-family: 'Inter', sans-serif; }
+        .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <div id="header-placeholder"></div>
+
+    <main class="flex-grow">
+        <!-- 🏢 HEADER -->
+        <section class="bg-mosaBlack text-white py-16 border-b-4 border-mosaGold">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+                <div class="text-center md:text-left">
+                    <h1 class="font-serif text-4xl md:text-5xl font-bold mb-4">Alumni Business Directory</h1>
+                    <p class="text-gray-300 max-w-xl font-light">Support fellow Mengonians by discovering and doing business with alumni-owned enterprises.</p>
+                </div>
+                <button class="mt-6 md:mt-0 bg-mosaRed text-white px-8 py-3 rounded-lg font-bold shadow-lg hover:bg-red-800 transition whitespace-nowrap"><i class="fas fa-plus mr-2"></i> List Your Business</button>
+            </div>
+        </section>
+
+        <!-- 🔍 SEARCH & FILTER -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 mb-8">
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4 flex flex-col md:flex-row gap-4">
+                <input type="text" class="flex-grow px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-mosaRed bg-gray-50 text-sm" placeholder="Search businesses, services, or owners...">
+                <select class="md:w-64 px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-mosaRed bg-gray-50 text-gray-700 text-sm">
+                    <option value="">All Categories</option>
+                    <option value="tech">Technology & IT</option>
+                    <option value="consulting">Professional Consulting</option>
+                    <option value="retail">Retail & E-commerce</option>
+                    <option value="health">Healthcare Services</option>
+                </select>
+                <button class="bg-mosaBlack text-white px-8 py-3 rounded-lg font-bold hover:bg-gray-800 transition">Search</button>
+            </div>
+        </section>
+
+        <!-- 📈 BUSINESS GRID -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Business 1 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover-lift text-left">
+                    <div class="flex items-center gap-4 border-b border-gray-100 pb-4 mb-4">
+                        <div class="w-16 h-16 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 text-2xl font-bold"><i class="fas fa-laptop-code"></i></div>
+                        <div>
+                            <h3 class="font-bold text-xl text-mosaBlack">NexaTech Solutions</h3>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Tech & IT</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-3">Enterprise software development and digital transformation agency serving East Africa and beyond. Specializing in fintech and healthtech.</p>
+                    <p class="text-sm font-semibold text-gray-800 mb-4"><span class="text-gray-500 font-normal">Owned by:</span> Grace Atim (Class of '12)</p>
+                    <a href="#" class="text-mosaRed font-bold hover:underline text-sm"><i class="fas fa-external-link-alt mr-1"></i> Visit Website</a>
+                </div>
+
+                <!-- Business 2 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover-lift text-left">
+                    <div class="flex items-center gap-4 border-b border-gray-100 pb-4 mb-4">
+                        <div class="w-16 h-16 bg-green-50 rounded-lg flex items-center justify-center text-green-600 text-2xl font-bold"><i class="fas fa-balance-scale"></i></div>
+                        <div>
+                            <h3 class="font-bold text-xl text-mosaBlack">Bbale & Co. Advocates</h3>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Legal Services</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-3">A premier law firm specializing in corporate law, real estate transactions, and intellectual property rights in Uganda.</p>
+                    <p class="text-sm font-semibold text-gray-800 mb-4"><span class="text-gray-500 font-normal">Owned by:</span> Arthur Bbale (Class of '90)</p>
+                    <a href="#" class="text-mosaRed font-bold hover:underline text-sm"><i class="fas fa-envelope mr-1"></i> Contact Firm</a>
+                </div>
+
+                <!-- Business 3 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover-lift text-left">
+                    <div class="flex items-center gap-4 border-b border-gray-100 pb-4 mb-4">
+                        <div class="w-16 h-16 bg-mosaGold/20 rounded-lg flex items-center justify-center text-yellow-700 text-2xl font-bold"><i class="fas fa-utensils"></i></div>
+                        <div>
+                            <h3 class="font-bold text-xl text-mosaBlack">The Golden Bean Cafe</h3>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Hospitality</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-3">Artisan coffee shop and bakery located in the heart of Kampala. We offer a 10% discount to all verified Mengo Alumni.</p>
+                    <p class="text-sm font-semibold text-gray-800 mb-4"><span class="text-gray-500 font-normal">Owned by:</span> Juliet M. (Class of '02)</p>
+                    <a href="#" class="text-mosaRed font-bold hover:underline text-sm"><i class="fas fa-map-marker-alt mr-1"></i> View Menu & Location</a>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <button class="bg-white border-2 border-gray-200 text-gray-600 px-8 py-3 rounded-lg font-bold hover:border-mosaBlack hover:text-mosaBlack transition shadow-sm">
+                    Load More Businesses
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+</body>
+</html>

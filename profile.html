@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Sarah Namazzi | MOSA Profile</title>
+    <script src="js/main.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        body { background-color: #f9fafb; font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <div id="header-placeholder"></div>
+
+    <main class="flex-grow pt-8 pb-20">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Breadcrumbs -->
+            <nav class="text-sm font-semibold mb-6 flex items-center text-gray-500">
+                <a href="directory.html" class="hover:text-mosaRed transition">Directory</a>
+                <i class="fas fa-chevron-right text-xs mx-3"></i>
+                <span class="text-mosaBlack">Dr. Sarah Namazzi</span>
+            </nav>
+
+            <!-- 🧑‍⚕️ PROFILE HEADER CARD -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-8">
+                <!-- Cover Image -->
+                <div class="h-48 bg-gradient-to-r from-mosaBlack to-gray-800 relative">
+                    <!-- Absolute Edit button if it's the user's own profile -->
+                    <button class="absolute top-4 right-4 bg-white/20 text-white hover:bg-white border border-white/40 hover:text-mosaBlack transition px-4 py-2 rounded-md text-sm font-bold backdrop-blur-sm shadow flex items-center gap-2">
+                        <i class="fas fa-envelope"></i> Message
+                    </button>
+                </div>
+                
+                <div class="px-8 pb-8 flex flex-col md:flex-row relative">
+                    <!-- Avatar Profile Pick -->
+                    <div class="h-32 w-32 md:h-40 md:w-40 rounded-full border-4 border-white overflow-hidden shadow-lg -mt-16 md:-mt-20 bg-white absolute z-10 flex-shrink-0">
+                        <img src="mosa-logo.png" alt="Sarah Namazzi" class="w-full h-full object-cover">
+                    </div>
+                    
+                    <div class="ml-0 md:ml-48 mt-20 md:mt-4 w-full flex flex-col md:flex-row md:justify-between md:items-end border-b border-gray-100 pb-6">
+                        <div>
+                            <h1 class="font-serif text-3xl font-bold text-mosaBlack mb-1">Dr. Sarah Namazzi</h1>
+                            <p class="text-xl text-gray-600 mb-2">Chief of Surgery at Global Health Institute</p>
+                            <p class="text-sm text-gray-500 flex items-center gap-4">
+                                <span><i class="fas fa-map-marker-alt text-mosaRed mr-1"></i> London, UK</span>
+                                <span><i class="fas fa-graduation-cap text-mosaGold mr-1"></i> Class of '05</span>
+                            </p>
+                        </div>
+                        <div class="mt-4 md:mt-0 flex gap-3 pb-1">
+                            <a href="#" class="text-gray-400 hover:text-[#0077b5] transition text-xl"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-[#1DA1F2] transition text-xl"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-mosaBlack transition text-xl"><i class="fas fa-globe"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="px-8 py-4 bg-gray-50 flex items-center justify-between">
+                    <div class="flex gap-6 text-sm">
+                        <span class="font-bold text-mosaBlack">Connections <span class="text-gray-500 font-normal ml-1">450+</span></span>
+                        <span class="font-bold text-mosaBlack">Industry <span class="bg-gray-200 text-gray-700 px-2 py-0.5 rounded ml-2 font-normal">Medical & Health</span></span>
+                    </div>
+                    <button class="text-mosaRed font-bold hover:underline text-sm"><i class="fas fa-plus"></i> Add to Network</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- 📄 LEFT COL: About & Experience -->
+                <div class="md:col-span-2 space-y-8">
+                    <!-- About Section -->
+                    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+                        <h2 class="font-bold text-xl text-mosaBlack mb-4 flex items-center"><i class="fas fa-user-circle text-mosaGold mr-3"></i> About</h2>
+                        <p class="text-gray-600 leading-relaxed">
+                            Passionate and dedicated surgical leader with over 15 years of experience in advanced healthcare systems. Strong advocate for global health equity and medical education. Honored to be a Mengonian and actively seeking to mentor young alumni pursuing careers in STEM and medicine.
+                        </p>
+                    </div>
+
+                    <!-- Experience Section -->
+                    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+                        <h2 class="font-bold text-xl text-mosaBlack mb-6 flex items-center"><i class="fas fa-briefcase text-mosaGold mr-3"></i> Experience</h2>
+                        
+                        <div class="relative border-l-2 border-gray-200 ml-3 space-y-8">
+                            <div class="relative pl-6">
+                                <span class="absolute -left-[9px] top-1 h-4 w-4 rounded-full bg-mosaRed ring-4 ring-white"></span>
+                                <h3 class="font-bold text-mosaBlack text-lg">Chief of Surgery</h3>
+                                <p class="text-gray-600 font-semibold mb-1">Global Health Institute, London</p>
+                                <p class="text-sm text-gray-500 mb-2">2019 - Present • 7 yrs</p>
+                                <p class="text-gray-600 text-sm">Leading a team of 40+ surgeons and residents. Implementing new robotic surgery protocols that improved patient recovery times by 30%.</p>
+                            </div>
+                            
+                            <div class="relative pl-6">
+                                <span class="absolute -left-[9px] top-1 h-4 w-4 rounded-full bg-gray-300 ring-4 ring-white"></span>
+                                <h3 class="font-bold text-mosaBlack text-lg">Senior Attending Surgeon</h3>
+                                <p class="text-gray-600 font-semibold mb-1">Mulago National Referral Hospital</p>
+                                <p class="text-sm text-gray-500 mb-2">2012 - 2019 • 7 yrs</p>
+                                <p class="text-gray-600 text-sm">Specialized in pediatric reconstructive surgery and managed the emergency trauma ward.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- MOSA Involvement -->
+                    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+                        <h2 class="font-bold text-xl text-mosaBlack mb-4 flex items-center"><i class="fas fa-hands-helping text-mosaGold mr-3"></i> MOSA Involvement</h2>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i> Ongoing Medical Scholarship Sponsor (Ugx 10M annually)</li>
+                            <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i> Keynote Speaker - MOSA Annual Dinner 2024</li>
+                            <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-3"></i> Mentor for 5 medical students from Mengo Senior School</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 🏫 RIGHT COL: Education, Skills & Mentor -->
+                <div class="space-y-8">
+                    
+                    <!-- Education Section -->
+                    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                        <h2 class="font-bold text-lg text-mosaBlack mb-4 border-b border-gray-100 pb-2">Education</h2>
+                        <div class="space-y-4">
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm">University of Oxford</h3>
+                                <p class="text-sm text-gray-600">Ph.D. in Clinical Medicine</p>
+                                <p class="text-xs text-gray-500">2010 - 2014</p>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm">Makerere University</h3>
+                                <p class="text-sm text-gray-600">Bachelor of Medicine & Surgery (MBChB)</p>
+                                <p class="text-xs text-gray-500">2005 - 2010</p>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-mosaRed text-sm">Mengo Senior School</h3>
+                                <p class="text-sm text-gray-600">UACE (PCB/Math) & UCE</p>
+                                <p class="text-xs text-gray-500">1999 - 2005</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Open to Mentoring -->
+                    <div class="bg-gradient-to-br from-mosaGold to-yellow-500 rounded-2xl shadow-sm p-6 text-mosaBlack relative overflow-hidden">
+                        <i class="fas fa-chalkboard-teacher absolute -right-4 -bottom-4 text-8xl text-black opacity-5"></i>
+                        <h2 class="font-bold text-xl mb-2 relative z-10">Open to Mentoring</h2>
+                        <p class="text-sm mb-4 relative z-10 text-gray-800 font-medium">Available to provide guidance on:</p>
+                        <ul class="text-sm space-y-2 relative z-10 font-bold">
+                            <li>• Medical School Applications</li>
+                            <li>• Career Transitions</li>
+                            <li>• Studying Abroad (UK/US)</li>
+                        </ul>
+                        <button class="mt-6 w-full bg-mosaBlack text-white py-2 rounded font-bold hover:bg-gray-800 transition relative z-10 shadow-lg">Request Mentorship</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+</body>
+</html>
