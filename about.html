@@ -1,143 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About MOSA | Legacy & Mission</title>
-    <script src="js/main.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        html { scroll-behavior: smooth; }
-        body { background-color: #f9fafb; font-family: 'Inter', sans-serif; }
-        .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alumni Directory | MOSA</title>
+<script src="js/main.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          mosaBlack: '#1a1a2e',
+          mosaRed:   '#8B0000',
+          mosaGold:  '#D4AF37',
+        },
+        fontFamily: {
+          serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        }
+      }
+    }
+  }
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #f9fafb; font-family: 'Inter', sans-serif; }
+  .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+  .glass-search {
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(229,231,235,1);
+  }
+  /* Initials avatar for directory cards */
+  .card-avatar {
+    width: 5rem; height: 5rem;
+    border-radius: 9999px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 700;
+    color: #D4AF37;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    position: absolute;
+    bottom: -2.5rem; left: 1.5rem;
+    flex-shrink: 0;
+  }
+</style>
 </head>
 <body class="flex flex-col min-h-screen">
+<div id="header-placeholder"></div>
 
-    <div id="header-placeholder"></div>
+<main class="flex-grow">
 
-    <main class="flex-grow">
-        <!-- 🎓 PAGE HEADER -->
-        <section class="relative bg-mosaBlack text-white py-24">
-            <div class="absolute inset-0 z-0 opacity-40">
-                <img src="mosa-logo.png" alt="About University" class="w-full h-full object-cover">
-            </div>
-            <div class="absolute inset-0 bg-gradient-to-t from-mosaBlack to-transparent z-10"></div>
-            
-            <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <span class="text-mosaGold font-bold tracking-widest uppercase mb-2 block">Our Heritage</span>
-                <h1 class="font-serif text-5xl md:text-6xl font-bold mb-6">About MOSA</h1>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto font-light">
-                    Preserving the legacy of Mengo Senior School and uniting generations of excellence since 1895.
-                </p>
-            </div>
-        </section>
+  <!-- PAGE HEADER -->
+  <section class="bg-mosaBlack text-white py-16 border-b-4 border-mosaGold">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="font-serif text-4xl md:text-5xl font-bold mb-4">Mengo Alumni Directory</h1>
+      <p class="text-lg text-gray-300 max-w-2xl mx-auto font-light">
+        Search and connect with over 12,000 Mengo Senior School alumni worldwide.
+      </p>
+    </div>
+  </section>
 
-        <!-- 📖 MISSION & VISION -->
-        <section class="py-20 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid md:grid-cols-2 gap-16 items-center">
-                    <div>
-                        <h2 class="font-serif text-4xl text-mosaBlack font-bold mb-6">Our Mission</h2>
-                        <div class="w-20 h-1 bg-mosaRed mb-8"></div>
-                        <p class="text-lg text-gray-600 leading-relaxed mb-6">
-                            The Mengo Old Students Association (MOSA) exists to foster a lifelong and mutually beneficial relationship between Mengo Senior School and its alumni. We are dedicated to promoting professional excellence, creating networking opportunities, and mobilizing resources to support the continuous growth of our beloved alma mater.
-                        </p>
-                        <h2 class="font-serif text-3xl text-mosaBlack font-bold mt-10 mb-4">Our Vision</h2>
-                        <p class="text-lg text-gray-600 leading-relaxed">
-                            To be the most vibrant, impactful, and globally connected alumni association in Uganda, empowering our members and ensuring Mengo Senior School remains a premier institution of learning.
-                        </p>
-                    </div>
-                    <div class="relative">
-                        <div class="absolute inset-0 bg-mosaGold rounded-lg transform translate-x-4 translate-y-4"></div>
-                        <img src="mosa-logo.png" alt="Students together" class="relative z-10 rounded-lg shadow-xl w-full h-auto object-cover border-4 border-white">
-                    </div>
-                </div>
-            </div>
-        </section>
+  <!-- SEARCH & FILTER BAR -->
+  <section class="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 mb-12">
+    <div class="glass-search rounded-xl shadow-lg p-6 flex flex-col md:flex-row gap-4">
+      <div class="flex-1 relative">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          <i class="fas fa-search text-gray-400"></i>
+        </div>
+        <input type="text" class="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-mosaRed focus:border-transparent bg-gray-50 text-gray-800" placeholder="Search by name, profession, or company...">
+      </div>
+      <div class="w-full md:w-48">
+        <select class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-mosaRed bg-gray-50 text-gray-700">
+          <option value="">Graduation Year</option>
+          <option value="2020s">2020 - Present</option>
+          <option value="2010s">2010 - 2019</option>
+          <option value="2000s">2000 - 2009</option>
+          <option value="1990s">1990 - 1999</option>
+          <option value="older">Before 1990</option>
+        </select>
+      </div>
+      <div class="w-full md:w-48">
+        <select class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-mosaRed bg-gray-50 text-gray-700">
+          <option value="">Location</option>
+          <option value="uganda">Uganda</option>
+          <option value="kenya">Kenya</option>
+          <option value="uk">United Kingdom</option>
+          <option value="usa">USA</option>
+          <option value="canada">Canada</option>
+        </select>
+      </div>
+      <button class="bg-mosaRed text-white px-8 py-3 rounded-lg font-bold hover:bg-red-900 transition shadow-md whitespace-nowrap">
+        Search
+      </button>
+    </div>
+  </section>
 
-        <!-- 🤝 THE EXECUTIVE COMMITTEE -->
-        <section class="py-20 bg-gray-50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="font-serif text-4xl text-mosaBlack font-bold mb-4">The Executive Committee</h2>
-                <div class="w-20 h-1 bg-mosaRed mx-auto mb-12"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto mb-16 text-lg">
-                    Meet the dedicated individuals volunteering their time and expertise to steer the Mengo Old Students Association towards greater heights.
-                </p>
+  <!-- DIRECTORY GRID -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+    <div class="flex justify-between items-center mb-8">
+      <p class="text-gray-500 font-semibold"><span class="text-mosaBlack font-bold">12,045</span> Alumni Found</p>
+      <div class="flex gap-2">
+        <button class="p-2 text-mosaRed bg-red-50 rounded hover:bg-red-100 transition"><i class="fas fa-th-large"></i></button>
+        <button class="p-2 text-gray-400 bg-white border border-gray-200 rounded hover:bg-gray-50 transition"><i class="fas fa-list"></i></button>
+      </div>
+    </div>
 
-                <div class="grid md:grid-cols-4 gap-8">
-                    <!-- Member 1 -->
-                    <div class="bg-white rounded-lg p-6 shadow-sm border border-gray-100 hover-lift text-center">
-                        <img src="mosa-logo.png" alt="President" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-gray-50 shadow-md mb-4">
-                        <h3 class="font-bold text-xl text-mosaBlack">Samuel K.</h3>
-                        <p class="text-mosaRed font-semibold text-sm mb-2">MOSA President</p>
-                        <p class="text-gray-500 text-sm">Class of '95</p>
-                    </div>
-                    <!-- Member 2 -->
-                    <div class="bg-white rounded-lg p-6 shadow-sm border border-gray-100 hover-lift text-center">
-                        <img src="mosa-logo.png" alt="Vice President" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-gray-50 shadow-md mb-4">
-                        <h3 class="font-bold text-xl text-mosaBlack">Juliet M.</h3>
-                        <p class="text-mosaRed font-semibold text-sm mb-2">Vice President</p>
-                        <p class="text-gray-500 text-sm">Class of '02</p>
-                    </div>
-                    <!-- Member 3 -->
-                    <div class="bg-white rounded-lg p-6 shadow-sm border border-gray-100 hover-lift text-center">
-                        <img src="mosa-logo.png" alt="Secretary" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-gray-50 shadow-md mb-4">
-                        <h3 class="font-bold text-xl text-mosaBlack">Arthur B.</h3>
-                        <p class="text-mosaRed font-semibold text-sm mb-2">General Secretary</p>
-                        <p class="text-gray-500 text-sm">Class of '10</p>
-                    </div>
-                    <!-- Member 4 -->
-                    <div class="bg-white rounded-lg p-6 shadow-sm border border-gray-100 hover-lift text-center">
-                        <img src="mosa-logo.png" alt="Treasurer" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-gray-50 shadow-md mb-4">
-                        <h3 class="font-bold text-xl text-mosaBlack">Grace N.</h3>
-                        <p class="text-mosaRed font-semibold text-sm mb-2">Treasurer</p>
-                        <p class="text-gray-500 text-sm">Class of '08</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
 
-        <!-- 🌍 GLOBAL CHAPTERS -->
-        <section id="chapters" class="py-20 bg-mosaBlack text-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-col md:flex-row justify-between items-center mb-16">
-                    <div>
-                        <h2 class="font-serif text-4xl font-bold mb-4">Global Chapters</h2>
-                        <div class="w-20 h-1 bg-mosaGold mb-6"></div>
-                        <p class="text-gray-400 max-w-xl text-lg">
-                            No matter where life takes you, there is always a Mengonian nearby. Connect with our regional chapters around the world.
-                        </p>
-                    </div>
-                    <a href="register.html" class="mt-8 md:mt-0 bg-mosaGold text-mosaBlack font-bold px-8 py-3 rounded hover:bg-yellow-400 transition shadow-lg whitespace-nowrap">
-                        Join a Chapter
-                    </a>
-                </div>
+      <!-- Card 1 -->
+      <a href="profile.html" class="bg-white rounded-xl overflow-hidden hover-lift border border-gray-100 shadow-sm block group">
+        <div class="h-24 bg-mosaBlack relative">
+          <div class="card-avatar" style="background:#1a1a2e;">SN</div>
+        </div>
+        <div class="pt-12 px-6 pb-6 text-left">
+          <h3 class="font-bold text-lg text-mosaBlack group-hover:text-mosaRed transition">Dr. Sarah Namazzi</h3>
+          <p class="text-mosaGold font-bold text-xs uppercase tracking-wider mt-1 mb-3">Class of 2005</p>
+          <p class="text-gray-600 text-sm mb-1"><i class="fas fa-briefcase w-5 text-gray-400 mr-1"></i> Chief of Surgery</p>
+          <p class="text-gray-600 text-sm mb-4"><i class="fas fa-map-marker-alt w-5 text-gray-400 mr-1"></i> London, UK</p>
+          <span class="text-xs font-semibold px-3 py-1 bg-red-50 text-mosaRed rounded-full">Medical</span>
+        </div>
+      </a>
 
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="bg-white/5 border border-white/10 p-6 rounded-lg backdrop-blur-sm hover:bg-white/10 transition">
-                        <i class="fas fa-map-marked-alt text-3xl text-mosaRed mb-4"></i>
-                        <h3 class="text-xl font-bold mb-2">East Africa Chapter</h3>
-                        <p class="text-gray-400 text-sm">Based in Kampala, our largest and most active hub driving local initiatives and school development.</p>
-                    </div>
-                    <div class="bg-white/5 border border-white/10 p-6 rounded-lg backdrop-blur-sm hover:bg-white/10 transition">
-                        <i class="fas fa-globe-europe text-3xl text-mosaGold mb-4"></i>
-                        <h3 class="text-xl font-bold mb-2">UK & Europe Chapter</h3>
-                        <p class="text-gray-400 text-sm">A strong network of professionals across Europe fostering business connections and mentorship.</p>
-                    </div>
-                    <div class="bg-white/5 border border-white/10 p-6 rounded-lg backdrop-blur-sm hover:bg-white/10 transition">
-                        <i class="fas fa-globe-americas text-3xl text-blue-400 mb-4"></i>
-                        <h3 class="text-xl font-bold mb-2">North America Chapter</h3>
-                        <p class="text-gray-400 text-sm">Spanning the US and Canada, dedicated to annual reunions and global fundraising efforts.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+      <!-- Card 2 -->
+      <a href="profile.html" class="bg-white rounded-xl overflow-hidden hover-lift border border-gray-100 shadow-sm block group">
+        <div class="h-24 bg-mosaRed relative">
+          <div class="card-avatar" style="background:#8B0000;">DK</div>
+        </div>
+        <div class="pt-12 px-6 pb-6 text-left">
+          <h3 class="font-bold text-lg text-mosaBlack group-hover:text-mosaRed transition">Eng. David Kigozi</h3>
+          <p class="text-mosaGold font-bold text-xs uppercase tracking-wider mt-1 mb-3">Class of 1998</p>
+          <p class="text-gray-600 text-sm mb-1"><i class="fas fa-briefcase w-5 text-gray-400 mr-1"></i> Civil Engineer</p>
+          <p class="text-gray-600 text-sm mb-4"><i class="fas fa-map-marker-alt w-5 text-gray-400 mr-1"></i> Kampala, UG</p>
+          <span class="text-xs font-semibold px-3 py-1 bg-yellow-50 text-yellow-700 rounded-full">Engineering</span>
+        </div>
+      </a>
 
-    <div id="footer-placeholder"></div>
+      <!-- Card 3 -->
+      <a href="profile.html" class="bg-white rounded-xl overflow-hidden hover-lift border border-gray-100 shadow-sm block group">
+        <div class="h-24 bg-mosaBlack relative">
+          <div class="card-avatar" style="background:#1a1a2e;">GA</div>
+        </div>
+        <div class="pt-12 px-6 pb-6 text-left">
+          <h3 class="font-bold text-lg text-mosaBlack group-hover:text-mosaRed transition">Grace Atim</h3>
+          <p class="text-mosaGold font-bold text-xs uppercase tracking-wider mt-1 mb-3">Class of 2012</p>
+          <p class="text-gray-600 text-sm mb-1"><i class="fas fa-briefcase w-5 text-gray-400 mr-1"></i> Tech Founder</p>
+          <p class="text-gray-600 text-sm mb-4"><i class="fas fa-map-marker-alt w-5 text-gray-400 mr-1"></i> San Francisco, USA</p>
+          <span class="text-xs font-semibold px-3 py-1 bg-blue-50 text-blue-700 rounded-full">Technology</span>
+        </div>
+      </a>
+
+      <!-- Card 4 -->
+      <a href="profile.html" class="bg-white rounded-xl overflow-hidden hover-lift border border-gray-100 shadow-sm block group">
+        <div class="h-24 bg-mosaBlack relative">
+          <div class="card-avatar" style="background:#1a1a2e;">ML</div>
+        </div>
+        <div class="pt-12 px-6 pb-6 text-left">
+          <h3 class="font-bold text-lg text-mosaBlack group-hover:text-mosaRed transition">Michael Lwanga</h3>
+          <p class="text-mosaGold font-bold text-xs uppercase tracking-wider mt-1 mb-3">Class of 2008</p>
+          <p class="text-gray-600 text-sm mb-1"><i class="fas fa-briefcase w-5 text-gray-400 mr-1"></i> Financial Analyst</p>
+          <p class="text-gray-600 text-sm mb-4"><i class="fas fa-map-marker-alt w-5 text-gray-400 mr-1"></i> Toronto, Canada</p>
+          <span class="text-xs font-semibold px-3 py-1 bg-green-50 text-green-700 rounded-full">Finance</span>
+        </div>
+      </a>
+
+      <!-- Card 5 -->
+      <a href="profile.html" class="bg-white rounded-xl overflow-hidden hover-lift border border-gray-100 shadow-sm block group">
+        <div class="h-24 bg-mosaRed relative">
+          <div class="card-avatar" style="background:#8B0000;">JN</div>
+        </div>
+        <div class="pt-12 px-6 pb-6 text-left">
+          <h3 class="font-bold text-lg text-mosaBlack group-hover:text-mosaRed transition">Joan N.</h3>
+          <p class="text-mosaGold font-bold text-xs uppercase tracking-wider mt-1 mb-3">Class of 2018</p>
+          <p class="text-gray-600 text-sm mb-1"><i class="fas fa-briefcase w-5 text-gray-400 mr-1"></i> Digital Marketer</p>
+          <p class="text-gray-600 text-sm mb-4"><i class="fas fa-map-marker-alt w-5 text-gray-400 mr-1"></i> Nairobi, KE</p>
+          <span class="text-xs font-semibold px-3 py-1 bg-purple-50 text-purple-700 rounded-full">Marketing</span>
+        </div>
+      </a>
+
+      <!-- Card 6 -->
+      <a href="profile.html" class="bg-white rounded-xl overflow-hidden hover-lift border border-gray-100 shadow-sm block group">
+        <div class="h-24 bg-mosaBlack relative">
+          <div class="card-avatar" style="background:#1a1a2e;">AB</div>
+        </div>
+        <div class="pt-12 px-6 pb-6 text-left">
+          <h3 class="font-bold text-lg text-mosaBlack group-hover:text-mosaRed transition">Arthur Bbale</h3>
+          <p class="text-mosaGold font-bold text-xs uppercase tracking-wider mt-1 mb-3">Class of 1990</p>
+          <p class="text-gray-600 text-sm mb-1"><i class="fas fa-briefcase w-5 text-gray-400 mr-1"></i> Legal Counsel</p>
+          <p class="text-gray-600 text-sm mb-4"><i class="fas fa-map-marker-alt w-5 text-gray-400 mr-1"></i> Kampala, UG</p>
+          <span class="text-xs font-semibold px-3 py-1 bg-gray-100 text-gray-600 rounded-full">Legal</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Pagination -->
+    <div class="mt-12 flex justify-center">
+      <nav class="inline-flex rounded-md shadow-sm border border-gray-200 bg-white">
+        <a href="#" class="px-4 py-2 border-r border-gray-200 text-gray-500 hover:bg-gray-50 transition rounded-l-md"><i class="fas fa-chevron-left"></i></a>
+        <a href="#" class="px-4 py-2 border-r border-gray-200 font-bold bg-mosaRed text-white">1</a>
+        <a href="#" class="px-4 py-2 border-r border-gray-200 font-semibold text-gray-700 hover:bg-gray-50 transition">2</a>
+        <a href="#" class="px-4 py-2 border-r border-gray-200 font-semibold text-gray-700 hover:bg-gray-50 transition">3</a>
+        <span class="px-4 py-2 border-r border-gray-200 text-gray-500">...</span>
+        <a href="#" class="px-4 py-2 border-r border-gray-200 font-semibold text-gray-700 hover:bg-gray-50 transition">48</a>
+        <a href="#" class="px-4 py-2 text-gray-500 hover:bg-gray-50 transition rounded-r-md"><i class="fas fa-chevron-right"></i></a>
+      </nav>
+    </div>
+
+  </section>
+</main>
+
+<div id="footer-placeholder"></div>
 </body>
 </html>
