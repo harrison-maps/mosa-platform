@@ -48,6 +48,46 @@
     bottom: -2.5rem; left: 1.5rem;
     flex-shrink: 0;
   }
+  /* Logo watermark background - header */
+  .watermark-bg {
+    position: relative;
+    overflow: hidden;
+  }
+  .watermark-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('mosa-logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .watermark-bg > * {
+    position: relative;
+    z-index: 1;
+  }
+  /* Directory grid watermark overlay */
+  .section-with-watermark {
+    position: relative;
+  }
+  .section-with-watermark::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('mosa-logo.png');
+    background-repeat: repeat;
+    background-size: 300px;
+    background-position: center;
+    opacity: 0.04;
+    pointer-events: none;
+  }
+  .section-with-watermark > * {
+    position: relative;
+    z-index: 1;
+  }
 </style>
 </head>
 <body class="flex flex-col min-h-screen">
@@ -55,8 +95,8 @@
 
 <main class="flex-grow">
 
-  <!-- PAGE HEADER -->
-  <section class="bg-mosaBlack text-white py-16 border-b-4 border-mosaGold">
+  <!-- PAGE HEADER WITH WATERMARK -->
+  <section class="watermark-bg bg-mosaBlack text-white py-16 border-b-4 border-mosaGold">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h1 class="font-serif text-4xl md:text-5xl font-bold mb-4">Mengo Alumni Directory</h1>
       <p class="text-lg text-gray-300 max-w-2xl mx-auto font-light">
@@ -72,7 +112,7 @@
         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
           <i class="fas fa-search text-gray-400"></i>
         </div>
-        <input type="text" class="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-mosaRed focus:border-transparent bg-gray-50 text-gray-800" placeholder="Search by name, profession, or company...">
+        <input type="text" class="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-mosaRed focus:border-transparent bg-gray-50 text-gray-800" placeholder="Search by name, profession...">
       </div>
       <div class="w-full md:w-48">
         <select class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-mosaRed bg-gray-50 text-gray-700">
@@ -100,8 +140,8 @@
     </div>
   </section>
 
-  <!-- DIRECTORY GRID -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+  <!-- DIRECTORY GRID WITH WATERMARK -->
+  <section class="section-with-watermark max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
     <div class="flex justify-between items-center mb-8">
       <p class="text-gray-500 font-semibold"><span class="text-mosaBlack font-bold">12,045</span> Alumni Found</p>
       <div class="flex gap-2">
