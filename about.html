@@ -43,6 +43,46 @@
     margin: 0 auto 1rem;
     flex-shrink: 0;
   }
+  /* Logo watermark background - header */
+  .watermark-bg {
+    position: relative;
+    overflow: hidden;
+  }
+  .watermark-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('mosa-logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .watermark-bg > * {
+    position: relative;
+    z-index: 1;
+  }
+  /* Section watermark overlay */
+  .section-with-watermark {
+    position: relative;
+  }
+  .section-with-watermark::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('mosa-logo.png');
+    background-repeat: repeat;
+    background-size: 300px;
+    background-position: center;
+    opacity: 0.04;
+    pointer-events: none;
+  }
+  .section-with-watermark > * {
+    position: relative;
+    z-index: 1;
+  }
   /* SACCO join form modal */
   #saccoModal {
     display: none;
@@ -59,9 +99,9 @@
 
 <main class="flex-grow">
 
-  <!-- PAGE HEADER -->
-  <section class="relative bg-mosaBlack text-white py-24 overflow-hidden">
-    <div class="absolute inset-0 z-0 opacity-10">
+  <!-- PAGE HEADER WITH WATERMARK -->
+  <section class="watermark-bg relative bg-mosaBlack text-white py-24 overflow-hidden">
+    <div class="absolute inset-0 z-0 opacity-5">
       <img src="mosa-logo.png" alt="" class="w-full h-full object-cover">
     </div>
     <div class="absolute inset-0 bg-gradient-to-t from-mosaBlack via-mosaBlack/80 to-transparent z-10"></div>
@@ -74,20 +114,20 @@
     </div>
   </section>
 
-  <!-- MISSION & VISION -->
-  <section class="py-20 bg-white">
+  <!-- MISSION & VISION WITH WATERMARK -->
+  <section class="section-with-watermark py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid md:grid-cols-2 gap-16 items-center">
         <div>
           <h2 class="font-serif text-4xl text-mosaBlack font-bold mb-4">Our Mission</h2>
           <div class="w-20 h-1 bg-mosaRed mb-8"></div>
           <p class="text-lg text-gray-600 leading-relaxed mb-8">
-            The Mengo Old Students Association (MOSA) exists to foster a lifelong and mutually beneficial relationship between Mengo Senior School and its alumni. We are dedicated to promoting professional excellence, creating networking opportunities, and mobilising resources to support the continuous growth of our beloved alma mater.
+            The Mengo Old Students Association (MOSA) exists to foster a lifelong and mutually beneficial relationship between Mengo Senior School and its alumni. We are dedicated to promoting professional and social standards; supporting the school in its educational mission; and creating opportunities for alumni to reconnect, network, and contribute to society.
           </p>
           <h2 class="font-serif text-3xl text-mosaBlack font-bold mb-4">Our Vision</h2>
           <div class="w-16 h-1 bg-mosaGold mb-6"></div>
           <p class="text-lg text-gray-600 leading-relaxed">
-            To be the most vibrant, impactful, and globally connected alumni association in Uganda, empowering our members and ensuring Mengo Senior School remains a premier institution of learning.
+            To be the most vibrant, impactful, and globally connected alumni association in Uganda, empowering our members and ensuring Mengo Senior School remains a premier institution of learning, character building, and leadership.
           </p>
         </div>
         <div class="relative">
@@ -102,8 +142,8 @@
     </div>
   </section>
 
-  <!-- EXECUTIVE COMMITTEE -->
-  <section class="py-20 bg-gray-50">
+  <!-- EXECUTIVE COMMITTEE WITH WATERMARK -->
+  <section class="section-with-watermark py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="font-serif text-4xl text-mosaBlack font-bold mb-4">The Executive Committee</h2>
       <div class="w-20 h-1 bg-mosaRed mx-auto mb-6"></div>
@@ -139,8 +179,8 @@
     </div>
   </section>
 
-  <!-- UNIVERSITY CHAPTERS -->
-  <section id="chapters" class="py-20 bg-mosaBlack text-white">
+  <!-- UNIVERSITY CHAPTERS WITH WATERMARK -->
+  <section id="chapters" class="watermark-bg py-20 bg-mosaBlack text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-6">
         <div>
@@ -177,7 +217,7 @@
   <!-- ============================================================
        MOSA SACCO SECTION  (NEW)
        ============================================================ -->
-  <section id="sacco" class="py-24 bg-white">
+  <section id="sacco" class="section-with-watermark py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
       <!-- Section header -->
@@ -186,7 +226,7 @@
         <h2 class="font-serif text-4xl md:text-5xl text-mosaBlack font-bold mb-4">MOSA SACCO</h2>
         <div class="w-20 h-1 bg-mosaGold mx-auto mb-6"></div>
         <p class="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          The MOSA Savings and Credit Cooperative Organisation (SACCO) is the financial home of Mengo Old Students. Together, we save, grow, and support each other — because a Mengonian's success is everyone's success.
+          The MOSA Savings and Credit Cooperative Organisation (SACCO) is the financial home of Mengo Old Students. Together, we save, grow, and support each other — because a Mengonian's success is our collective success.
         </p>
       </div>
 
@@ -197,7 +237,7 @@
           <h3 class="font-serif text-3xl text-mosaBlack font-bold mb-4">What Is the MOSA SACCO?</h3>
           <div class="w-16 h-1 bg-mosaRed mb-6"></div>
           <p class="text-gray-600 leading-relaxed mb-6">
-            The MOSA SACCO is a member-owned savings and credit group exclusively for Mengo Old Students. Members make regular contributions into a shared pool, which then earns interest and can be accessed as affordable loans — enabling Mengonians to invest in their businesses, homes, education, and futures.
+            The MOSA SACCO is a member-owned savings and credit group exclusively for Mengo Old Students. Members make regular contributions into a shared pool, which then earns interest and can be borrowed from at affordable rates.
           </p>
           <p class="text-gray-600 leading-relaxed">
             Unlike a bank, your SACCO works for you. Every shilling you save stays within the Mengonian community, generating returns that benefit all members. It is run by elected Mengonians, with full transparency and accountability.
