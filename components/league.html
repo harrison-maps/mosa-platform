@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOSA Elite League | Mengo Old Students Association</title>
+<script src="js/navigation.js"></script>
+<script src="js/main.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          mosaBlack: '#111111',
+          mosaGold:  '#FFD700',
+          mosaRed:   '#CC0000',
+          mosaWhite: '#FFFFFF',
+        },
+        fontFamily: {
+          serif: ['"Playfair Display"', 'serif'],
+          sans:  ['"Inter"', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #f9fafb; font-family: 'Inter', sans-serif; }
+
+  /* ── Hover lift card ── */
+  .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .hover-lift:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.13); }
+
+  /* ── Hero animated gradient overlay ── */
+  .hero-overlay {
+    background: linear-gradient(135deg,
+      rgba(204,0,0,0.85) 0%,
+      rgba(17,17,17,0.92) 55%,
+      rgba(17,17,17,0.97) 100%);
+  }
+
+  /* ── Tier card glow on hover ── */
+  .tier-bronze:hover { box-shadow: 0 0 0 3px #cd7f32, 0 16px 40px rgba(205,127,50,0.25); }
+  .tier-silver:hover { box-shadow: 0 0 0 3px #C0C0C0, 0 16px 40px rgba(192,192,192,0.25); }
+  .tier-gold:hover   { box-shadow: 0 0 0 3px #FFD700, 0 16px 40px rgba(255,215,0,0.35); }
+
+  /* ── Team badge initials ── */
+  .team-badge {
+    width: 5rem; height: 5rem; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 900;
+    flex-shrink: 0;
+  }
+
+  /* ── Form focus ring ── */
+  .league-input:focus {
+    outline: none;
+    border-color: #CC0000;
+    box-shadow: 0 0 0 3px rgba(204,0,0,0.12);
+  }
+
+  /* ── Step connector line ── */
+  .step-line::after {
+    content: '';
+    position: absolute;
+    top: 1.75rem; left: 75%;
+    width: 50%; height: 2px;
+    background: linear-gradient(to right, #FFD700, rgba(255,215,0,0.15));
+  }
+  @media(max-width:768px){ .step-line::after { display:none; } }
+
+  /* ── Success check animation ── */
+  @keyframes popIn {
+    0%   { transform: scale(0); opacity: 0; }
+    70%  { transform: scale(1.15); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .pop-in { animation: popIn 0.5s ease forwards; }
+
+  /* ── Scrolling ticker ── */
+  @keyframes ticker {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .ticker-track { animation: ticker 22s linear infinite; }
+  .ticker-track:hover { animation-play-state: paused; }
+</style>
+</head>
+<body class="flex flex-col min-h-screen">
+<div id="header-placeholder"></div>
+
+<main class="flex-grow">
+
+  <!-- ═══════════════════════════════════════════════
+       1. HERO
+  ══════════════════════════════════════════════════ -->
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-mosaBlack">
+    <!-- Background texture / pattern -->
+    <div class="absolute inset-0 opacity-5"
+         style="background-image: repeating-linear-gradient(45deg, #FFD700 0, #FFD700 1px, transparent 0, transparent 50%); background-size: 20px 20px;"></div>
+
+    <!-- Gradient overlay -->
+    <div class="absolute inset-0 hero-overlay"></div>
+
+    <!-- Decorative circles -->
+    <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-mosaRed opacity-10"></div>
+    <div class="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-mosaGold opacity-5"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+      <!-- League badge -->
+      <div class="inline-flex items-center gap-2 bg-mosaGold/10 border border-mosaGold/30 text-mosaGold text-xs font-bold tracking-widest uppercase px-5 py-2 rounded-full mb-8">
+        <i class="fas fa-trophy"></i>
+        Mengo Old Students Association
+      </div>
+
+      <h1 class="font-serif text-6xl md:text-8xl font-black text-white leading-none mb-4">
+        MOSA<br>
+        <span class="text-mosaGold">Elite</span>
+        <span class="text-mosaRed"> League</span>
+      </h1>
+
+      <p class="text-xl md:text-2xl text-gray-300 font-light max-w-2xl mx-auto leading-relaxed mb-4">
+        Where Mengonian businesses compete, connect, and conquer — together.
+      </p>
+      <p class="text-gray-500 text-sm max-w-xl mx-auto mb-12">
+        A premium league uniting fun-spirited Mengonian entrepreneurs. Showcase your business, earn community support, and compete for the MOSA Elite League title.
+      </p>
+
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="#join" class="inline-flex items-center gap-2 bg-mosaRed text-white font-bold px-10 py-4 rounded-lg hover:bg-red-700 transition shadow-xl text-lg">
+          <i class="fas fa-flag-checkered"></i> Register Your Team
+        </a>
+        <a href="#teams" class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white font-semibold px-10 py-4 rounded-lg hover:bg-white/20 transition text-lg">
+          <i class="fas fa-users"></i> View Teams
+        </a>
+      </div>
+
+      <!-- Quick stats bar -->
+      <div class="grid grid-cols-3 gap-6 mt-20 max-w-xl mx-auto">
+        <div class="text-center">
+          <div class="font-serif text-3xl font-black text-mosaGold">8</div>
+          <div class="text-gray-500 text-xs uppercase tracking-wider mt-1">Active Teams</div>
+        </div>
+        <div class="text-center border-x border-white/10">
+          <div class="font-serif text-3xl font-black text-mosaGold">3</div>
+          <div class="text-gray-500 text-xs uppercase tracking-wider mt-1">Seasons Run</div>
+        </div>
+        <div class="text-center">
+          <div class="font-serif text-3xl font-black text-mosaGold">UGX 2M+</div>
+          <div class="text-gray-500 text-xs uppercase tracking-wider mt-1">Prize Pool</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll cue -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-600 text-xs flex flex-col items-center gap-2">
+      <span class="uppercase tracking-widest">Scroll</span>
+      <i class="fas fa-chevron-down animate-bounce"></i>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SCROLLING TICKER
+  ══════════════════════════════════════════════════ -->
+  <div class="bg-mosaGold py-3 overflow-hidden">
+    <div class="ticker-track flex items-center gap-12 whitespace-nowrap" style="width: max-content;">
+      <!-- repeated twice for seamless loop -->
+      <template id="tickerContent">
+        <span class="font-bold text-mosaBlack text-sm tracking-wide uppercase">
+          <i class="fas fa-trophy mr-2"></i>MOSA Elite League Season 4 — Now Open for Registration
+        </span>
+        <span class="text-mosaBlack/40 mx-4">✦</span>
+        <span class="font-bold text-mosaBlack text-sm tracking-wide uppercase">
+          <i class="fas fa-star mr-2"></i>Defending Champions: Mengo Titans FC
+        </span>
+        <span class="text-mosaBlack/40 mx-4">✦</span>
+        <span class="font-bold text-mosaBlack text-sm tracking-wide uppercase">
+          <i class="fas fa-calendar mr-2"></i>Season Kicks Off: August 2026
+        </span>
+        <span class="text-mosaBlack/40 mx-4">✦</span>
+        <span class="font-bold text-mosaBlack text-sm tracking-wide uppercase">
+          <i class="fas fa-handshake mr-2"></i>12,000+ Alumni Supporting Your Business
+        </span>
+        <span class="text-mosaBlack/40 mx-4">✦</span>
+      </template>
+      <script>
+        const t = document.getElementById('tickerContent');
+        const track = t.parentElement;
+        track.innerHTML = t.innerHTML + t.innerHTML; // duplicate for loop
+      </script>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       2. WHAT IS THE MOSA ELITE LEAGUE?
+  ══════════════════════════════════════════════════ -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-20 items-center">
+        <!-- Left text -->
+        <div>
+          <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-3 block">The Concept</span>
+          <h2 class="font-serif text-4xl md:text-5xl text-mosaBlack font-bold mb-4">What Is the MOSA Elite League?</h2>
+          <div class="w-20 h-1 bg-mosaRed mb-8"></div>
+          <p class="text-gray-600 leading-relaxed mb-5 text-lg">
+            The <strong class="text-mosaBlack">MOSA Elite League</strong> is a unique competitive platform where Mengonian business owners form teams, pay a membership fee to participate, and bring their businesses into a structured league environment — earning visibility, community support, and bragging rights.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-5">
+            Think of it as part business expo, part sports league, part community investment. Teams compete across seasons in categories like fastest-growing business, most community-impacting venture, and best Mengonian collaboration.
+          </p>
+          <p class="text-gray-600 leading-relaxed">
+            The membership fees collected go back into the MOSA ecosystem — funding events, scholarships, and school development — while your business gets unmatched exposure to 12,000+ alumni across Uganda and the world.
+          </p>
+        </div>
+
+        <!-- Right: feature icons -->
+        <div class="grid grid-cols-2 gap-5">
+          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 hover-lift">
+            <div class="w-12 h-12 bg-mosaBlack rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-trophy text-mosaGold text-xl"></i>
+            </div>
+            <h4 class="font-bold text-mosaBlack mb-2">Compete</h4>
+            <p class="text-gray-500 text-sm leading-relaxed">Go head to head with fellow Mengonian businesses across multiple seasonal categories.</p>
+          </div>
+          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 hover-lift">
+            <div class="w-12 h-12 bg-mosaBlack rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-store text-mosaGold text-xl"></i>
+            </div>
+            <h4 class="font-bold text-mosaBlack mb-2">Showcase</h4>
+            <p class="text-gray-500 text-sm leading-relaxed">Your business gets a dedicated profile page seen by every MOSA member and visitor.</p>
+          </div>
+          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 hover-lift">
+            <div class="w-12 h-12 bg-mosaBlack rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-handshake text-mosaGold text-xl"></i>
+            </div>
+            <h4 class="font-bold text-mosaBlack mb-2">Connect</h4>
+            <p class="text-gray-500 text-sm leading-relaxed">Build lasting partnerships with other team owners and the broader MOSA community.</p>
+          </div>
+          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 hover-lift">
+            <div class="w-12 h-12 bg-mosaBlack rounded-xl flex items-center justify-center mb-4">
+              <i class="fas fa-chart-line text-mosaGold text-xl"></i>
+            </div>
+            <h4 class="font-bold text-mosaBlack mb-2">Grow</h4>
+            <p class="text-gray-500 text-sm leading-relaxed">Win customers, mentorship, and investment opportunities from within the Mengonian network.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       3. MEMBERSHIP TIERS / PRICING
+  ══════════════════════════════════════════════════ -->
+  <section class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-3 block">Pick Your Level</span>
+        <h2 class="font-serif text-4xl md:text-5xl text-mosaBlack font-bold mb-4">League Membership Tiers</h2>
+        <div class="w-20 h-1 bg-mosaGold mx-auto mb-6"></div>
+        <p class="text-gray-600 max-w-xl mx-auto text-lg leading-relaxed">
+          Every tier gives your business a seat at the table. Choose the level that matches your ambition.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 items-stretch">
+
+        <!-- BRONZE -->
+        <div class="tier-bronze bg-white rounded-2xl p-8 border border-gray-200 hover-lift transition-all duration-300 flex flex-col">
+          <div class="mb-6">
+            <div class="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 text-amber-700 text-xs font-bold px-3 py-1 rounded-full mb-4">
+              <i class="fas fa-medal"></i> Bronze
+            </div>
+            <div class="font-serif text-4xl font-black text-mosaBlack">UGX 150,000</div>
+            <div class="text-gray-400 text-sm mt-1">per season</div>
+          </div>
+          <ul class="space-y-3 flex-1 mb-8">
+            <li class="flex items-start gap-3 text-sm text-gray-600"><i class="fas fa-check-circle text-amber-600 mt-0.5 flex-shrink-0"></i>Business profile on MOSA platform</li>
+            <li class="flex items-start gap-3 text-sm text-gray-600"><i class="fas fa-check-circle text-amber-600 mt-0.5 flex-shrink-0"></i>League team registration (up to 5 members)</li>
+            <li class="flex items-start gap-3 text-sm text-gray-600"><i class="fas fa-check-circle text-amber-600 mt-0.5 flex-shrink-0"></i>1 featured post in MOSA newsletter</li>
+            <li class="flex items-start gap-3 text-sm text-gray-600"><i class="fas fa-check-circle text-amber-600 mt-0.5 flex-shrink-0"></i>Access to all league events</li>
+            <li class="flex items-start gap-3 text-sm text-gray-400"><i class="fas fa-times-circle mt-0.5 flex-shrink-0"></i>Priority business directory placement</li>
+            <li class="flex items-start gap-3 text-sm text-gray-400"><i class="fas fa-times-circle mt-0.5 flex-shrink-0"></i>Dedicated social media feature</li>
+          </ul>
+          <a href="#join" class="block text-center border-2 border-mosaBlack text-mosaBlack font-bold py-3 rounded-lg hover:bg-mosaBlack hover:text-white transition">
+            Join as Bronze
+          </a>
+        </div>
+
+        <!-- SILVER -->
+        <div class="tier-silver bg-white rounded-2xl p-8 border border-gray-200 hover-lift transition-all duration-300 flex flex-col">
+          <div class="mb-6">
+            <div class="inline-flex items-center gap-2 bg-gray-100 border border-gray-300 text-gray-600 text-xs font-bold px-3 py-1 rounded-full mb-4">
+              <i class="fas fa-medal"></i> Silver
+            </div>
+            <div class="font-serif text-4xl font-black text-mosaBlack">UGX 350,000</div>
+            <div class="text-gray-400 text-sm mt-1">per season</div>
+          </div>
+          <ul class="space-y-3 flex-1 mb-8">
+            <li class="flex items-start gap-3 text-sm text-gray-600"><i class="fas fa-check-circle text-gray-500 mt-0.5 flex-shrink-0"></i>Everything in Bronze</li>
+            <li class="flex items-start gap-3 text-sm text-gray-600"><i class="fas fa-check-circle text-gray-500 mt-0.5 flex-shrink-0"></i>Team of up to 11 members</li>
+            <li class="flex items-start gap-3 text-sm text-gray-600"><i class="fas fa-check-circle text-gray-500 mt-0.5 flex-shrink-0"></i>Priority business directory placement</li>
+            <li class="flex items-start gap-3 text-sm text-gray-600"><i class="fas fa-check-circle text-gray-500 mt-0.5 flex-shrink-0"></i>3 featured newsletter posts</li>
+            <li class="flex items-start gap-3 text-sm text-gray-600"><i class="fas fa-check-circle text-gray-500 mt-0.5 flex-shrink-0"></i>Dedicated social media feature</li>
+            <li class="flex items-start gap-3 text-sm text-gray-400"><i class="fas fa-times-circle mt-0.5 flex-shrink-0"></i>VIP event table + banner placement</li>
+          </ul>
+          <a href="#join" class="block text-center border-2 border-mosaBlack text-mosaBlack font-bold py-3 rounded-lg hover:bg-mosaBlack hover:text-white transition">
+            Join as Silver
+          </a>
+        </div>
+
+        <!-- GOLD (featured) -->
+        <div class="tier-gold bg-mosaBlack rounded-2xl p-8 border-2 border-mosaGold hover-lift transition-all duration-300 flex flex-col relative overflow-hidden">
+          <!-- Popular ribbon -->
+          <div class="absolute top-5 right-5 bg-mosaGold text-mosaBlack text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">
+            ⭐ Most Popular
+          </div>
+          <div class="mb-6">
+            <div class="inline-flex items-center gap-2 bg-mosaGold/20 border border-mosaGold/40 text-mosaGold text-xs font-bold px-3 py-1 rounded-full mb-4">
+              <i class="fas fa-crown"></i> Gold
+            </div>
+            <div class="font-serif text-4xl font-black text-mosaGold">UGX 700,000</div>
+            <div class="text-gray-500 text-sm mt-1">per season</div>
+          </div>
+          <ul class="space-y-3 flex-1 mb-8">
+            <li class="flex items-start gap-3 text-sm text-gray-300"><i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>Everything in Silver</li>
+            <li class="flex items-start gap-3 text-sm text-gray-300"><i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>Unlimited team members</li>
+            <li class="flex items-start gap-3 text-sm text-gray-300"><i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>VIP event table + banner placement</li>
+            <li class="flex items-start gap-3 text-sm text-gray-300"><i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>Homepage spotlight for one month</li>
+            <li class="flex items-start gap-3 text-sm text-gray-300"><i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>Dedicated MOSA mentorship session</li>
+            <li class="flex items-start gap-3 text-sm text-gray-300"><i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>League trophy eligibility</li>
+          </ul>
+          <a href="#join" class="block text-center bg-mosaGold text-mosaBlack font-bold py-3 rounded-lg hover:bg-yellow-400 transition shadow-lg">
+            Join as Gold <i class="fas fa-crown ml-1"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       4. EXISTING TEAMS
+  ══════════════════════════════════════════════════ -->
+  <section id="teams" class="py-24 bg-mosaBlack text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-6">
+        <div>
+          <span class="text-mosaGold font-bold tracking-widest uppercase text-xs mb-3 block">Season 3 — Active Roster</span>
+          <h2 class="font-serif text-4xl md:text-5xl font-bold mb-4">The Teams</h2>
+          <div class="w-20 h-1 bg-mosaRed mb-4"></div>
+          <p class="text-gray-400 max-w-lg leading-relaxed">These are the Mengonian businesses currently competing in the MOSA Elite League. Familiar names? Go support them.</p>
+        </div>
+        <a href="#join" class="bg-mosaGold text-mosaBlack font-bold px-8 py-3 rounded-lg hover:bg-yellow-400 transition shadow-lg whitespace-nowrap flex-shrink-0">
+          <i class="fas fa-plus mr-2"></i>Add Your Team
+        </a>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Team 1 -->
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 hover-lift text-center">
+          <div class="team-badge mx-auto mb-4 bg-mosaRed text-white">MT</div>
+          <h3 class="font-serif font-bold text-xl mb-1">Mengo Titans</h3>
+          <div class="inline-block bg-mosaGold text-mosaBlack text-xs font-black px-3 py-0.5 rounded-full mb-3">🏆 Defending Champions</div>
+          <p class="text-gray-400 text-xs mb-1"><i class="fas fa-store mr-1 text-mosaGold"></i>Tech & Digital Services</p>
+          <p class="text-gray-500 text-xs"><i class="fas fa-user mr-1"></i>Capt: David K.</p>
+          <div class="mt-4 pt-4 border-t border-white/10 flex justify-between text-xs text-gray-500">
+            <span><i class="fas fa-users mr-1"></i>11 members</span>
+            <span class="text-gray-300 font-bold">Gold Tier</span>
+          </div>
+        </div>
+
+        <!-- Team 2 -->
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 hover-lift text-center">
+          <div class="team-badge mx-auto mb-4 bg-blue-900 text-blue-300">MK</div>
+          <h3 class="font-serif font-bold text-xl mb-1">Mengo Spartans</h3>
+          <p class="text-gray-400 text-xs mb-1"><i class="fas fa-store mr-1 text-mosaGold"></i>Real Estate & Construction</p>
+          <p class="text-gray-500 text-xs"><i class="fas fa-user mr-1"></i>Capt: Arthur B.</p>
+          <div class="mt-4 pt-4 border-t border-white/10 flex justify-between text-xs text-gray-500">
+            <span><i class="fas fa-users mr-1"></i>8 members</span>
+            <span class="text-gray-300 font-bold">Silver Tier</span>
+          </div>
+        </div>
+
+        <!-- Team 3 -->
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 hover-lift text-center">
+          <div class="team-badge mx-auto mb-4 bg-green-900 text-green-300">SE</div>
+          <h3 class="font-serif font-bold text-xl mb-1">Seniors Elite</h3>
+          <p class="text-gray-400 text-xs mb-1"><i class="fas fa-store mr-1 text-mosaGold"></i>Finance & Investments</p>
+          <p class="text-gray-500 text-xs"><i class="fas fa-user mr-1"></i>Capt: Grace N.</p>
+          <div class="mt-4 pt-4 border-t border-white/10 flex justify-between text-xs text-gray-500">
+            <span><i class="fas fa-users mr-1"></i>9 members</span>
+            <span class="text-gray-300 font-bold">Gold Tier</span>
+          </div>
+        </div>
+
+        <!-- Team 4 -->
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 hover-lift text-center">
+          <div class="team-badge mx-auto mb-4 bg-purple-900 text-purple-300">ML</div>
+          <h3 class="font-serif font-bold text-xl mb-1">Mengo Wazeyi</h3>
+          <p class="text-gray-400 text-xs mb-1"><i class="fas fa-store mr-1 text-mosaGold"></i>Health & Wellness</p>
+          <p class="text-gray-500 text-xs"><i class="fas fa-user mr-1"></i>Capt: Sarah N.</p>
+          <div class="mt-4 pt-4 border-t border-white/10 flex justify-between text-xs text-gray-500">
+            <span><i class="fas fa-users mr-1"></i>6 members</span>
+            <span class="text-gray-300 font-bold">Bronze Tier</span>
+          </div>
+        </div>
+
+        <!-- Team 5 -->
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 hover-lift text-center">
+          <div class="team-badge mx-auto mb-4 bg-yellow-900 text-yellow-300">GF</div>
+          <h3 class="font-serif font-bold text-xl mb-1">Golden Falcons</h3>
+          <p class="text-gray-400 text-xs mb-1"><i class="fas fa-store mr-1 text-mosaGold"></i>Agribusiness & Food</p>
+          <p class="text-gray-500 text-xs"><i class="fas fa-user mr-1"></i>Capt: Michael L.</p>
+          <div class="mt-4 pt-4 border-t border-white/10 flex justify-between text-xs text-gray-500">
+            <span><i class="fas fa-users mr-1"></i>7 members</span>
+            <span class="text-gray-300 font-bold">Silver Tier</span>
+          </div>
+        </div>
+
+        <!-- Team 6 -->
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 hover-lift text-center">
+          <div class="team-badge mx-auto mb-4 bg-red-900 text-red-300">MS</div>
+          <h3 class="font-serif font-bold text-xl mb-1">Class of 2000</h3>
+          <p class="text-gray-400 text-xs mb-1"><i class="fas fa-store mr-1 text-mosaGold"></i>Media & Creative Arts</p>
+          <p class="text-gray-500 text-xs"><i class="fas fa-user mr-1"></i>Capt: Joan N.</p>
+          <div class="mt-4 pt-4 border-t border-white/10 flex justify-between text-xs text-gray-500">
+            <span><i class="fas fa-users mr-1"></i>5 members</span>
+            <span class="text-gray-300 font-bold">Bronze Tier</span>
+          </div>
+        </div>
+
+        <!-- Team 7 -->
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 hover-lift text-center">
+          <div class="team-badge mx-auto mb-4 bg-teal-900 text-teal-300">MU</div>
+          <h3 class="font-serif font-bold text-xl mb-1">Class of 1990 United</h3>
+          <p class="text-gray-400 text-xs mb-1"><i class="fas fa-store mr-1 text-mosaGold"></i>Education & Training</p>
+          <p class="text-gray-500 text-xs"><i class="fas fa-user mr-1"></i>Capt: Patricia N.</p>
+          <div class="mt-4 pt-4 border-t border-white/10 flex justify-between text-xs text-gray-500">
+            <span><i class="fas fa-users mr-1"></i>8 members</span>
+            <span class="text-gray-300 font-bold">Silver Tier</span>
+          </div>
+        </div>
+
+        <!-- Slot open CTA card -->
+        <div class="bg-mosaGold/10 border-2 border-dashed border-mosaGold/40 rounded-2xl p-6 hover:border-mosaGold transition-all duration-300 text-center flex flex-col items-center justify-center min-h-48 cursor-pointer group"
+             onclick="document.getElementById('join').scrollIntoView({behavior:'smooth'})">
+          <div class="w-14 h-14 rounded-full border-2 border-dashed border-mosaGold/50 flex items-center justify-center mb-4 group-hover:border-mosaGold transition">
+            <i class="fas fa-plus text-mosaGold text-xl"></i>
+          </div>
+          <h3 class="font-bold text-mosaGold text-lg mb-1">Your Team Here</h3>
+          <p class="text-gray-500 text-xs">Slots are limited. Register now before Season 4 fills up.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       5. HOW IT WORKS (SEASON FLOW)
+  ══════════════════════════════════════════════════ -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-3 block">The League Structure</span>
+        <h2 class="font-serif text-4xl md:text-5xl text-mosaBlack font-bold mb-4">How a Season Works</h2>
+        <div class="w-20 h-1 bg-mosaGold mx-auto"></div>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-6 text-center">
+        <div class="relative step-line">
+          <div class="w-14 h-14 bg-mosaRed rounded-full flex items-center justify-center mx-auto mb-5 shadow-lg">
+            <span class="text-white font-serif font-bold text-xl">1</span>
+          </div>
+          <h4 class="font-bold text-mosaBlack text-lg mb-2">Registration</h4>
+          <p class="text-gray-500 text-sm leading-relaxed">Teams register, pick a tier, and pay their seasonal membership fee. Your business profile goes live immediately.</p>
+        </div>
+        <div class="relative step-line">
+          <div class="w-14 h-14 bg-mosaRed rounded-full flex items-center justify-center mx-auto mb-5 shadow-lg">
+            <span class="text-white font-serif font-bold text-xl">2</span>
+          </div>
+          <h4 class="font-bold text-mosaBlack text-lg mb-2">Season Launch</h4>
+          <p class="text-gray-500 text-sm leading-relaxed">An opening gala event launches the season. Teams pitch their businesses to the MOSA community and compete in round one.</p>
+        </div>
+        <div class="relative step-line">
+          <div class="w-14 h-14 bg-mosaRed rounded-full flex items-center justify-center mx-auto mb-5 shadow-lg">
+            <span class="text-white font-serif font-bold text-xl">3</span>
+          </div>
+          <h4 class="font-bold text-mosaBlack text-lg mb-2">Monthly Fixtures</h4>
+          <p class="text-gray-500 text-sm leading-relaxed">Monthly networking and business challenge events. Community votes and judge scores decide the league table standings.</p>
+        </div>
+        <div>
+          <div class="w-14 h-14 bg-mosaGold rounded-full flex items-center justify-center mx-auto mb-5 shadow-lg">
+            <i class="fas fa-trophy text-mosaBlack text-xl"></i>
+          </div>
+          <h4 class="font-bold text-mosaBlack text-lg mb-2">Grand Finale</h4>
+          <p class="text-gray-500 text-sm leading-relaxed">Season ends with the Elite League Awards night. Champions lift the trophy and win the prize pool and exclusive MOSA benefits.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       6. JOIN THE LEAGUE — APPLICATION PORTAL
+  ══════════════════════════════════════════════════ -->
+  <section id="join" class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-3 block">Season 3 — Open Now</span>
+        <h2 class="font-serif text-4xl md:text-5xl text-mosaBlack font-bold mb-4">Register Your Team</h2>
+        <div class="w-20 h-1 bg-mosaGold mx-auto mb-6"></div>
+        <p class="text-gray-600 max-w-xl mx-auto text-lg leading-relaxed">
+          Fill in the form below to set up your team and business profile. Our league coordinator will confirm your registration within 48 hours.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-5 gap-12 items-start">
+
+        <!-- Left: checklist -->
+        <div class="lg:col-span-2">
+          <div class="bg-mosaBlack rounded-2xl p-8 text-white sticky top-24">
+            <i class="fas fa-trophy text-4xl text-mosaGold mb-5 block"></i>
+            <h3 class="font-serif text-2xl font-bold mb-2">What Happens After You Register</h3>
+            <div class="w-12 h-1 bg-mosaRed mb-6"></div>
+            <ul class="space-y-4 text-sm">
+              <li class="flex items-start gap-3 text-gray-300">
+                <span class="w-6 h-6 bg-mosaRed rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">1</span>
+                Our league coordinator reviews your application within <strong class="text-white">48 hours</strong>.
+              </li>
+              <li class="flex items-start gap-3 text-gray-300">
+                <span class="w-6 h-6 bg-mosaRed rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">2</span>
+                You receive a <strong class="text-white">payment link</strong> for your chosen membership tier.
+              </li>
+              <li class="flex items-start gap-3 text-gray-300">
+                <span class="w-6 h-6 bg-mosaRed rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">3</span>
+                Your <strong class="text-white">team profile and business listing</strong> go live on the MOSA platform.
+              </li>
+              <li class="flex items-start gap-3 text-gray-300">
+                <span class="w-6 h-6 bg-mosaGold rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5 text-mosaBlack">4</span>
+                You get your <strong class="text-white">welcome pack</strong> and season schedule, and you're officially in the League!
+              </li>
+            </ul>
+            <div class="mt-8 pt-6 border-t border-white/10 text-xs text-gray-500">
+              <i class="fas fa-envelope mr-2 text-mosaGold"></i>Questions? Email <span class="text-mosaGold">league@mosa.ug</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: form -->
+        <div class="lg:col-span-3">
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-10">
+
+            <!-- Form -->
+            <form id="leagueForm" onsubmit="handleLeagueSubmit(event)">
+
+              <!-- Team Details -->
+              <h4 class="font-serif text-xl font-bold text-mosaBlack mb-5 pb-3 border-b border-gray-100">
+                <i class="fas fa-users mr-2 text-mosaRed"></i>Team Details
+              </h4>
+
+              <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-1">Team Name <span class="text-mosaRed">*</span></label>
+                  <input type="text" required placeholder="e.g. Mengo Warriors" class="league-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition">
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-1">Team Captain Name <span class="text-mosaRed">*</span></label>
+                  <input type="text" required placeholder="Your full name" class="league-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition">
+                </div>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-1">Captain's Email <span class="text-mosaRed">*</span></label>
+                  <input type="email" required placeholder="you@email.com" class="league-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition">
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-1">Phone Number <span class="text-mosaRed">*</span></label>
+                  <input type="tel" required placeholder="+256 7XX XXX XXX" class="league-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition">
+                </div>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-4 mb-6">
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-1">MOSA Graduation Year <span class="text-mosaRed">*</span></label>
+                  <select required class="league-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition appearance-none">
+                    <option value="">Select year…</option>
+                    <script>for(let y=2024;y>=1980;y--) document.write(`<option value="${y}">${y}</option>`)</script>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-1">Number of Team Members <span class="text-mosaRed">*</span></label>
+                  <select required class="league-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition appearance-none">
+                    <option value="">Select…</option>
+                    <option>2 – 5 members</option>
+                    <option>6 – 11 members</option>
+                    <option>12+ members</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Business Details -->
+              <h4 class="font-serif text-xl font-bold text-mosaBlack mb-5 pb-3 border-b border-gray-100">
+                <i class="fas fa-store mr-2 text-mosaRed"></i>Business Details
+              </h4>
+
+              <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-1">Business Name <span class="text-mosaRed">*</span></label>
+                  <input type="text" required placeholder="Your business name" class="league-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition">
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-1">Business Sector <span class="text-mosaRed">*</span></label>
+                  <select required class="league-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition appearance-none">
+                    <option value="">Select sector…</option>
+                    <option>Tech & Digital Services</option>
+                    <option>Real Estate & Construction</option>
+                    <option>Finance & Investments</option>
+                    <option>Health & Wellness</option>
+                    <option>Agribusiness & Food</option>
+                    <option>Media & Creative Arts</option>
+                    <option>Education & Training</option>
+                    <option>Retail & Commerce</option>
+                    <option>Legal & Professional Services</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label class="block text-sm font-semibold text-gray-700 mb-1">Business Description <span class="text-mosaRed">*</span></label>
+                <textarea required rows="3" placeholder="Tell the MOSA community what your business does and why you're joining the league…"
+                  class="league-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition resize-none"></textarea>
+              </div>
+
+              <div class="mb-6">
+                <label class="block text-sm font-semibold text-gray-700 mb-1">Business Website / Social Media (optional)</label>
+                <input type="url" placeholder="https://yourbusiness.com or @handle" class="league-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition">
+              </div>
+
+              <!-- Tier selection -->
+              <h4 class="font-serif text-xl font-bold text-mosaBlack mb-5 pb-3 border-b border-gray-100">
+                <i class="fas fa-medal mr-2 text-mosaRed"></i>Choose Your Tier
+              </h4>
+
+              <div class="grid grid-cols-3 gap-3 mb-8" id="tierSelector">
+                <label class="tier-option cursor-pointer">
+                  <input type="radio" name="tier" value="bronze" class="sr-only" onchange="selectTier(this)">
+                  <div class="tier-label border-2 border-gray-200 rounded-xl p-4 text-center transition-all hover:border-amber-500">
+                    <i class="fas fa-medal text-amber-600 text-2xl mb-2 block"></i>
+                    <div class="font-bold text-sm text-mosaBlack">Bronze</div>
+                    <div class="text-xs text-gray-500 mt-1">UGX 150,000</div>
+                  </div>
+                </label>
+                <label class="tier-option cursor-pointer">
+                  <input type="radio" name="tier" value="silver" class="sr-only" onchange="selectTier(this)">
+                  <div class="tier-label border-2 border-gray-200 rounded-xl p-4 text-center transition-all hover:border-gray-400">
+                    <i class="fas fa-medal text-gray-400 text-2xl mb-2 block"></i>
+                    <div class="font-bold text-sm text-mosaBlack">Silver</div>
+                    <div class="text-xs text-gray-500 mt-1">UGX 350,000</div>
+                  </div>
+                </label>
+                <label class="tier-option cursor-pointer">
+                  <input type="radio" name="tier" value="gold" class="sr-only" onchange="selectTier(this)">
+                  <div class="tier-label border-2 border-gray-200 rounded-xl p-4 text-center transition-all hover:border-mosaGold">
+                    <i class="fas fa-crown text-mosaGold text-2xl mb-2 block"></i>
+                    <div class="font-bold text-sm text-mosaBlack">Gold</div>
+                    <div class="text-xs text-gray-500 mt-1">UGX 700,000</div>
+                  </div>
+                </label>
+              </div>
+
+              <button type="submit"
+                class="w-full bg-mosaRed text-white font-bold py-4 rounded-xl hover:bg-red-700 transition shadow-lg text-lg flex items-center justify-center gap-3">
+                <i class="fas fa-flag-checkered"></i>
+                Submit League Application
+              </button>
+              <p class="text-xs text-gray-400 text-center mt-3">Our league coordinator will be in touch within 48 hours.</p>
+            </form>
+
+            <!-- Success State -->
+            <div id="leagueSuccess" class="hidden text-center py-12">
+              <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 pop-in">
+                <i class="fas fa-check text-green-600 text-3xl"></i>
+              </div>
+              <h3 class="font-serif text-2xl font-bold text-mosaBlack mb-3">You're In the League!</h3>
+              <p class="text-gray-500 leading-relaxed max-w-sm mx-auto mb-6">
+                Your application has been received. Our league coordinator will contact you within 48 hours with your payment link and welcome pack.
+              </p>
+              <div class="inline-flex items-center gap-2 bg-mosaGold/10 text-mosaBlack text-sm font-semibold px-5 py-3 rounded-full border border-mosaGold/30">
+                <i class="fas fa-trophy text-mosaGold"></i> Welcome to the MOSA Elite League
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="footer-placeholder"></div>
+
+<script>
+  // Tier selector highlight
+  function selectTier(radio) {
+    document.querySelectorAll('.tier-label').forEach(el => {
+      el.classList.remove('border-mosaGold', 'border-amber-500', 'border-gray-400', 'bg-yellow-50', 'bg-amber-50', 'bg-gray-100');
+      el.style.borderColor = '';
+      el.style.background  = '';
+    });
+    const label = radio.closest('label').querySelector('.tier-label');
+    const colors = { bronze: ['#cd7f32','#fff8f0'], silver: ['#9ca3af','#f9fafb'], gold: ['#FFD700','#fffde7'] };
+    const [border, bg] = colors[radio.value];
+    label.style.borderColor = border;
+    label.style.background  = bg;
+  }
+
+  // Form submit
+  function handleLeagueSubmit(e) {
+    e.preventDefault();
+    document.getElementById('leagueForm').classList.add('hidden');
+    document.getElementById('leagueSuccess').classList.remove('hidden');
+    document.getElementById('leagueSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+</script>
+
+</body>
+</html>
