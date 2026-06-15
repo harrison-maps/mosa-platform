@@ -1,0 +1,703 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOSA SACCO | Together We Grow</title>
+<script src="js/navigation.js"></script>
+<script src="js/main.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          mosaBlack: '#1a1a2e',
+          mosaRed:   '#8B0000',
+          mosaGold:  '#D4AF37',
+        },
+        fontFamily: {
+          serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        }
+      }
+    }
+  }
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #f9fafb; font-family: 'Inter', sans-serif; }
+
+
+  .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,0.13); }
+
+
+  /* ── Hero ── */
+  .hero-bg {
+    background: radial-gradient(ellipse at 70% 50%, rgba(139,0,0,0.25) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(212,175,55,0.1) 0%, transparent 50%),
+                #1a1a2e;
+  }
+  /* Subtle grid pattern */
+  .hero-bg::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+  }
+
+
+  /* ── Sacco logo glow ── */
+  .logo-glow {
+    filter: drop-shadow(0 0 40px rgba(212,175,55,0.35))
+            drop-shadow(0 0 80px rgba(139,0,0,0.2));
+  }
+
+
+  /* ── Tagline script font ── */
+  .script-tagline {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+
+  /* ── Stat counter card ── */
+  .stat-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: background 0.3s;
+  }
+  .stat-card:hover { background: rgba(255,255,255,0.09); }
+
+
+  /* ── Tier card ── */
+  .tier-gold-card {
+    background: linear-gradient(135deg, #1a1a2e 0%, #2a1f10 100%);
+    border: 2px solid #D4AF37;
+    box-shadow: 0 0 40px rgba(212,175,55,0.15);
+  }
+
+
+  /* ── Form input focus ── */
+  .sacco-input:focus {
+    outline: none;
+    border-color: #8B0000;
+    box-shadow: 0 0 0 3px rgba(139,0,0,0.1);
+  }
+
+
+  /* ── Step connector ── */
+  .step-connector::after {
+    content: '';
+    position: absolute;
+    top: 1.75rem; left: 75%;
+    width: 50%; height: 2px;
+    background: linear-gradient(to right, #D4AF37, rgba(212,175,55,0.1));
+  }
+  @media(max-width:768px){ .step-connector::after { display:none; } }
+
+
+  /* ── Success animation ── */
+  @keyframes popIn {
+    0%   { transform: scale(0); opacity: 0; }
+    70%  { transform: scale(1.15); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .pop-in { animation: popIn 0.45s ease forwards; }
+
+
+  /* ── Watermark ── */
+  .with-watermark { position: relative; }
+  .with-watermark::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url('sacco-logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40%;
+    opacity: 0.03;
+    pointer-events: none;
+  }
+  .with-watermark > * { position: relative; z-index: 1; }
+</style>
+</head>
+<body class="flex flex-col min-h-screen">
+<div id="header-placeholder"></div>
+
+
+<main class="flex-grow">
+
+
+  <!-- ═══════════════════════════════════════════
+       1. HERO
+  ════════════════════════════════════════════════ -->
+  <section class="hero-bg relative min-h-screen flex items-center overflow-hidden">
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div class="grid lg:grid-cols-2 gap-16 items-center py-24">
+
+
+        <!-- Left: text -->
+        <div>
+          <div class="inline-flex items-center gap-2 bg-mosaGold/10 border border-mosaGold/30 text-mosaGold text-xs font-bold tracking-widest uppercase px-5 py-2 rounded-full mb-8">
+            <i class="fas fa-piggy-bank"></i> Mengo Old Students Association
+          </div>
+          <h1 class="font-serif text-6xl md:text-7xl font-black text-white leading-none mb-4">
+            MOSA<br>
+            <span class="text-mosaGold">SACCO</span>
+          </h1>
+          <p class="script-tagline text-3xl text-mosaRed mb-6" style="color:#cc3333;">Together We Grow</p>
+          <p class="text-gray-300 text-lg leading-relaxed max-w-lg mb-10">
+            The Savings and Credit Cooperative Organisation exclusively for Mengo Old Students. We save together, grow together, and lift each other — the Mengonian way.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#join" class="inline-flex items-center gap-2 bg-mosaRed text-white font-bold px-8 py-4 rounded-lg hover:bg-red-800 transition shadow-xl">
+              <i class="fas fa-hand-holding-usd"></i> Join the SACCO
+            </a>
+            <a href="#benefits" class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white font-semibold px-8 py-4 rounded-lg hover:bg-white/20 transition">
+              <i class="fas fa-info-circle"></i> Learn More
+            </a>
+          </div>
+
+
+          <!-- Quick stats row -->
+          <div class="grid grid-cols-3 gap-4 mt-14 pt-10 border-t border-white/10">
+            <div>
+              <div class="font-serif text-3xl font-black text-mosaGold">UGX 100M+</div>
+              <div class="text-gray-500 text-xs uppercase tracking-wider mt-1">Total Savings</div>
+            </div>
+            <div class="border-x border-white/10 px-4">
+              <div class="font-serif text-3xl font-black text-mosaGold">90+</div>
+              <div class="text-gray-500 text-xs uppercase tracking-wider mt-1">Members</div>
+            </div>
+            <div class="pl-4">
+              <div class="font-serif text-3xl font-black text-mosaGold">12%</div>
+              <div class="text-gray-500 text-xs uppercase tracking-wider mt-1">Annual Dividend</div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Right: SACCO logo -->
+        <div class="flex items-center justify-center">
+          <div class="relative">
+            <!-- Glow rings -->
+            <div class="absolute inset-0 rounded-full bg-mosaGold opacity-10 blur-3xl scale-110"></div>
+            <div class="absolute inset-0 rounded-full bg-mosaRed opacity-5 blur-2xl scale-125"></div>
+            <!-- Logo -->
+            <img src="sacco.jpeg" alt="MOSA SACCO — Together We Grow"
+                 class="logo-glow relative z-10 w-80 h-80 md:w-96 md:h-96 object-contain">
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+
+    <!-- scroll cue -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-600 text-xs flex flex-col items-center gap-2">
+      <span class="uppercase tracking-widest">Scroll</span>
+      <i class="fas fa-chevron-down animate-bounce"></i>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       2. WHAT IS THE MOSA SACCO?
+  ════════════════════════════════════════════════ -->
+  <section class="with-watermark py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-20 items-center">
+        <!-- Text -->
+        <div>
+          <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-3 block">The Concept</span>
+          <h2 class="font-serif text-4xl md:text-5xl text-mosaBlack font-bold mb-4">What Is the MOSA SACCO?</h2>
+          <div class="w-20 h-1 bg-mosaRed mb-8"></div>
+          <p class="text-gray-600 leading-relaxed mb-5 text-lg">
+            The <strong class="text-mosaBlack">MOSA SACCO</strong> is a member-owned Savings and Credit Cooperative Organisation open exclusively to Mengo Old Students. Members make regular monthly contributions into a shared fund, which earns interest and is available as affordable loans.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-5">
+            Unlike a bank, your SACCO works entirely for you. Every shilling saved stays within the Mengonian community, generating returns that benefit all members. It is governed by elected Mengonians with full transparency and accountability.
+          </p>
+          <p class="text-gray-600 leading-relaxed">
+            Whether you want to grow your savings, fund your business, pay school fees, or simply build a financial safety net — the MOSA SACCO is your most trusted partner.
+          </p>
+        </div>
+
+
+        <!-- Visual cards -->
+        <div class="grid grid-cols-2 gap-5">
+          <div class="bg-mosaBlack rounded-2xl p-6 text-white hover-lift">
+            <i class="fas fa-piggy-bank text-3xl text-mosaGold mb-4 block"></i>
+            <h4 class="font-bold text-lg mb-2">Save Monthly</h4>
+            <p class="text-gray-400 text-sm leading-relaxed">Regular contributions from as low as UGX 50,000 per month.</p>
+          </div>
+          <div class="bg-mosaRed rounded-2xl p-6 text-white hover-lift">
+            <i class="fas fa-hand-holding-usd text-3xl text-mosaGold mb-4 block"></i>
+            <h4 class="font-bold text-lg mb-2">Borrow Affordably</h4>
+            <p class="text-red-100 text-sm leading-relaxed">Loans up to 3× your savings at low interest rates.</p>
+          </div>
+          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 hover-lift">
+            <i class="fas fa-chart-line text-3xl text-mosaRed mb-4 block"></i>
+            <h4 class="font-bold text-lg text-mosaBlack mb-2">Earn Dividends</h4>
+            <p class="text-gray-500 text-sm leading-relaxed">12% annual dividend paid back to all members.</p>
+          </div>
+          <div class="bg-mosaGold rounded-2xl p-6 hover-lift">
+            <i class="fas fa-users text-3xl text-mosaBlack mb-4 block"></i>
+            <h4 class="font-bold text-lg text-mosaBlack mb-2">Own It Together</h4>
+            <p class="text-yellow-900 text-sm leading-relaxed">You are not a customer — you are a co-owner.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       3. MEMBER BENEFITS
+  ════════════════════════════════════════════════ -->
+  <section id="benefits" class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-3 block">Why Join</span>
+        <h2 class="font-serif text-4xl md:text-5xl text-mosaBlack font-bold mb-4">Member Benefits</h2>
+        <div class="w-20 h-1 bg-mosaGold mx-auto mb-6"></div>
+        <p class="text-gray-600 max-w-xl mx-auto text-lg leading-relaxed">
+          Every Mengonian who joins the SACCO gains access to a powerful suite of financial tools and community support.
+        </p>
+      </div>
+
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-xl p-8 border border-gray-100 hover-lift">
+          <div class="w-14 h-14 bg-mosaBlack rounded-xl flex items-center justify-center mb-5">
+            <i class="fas fa-coins text-mosaGold text-2xl"></i>
+          </div>
+          <h4 class="font-bold text-xl text-mosaBlack mb-3">Savings Growth</h4>
+          <p class="text-gray-500 leading-relaxed">Your monthly contributions earn competitive interest, growing your wealth steadily and securely within the Mengonian community.</p>
+        </div>
+
+
+        <div class="bg-white rounded-xl p-8 border border-gray-100 hover-lift">
+          <div class="w-14 h-14 bg-mosaBlack rounded-xl flex items-center justify-center mb-5">
+            <i class="fas fa-hand-holding-usd text-mosaGold text-2xl"></i>
+          </div>
+          <h4 class="font-bold text-xl text-mosaBlack mb-3">Affordable Loans</h4>
+          <p class="text-gray-500 leading-relaxed">Access low-interest loans up to 3× your savings for business, education, home improvement, or emergencies — no long bank queues.</p>
+        </div>
+
+
+        <div class="bg-white rounded-xl p-8 border border-gray-100 hover-lift">
+          <div class="w-14 h-14 bg-mosaBlack rounded-xl flex items-center justify-center mb-5">
+            <i class="fas fa-chart-line text-mosaGold text-2xl"></i>
+          </div>
+          <h4 class="font-bold text-xl text-mosaBlack mb-3">Annual Dividends</h4>
+          <p class="text-gray-500 leading-relaxed">SACCO profits are shared back as annual dividends — you are not just a depositor, you are a co-owner earning from the collective.</p>
+        </div>
+
+
+        <div class="bg-white rounded-xl p-8 border border-gray-100 hover-lift">
+          <div class="w-14 h-14 bg-mosaBlack rounded-xl flex items-center justify-center mb-5">
+            <i class="fas fa-users text-mosaGold text-2xl"></i>
+          </div>
+          <h4 class="font-bold text-xl text-mosaBlack mb-3">Mengonian Network</h4>
+          <p class="text-gray-500 leading-relaxed">SACCO membership connects you deeper into the MOSA ecosystem — access to mentorship, business partners, and investment opportunities.</p>
+        </div>
+
+
+        <div class="bg-white rounded-xl p-8 border border-gray-100 hover-lift">
+          <div class="w-14 h-14 bg-mosaBlack rounded-xl flex items-center justify-center mb-5">
+            <i class="fas fa-shield-alt text-mosaGold text-2xl"></i>
+          </div>
+          <h4 class="font-bold text-xl text-mosaBlack mb-3">Member Welfare</h4>
+          <p class="text-gray-500 leading-relaxed">Emergency welfare contributions ensure no Mengonian faces hardship alone. The SACCO has your back when it matters most.</p>
+        </div>
+
+
+        <div class="bg-white rounded-xl p-8 border border-gray-100 hover-lift">
+          <div class="w-14 h-14 bg-mosaBlack rounded-xl flex items-center justify-center mb-5">
+            <i class="fas fa-mobile-alt text-mosaGold text-2xl"></i>
+          </div>
+          <h4 class="font-bold text-xl text-mosaBlack mb-3">Mobile Money</h4>
+          <p class="text-gray-500 leading-relaxed">Save and repay loans via MTN Mobile Money or Airtel Money — from anywhere in Uganda or abroad, at any time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       4. SAVINGS PLANS
+  ════════════════════════════════════════════════ -->
+  <section class="py-24 bg-mosaBlack text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="text-mosaGold font-bold tracking-widest uppercase text-xs mb-3 block">Pick Your Plan</span>
+        <h2 class="font-serif text-4xl md:text-5xl font-bold mb-4">Savings Plans</h2>
+        <div class="w-20 h-1 bg-mosaRed mx-auto mb-6"></div>
+        <p class="text-gray-400 max-w-xl mx-auto text-lg leading-relaxed">
+          Every Mengonian's situation is different. Choose the plan that works for you — you can always upgrade.
+        </p>
+      </div>
+
+
+      <div class="grid md:grid-cols-3 gap-8">
+
+
+        <!-- Starter -->
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all duration-300 hover-lift flex flex-col">
+          <div class="mb-6">
+            <div class="inline-flex items-center gap-2 bg-gray-700/50 text-gray-300 text-xs font-bold px-3 py-1 rounded-full mb-4">
+              <i class="fas fa-seedling"></i> Starter
+            </div>
+            <div class="font-serif text-4xl font-black text-white">UGX 50,000</div>
+            <div class="text-gray-500 text-sm mt-1">minimum / month</div>
+          </div>
+          <ul class="space-y-3 flex-1 mb-8 text-sm">
+            <li class="flex items-start gap-3 text-gray-300"><i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>Full SACCO membership</li>
+            <li class="flex items-start gap-3 text-gray-300"><i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>Loan eligibility after 3 months</li>
+            <li class="flex items-start gap-3 text-gray-300"><i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>Annual dividend participation</li>
+            <li class="flex items-start gap-3 text-gray-300"><i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>Welfare fund protection</li>
+            <li class="flex items-start gap-3 text-gray-400"><i class="fas fa-times-circle mt-0.5 flex-shrink-0"></i>Priority loan processing</li>
+          </ul>
+          <a href="#join" class="block text-center border-2 border-white/30 text-white font-bold py-3 rounded-lg hover:bg-white/10 transition">
+            Start at 50K
+          </a>
+        </div>
+
+
+        <!-- Growth (featured) -->
+        <div class="tier-gold-card rounded-2xl p-8 hover-lift flex flex-col relative overflow-hidden">
+          <div class="absolute top-5 right-5 bg-mosaGold text-mosaBlack text-xs font-black px-3 py-1 rounded-full">⭐ Popular</div>
+          <div class="mb-6">
+            <div class="inline-flex items-center gap-2 bg-mosaGold/20 border border-mosaGold/30 text-mosaGold text-xs font-bold px-3 py-1 rounded-full mb-4">
+              <i class="fas fa-tree"></i> Growth
+            </div>
+            <div class="font-serif text-4xl font-black text-mosaGold">UGX 100,000</div>
+            <div class="text-gray-500 text-sm mt-1">minimum / month</div>
+          </div>
+          <ul class="space-y-3 flex-1 mb-8 text-sm">
+            <li class="flex items-start gap-3 text-gray-300"><i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>Everything in Starter</li>
+            <li class="flex items-start gap-3 text-gray-300"><i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>Priority loan processing</li>
+            <li class="flex items-start gap-3 text-gray-300"><i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>Higher loan ceiling (3.5× savings)</li>
+            <li class="flex items-start gap-3 text-gray-300"><i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>Preferential dividend rate</li>
+            <li class="flex items-start gap-3 text-gray-300"><i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>MOSA business network access</li>
+          </ul>
+          <a href="#join" class="block text-center bg-mosaGold text-mosaBlack font-bold py-3 rounded-lg hover:bg-yellow-400 transition shadow-lg">
+            Start at 100K <i class="fas fa-arrow-right ml-1"></i>
+          </a>
+        </div>
+
+
+        <!-- Elite -->
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all duration-300 hover-lift flex flex-col">
+          <div class="mb-6">
+            <div class="inline-flex items-center gap-2 bg-mosaRed/20 border border-mosaRed/30 text-red-400 text-xs font-bold px-3 py-1 rounded-full mb-4">
+              <i class="fas fa-crown"></i> Elite
+            </div>
+            <div class="font-serif text-4xl font-black text-white">UGX 250,000+</div>
+            <div class="text-gray-500 text-sm mt-1">minimum / month</div>
+          </div>
+          <ul class="space-y-3 flex-1 mb-8 text-sm">
+            <li class="flex items-start gap-3 text-gray-300"><i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>Everything in Growth</li>
+            <li class="flex items-start gap-3 text-gray-300"><i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>Maximum loan ceiling (4× savings)</li>
+            <li class="flex items-start gap-3 text-gray-300"><i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>SACCO board voting rights</li>
+            <li class="flex items-start gap-3 text-gray-300"><i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>Dedicated SACCO advisor</li>
+            <li class="flex items-start gap-3 text-gray-300"><i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>VIP SACCO annual event invite</li>
+          </ul>
+          <a href="#join" class="block text-center border-2 border-mosaRed/50 text-red-400 font-bold py-3 rounded-lg hover:bg-mosaRed/10 transition">
+            Start at 250K
+          </a>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       5. HOW TO JOIN (STEPS)
+  ════════════════════════════════════════════════ -->
+  <section class="py-24 bg-white with-watermark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-3 block">Simple Process</span>
+        <h2 class="font-serif text-4xl md:text-5xl text-mosaBlack font-bold mb-4">How to Join</h2>
+        <div class="w-20 h-1 bg-mosaGold mx-auto"></div>
+      </div>
+
+
+      <div class="grid md:grid-cols-4 gap-8 text-center">
+        <div class="relative step-connector">
+          <div class="w-16 h-16 bg-mosaRed rounded-full flex items-center justify-center mx-auto mb-5 shadow-xl">
+            <span class="text-white font-serif font-black text-2xl">1</span>
+          </div>
+          <h4 class="font-bold text-mosaBlack text-lg mb-3">Verify MOSA Membership</h4>
+          <p class="text-gray-500 text-sm leading-relaxed">You must be a registered MOSA member. Not yet? <a href="register.html" class="text-mosaRed font-semibold hover:underline">Register here first.</a></p>
+        </div>
+        <div class="relative step-connector">
+          <div class="w-16 h-16 bg-mosaRed rounded-full flex items-center justify-center mx-auto mb-5 shadow-xl">
+            <span class="text-white font-serif font-black text-2xl">2</span>
+          </div>
+          <h4 class="font-bold text-mosaBlack text-lg mb-3">Fill the Form Below</h4>
+          <p class="text-gray-500 text-sm leading-relaxed">Complete the expression of interest form with your personal and financial details.</p>
+        </div>
+        <div class="relative step-connector">
+          <div class="w-16 h-16 bg-mosaRed rounded-full flex items-center justify-center mx-auto mb-5 shadow-xl">
+            <span class="text-white font-serif font-black text-2xl">3</span>
+          </div>
+          <h4 class="font-bold text-mosaBlack text-lg mb-3">Pay Registration Fee</h4>
+          <p class="text-gray-500 text-sm leading-relaxed">A one-time fee of <strong class="text-mosaBlack">UGX 50,000</strong> activates your account via MTN or Airtel Mobile Money.</p>
+        </div>
+        <div>
+          <div class="w-16 h-16 bg-mosaGold rounded-full flex items-center justify-center mx-auto mb-5 shadow-xl">
+            <i class="fas fa-check text-mosaBlack text-2xl font-black"></i>
+          </div>
+          <h4 class="font-bold text-mosaBlack text-lg mb-3">Start Saving & Growing!</h4>
+          <p class="text-gray-500 text-sm leading-relaxed">Begin your monthly contributions and unlock every SACCO benefit from day one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       6. JOIN FORM
+  ════════════════════════════════════════════════ -->
+  <section id="join" class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-3 block">Ready to Start?</span>
+        <h2 class="font-serif text-4xl md:text-5xl text-mosaBlack font-bold mb-4">Join the MOSA SACCO</h2>
+        <div class="w-20 h-1 bg-mosaGold mx-auto mb-6"></div>
+        <p class="text-gray-600 max-w-xl mx-auto text-lg">Over 340 Mengonians are already growing their wealth together. Be the next.</p>
+      </div>
+
+
+      <div class="grid lg:grid-cols-5 gap-12 items-start">
+
+
+        <!-- Left info panel -->
+        <div class="lg:col-span-2">
+          <div class="bg-mosaBlack rounded-2xl p-8 text-white sticky top-24">
+            <img src="sacco-logo.png" alt="MOSA SACCO" class="w-28 h-28 object-contain mx-auto mb-6">
+            <h3 class="font-serif text-2xl font-bold text-center mb-2">MOSA SACCO</h3>
+            <p class="script-tagline text-center text-xl mb-6" style="color:#cc4444;">Together We Grow</p>
+            <div class="w-12 h-1 bg-mosaRed mx-auto mb-8"></div>
+            <ul class="space-y-4 text-sm">
+              <li class="flex items-start gap-3 text-gray-300">
+                <i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>
+                Minimum monthly savings: <strong class="text-white">UGX 50,000</strong>
+              </li>
+              <li class="flex items-start gap-3 text-gray-300">
+                <i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>
+                Loan eligibility after <strong class="text-white">3 months</strong> of saving
+              </li>
+              <li class="flex items-start gap-3 text-gray-300">
+                <i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>
+                Open to all <strong class="text-white">registered MOSA members</strong>
+              </li>
+              <li class="flex items-start gap-3 text-gray-300">
+                <i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>
+                Fully <strong class="text-white">transparent</strong> member governance
+              </li>
+              <li class="flex items-start gap-3 text-gray-300">
+                <i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>
+                Pay via <strong class="text-white">MTN / Airtel Mobile Money</strong>
+              </li>
+            </ul>
+            <div class="mt-8 pt-6 border-t border-white/10 text-xs text-gray-500 text-center">
+              <i class="fas fa-envelope mr-2 text-mosaGold"></i>
+              Questions? <span class="text-mosaGold">sacco@mosa.ug</span>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Right: form -->
+        <div class="lg:col-span-3">
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-10">
+
+
+            <form id="saccoForm" onsubmit="handleSaccoSubmit(event)">
+
+
+              <h4 class="font-serif text-xl font-bold text-mosaBlack mb-5 pb-3 border-b border-gray-100">
+                <i class="fas fa-user mr-2 text-mosaRed"></i>Personal Details
+              </h4>
+
+
+              <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-1">Full Name <span class="text-mosaRed">*</span></label>
+                  <input type="text" required placeholder="John Ssempala"
+                    class="sacco-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition">
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-1">Email Address <span class="text-mosaRed">*</span></label>
+                  <input type="email" required placeholder="you@email.com"
+                    class="sacco-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition">
+                </div>
+              </div>
+
+
+              <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-1">Phone Number <span class="text-mosaRed">*</span></label>
+                  <input type="tel" required placeholder="+256 7XX XXX XXX"
+                    class="sacco-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition">
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-1">Graduation Year <span class="text-mosaRed">*</span></label>
+                  <select required class="sacco-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition appearance-none">
+                    <option value="">Select year…</option>
+                    <script>for(let y=2024;y>=1980;y--) document.write(`<option value="${y}">${y}</option>`)</script>
+                  </select>
+                </div>
+              </div>
+
+
+              <div class="mb-6">
+                <label class="block text-sm font-semibold text-gray-700 mb-1">Occupation / Profession</label>
+                <input type="text" placeholder="e.g. Engineer, Teacher, Business Owner"
+                  class="sacco-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition">
+              </div>
+
+
+              <h4 class="font-serif text-xl font-bold text-mosaBlack mb-5 pb-3 border-b border-gray-100">
+                <i class="fas fa-piggy-bank mr-2 text-mosaRed"></i>Savings Preference
+              </h4>
+
+
+              <div class="mb-4">
+                <label class="block text-sm font-semibold text-gray-700 mb-3">Preferred Savings Plan <span class="text-mosaRed">*</span></label>
+                <div class="grid grid-cols-3 gap-3" id="planSelector">
+                  <label class="cursor-pointer">
+                    <input type="radio" name="plan" value="starter" class="sr-only" onchange="selectPlan(this)">
+                    <div class="plan-label border-2 border-gray-200 rounded-xl p-4 text-center transition-all hover:border-gray-400">
+                      <i class="fas fa-seedling text-2xl text-green-500 mb-2 block"></i>
+                      <div class="font-bold text-sm text-mosaBlack">Starter</div>
+                      <div class="text-xs text-gray-500 mt-1">UGX 50K/mo</div>
+                    </div>
+                  </label>
+                  <label class="cursor-pointer">
+                    <input type="radio" name="plan" value="growth" class="sr-only" onchange="selectPlan(this)">
+                    <div class="plan-label border-2 border-gray-200 rounded-xl p-4 text-center transition-all hover:border-mosaGold">
+                      <i class="fas fa-tree text-2xl text-mosaGold mb-2 block"></i>
+                      <div class="font-bold text-sm text-mosaBlack">Growth</div>
+                      <div class="text-xs text-gray-500 mt-1">UGX 100K/mo</div>
+                    </div>
+                  </label>
+                  <label class="cursor-pointer">
+                    <input type="radio" name="plan" value="elite" class="sr-only" onchange="selectPlan(this)">
+                    <div class="plan-label border-2 border-gray-200 rounded-xl p-4 text-center transition-all hover:border-mosaRed">
+                      <i class="fas fa-crown text-2xl text-mosaRed mb-2 block"></i>
+                      <div class="font-bold text-sm text-mosaBlack">Elite</div>
+                      <div class="text-xs text-gray-500 mt-1">UGX 250K+/mo</div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+
+              <div class="mb-6">
+                <label class="block text-sm font-semibold text-gray-700 mb-1">Primary Goal for Joining <span class="text-mosaRed">*</span></label>
+                <select required class="sacco-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition appearance-none">
+                  <option value="">Select your goal…</option>
+                  <option>Build long-term savings</option>
+                  <option>Access business financing</option>
+                  <option>Fund my children's education</option>
+                  <option>Build an emergency fund</option>
+                  <option>Invest and earn dividends</option>
+                  <option>Home improvement / construction</option>
+                  <option>General financial discipline</option>
+                </select>
+              </div>
+
+
+              <div class="mb-8">
+                <label class="block text-sm font-semibold text-gray-700 mb-1">How did you hear about the MOSA SACCO?</label>
+                <select class="sacco-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition appearance-none">
+                  <option value="">Select…</option>
+                  <option>MOSA Platform / Website</option>
+                  <option>Fellow Mengonian</option>
+                  <option>MOSA Event</option>
+                  <option>Social Media</option>
+                  <option>Newsletter / Email</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+
+              <button type="submit"
+                class="w-full bg-mosaRed text-white font-bold py-4 rounded-xl hover:bg-red-800 transition shadow-lg text-lg flex items-center justify-center gap-3">
+                <i class="fas fa-piggy-bank"></i> Submit My Interest
+              </button>
+              <p class="text-xs text-gray-400 text-center mt-3">Our SACCO coordinator will contact you within 48 hours.</p>
+            </form>
+
+
+            <!-- Success state -->
+            <div id="saccoSuccess" class="hidden text-center py-12">
+              <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 pop-in">
+                <i class="fas fa-check text-green-600 text-3xl"></i>
+              </div>
+              <img src="sacco-logo.png" alt="" class="w-20 h-20 object-contain mx-auto mb-4 opacity-80">
+              <h3 class="font-serif text-2xl font-bold text-mosaBlack mb-3">Welcome to the Family!</h3>
+              <p class="script-tagline text-2xl mb-4" style="color:#8B0000;">Together We Grow</p>
+              <p class="text-gray-500 leading-relaxed max-w-sm mx-auto">
+                Your expression of interest has been received. Our SACCO coordinator will be in touch within 48 hours to guide you through the next steps.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+</main>
+
+
+<div id="footer-placeholder"></div>
+
+
+<script>
+  function selectPlan(radio) {
+    document.querySelectorAll('.plan-label').forEach(el => {
+      el.style.borderColor = '';
+      el.style.background  = '';
+    });
+    const label = radio.closest('label').querySelector('.plan-label');
+    const styles = {
+      starter: ['#22c55e', '#f0fdf4'],
+      growth:  ['#D4AF37', '#fffde7'],
+      elite:   ['#8B0000', '#fff5f5'],
+    };
+    const [border, bg] = styles[radio.value];
+    label.style.borderColor = border;
+    label.style.background  = bg;
+  }
+
+
+  function handleSaccoSubmit(e) {
+    e.preventDefault();
+    document.getElementById('saccoForm').classList.add('hidden');
+    const success = document.getElementById('saccoSuccess');
+    success.classList.remove('hidden');
+    success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+</script>
+</body>
+</html> 
