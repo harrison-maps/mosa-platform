@@ -1,0 +1,10 @@
+# GitHub Linguist Configuration for MOSA Platform
+
+# Specify primary language files
+*.html linguist-language=HTML
+*.js linguist-language=JavaScript
+*.css linguist-language=CSS
+
+# Mark vendor/generated files
+node_modules/* linguist-vendored
+dist/* linguist-generated
