@@ -1,80 +1,46 @@
-/**
- * MOSA Platform - Main Component Injector
- * Dynamically loads and injects reusable components into all pages
- */
+// Tailwind custom color config — applied globally
+const tailwindConfig = document.createElement('script');
+tailwindConfig.textContent = `
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          mosaBlack: '#1a1a2e',
+          mosaRed:   '#8B0000',
+          mosaGold:  '#D4AF37',
+        },
+        fontFamily: {
+          serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        }
+      }
+    }
+  }
+`;
+document.head.appendChild(tailwindConfig);
 
-document.addEventListener('DOMContentLoaded', async () => {
-    await loadComponent('header-placeholder', 'components/header.html');
-    await loadComponent('footer-placeholder', 'components/footer.html');
-    initializeMobileMenu();
+// Load header and footer components
+async function loadComponent(path, targetId) {
+  try {
+    const res = await fetch(path);
+    if (!res.ok) throw new Error('Failed: ' + path);
+    document.getElementById(targetId).innerHTML = await res.text();
+    if (targetId === 'header-placeholder') setupMobileMenu();
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+function setupMobileMenu() {
+  const btn  = document.getElementById('mobileMenuBtn');
+  const menu = document.getElementById('mobileMenu');
+  if (btn && menu) {
+    btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.getElementById('header-placeholder'))
+    loadComponent('components/header.html', 'header-placeholder');
+  if (document.getElementById('footer-placeholder'))
+    loadComponent('components/footer.html', 'footer-placeholder');
 });
-
-/**
- * Load and inject a component into a target element
- * @param {string} placeholderId - ID of the target element
- * @param {string} componentPath - Path to the component HTML file
- */
-async function loadComponent(placeholderId, componentPath) {
-    try {
-        const placeholder = document.getElementById(placeholderId);
-        if (!placeholder) {
-            console.warn(`Placeholder ${placeholderId} not found`);
-            return;
-        }
-        
-        const response = await fetch(componentPath);
-        if (!response.ok) {
-            throw new Error(`Failed to load ${componentPath}: ${response.statusText}`);
-        }
-        
-        const html = await response.text();
-        placeholder.innerHTML = html;
-    } catch (error) {
-        console.error(`Error loading component ${componentPath}:`, error);
-    }
-}
-
-/**
- * Initialize mobile menu toggle functionality
- */
-function initializeMobileMenu() {
-    const toggleBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    if (!toggleBtn || !mobileMenu) return;
-    
-    toggleBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-    });
-    
-    // Close menu when a link is clicked
-    const menuLinks = mobileMenu.querySelectorAll('a');
-    menuLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-        });
-    });
-}
-
-/**
- * Utility: Smooth scroll to element
- */
-function scrollToElement(selector) {
-    const element = document.querySelector(selector);
-    if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-    }
-}
-
-/**
- * Utility: Add theme switching (light/dark mode)
- */
-function toggleTheme() {
-    document.documentElement.classList.toggle('dark');
-    localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-}
-
-// Apply saved theme preference
-if (localStorage.getItem('theme') === 'dark') {
-    document.documentElement.classList.add('dark');
-}
