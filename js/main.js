@@ -1,57 +1,80 @@
-// Tailwind Configuration
-tailwind.config = {
-    theme: {
-        extend: {
-            colors: {
-                mosaBlack: '#111111',
-                mosaGold: '#FFD700',
-                mosaRed: '#CC0000',
-                mosaWhite: '#FFFFFF',
-            },
-            fontFamily: {
-                serif: ['"Playfair Display"', 'serif'],
-                sans: ['"Inter"', 'sans-serif'],
-            }
-        }
-    }
-}
+/**
+ * MOSA Platform - Main Component Injector
+ * Dynamically loads and injects reusable components into all pages
+ */
 
-// Function to load external HTML content into a target element
-async function loadComponent(componentPath, targetElementId) {
-    try {
-        const response = await fetch(componentPath);
-        if (!response.ok) throw new Error(`Failed to load ${componentPath}`);
-        const html = await response.text();
-        document.getElementById(targetElementId).innerHTML = html;
-        
-        // Setup mobile menu listener after header is loaded
-        if (targetElementId === 'header-placeholder') {
-            setupMobileMenu();
-        }
-    } catch (error) {
-        console.error("Error loading component:", error);
-    }
-}
-
-function setupMobileMenu() {
-    const btn = document.getElementById('mobileMenuBtn');
-    const menu = document.getElementById('mobileMenu');
-    if(btn && menu) {
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-    }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Load Header and Footer on all pages that have the placeholders
-    const headerPlaceholder = document.getElementById('header-placeholder');
-    if (headerPlaceholder) {
-        loadComponent('components/header.html', 'header-placeholder');
-    }
-
-    const footerPlaceholder = document.getElementById('footer-placeholder');
-    if (footerPlaceholder) {
-        loadComponent('components/footer.html', 'footer-placeholder');
-    }
+document.addEventListener('DOMContentLoaded', async () => {
+    await loadComponent('header-placeholder', 'components/header.html');
+    await loadComponent('footer-placeholder', 'components/footer.html');
+    initializeMobileMenu();
 });
+
+/**
+ * Load and inject a component into a target element
+ * @param {string} placeholderId - ID of the target element
+ * @param {string} componentPath - Path to the component HTML file
+ */
+async function loadComponent(placeholderId, componentPath) {
+    try {
+        const placeholder = document.getElementById(placeholderId);
+        if (!placeholder) {
+            console.warn(`Placeholder ${placeholderId} not found`);
+            return;
+        }
+        
+        const response = await fetch(componentPath);
+        if (!response.ok) {
+            throw new Error(`Failed to load ${componentPath}: ${response.statusText}`);
+        }
+        
+        const html = await response.text();
+        placeholder.innerHTML = html;
+    } catch (error) {
+        console.error(`Error loading component ${componentPath}:`, error);
+    }
+}
+
+/**
+ * Initialize mobile menu toggle functionality
+ */
+function initializeMobileMenu() {
+    const toggleBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (!toggleBtn || !mobileMenu) return;
+    
+    toggleBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+    
+    // Close menu when a link is clicked
+    const menuLinks = mobileMenu.querySelectorAll('a');
+    menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+    });
+}
+
+/**
+ * Utility: Smooth scroll to element
+ */
+function scrollToElement(selector) {
+    const element = document.querySelector(selector);
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+/**
+ * Utility: Add theme switching (light/dark mode)
+ */
+function toggleTheme() {
+    document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+}
+
+// Apply saved theme preference
+if (localStorage.getItem('theme') === 'dark') {
+    document.documentElement.classList.add('dark');
+}

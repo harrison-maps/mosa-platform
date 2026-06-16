@@ -1,49 +1,37 @@
-<!-- 🌟 STICKY HEADER -->
-<header class="bg-white shadow-md sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
-        <!-- Logo area -->
-        <div class="flex items-center gap-3">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="mosa-logo.png" alt="MOSA Logo" class="h-16 w-auto object-contain" onerror="this.src='https://placehold.co/100x100/111/FFD700?text=MOSA'">
-                <div class="hidden sm:block">
-                    <h1 class="font-serif font-bold text-xl text-mosaBlack leading-none">MOSA</h1>
-                    <span class="text-xs text-mosaRed font-bold tracking-widest uppercase">Mengo Old Students Association</span>
-                </div>
-            </a>
-        </div>
-        <!-- Desktop Nav -->
-        <nav class="hidden md:flex space-x-8 items-center font-semibold text-sm">
-            <a href="index.html" class="text-mosaBlack hover:text-mosaRed transition">Home</a>
-            <a href="about.html" class="text-mosaBlack hover:text-mosaRed transition">About</a>
-            <a href="directory.html" class="text-mosaBlack hover:text-mosaRed transition">Alumni Directory</a>
-            <a href="events.html" class="text-mosaBlack hover:text-mosaRed transition">Events</a>
-            <a href="sacco.html" class="text-mosaBlack hover:text-mosaRed transition">Sacco</a>
-            <a href="news.html" class="text-mosaBlack hover:text-mosaRed transition">News</a>
-            <a href="projects.html" class="text-mosaBlack hover:text-mosaRed transition">Projects</a>
-            <a href="donate.html" class="bg-mosaRed text-white px-5 py-2 rounded-md hover:bg-red-800 transition shadow-sm">Give Back</a>
-            <a href="login.html" class="border-2 border-mosaGold text-mosaBlack px-5 py-2 rounded-md hover:bg-mosaGold transition">Login / Join</a>
-        </nav>
-        <!-- Mobile Menu Button & Back Button -->
-        <div class="flex items-center gap-2">
-            <button id="backBtn" class="flex items-center justify-center text-mosaBlack hover:text-mosaRed hover:bg-gray-100 transition rounded-md p-2 w-10 h-10 md:inline-flex hidden" title="Go back to previous page">
-                <i class="fas fa-arrow-left text-lg"></i>
-            </button>
-            <button class="md:hidden text-2xl text-mosaBlack" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
-        </div>
-    </div>
-    <!-- Mobile Menu Slide-down (Hidden by default) -->
-    <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full left-0 top-full shadow-lg">
-        <nav class="flex flex-col px-4 py-4 space-y-4 font-semibold text-sm">
-            <a href="index.html" class="text-mosaBlack hover:text-mosaRed transition">Home</a>
-            <a href="about.html" class="text-mosaBlack hover:text-mosaRed transition">About</a>
-            <a href="directory.html" class="text-mosaBlack hover:text-mosaRed transition">Alumni Directory</a>
-            <a href="events.html" class="text-mosaBlack hover:text-mosaRed transition">Events</a>
-            <a href="league.html" class="text-mosaBlack hover:text-mosaRed transition">MOSA Elite League</a>
-            <a href="sacco.html" class="text-mosaBlack hover:text-mosaRed transition">Sacco</a>
-            <a href="projects.html" class="text-mosaBlack hover:text-mosaRed transition">Projects</a>
-            <a href="news.html" class="text-mosaBlack hover:text-mosaRed transition">News</a>
-            <a href="donate.html" class="text-mosaRed transition">Give Back</a>
-            <a href="login.html" class="text-mosaGold transition">Login / Join</a>
-        </nav>
+<!-- MOSA Navigation Header Component -->
+<!-- This component is injected into all pages via js/main.js -->
+<header class="sticky top-0 z-50 bg-mosaBlack text-white shadow-lg" id="navbar">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+        <!-- Logo -->
+        <a href="index.html" class="font-serif text-2xl font-bold text-mosaGold hover:text-yellow-300 transition">
+            MOSA
+        </a>
+        
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-menu-btn" class="md:hidden text-mosaGold focus:outline-none">
+            <i class="fas fa-bars text-2xl"></i>
+        </button>
+        
+        <!-- Desktop Navigation -->
+        <ul class="hidden md:flex gap-8 font-semibold">
+            <li><a href="index.html" class="hover:text-mosaGold transition">Home</a></li>
+            <li><a href="directory.html" class="hover:text-mosaGold transition">Directory</a></li>
+            <li><a href="events.html" class="hover:text-mosaGold transition">Events</a></li>
+            <li><a href="projects.html" class="hover:text-mosaGold transition">Projects</a></li>
+            <li><a href="donate.html" class="hover:text-mosaGold transition">Donate</a></li>
+            <li><a href="login.html" class="bg-mosaGold text-mosaBlack px-4 py-2 rounded hover:bg-yellow-400 transition">Login</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-mosaBlack/95 border-t border-mosaGold/30">
+        <ul class="flex flex-col gap-4 p-6 font-semibold">
+            <li><a href="index.html" class="hover:text-mosaGold transition">Home</a></li>
+            <li><a href="directory.html" class="hover:text-mosaGold transition">Directory</a></li>
+            <li><a href="events.html" class="hover:text-mosaGold transition">Events</a></li>
+            <li><a href="projects.html" class="hover:text-mosaGold transition">Projects</a></li>
+            <li><a href="donate.html" class="hover:text-mosaGold transition">Donate</a></li>
+            <li><a href="login.html" class="bg-mosaGold text-mosaBlack px-4 py-2 rounded hover:bg-yellow-400 transition w-full text-center">Login</a></li>
+        </ul>
     </div>
 </header>
