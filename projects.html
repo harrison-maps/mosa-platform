@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOSA Projects | Giving Back to Our Community</title>
+<script src="js/navigation.js"></script>
+<script src="js/main.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          mosaBlack: '#1a1a2e',
+          mosaRed:   '#8B0000',
+          mosaGold:  '#D4AF37',
+        },
+        fontFamily: {
+          serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        }
+      }
+    }
+  }
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #f9fafb; font-family: 'Inter', sans-serif; }
+
+  /* ── Hover lift ── */
+  .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .hover-lift:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.12); }
+
+  /* ── Hero ── */
+  .hero-bg {
+    background:
+      radial-gradient(ellipse at 80% 20%, rgba(139,0,0,0.3) 0%, transparent 55%),
+      radial-gradient(ellipse at 10% 90%, rgba(212,175,55,0.1) 0%, transparent 50%),
+      #1a1a2e;
+  }
+  .hero-bg::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 56px 56px;
+    pointer-events: none;
+  }
+
+  /* ── Project section accent border ── */
+  .project-accent-red   { border-left: 5px solid #8B0000; }
+  .project-accent-blue  { border-left: 5px solid #1e3a5f; }
+  .project-accent-green { border-left: 5px solid #14532d; }
+  .project-accent-gold  { border-left: 5px solid #D4AF37; }
+
+  /* ── Stat pill ── */
+  .stat-pill {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 999px; padding: 0.4rem 1rem;
+    font-size: 0.8rem; font-weight: 600; color: #fff;
+  }
+
+  /* ── Section watermark ── */
+  .with-watermark { position: relative; overflow: hidden; }
+  .with-watermark::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url('mosa-logo.png');
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: 35%;
+    opacity: 0.03;
+    pointer-events: none;
+  }
+  .with-watermark > * { position: relative; z-index: 1; }
+
+  /* ── Volunteer form focus ── */
+  .proj-input:focus {
+    outline: none;
+    border-color: #8B0000;
+    box-shadow: 0 0 0 3px rgba(139,0,0,0.1);
+  }
+
+  /* ── Project nav tabs ── */
+  .proj-tab {
+    padding: 0.6rem 1.4rem; border-radius: 999px;
+    font-size: 0.85rem; font-weight: 600; cursor: pointer;
+    border: 2px solid transparent; transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .proj-tab:hover { border-color: #8B0000; color: #8B0000; }
+  .proj-tab.active { background: #8B0000; color: #fff; border-color: #8B0000; }
+
+  /* ── Timeline dot ── */
+  .timeline-dot {
+    width: 3rem; height: 3rem; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-weight: 900; font-size: 1rem;
+  }
+
+  /* ── Success animation ── */
+  @keyframes popIn {
+    0%   { transform: scale(0); opacity: 0; }
+    70%  { transform: scale(1.15); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .pop-in { animation: popIn 0.45s ease forwards; }
+
+  /* ── Coming soon badge ── */
+  .coming-soon {
+    background: repeating-linear-gradient(
+      45deg, rgba(212,175,55,0.08), rgba(212,175,55,0.08) 6px,
+      transparent 6px, transparent 14px
+    );
+    border: 2px dashed rgba(212,175,55,0.4);
+  }
+</style>
+</head>
+<body class="flex flex-col min-h-screen">
+<div id="header-placeholder"></div>
+
+<main class="flex-grow">
+
+  <!-- ══════════════════════════════════════════════
+       1. HERO
+  ═══════════════════════════════════════════════════ -->
+  <section class="hero-bg relative min-h-[70vh] flex items-center overflow-hidden">
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-24">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 bg-mosaGold/10 border border-mosaGold/30 text-mosaGold text-xs font-bold tracking-widest uppercase px-5 py-2 rounded-full mb-8">
+          <i class="fas fa-hands-helping"></i> Mengo Old Students Association
+        </div>
+        <h1 class="font-serif text-6xl md:text-7xl font-black text-white leading-none mb-5">
+          MOSA<br><span class="text-mosaGold">Projects</span>
+        </h1>
+        <p class="text-gray-300 text-xl leading-relaxed max-w-xl mb-10">
+          Beyond networking and business we give back. These are the community projects that define who we are as Mengonians.
+        </p>
+        <!-- Impact pills -->
+        <div class="flex flex-wrap gap-3">
+          <span class="stat-pill"><i class="fas fa-heartbeat text-mosaRed"></i> Medical Camps</span>
+          <span class="stat-pill"><i class="fas fa-graduation-cap text-mosaGold"></i> Scholarships</span>
+          <span class="stat-pill"><i class="fas fa-school text-blue-400"></i> School Development</span>
+          <span class="stat-pill"><i class="fas fa-plus text-green-400"></i> More Coming</span>
+        </div>
+      </div>
+    </div>
+    <!-- Decorative circle -->
+    <div class="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-mosaRed opacity-5 translate-x-1/2 pointer-events-none"></div>
+
+    <!-- Scroll cue -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-600 text-xs flex flex-col items-center gap-2">
+      <span class="uppercase tracking-widest">Explore</span>
+      <i class="fas fa-chevron-down animate-bounce"></i>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       QUICK NAV TABS
+  ═══════════════════════════════════════════════════ -->
+  <div class="bg-white border-b border-gray-100 sticky top-0 z-40 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-3 overflow-x-auto py-3 scrollbar-hide">
+        <a href="#medical-camp" class="proj-tab active">
+          <i class="fas fa-heartbeat mr-2"></i>Medical Camp
+        </a>
+        <a href="#scholarship" class="proj-tab">
+          <i class="fas fa-graduation-cap mr-2"></i>Scholarship Fund
+        </a>
+        <a href="#school-dev" class="proj-tab">
+          <i class="fas fa-school mr-2"></i>School Development
+        </a>
+        <a href="#blood-drive" class="proj-tab">
+          <i class="fas fa-tint mr-2"></i>Blood Drive
+        </a>
+        <a href="#coming-soon" class="proj-tab">
+          <i class="fas fa-plus mr-2"></i>Coming Soon
+        </a>
+        <a href="#volunteer" class="proj-tab" style="margin-left:auto; background:#8B0000; color:#fff; border-color:#8B0000;">
+          <i class="fas fa-hand-paper mr-2"></i>Volunteer / Donate
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       GLOBAL IMPACT BAR
+  ═══════════════════════════════════════════════════ -->
+  <div class="bg-mosaGold py-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+        <div>
+          <div class="font-serif text-3xl font-black text-mosaBlack">4000+</div>
+          <div class="text-xs font-bold uppercase tracking-wider text-mosaBlack/70">Students Served</div>
+        </div>
+        <div class="border-x border-mosaBlack/15">
+          <div class="font-serif text-3xl font-black text-mosaBlack">30+</div>
+          <div class="text-xs font-bold uppercase tracking-wider text-mosaBlack/70">Scholarships Given</div>
+        </div>
+        <div class="border-r border-mosaBlack/15">
+          <div class="font-serif text-3xl font-black text-mosaBlack">UGX 20M+</div>
+          <div class="text-xs font-bold uppercase tracking-wider text-mosaBlack/70">Invested in School</div>
+        </div>
+        <div>
+          <div class="font-serif text-3xl font-black text-mosaBlack">4</div>
+          <div class="text-xs font-bold uppercase tracking-wider text-mosaBlack/70">Active Projects</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       PROJECT 1 — MEDICAL CAMP
+  ═══════════════════════════════════════════════════ -->
+  <section id="medical-camp" class="with-watermark py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+        <div>
+          <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-3 block">Project 01</span>
+          <h2 class="font-serif text-4xl md:text-5xl text-mosaBlack font-bold mb-4">
+            <i class="fas fa-heartbeat text-mosaRed mr-3"></i>MOSA Medical Camp
+          </h2>
+          <div class="w-20 h-1 bg-mosaRed mb-4"></div>
+          <p class="text-gray-600 max-w-2xl text-lg leading-relaxed">
+            An annual medical outreach camp organised by Mengo Hospital doctors, nurses, and health professionals providing the Mengo community with affrodable testing services
+          </p>
+        </div>
+        <div class="flex-shrink-0">
+          <span class="inline-flex items-center gap-2 bg-green-50 border border-green-200 text-green-700 font-bold text-sm px-5 py-2 rounded-full">
+            <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span> Annual Event Active
+          </span>
+        </div>
+      </div>
+
+      <!-- Main content grid -->
+      <div class="grid lg:grid-cols-3 gap-10 mb-16">
+
+        <!-- Description (2/3) -->
+        <div class="lg:col-span-2">
+          <div class="project-accent-red bg-gray-50 rounded-2xl p-8 mb-8">
+            <h3 class="font-serif text-2xl font-bold text-mosaBlack mb-4">About the Camp</h3>
+            <p class="text-gray-600 leading-relaxed mb-4">
+              The MOSA Medical Camp is a flagship community service initiative where old students with parternship with medical professionals doctors, nurses from Mengo Hospital provide their services and expertise to provide <strong class="text-mosaBlack">healthcare services</strong> to the school community of Mengo Senior School.
+            </p>
+            <p class="text-gray-600 leading-relaxed mb-4">
+              The camp provides general consultations, blood pressure and diabetes screening, dental check-ups, eye testing, immunisations, and free medication distribution. Beyond treatment, we run health education sessions on nutrition, maternal health, mental wellness, and hygiene.
+            </p>
+            <p class="text-gray-600 leading-relaxed">
+              Every year the camp grows in scale from a single-day event to a multi-day outreach touching hundreds of lives. It is funded through MOSA donations, member contributions, and corporate sponsorships from Mengonian-owned businesses.
+            </p>
+          </div>
+
+          <!-- Services grid -->
+          <h3 class="font-serif text-xl font-bold text-mosaBlack mb-5">Services Offered</h3>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="flex items-start gap-4 bg-white rounded-xl p-4 border border-gray-100 hover-lift">
+              <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-stethoscope text-mosaRed"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-mosaBlack text-sm mb-1">General Consultations</h4>
+                <p class="text-gray-500 text-xs leading-relaxed">Consultations with qualified doctors for all ages.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 bg-white rounded-xl p-4 border border-gray-100 hover-lift">
+              <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-eye text-blue-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-mosaBlack text-sm mb-1">Eye Testing</h4>
+                <p class="text-gray-500 text-xs leading-relaxed">Vision screening and referrals for corrective lenses.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 bg-white rounded-xl p-4 border border-gray-100 hover-lift">
+              <div class="w-10 h-10 bg-yellow-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-tooth text-yellow-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-mosaBlack text-sm mb-1">Dental Check-ups</h4>
+                <p class="text-gray-500 text-xs leading-relaxed">Oral hygiene education and basic dental care.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 bg-white rounded-xl p-4 border border-gray-100 hover-lift">
+              <div class="w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-heartbeat text-green-600"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-mosaBlack text-sm mb-1">Health Screening</h4>
+                <p class="text-gray-500 text-xs leading-relaxed">Blood pressure, blood sugar, and BMI checks for all.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 bg-white rounded-xl p-4 border border-gray-100 hover-lift">
+              <div class="w-10 h-10 bg-purple-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-brain text-purple-600"></i>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 bg-white rounded-xl p-4 border border-gray-100 hover-lift">
+              <div class="w-10 h-10 bg-pink-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-pills text-pink-600"></i>
+              </div>
+                <!-- Side panel (1/3) -->
+        <div class="space-y-6">
+          <!-- Next camp info -->
+          <div class="bg-mosaBlack rounded-2xl p-6 text-white">
+            <div class="text-mosaGold text-xs font-bold uppercase tracking-widest mb-4">
+              <i class="fas fa-calendar-alt mr-2"></i>Upcoming Camp
+            </div>
+            <div class="font-serif text-3xl font-black text-white mb-1">2027</div>
+            <div class="text-gray-400 text-sm mb-6">Date to be announced</div>
+            <div class="space-y-3 text-sm">
+              <div class="flex items-center gap-3 text-gray-300">
+                <i class="fas fa-map-marker-alt text-mosaRed w-5 flex-shrink-0"></i>
+                Mengo Senior School Grounds, Kampala
+              </div>
+              <div class="flex items-center gap-3 text-gray-300">
+                <i class="fas fa-clock text-mosaGold w-5 flex-shrink-0"></i>
+                8:00 AM — 5:00 PM
+              </div>
+              <div class="flex items-center gap-3 text-gray-300">
+                <i class="fas fa-ticket-alt text-green-400 w-5 flex-shrink-0"></i>
+                Open to All students and the general public
+              </div>
+            </div>
+            <div class="border-t border-white/10 mt-6 pt-6">
+              <p class="text-xs text-gray-500 mb-3">Follow for announcements:</p>
+            </div>
+          </div>
+
+          <!-- Past impact -->
+          <div class="bg-red-50 border border-red-100 rounded-2xl p-6">
+            <h4 class="font-bold text-mosaRed mb-4 flex items-center gap-2">
+              <i class="fas fa-chart-bar"></i> Past Camp Impact
+            </h4>
+            <div class="space-y-3">
+              <div class="flex justify-between items-center text-sm">
+                <span class="text-gray-600">Patients Served</span>
+                <span class="font-black text-mosaBlack">300+</span>
+              </div>
+              <div class="w-full bg-red-100 rounded-full h-1.5">
+                <div class="bg-mosaRed h-1.5 rounded-full" style="width:83%"></div>
+              </div>
+               <div class="w-full bg-red-100 rounded-full h-1.5">
+                <div class="bg-mosaRed h-1.5 rounded-full" style="width:60%"></div>
+              </div>
+               <div class="w-full bg-red-100 rounded-full h-1.5">
+                <div class="bg-mosaRed h-1.5 rounded-full" style="width:70%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Who can volunteer -->
+          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+            <h4 class="font-bold text-mosaBlack mb-3">Who Can Volunteer?</h4>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li class="flex items-center gap-2"><i class="fas fa-check-circle text-mosaRed flex-shrink-0"></i>Doctors & Specialists</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check-circle text-mosaRed flex-shrink-0"></i>Nurses & Midwives</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check-circle text-mosaRed flex-shrink-0"></i>Pharmacists</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check-circle text-mosaRed flex-shrink-0"></i>Dentists & Opticians</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check-circle text-mosaRed flex-shrink-0"></i>Counsellors</li>
+              <li class="flex items-center gap-2"><i class="fas fa-check-circle text-mosaRed flex-shrink-0"></i>General Volunteers (logistics)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PROJECT 2 — SCHOLARSHIP FUND
+  ═══════════════════════════════════════════════════ -->
+  <section id="scholarship" class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+        <div>
+          <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-3 block">Project 02</span>
+          <h2 class="font-serif text-4xl md:text-5xl text-mosaBlack font-bold mb-4">
+            <i class="fas fa-graduation-cap text-mosaGold mr-3"></i>Mengonian Excellence Scholarship
+          </h2>
+          <div class="w-20 h-1 bg-mosaGold mb-4"></div>
+          <p class="text-gray-600 max-w-2xl text-lg leading-relaxed">
+            Funding 10 financially disadvantaged students annually through their O-Level and A-Level studies at Mengo Senior School.
+          </p>
+        </div>
+        <span class="inline-flex items-center gap-2 bg-green-50 border border-green-200 text-green-700 font-bold text-sm px-5 py-2 rounded-full flex-shrink-0">
+          <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span> Active Applications Open
+        </span>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <div class="project-accent-gold bg-white rounded-2xl p-8 mb-8 border border-gray-100">
+            <h3 class="font-serif text-2xl font-bold text-mosaBlack mb-4">What the Scholarship Covers</h3>
+            <p class="text-gray-600 leading-relaxed mb-5">
+              The Mengonian Scholarship was born from a simple belief: no child should be denied a Mengo education because of money. Alumni pool resources annually to identify and fully fund students who lack financial means.
+            </p>
+            <div class="grid grid-cols-2 gap-4 mt-6">
+              <div class="text-center bg-yellow-50 rounded-xl p-4 border border-yellow-100">
+                <i class="fas fa-money-bill-wave text-2xl text-mosaGold mb-2 block"></i>
+                <div class="font-bold text-sm text-mosaBlack">School Fees</div>
+                <div class="text-xs text-gray-500 mt-1">Full tuition covered</div>
+              </div>
+              <div class="text-center bg-yellow-50 rounded-xl p-4 border border-yellow-100">
+                <i class="fas fa-book text-2xl text-mosaGold mb-2 block"></i>
+                <div class="font-bold text-sm text-mosaBlack">Scholastic Materials</div>
+                <div class="text-xs text-gray-500 mt-1">Books, stationery, uniforms</div>
+              </div>
+               <div class="text-center bg-yellow-50 rounded-xl p-4 border border-yellow-100">
+                <i class="fas fa-user-tie text-2xl text-mosaGold mb-2 block"></i>
+                <div class="font-bold text-sm text-mosaBlack">Mentorship</div>
+                <div class="text-xs text-gray-500 mt-1">Assigned MOSA mentor</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Eligibility criteria -->
+          <div class="bg-mosaBlack rounded-2xl p-8 text-white">
+            <h3 class="font-bold text-lg mb-5 text-mosaGold">
+              <i class="fas fa-clipboard-list mr-2"></i>Eligibility Criteria
+            </h3>
+            <ul class="space-y-3 text-sm">
+              <li class="flex items-start gap-3 text-gray-300">
+                <i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>
+                Admitted or currently enrolled at Mengo Senior School
+              </li>
+              <li class="flex items-start gap-3 text-gray-300">
+                <i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>
+                Demonstrated financial hardship (verified by school bursar)
+              </li>
+              <li class="flex items-start gap-3 text-gray-300">
+                <i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>
+                Strong academic record minimum aggregate 6 (PLE) or 5As (UCE)
+              </li>
+              <li class="flex items-start gap-3 text-gray-300">
+                <i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>
+                Recommendation from class teacher or headteacher
+              </li>
+              <li class="flex items-start gap-3 text-gray-300">
+                <i class="fas fa-check-circle text-mosaGold mt-0.5 flex-shrink-0"></i>
+                Commitment to community service and giving back
+              </li>
+            </ul>
+            <div class="mt-6 pt-5 border-t border-white/10">
+              <p class="text-xs text-gray-500 mb-3">Applications submitted via the school administration</p>
+              <a href="#volunteer" class="block text-center bg-mosaGold text-mosaBlack font-bold py-3 rounded-lg hover:bg-yellow-400 transition text-sm">
+                <i class="fas fa-donate mr-2"></i>Fund a Scholarship
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline of the scholarship year -->
+        <div>
+          <h3 class="font-serif text-2xl font-bold text-mosaBlack mb-8">Scholarship Calendar</h3>
+          <div class="space-y-6">
+            <div class="flex gap-5">
+              <div class="flex flex-col items-center">
+                <div class="timeline-dot bg-mosaGold text-mosaBlack">Jan</div>
+                <div class="w-0.5 flex-1 bg-gradient-to-b from-mosaGold to-gray-200 mt-2"></div>
+              </div>
+              <div class="pb-8">
+                <h4 class="font-bold text-mosaBlack mb-1">Applications Open</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">School identifies and nominates eligible candidates. Forms distributed through school administration.</p>
+              </div>
+            </div>
+            <div class="flex gap-5">
+              <div class="flex flex-col items-center">
+                <div class="timeline-dot bg-mosaRed text-white">Mar</div>
+                <div class="w-0.5 flex-1 bg-gradient-to-b from-mosaRed to-gray-200 mt-2"></div>
+              </div>
+              <div class="pb-8">
+                <h4 class="font-bold text-mosaBlack mb-1">MOSA Selection Panel</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">A committee of MOSA members reviews applications and conducts brief interviews. 10 scholars selected.</p>
+              </div>
+            </div>
+            <div class="flex gap-5">
+              <div class="flex flex-col items-center">
+                <div class="timeline-dot bg-blue-700 text-white">Apr</div>
+                <div class="w-0.5 flex-1 bg-gradient-to-b from-blue-700 to-gray-200 mt-2"></div>
+              </div>
+              <div class="pb-8">
+                <h4 class="font-bold text-mosaBlack mb-1">Scholarship Awarded</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">Scholars announced at the MOSA Annual Gala. Fees paid directly to the school. Mentors assigned.</p>
+              </div>
+            </div>
+            <div class="flex gap-5">
+              <div class="flex flex-col items-center">
+                <div class="timeline-dot bg-green-700 text-white">Dec</div>
+              </div>
+              <div>
+                <h4 class="font-bold text-mosaBlack mb-1">Annual Review</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">Scholars present their progress. Renewal decided based on performance and continued need.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PROJECT 3 — SCHOOL DEVELOPMENT
+  ═══════════════════════════════════════════════════ -->
+  <section id="school-dev" class="with-watermark py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+        <div>
+          <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-3 block">Project 03</span>
+          <h2 class="font-serif text-4xl md:text-5xl text-mosaBlack font-bold mb-4">
+            <i class="fas fa-school text-blue-700 mr-3"></i>School Development Fund
+          </h2>
+          <div class="w-20 h-1 bg-blue-700 mb-4"></div>
+          <p class="text-gray-600 max-w-2xl text-lg leading-relaxed">
+            Mengonians around the world investing in the physical and academic growth of the school's mega dining building the we want the next generation to inherit.
+          </p>
+        </div>
+        <span class="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 text-blue-700 font-bold text-sm px-5 py-2 rounded-full flex-shrink-0">
+          <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span> Ongoing
+        </span>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 mb-12">
+        <div class="project-accent-blue bg-gray-50 rounded-2xl p-8 border border-gray-100 hover-lift">
+          <div class="w-14 h-14 bg-blue-900 rounded-2xl flex items-center justify-center mb-5">
+            <i class="fas fa-laptop-code text-blue-300 text-2xl"></i>      
+        <div class="project-accent-blue bg-gray-50 rounded-2xl p-8 border border-gray-100 hover-lift">
+          <div class="w-14 h-14 bg-purple-900 rounded-2xl flex items-center justify-center mb-5">
+            <i class="fas fa-book-open text-purple-300 text-2xl"></i>
+          </div>
+         </div>
+      </div>
+
+      <div class="text-center">
+        <a href="#volunteer" class="inline-flex items-center gap-2 bg-mosaBlack text-white font-bold px-8 py-4 rounded-lg hover:bg-gray-900 transition shadow-lg">
+          <i class="fas fa-donate text-mosaGold"></i> Contribute to School Development
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="coming-soon" class="py-20 bg-mosaBlack text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <span class="text-mosaGold font-bold tracking-widest uppercase text-xs mb-3 block">The Pipeline</span>
+        <h2 class="font-serif text-4xl font-bold mb-4">Projects Coming Soon</h2>
+        <div class="w-20 h-1 bg-mosaRed mx-auto mb-4"></div>
+        <p class="text-gray-400 max-w-xl mx-auto">We're always planning the next way to give back. These projects are in development watch this space.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="coming-soon rounded-2xl p-8 text-center">
+          <i class="fas fa-tree text-mosaGold text-3xl mb-4 block opacity-70"></i>
+          <h3 class="font-bold text-lg mb-2">Environmental Clean-Up</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Annual clean-up drives around Mengo Hill and surrounding communities.</p>
+          <div class="mt-4 text-xs text-mosaGold font-bold uppercase tracking-wider">Planning Stage</div>
+        </div>
+        <div class="coming-soon rounded-2xl p-8 text-center">
+          <i class="fas fa-laptop text-mosaGold text-3xl mb-4 block opacity-70"></i>
+          <h3 class="font-bold text-lg mb-2">Digital Skills for Youth</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Free coding and digital literacy bootcamps for underprivileged youth in Kampala.</p>
+          <div class="mt-4 text-xs text-mosaGold font-bold uppercase tracking-wider">In Development</div>
+        </div>
+        <div class="coming-soon rounded-2xl p-8 text-center">
+          <i class="fas fa-utensils text-mosaGold text-3xl mb-4 block opacity-70"></i>
+          <h3 class="font-bold text-lg mb-2">School Feeding Programme</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Supplementing nutrition for day scholars from low-income families at Mengo Senior School.</p>
+          <div class="mt-4 text-xs text-mosaGold font-bold uppercase tracking-wider">Fundraising</div>
+        </div>
+      </div>
+      <div class="text-center mt-10">
+        <p class="text-gray-500 text-sm">Have a project idea? <a href="#volunteer" class="text-mosaGold font-bold hover:underline">Propose it to MOSA →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       VOLUNTEER / DONATE FORM
+  ═══════════════════════════════════════════════════ -->
+  <section id="volunteer" class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-3 block">Get Involved</span>
+        <h2 class="font-serif text-4xl md:text-5xl text-mosaBlack font-bold mb-4">Volunteer or Donate</h2>
+        <div class="w-20 h-1 bg-mosaGold mx-auto mb-6"></div>
+        <p class="text-gray-600 max-w-xl mx-auto text-lg">Every Mengonian has something to give — time, skills, or money. Pick your project and tell us how you want to help.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-5 gap-12 items-start">
+
+        <!-- Left panel -->
+        <div class="lg:col-span-2 space-y-5">
+          <div class="bg-mosaBlack rounded-2xl p-8 text-white">
+            <h3 class="font-serif text-2xl font-bold mb-5">Ways to Give Back</h3>
+            <div class="space-y-5">
+              <div class="flex gap-4">
+                <div class="w-10 h-10 bg-mosaRed rounded-lg flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-hand-paper text-white"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold mb-1">Volunteer Your Time</h4>
+                  <p class="text-gray-400 text-sm leading-relaxed">Offer your professional skills at the medical camp, or school visits.</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <div class="w-10 h-10 bg-mosaGold rounded-lg flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-donate text-mosaBlack"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold mb-1">Fund a Project</h4>
+                  <p class="text-gray-400 text-sm leading-relaxed">Make a financial contribution to any active project starting from UGX 10,000.</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <div class="w-10 h-10 bg-blue-700 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-box text-white"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold mb-1">Donate Supplies</h4>
+                  <p class="text-gray-400 text-sm leading-relaxed">Medications, medical equipment, books, school supplies in-kind gifts are always welcome.</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <div class="w-10 h-10 bg-green-700 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-bullhorn text-white"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold mb-1">Spread the Word</h4>
+                  <p class="text-gray-400 text-sm leading-relaxed">Share our projects on social media and bring more Mengonians on board.</p>
+                </div>
+              </div>
+            </div>
+            <div class="mt-6 pt-5 border-t border-white/10 text-xs text-gray-500">
+              <i class="fas fa-envelope mr-2 text-mosaGold"></i>projects@mosa.ug
+            </div>
+          </div>
+        </div>
+
+        <!-- Right form -->
+        <div class="lg:col-span-3">
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-10">
+            <form id="volunteerForm" onsubmit="handleVolunteerSubmit(event)">
+              <h4 class="font-serif text-xl font-bold text-mosaBlack mb-5 pb-3 border-b border-gray-100">
+                <i class="fas fa-user mr-2 text-mosaRed"></i>Your Details
+              </h4>
+              <div class="grid md:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-1">Full Name <span class="text-mosaRed">*</span></label>
+                  <input type="text" required placeholder="John Ssempala" class="proj-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition">
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-1">Email <span class="text-mosaRed">*</span></label>
+                  <input type="email" required placeholder="you@email.com" class="proj-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition">
+                </div>
+              </div>
+              <div class="grid md:grid-cols-2 gap-4 mb-6">
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-1">Phone <span class="text-mosaRed">*</span></label>
+                  <input type="tel" required placeholder="+256 7XX XXX XXX" class="proj-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition">
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold text-gray-700 mb-1">Final Year</label>
+                  <select class="proj-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition appearance-none">
+                    <option value="">Select year…</option>
+                    <script>for(let y=2024;y>=1980;y--) document.write(`<option value="${y}">${y}</option>`)</script>
+                  </select>
+                </div>
+              </div>
+
+              <h4 class="font-serif text-xl font-bold text-mosaBlack mb-5 pb-3 border-b border-gray-100">
+                <i class="fas fa-hands-helping mr-2 text-mosaRed"></i>How You Want to Help
+              </h4>
+
+              <div class="mb-4">
+                <label class="block text-sm font-semibold text-gray-700 mb-2">Choose a Project <span class="text-mosaRed">*</span></label>
+                <div class="grid grid-cols-2 gap-3">
+                  <label class="cursor-pointer">
+                    <input type="radio" name="project" value="medical" class="sr-only" onchange="pickProject(this)">
+                    <div class="proj-pick border-2 border-gray-200 rounded-xl p-3 text-center text-sm font-semibold transition hover:border-mosaRed text-gray-700">
+                      <i class="fas fa-heartbeat block text-mosaRed mb-1"></i>Medical Camp
+                    </div>
+                  </label>
+                  <label class="cursor-pointer">
+                    <input type="radio" name="project" value="scholarship" class="sr-only" onchange="pickProject(this)">
+                    <div class="proj-pick border-2 border-gray-200 rounded-xl p-3 text-center text-sm font-semibold transition hover:border-mosaGold text-gray-700">
+                      <i class="fas fa-graduation-cap block text-mosaGold mb-1"></i>Scholarship Fund
+                    </div>
+                  </label>
+                  <label class="cursor-pointer">
+                    <input type="radio" name="project" value="school" class="sr-only" onchange="pickProject(this)">
+                    <div class="proj-pick border-2 border-gray-200 rounded-xl p-3 text-center text-sm font-semibold transition hover:border-blue-700 text-gray-700">
+                      <i class="fas fa-school block text-blue-700 mb-1"></i>School Development
+                    </div>
+                  </label>
+                 
+              <div class="mb-4">
+                <label class="block text-sm font-semibold text-gray-700 mb-1">How Would You Like to Contribute? <span class="text-mosaRed">*</span></label>
+                <select required class="proj-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition appearance-none">
+                  <option value="">Select…</option>
+                  <option>Volunteer my time and skills</option>
+                  <option>Make a financial donation</option>
+                  <option>Donate supplies / equipment</option>
+                  <option>Sponsor the project</option>
+                  <option>All of the above</option>
+                </select>
+              </div>
+
+              <div class="mb-6">
+                <label class="block text-sm font-semibold text-gray-700 mb-1">Tell us more (optional)</label>
+                <textarea rows="3" placeholder="Your profession, skills, donation amount, or anything else you'd like us to know…"
+                  class="proj-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition resize-none"></textarea>
+              </div>
+
+              <button type="submit"
+                class="w-full bg-mosaRed text-white font-bold py-4 rounded-xl hover:bg-red-800 transition shadow-lg text-lg flex items-center justify-center gap-3">
+                <i class="fas fa-hands-helping"></i> Submit I Want to Help
+              </button>
+              <p class="text-xs text-gray-400 text-center mt-3">Our projects team will contact you within 48 hours.</p>
+            </form>
+
+            <!-- Success state -->
+            <div id="volunteerSuccess" class="hidden text-center py-12">
+              <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 pop-in">
+                <i class="fas fa-check text-green-600 text-3xl"></i>
+              </div>
+              <h3 class="font-serif text-2xl font-bold text-mosaBlack mb-3">Thank You, Mengonian!</h3>
+              <p class="text-gray-500 leading-relaxed max-w-sm mx-auto">
+                Your expression of interest has been received. Our projects coordinator will be in touch within 48 hours.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="footer-placeholder"></div>
+
+<script>
+  /* ── Project tab highlighting on scroll ── */
+  const tabs = document.querySelectorAll('.proj-tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+
+  /* ── Project radio selector ── */
+  function pickProject(radio) {
+    document.querySelectorAll('.proj-pick').forEach(el => {
+      el.style.borderColor = '';
+      el.style.background  = '';
+    });
+    const label = radio.closest('label').querySelector('.proj-pick');
+    const styles = {
+      medical:     ['#8B0000','#fff5f5'],
+      scholarship: ['#D4AF37','#fffde7'],
+      school:      ['#1d4ed8','#eff6ff'],
+      blood:       ['#b91c1c','#fef2f2'],
+    };
+    const [border, bg] = styles[radio.value];
+    label.style.borderColor = border;
+    label.style.background  = bg;
+  }
+
+  /* ── Volunteer form submit ── */
+  function handleVolunteerSubmit(e) {
+    e.preventDefault();
+    document.getElementById('volunteerForm').classList.add('hidden');
+    const s = document.getElementById('volunteerSuccess');
+    s.classList.remove('hidden');
+    s.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+</script>
+</body>
+</html>
