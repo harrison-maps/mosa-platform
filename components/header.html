@@ -1,37 +1,64 @@
-<!-- MOSA Navigation Header Component -->
-<!-- This component is injected into all pages via js/main.js -->
-<header class="sticky top-0 z-50 bg-mosaBlack text-white shadow-lg" id="navbar">
-    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-        <!-- Logo -->
-        <a href="index.html" class="font-serif text-2xl font-bold text-mosaGold hover:text-yellow-300 transition">
-            MOSA
-        </a>
-        
-        <!-- Mobile Menu Toggle -->
-        <button id="mobile-menu-btn" class="md:hidden text-mosaGold focus:outline-none">
-            <i class="fas fa-bars text-2xl"></i>
-        </button>
-        
-        <!-- Desktop Navigation -->
-        <ul class="hidden md:flex gap-8 font-semibold">
-            <li><a href="index.html" class="hover:text-mosaGold transition">Home</a></li>
-            <li><a href="directory.html" class="hover:text-mosaGold transition">Directory</a></li>
-            <li><a href="events.html" class="hover:text-mosaGold transition">Events</a></li>
-            <li><a href="projects.html" class="hover:text-mosaGold transition">Projects</a></li>
-            <li><a href="donate.html" class="hover:text-mosaGold transition">Donate</a></li>
-            <li><a href="login.html" class="bg-mosaGold text-mosaBlack px-4 py-2 rounded hover:bg-yellow-400 transition">Login</a></li>
-        </ul>
+<header style="position:sticky;top:0;z-index:100;background:#1a1a2e;border-bottom:2px solid #D4AF37;">
+  <div style="max-width:1280px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:4rem;">
+
+    <!-- Logo -->
+    <a href="index.html" style="display:flex;align-items:center;gap:0.6rem;text-decoration:none;">
+      <img src="mosa-logo.png" alt="MOSA" style="width:2.2rem;height:2.2rem;border-radius:50%;object-fit:contain;">
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-weight:700;color:#fff;font-size:1rem;line-height:1;">MOSA</div>
+        <div style="font-size:0.6rem;color:rgba(255,255,255,0.5);letter-spacing:0.1em;text-transform:uppercase;">Est. 1895</div>
+      </div>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav id="desktopNav" style="display:flex;align-items:center;gap:0.2rem;">
+      <a href="index.html"      class="nav-link">Home</a>
+      <a href="about.html"      class="nav-link">About</a>
+      <a href="directory.html"  class="nav-link">Directory</a>
+      <a href="events.html"     class="nav-link">Events</a>
+      <a href="news.html"       class="nav-link">News</a>
+      <a href="jobs.html"       class="nav-link">Jobs</a>
+      <a href="mentorship.html" class="nav-link">Mentorship</a>
+      <a href="business.html"   class="nav-link">Business</a>
+      <a href="league.html"     class="nav-link">MEL</a>
+      <a href="sacco.html"      class="nav-link">SACCO</a>
+      <a href="projects.html"   class="nav-link">Projects</a>
     </nav>
-    
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-mosaBlack/95 border-t border-mosaGold/30">
-        <ul class="flex flex-col gap-4 p-6 font-semibold">
-            <li><a href="index.html" class="hover:text-mosaGold transition">Home</a></li>
-            <li><a href="directory.html" class="hover:text-mosaGold transition">Directory</a></li>
-            <li><a href="events.html" class="hover:text-mosaGold transition">Events</a></li>
-            <li><a href="projects.html" class="hover:text-mosaGold transition">Projects</a></li>
-            <li><a href="donate.html" class="hover:text-mosaGold transition">Donate</a></li>
-            <li><a href="login.html" class="bg-mosaGold text-mosaBlack px-4 py-2 rounded hover:bg-yellow-400 transition w-full text-center">Login</a></li>
-        </ul>
+
+    <!-- Auth buttons -->
+    <div id="authBtns" style="display:flex;gap:0.5rem;align-items:center;">
+      <a href="login.html"    style="padding:0.4rem 1rem;border:2px solid rgba(255,255,255,0.25);color:#fff;border-radius:6px;font-size:0.85rem;font-weight:600;text-decoration:none;">Login</a>
+      <a href="register.html" style="padding:0.4rem 1rem;background:#D4AF37;color:#1a1a2e;border-radius:6px;font-size:0.85rem;font-weight:700;text-decoration:none;">Join MOSA</a>
     </div>
+
+    <!-- Hamburger -->
+    <button id="mobileMenuBtn" style="display:none;background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer;padding:0.25rem;">
+      ☰
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="hidden" style="background:#1a1a2e;padding:1rem 1.5rem;border-top:1px solid rgba(255,255,255,0.1);">
+    <a href="index.html"      style="display:block;color:rgba(255,255,255,0.85);padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.07);font-weight:600;">Home</a>
+    <a href="about.html"      style="display:block;color:rgba(255,255,255,0.85);padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.07);font-weight:600;">About</a>
+    <a href="directory.html"  style="display:block;color:rgba(255,255,255,0.85);padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.07);font-weight:600;">Directory</a>
+    <a href="events.html"     style="display:block;color:rgba(255,255,255,0.85);padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.07);font-weight:600;">Events</a>
+    <a href="news.html"       style="display:block;color:rgba(255,255,255,0.85);padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.07);font-weight:600;">News</a>
+    <a href="jobs.html"       style="display:block;color:rgba(255,255,255,0.85);padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.07);font-weight:600;">Jobs</a>
+    <a href="mentorship.html" style="display:block;color:rgba(255,255,255,0.85);padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.07);font-weight:600;">Mentorship</a>
+    <a href="business.html"   style="display:block;color:rgba(255,255,255,0.85);padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.07);font-weight:600;">Business</a>
+    <a href="league.html"     style="display:block;color:rgba(255,255,255,0.85);padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.07);font-weight:600;">MOSA Elite League</a>
+    <a href="sacco.html"      style="display:block;color:rgba(255,255,255,0.85);padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.07);font-weight:600;">MOSA SACCO</a>
+    <a href="projects.html"   style="display:block;color:rgba(255,255,255,0.85);padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.07);font-weight:600;">Projects</a>
+    <div style="display:flex;gap:0.75rem;margin-top:1rem;">
+      <a href="login.html"    style="flex:1;text-align:center;padding:0.6rem;border:2px solid rgba(255,255,255,0.25);color:#fff;border-radius:6px;font-weight:600;text-decoration:none;">Login</a>
+      <a href="register.html" style="flex:1;text-align:center;padding:0.6rem;background:#D4AF37;color:#1a1a2e;border-radius:6px;font-weight:700;text-decoration:none;">Join MOSA</a>
+    </div>
+  </div>
 </header>
+
+<style>
+  .nav-link { font-size:0.82rem;font-weight:500;color:rgba(255,255,255,0.8);padding:0.35rem 0.55rem;border-radius:5px;text-decoration:none;transition:color 0.2s; }
+  .nav-link:hover { color:#D4AF37; }
+  @media(max-width:900px) { #desktopNav,#authBtns { display:none!important; } #mobileMenuBtn { display:block!important; } }
+</style>
