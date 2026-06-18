@@ -1,135 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News & Updates | MOSA</title>
-    <script src="js/navigation.js"></script>
-    <script src="js/main.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        html { scroll-behavior: smooth; }
-        body { background-color: #f9fafb; font-family: 'Inter', sans-serif; }
-        .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-        .article-card:hover .article-image { transform: scale(1.05); }
-        .article-image { transition: transform 0.5s ease; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News & Updates | MOSA</title>
+<script src="js/navigation.js"></script>
+<script src="js/main.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          mosaBlack: '#1a1a2e',
+          mosaRed:   '#8B0000',
+          mosaGold:  '#D4AF37',
+        },
+        fontFamily: { serif: ['"Playfair Display"', 'Georgia', 'serif'] }
+      }
+    }
+  }
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #f9fafb; font-family: 'Inter', sans-serif; }
+  .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+</style>
 </head>
 <body class="flex flex-col min-h-screen">
+<div id="header-placeholder"></div>
 
-    <div id="header-placeholder"></div>
+<main class="flex-grow">
 
-    <main class="flex-grow pb-24">
-        <!-- 📰 HEADER -->
-        <section class="bg-white py-12 border-b border-gray-100">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-mosaBlack">
-                <h1 class="font-serif text-5xl font-bold mb-4">Latest Insights</h1>
-                <p class="text-xl text-gray-500 max-w-2xl mx-auto font-light">
-                    Stay up-to-date with the latest school news, alumni success stories, and association announcements.
-                </p>
-            </div>
-        </section>
+  <!-- PAGE HEADER -->
+  <section class="bg-mosaBlack text-white py-20 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5" style="background-image:repeating-linear-gradient(45deg,#D4AF37 0,#D4AF37 1px,transparent 0,transparent 50%);background-size:20px 20px;"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <span class="text-mosaGold font-bold tracking-widest uppercase text-xs mb-3 block">Stay Informed</span>
+      <h1 class="font-serif text-5xl md:text-6xl font-black text-white mb-4">News & <span class="text-mosaGold">Updates</span></h1>
+      <p class="text-gray-400 text-lg max-w-xl mx-auto font-light">The latest from MOSA — alumni achievements, school developments, and community stories.</p>
+    </div>
+  </section>
 
-        <!-- 🚀 FEATURED STORY -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="group relative rounded-2xl overflow-hidden shadow-lg h-[500px] hover-lift cursor-pointer border border-gray-100 block">
-                <img src="mosa-logo.png" alt="Students in library" class="w-full h-full object-cover article-image">
-                <div class="absolute inset-0 bg-gradient-to-t from-mosaBlack via-mosaBlack/60 to-transparent flex flex-col justify-end p-8 md:p-12">
-                    <div class="flex items-center gap-3 mb-4">
-                        <span class="bg-mosaRed text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded shadow">School News</span>
-                        <span class="text-gray-300 text-sm font-semibold"><i class="far fa-clock mr-1 text-mosaGold"></i> October 12, 2026</span>
-                    </div>
-                    <h2 class="font-serif text-3xl md:text-5xl font-bold text-white mb-4 leading-tight group-hover:text-mosaGold transition">
-                        Mengo Senior School Opens New State-of-the-Art Science complex
-                    </h2>
-                    <p class="text-gray-300 md:text-lg mb-6 max-w-3xl line-clamp-2">
-                        Thanks to the continuous support of the MOSA community, the new 4-story facility is equipped with modern laboratories, coding hubs, and a dedicated robotics arena to foster STEM excellence.
-                    </p>
-                    <div class="flex items-center">
-                        <img src="mosa-logo.png" alt="Author" class="w-10 h-10 rounded-full border-2 border-white object-cover">
-                        <span class="ml-3 text-white font-semibold text-sm">By Arthur B., General Secretary</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <!-- FEATURED ARTICLE -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="eyebrow text-mosaRed font-bold tracking-widest uppercase text-xs mb-5">📰 Latest Story</div>
+    <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden grid md:grid-cols-5">
+      <!-- Image side -->
+      <div class="md:col-span-2 bg-mosaBlack flex items-center justify-center min-h-48 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background:radial-gradient(circle at center, #D4AF37, transparent);"></div>
+        <img src="mosa-logo.png" alt="MOSA News" class="w-32 h-32 object-contain opacity-60 relative z-10">
+      </div>
+      <!-- Content side -->
+      <div class="md:col-span-3 p-8 md:p-10">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-mosaRed text-white text-xs font-bold px-3 py-1 rounded-full">Philanthropy</span>
+          <span class="text-gray-400 text-xs"><i class="far fa-calendar-alt mr-1"></i>June 1, 2026</span>
+        </div>
+        <h2 class="font-serif text-3xl font-bold text-mosaBlack mb-4 leading-tight">
+          MOSA Donates UGX 500M Towards Mengo Senior School ICT Innovation Hub
+        </h2>
+        <p class="text-gray-600 leading-relaxed mb-6">
+          The Mengo Old Students Association has announced a landmark donation of UGX 500 million towards the construction of a state-of-the-art ICT Innovation Hub at Mengo Senior School. The hub will house a computer lab, digital library, and co-working space for students.
+        </p>
+        <a href="#" class="inline-flex items-center gap-2 bg-mosaBlack text-white font-bold px-6 py-3 rounded-lg hover:bg-mosaRed transition">
+          Read Full Story <i class="fas fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+    </div>
+  </section>
 
-        <!-- 📰 ARTICLE GRID -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
-            <div class="flex justify-between items-center mb-8 pb-4 border-b border-gray-200">
-                <h3 class="font-bold text-2xl text-mosaBlack font-serif">Recent Posts</h3>
-                <div class="hidden md:flex space-x-6 text-sm font-semibold">
-                    <a href="#" class="text-mosaRed border-b-2 border-mosaRed pb-1">All Stories</a>
-                    <a href="#" class="text-gray-500 hover:text-mosaBlack transition">Alumni Spotlight</a>
-                    <a href="#" class="text-gray-500 hover:text-mosaBlack transition">Fundraising</a>
-                    <a href="#" class="text-gray-500 hover:text-mosaBlack transition">Sports</a>
-                </div>
-            </div>
+  <!-- NEWS GRID -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <!-- Category filter -->
+    <div class="flex flex-wrap gap-2 mb-10">
+      <button class="px-4 py-1.5 rounded-full bg-mosaBlack text-white text-xs font-bold">All</button>
+      <button class="px-4 py-1.5 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 text-xs font-bold transition">Achievements</button>
+      <button class="px-4 py-1.5 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 text-xs font-bold transition">Philanthropy</button>
+      <button class="px-4 py-1.5 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 text-xs font-bold transition">Education</button>
+      <button class="px-4 py-1.5 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 text-xs font-bold transition">Chapters</button>
+      <button class="px-4 py-1.5 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 text-xs font-bold transition">Projects</button>
+    </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <!-- Story 1 -->
-                <a href="#" class="article-card block bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover-lift flex flex-col">
-                    <div class="h-48 overflow-hidden relative">
-                        <div class="absolute top-4 left-4 z-10 bg-mosaBlack text-mosaGold text-xs font-bold uppercase tracking-wide px-2 py-1 rounded">Spotlight</div>
-                        <img src="mosa-logo.png" alt="Alumni" class="w-full h-full object-cover article-image">
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col text-left">
-                        <span class="text-xs text-gray-500 font-semibold mb-2">October 5, 2026</span>
-                        <h4 class="font-bold text-xl text-mosaBlack mb-3 line-clamp-2 hover:text-mosaRed transition">Dr. Sarah Namazzi Wins Global Health Excellence Award</h4>
-                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
-                            Class of 2005's very own Dr. Namazzi has been recognized internationally for her groundbreaking work in pediatric robotic surgery and her continuous philanthropic efforts in East Africa.
-                        </p>
-                        <div class="mt-auto text-mosaRed font-bold text-sm flex items-center">Read Story <i class="fas fa-arrow-right ml-2 text-xs"></i></div>
-                    </div>
-                </a>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-                <!-- Story 2 -->
-                <a href="#" class="article-card block bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover-lift flex flex-col">
-                    <div class="h-48 overflow-hidden relative">
-                        <div class="absolute top-4 left-4 z-10 bg-mosaBlack text-mosaGold text-xs font-bold uppercase tracking-wide px-2 py-1 rounded">Fundraising</div>
-                        <img src="mosa-logo.png" alt="Charity" class="w-full h-full object-cover article-image">
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col text-left">
-                        <span class="text-xs text-gray-500 font-semibold mb-2">September 28, 2026</span>
-                        <h4 class="font-bold text-xl text-mosaBlack mb-3 line-clamp-2 hover:text-mosaRed transition">Library Renovation Campaign Surpasses Ugx 100M Goal</h4>
-                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
-                            Thanks to generous contributions from over 500 alumni, the historic school library has been fully funded for modernization, equipping it with digital archives and high-speed internet.
-                        </p>
-                        <div class="mt-auto text-mosaRed font-bold text-sm flex items-center">Read Story <i class="fas fa-arrow-right ml-2 text-xs"></i></div>
-                    </div>
-                </a>
+      <!-- Article 1 -->
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover-lift flex flex-col">
+        <div class="h-1.5 bg-mosaGold"></div>
+        <div class="p-6 flex flex-col flex-grow">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xs font-bold text-yellow-700 bg-yellow-50 px-3 py-1 rounded-full">Achievement</span>
+            <span class="text-xs text-gray-400">May 15, 2026</span>
+          </div>
+          <h3 class="font-serif font-bold text-xl text-mosaBlack mb-3 leading-tight flex-grow">
+            Alumni Dr. Namazzi Named Chief of Surgery at King's College Hospital
+          </h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-4">Former Mengo student Dr. Sarah Namazzi (Class of 2005) has been appointed Chief of Surgery at King's College Hospital, London — a proud moment for all Mengonians.</p>
+          <div class="mt-auto pt-4 border-t border-gray-100 flex justify-between items-center">
+            <span class="text-xs text-gray-400"><i class="far fa-clock mr-1"></i>3 min read</span>
+            <a href="#" class="text-mosaRed font-bold text-sm hover:underline">Read More →</a>
+          </div>
+        </div>
+      </div>
 
-                <!-- Story 3 -->
-                <a href="#" class="article-card block bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover-lift flex flex-col">
-                    <div class="h-48 overflow-hidden relative">
-                        <div class="absolute top-4 left-4 z-10 bg-mosaBlack text-mosaGold text-xs font-bold uppercase tracking-wide px-2 py-1 rounded">Sports</div>
-                        <img src="mosa-logo.png" alt="Sports" class="w-full h-full object-cover article-image">
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col text-left">
-                        <span class="text-xs text-gray-500 font-semibold mb-2">September 15, 2026</span>
-                        <h4 class="font-bold text-xl text-mosaBlack mb-3 line-clamp-2 hover:text-mosaRed transition">Mengo Football Team Enters Regional Finals</h4>
-                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
-                            The boys have done it again! The Mengo senior football team secured a 2-0 victory yesterday, securing their spot in the highly anticipated regional finals next weekend.
-                        </p>
-                        <div class="mt-auto text-mosaRed font-bold text-sm flex items-center">Read Story <i class="fas fa-arrow-right ml-2 text-xs"></i></div>
-                    </div>
-                </a>
+      <!-- Article 2 -->
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover-lift flex flex-col">
+        <div class="h-1.5 bg-green-500"></div>
+        <div class="p-6 flex flex-col flex-grow">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xs font-bold text-green-700 bg-green-50 px-3 py-1 rounded-full">Education</span>
+            <span class="text-xs text-gray-400">Apr 28, 2026</span>
+          </div>
+          <h3 class="font-serif font-bold text-xl text-mosaBlack mb-3 leading-tight flex-grow">
+            MOSA Launches Scholarship Fund for 20 Underprivileged Students at Mengo
+          </h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-4">MOSA has launched the Mengonian Excellence Scholarship, fully funding 20 students annually through their O-Level and A-Level studies at Mengo Senior School.</p>
+          <div class="mt-auto pt-4 border-t border-gray-100 flex justify-between items-center">
+            <span class="text-xs text-gray-400"><i class="far fa-clock mr-1"></i>4 min read</span>
+            <a href="#" class="text-mosaRed font-bold text-sm hover:underline">Read More →</a>
+          </div>
+        </div>
+      </div>
 
-            </div>
+      <!-- Article 3 -->
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover-lift flex flex-col">
+        <div class="h-1.5 bg-blue-500"></div>
+        <div class="p-6 flex flex-col flex-grow">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xs font-bold text-blue-700 bg-blue-50 px-3 py-1 rounded-full">Chapters</span>
+            <span class="text-xs text-gray-400">Apr 5, 2026</span>
+          </div>
+          <h3 class="font-serif font-bold text-xl text-mosaBlack mb-3 leading-tight flex-grow">
+            New North America Chapter Officially Launched in Toronto, Canada
+          </h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-4">Following a successful inaugural meeting of over 50 Mengonians in Toronto, MOSA proudly announces the formal establishment of its North America Chapter.</p>
+          <div class="mt-auto pt-4 border-t border-gray-100 flex justify-between items-center">
+            <span class="text-xs text-gray-400"><i class="far fa-clock mr-1"></i>2 min read</span>
+            <a href="#" class="text-mosaRed font-bold text-sm hover:underline">Read More →</a>
+          </div>
+        </div>
+      </div>
 
-            <!-- Pagination -->
-            <div class="mt-12 text-center">
-                <button class="bg-white border-2 border-gray-200 text-gray-600 px-8 py-3 rounded-lg font-bold hover:border-mosaBlack hover:text-mosaBlack transition shadow-sm">
-                    Load More Articles
-                </button>
-            </div>
-            
-        </section>
-    </main>
+      <!-- Article 4 -->
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover-lift flex flex-col">
+        <div class="h-1.5 bg-mosaRed"></div>
+        <div class="p-6 flex flex-col flex-grow">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xs font-bold text-mosaRed bg-red-50 px-3 py-1 rounded-full">Projects</span>
+            <span class="text-xs text-gray-400">Mar 18, 2026</span>
+          </div>
+          <h3 class="font-serif font-bold text-xl text-mosaBlack mb-3 leading-tight flex-grow">
+            MOSA Free Medical Camp Serves Over 500 Patients in Mengo Community
+          </h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-4">The annual MOSA Medical Camp brought together 45 Mengonian healthcare professionals to provide free consultations, screenings, and medication to over 500 community members.</p>
+          <div class="mt-auto pt-4 border-t border-gray-100 flex justify-between items-center">
+            <span class="text-xs text-gray-400"><i class="far fa-clock mr-1"></i>5 min read</span>
+            <a href="#" class="text-mosaRed font-bold text-sm hover:underline">Read More →</a>
+          </div>
+        </div>
+      </div>
 
-    <div id="footer-placeholder"></div>
+      <!-- Article 5 -->
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover-lift flex flex-col">
+        <div class="h-1.5 bg-purple-500"></div>
+        <div class="p-6 flex flex-col flex-grow">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xs font-bold text-purple-700 bg-purple-50 px-3 py-1 rounded-full">Achievement</span>
+            <span class="text-xs text-gray-400">Feb 22, 2026</span>
+          </div>
+          <h3 class="font-serif font-bold text-xl text-mosaBlack mb-3 leading-tight flex-grow">
+            Mengonian Grace Atim's NexaTech Raises $2M in Series A Funding
+          </h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-4">MOSA alumna Grace Atim (Class of 2012) has secured a $2 million Series A round for her East Africa-focused fintech startup NexaTech, cementing her status as one of Africa's rising tech founders.</p>
+          <div class="mt-auto pt-4 border-t border-gray-100 flex justify-between items-center">
+            <span class="text-xs text-gray-400"><i class="far fa-clock mr-1"></i>3 min read</span>
+            <a href="#" class="text-mosaRed font-bold text-sm hover:underline">Read More →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Newsletter CTA -->
+      <div class="bg-mosaBlack rounded-2xl p-6 flex flex-col justify-center text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5" style="background:radial-gradient(circle at top right,#D4AF37,transparent);"></div>
+        <i class="fas fa-envelope text-4xl text-mosaGold mb-4 relative z-10"></i>
+        <h3 class="font-serif text-xl font-bold text-white mb-2 relative z-10">Get the MOSA Newsletter</h3>
+        <p class="text-gray-400 text-sm mb-5 relative z-10">Monthly digest of alumni news, events, and opportunities delivered to your inbox.</p>
+        <input type="email" placeholder="your@email.com"
+          class="w-full px-4 py-2.5 rounded-lg text-sm text-gray-800 mb-3 relative z-10 border-0 focus:outline-none focus:ring-2 focus:ring-mosaGold">
+        <button class="w-full bg-mosaGold text-mosaBlack font-bold py-2.5 rounded-lg hover:bg-yellow-400 transition text-sm relative z-10">
+          Subscribe Free
+        </button>
+      </div>
+
+    </div>
+
+    <div class="text-center mt-10">
+      <button class="border-2 border-gray-200 text-gray-600 px-8 py-3 rounded-lg font-bold hover:border-mosaBlack hover:text-mosaBlack transition">
+        Load More Articles
+      </button>
+    </div>
+  </section>
+
+</main>
+<div id="footer-placeholder"></div>
 </body>
 </html>
