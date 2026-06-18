@@ -1,109 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mentorship Program | MOSA</title>
-    <script src="js/navigation.js"></script>
-    <script src="js/main.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        html { scroll-behavior: smooth; }
-        body { background-color: #f9fafb; font-family: 'Inter', sans-serif; }
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mentorship | MOSA</title>
+<script src="js/navigation.js"></script>
+<script src="js/main.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          mosaBlack: '#1a1a2e',
+          mosaRed:   '#8B0000',
+          mosaGold:  '#D4AF37',
+        },
+        fontFamily: { serif: ['"Playfair Display"', 'Georgia', 'serif'] }
+      }
+    }
+  }
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #f9fafb; font-family: 'Inter', sans-serif; }
+  .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 16px 32px rgba(0,0,0,0.1); }
+  .avatar { width:5rem;height:5rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:#D4AF37;flex-shrink:0; }
+  .req-input:focus { outline:none;border-color:#8B0000;box-shadow:0 0 0 3px rgba(139,0,0,0.1); }
+</style>
 </head>
 <body class="flex flex-col min-h-screen">
+<div id="header-placeholder"></div>
 
-    <div id="header-placeholder"></div>
+<main class="flex-grow">
 
-    <main class="flex-grow">
-        <!-- 🤝 HERO SECTION -->
-        <section class="relative bg-teal-900 text-white py-24 object-cover">
-            <div class="absolute inset-0 z-0 opacity-40">
-                <img src="mosa-logo.png" alt="Mentorship" class="w-full h-full object-cover">
-            </div>
-            <div class="absolute inset-0 bg-gradient-to-r from-teal-900 via-teal-900/90 to-transparent z-10"></div>
-            
-            <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 lg:gap-16 items-center">
-                <div class="mb-10 md:mb-0">
-                    <span class="text-teal-400 font-bold tracking-widest uppercase mb-2 block text-sm">Grow Together</span>
-                    <h1 class="font-serif text-5xl font-bold mb-6">MOSA Mentorship</h1>
-                    <p class="text-lg text-teal-100 mb-8 max-w-lg font-light">
-                        Guidance from those who have walked the path before you. Connect with experienced alumni in your field of interest or give back by becoming a mentor yourself.
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <button class="bg-teal-500 text-white px-8 py-3 rounded-lg font-bold shadow-lg hover:bg-teal-400 transition whitespace-nowrap">Find a Mentor</button>
-                        <button class="bg-transparent border-2 border-teal-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-teal-500/20 transition whitespace-nowrap">Become a Mentor</button>
-                    </div>
-                </div>
-                
-                <div class="glass-panel p-8 rounded-2xl relative text-mosaBlack border-teal-100">
-                    <h3 class="font-serif text-2xl font-bold mb-4">Featured Mentors</h3>
-                    <div class="space-y-4">
-                        <!-- Mentor 1 -->
-                        <div class="flex items-center gap-4 bg-gray-50 p-4 rounded-lg">
-                            <img src="mosa-logo.png" alt="Sarah" class="w-12 h-12 rounded-full object-cover border-2 border-teal-500">
-                            <div class="flex-1">
-                                <h4 class="font-bold text-gray-800 text-sm">Dr. Sarah Namazzi</h4>
-                                <p class="text-xs text-gray-500">Medical / Healthcare</p>
-                            </div>
-                            <button class="text-teal-600 font-bold text-xs hover:underline">Connect</button>
-                        </div>
-                        <!-- Mentor 2 -->
-                        <div class="flex items-center gap-4 bg-gray-50 p-4 rounded-lg">
-                            <img src="mosa-logo.png" alt="David" class="w-12 h-12 rounded-full object-cover border-2 border-teal-500">
-                            <div class="flex-1">
-                                <h4 class="font-bold text-gray-800 text-sm">Eng. David Kigozi</h4>
-                                <p class="text-xs text-gray-500">Engineering / Tech</p>
-                            </div>
-                            <button class="text-teal-600 font-bold text-xs hover:underline">Connect</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <!-- PAGE HEADER -->
+  <section class="bg-mosaBlack text-white py-20 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5" style="background-image:repeating-linear-gradient(45deg,#D4AF37 0,#D4AF37 1px,transparent 0,transparent 50%);background-size:20px 20px;"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <span class="text-mosaGold font-bold tracking-widest uppercase text-xs mb-3 block">Grow With a Guide</span>
+      <h1 class="font-serif text-5xl md:text-6xl font-black text-white mb-4">MOSA <span class="text-mosaGold">Mentorship</span></h1>
+      <p class="text-gray-400 text-lg max-w-xl mx-auto font-light leading-relaxed">
+        Connect with experienced Mengonians who have walked the path you're on. One conversation can change your trajectory.
+      </p>
+    </div>
+  </section>
 
-        <!-- 💡 HOW IT WORKS -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-            <h2 class="font-serif text-3xl font-bold text-mosaBlack mb-4">How Mentorship Works</h2>
-            <div class="w-16 h-1 bg-teal-500 mx-auto mb-12"></div>
+  <!-- HOW IT WORKS -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-3 block">Simple Process</span>
+        <h2 class="font-serif text-4xl font-bold text-mosaBlack mb-4">How It Works</h2>
+        <div class="w-16 h-1 bg-mosaGold mx-auto"></div>
+      </div>
+      <div class="grid md:grid-cols-3 gap-10 text-center">
+        <div>
+          <div class="w-16 h-16 bg-mosaBlack rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg">
+            <i class="fas fa-search text-mosaGold text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-xl text-mosaBlack mb-3">1. Browse Mentors</h3>
+          <p class="text-gray-500 leading-relaxed text-sm">Explore profiles of experienced Mengonians across medicine, law, technology, business, and more.</p>
+        </div>
+        <div>
+          <div class="w-16 h-16 bg-mosaRed rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg">
+            <i class="fas fa-paper-plane text-white text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-xl text-mosaBlack mb-3">2. Send a Request</h3>
+          <p class="text-gray-500 leading-relaxed text-sm">Fill in a short request form telling your chosen mentor about yourself and what guidance you need.</p>
+        </div>
+        <div>
+          <div class="w-16 h-16 bg-mosaGold rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg">
+            <i class="fas fa-rocket text-mosaBlack text-2xl"></i>
+          </div>
+          <h3 class="font-bold text-xl text-mosaBlack mb-3">3. Grow Together</h3>
+          <p class="text-gray-500 leading-relaxed text-sm">Connect via video call or in person. Build a lasting professional relationship with a fellow Mengonian.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-                    <div class="w-16 h-16 bg-teal-50 text-teal-600 rounded-full flex items-center justify-center mx-auto text-2xl mb-6">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <h3 class="font-bold text-xl text-mosaBlack mb-3">1. Match</h3>
-                    <p class="text-gray-600 text-sm">Tell us your goals and we will intelligently match you with a mentor who aligns with your career aspirations.</p>
-                </div>
-                
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-                    <div class="w-16 h-16 bg-teal-50 text-teal-600 rounded-full flex items-center justify-center mx-auto text-2xl mb-6">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <h3 class="font-bold text-xl text-mosaBlack mb-3">2. Connect</h3>
-                    <p class="text-gray-600 text-sm">Meet virtually or in-person. Schedule regular 1-on-1 sessions to discuss challenges and seek actionable advice.</p>
-                </div>
+  <!-- MENTOR CARDS -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-12 gap-4">
+        <div>
+          <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-2 block">Our Mentors</span>
+          <h2 class="font-serif text-4xl font-bold text-mosaBlack">Available Mentors</h2>
+        </div>
+        <button class="bg-mosaGold text-mosaBlack font-bold px-6 py-3 rounded-lg hover:bg-yellow-400 transition shadow flex-shrink-0">
+          <i class="fas fa-chalkboard-teacher mr-2"></i>Become a Mentor
+        </button>
+      </div>
 
-                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-                    <div class="w-16 h-16 bg-teal-50 text-teal-600 rounded-full flex items-center justify-center mx-auto text-2xl mb-6">
-                        <i class="fas fa-seedling"></i>
-                    </div>
-                    <h3 class="font-bold text-xl text-mosaBlack mb-3">3. Grow</h3>
-                    <p class="text-gray-600 text-sm">Achieve your career milestones, build your professional network, and eventually give back as a mentor yourself.</p>
-                </div>
-            </div>
-        </section>
-    </main>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-    <div id="footer-placeholder"></div>
+        <!-- Mentor 1 -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover-lift text-center flex flex-col">
+          <div class="avatar mx-auto mb-4" style="background:#1a1a2e;">SN</div>
+          <h3 class="font-serif font-bold text-lg text-mosaBlack">Dr. Sarah Namazzi</h3>
+          <p class="text-mosaRed text-xs font-bold uppercase tracking-wider mt-1 mb-1">Chief of Surgery</p>
+          <p class="text-gray-400 text-xs mb-3">King's College Hospital, London</p>
+          <p class="text-xs font-semibold text-mosaGold mb-4">Medicine & Global Health</p>
+          <div class="flex justify-center gap-4 text-xs text-gray-500 mb-5">
+            <span>⭐ 4.9</span>
+            <span>24 sessions</span>
+          </div>
+          <button onclick="document.getElementById('requestModal').classList.remove('hidden')"
+            class="mt-auto w-full bg-mosaBlack text-white py-2.5 rounded-lg font-bold hover:bg-mosaRed transition text-sm">
+            Request Session
+          </button>
+        </div>
+
+        <!-- Mentor 2 -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover-lift text-center flex flex-col">
+          <div class="avatar mx-auto mb-4" style="background:#8B0000;">DK</div>
+          <h3 class="font-serif font-bold text-lg text-mosaBlack">Eng. David Kigozi</h3>
+          <p class="text-mosaRed text-xs font-bold uppercase tracking-wider mt-1 mb-1">Civil Engineer & CEO</p>
+          <p class="text-gray-400 text-xs mb-3">KigoziBuilt Ltd, Kampala</p>
+          <p class="text-xs font-semibold text-mosaGold mb-4">Engineering & Business</p>
+          <div class="flex justify-center gap-4 text-xs text-gray-500 mb-5">
+            <span>⭐ 4.8</span>
+            <span>31 sessions</span>
+          </div>
+          <button onclick="document.getElementById('requestModal').classList.remove('hidden')"
+            class="mt-auto w-full bg-mosaBlack text-white py-2.5 rounded-lg font-bold hover:bg-mosaRed transition text-sm">
+            Request Session
+          </button>
+        </div>
+
+        <!-- Mentor 3 -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover-lift text-center flex flex-col">
+          <div class="avatar mx-auto mb-4" style="background:#1e3a5f;">GA</div>
+          <h3 class="font-serif font-bold text-lg text-mosaBlack">Grace Atim</h3>
+          <p class="text-mosaRed text-xs font-bold uppercase tracking-wider mt-1 mb-1">Tech Founder</p>
+          <p class="text-gray-400 text-xs mb-3">NexaTech, San Francisco</p>
+          <p class="text-xs font-semibold text-mosaGold mb-4">Tech Entrepreneurship</p>
+          <div class="flex justify-center gap-4 text-xs text-gray-500 mb-5">
+            <span>⭐ 5.0</span>
+            <span>19 sessions</span>
+          </div>
+          <button onclick="document.getElementById('requestModal').classList.remove('hidden')"
+            class="mt-auto w-full bg-mosaBlack text-white py-2.5 rounded-lg font-bold hover:bg-mosaRed transition text-sm">
+            Request Session
+          </button>
+        </div>
+
+        <!-- Mentor 4 -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover-lift text-center flex flex-col">
+          <div class="avatar mx-auto mb-4" style="background:#14532d;">AB</div>
+          <h3 class="font-serif font-bold text-lg text-mosaBlack">Arthur Bbale</h3>
+          <p class="text-mosaRed text-xs font-bold uppercase tracking-wider mt-1 mb-1">Senior Legal Counsel</p>
+          <p class="text-gray-400 text-xs mb-3">Bbale & Co., Kampala</p>
+          <p class="text-xs font-semibold text-mosaGold mb-4">Corporate & Commercial Law</p>
+          <div class="flex justify-center gap-4 text-xs text-gray-500 mb-5">
+            <span>⭐ 4.7</span>
+            <span>42 sessions</span>
+          </div>
+          <button onclick="document.getElementById('requestModal').classList.remove('hidden')"
+            class="mt-auto w-full bg-mosaBlack text-white py-2.5 rounded-lg font-bold hover:bg-mosaRed transition text-sm">
+            Request Session
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BECOME A MENTOR CTA -->
+  <section class="py-20 bg-mosaBlack text-white text-center">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <i class="fas fa-chalkboard-teacher text-5xl text-mosaGold mb-6 block"></i>
+      <h2 class="font-serif text-4xl font-black mb-4">Share Your Journey</h2>
+      <div class="w-16 h-1 bg-mosaRed mx-auto mb-6"></div>
+      <p class="text-gray-400 text-lg leading-relaxed mb-8">
+        You made it. Now help the next Mengonian make it too. Sign up as a mentor and commit just 1–2 hours a month to changing someone's life.
+      </p>
+      <button onclick="document.getElementById('requestModal').classList.remove('hidden')"
+        class="bg-mosaGold text-mosaBlack font-black px-10 py-4 rounded-lg hover:bg-yellow-400 transition shadow-xl text-lg">
+        Apply to Be a Mentor
+      </button>
+    </div>
+  </section>
+
+</main>
+
+<!-- REQUEST MODAL -->
+<div id="requestModal" class="hidden fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-4">
+  <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative">
+    <button onclick="document.getElementById('requestModal').classList.add('hidden')"
+      class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl">
+      <i class="fas fa-times"></i>
+    </button>
+    <h3 class="font-serif text-2xl font-bold text-mosaBlack mb-1">Request a Session</h3>
+    <div class="w-10 h-1 bg-mosaRed mb-6"></div>
+    <form onsubmit="event.preventDefault(); document.getElementById('requestModal').classList.add('hidden'); alert('Request sent! Your mentor will be in touch within 48 hours.');">
+      <div class="mb-4">
+        <label class="block text-sm font-bold text-gray-700 mb-1">Your Name</label>
+        <input type="text" required placeholder="Full name" class="req-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-sm transition">
+      </div>
+      <div class="mb-4">
+        <label class="block text-sm font-bold text-gray-700 mb-1">Email</label>
+        <input type="email" required placeholder="you@email.com" class="req-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-sm transition">
+      </div>
+      <div class="mb-4">
+        <label class="block text-sm font-bold text-gray-700 mb-1">What guidance are you seeking?</label>
+        <textarea rows="3" required placeholder="Tell your mentor what you need help with…" class="req-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-sm transition resize-none"></textarea>
+      </div>
+      <button type="submit" class="w-full bg-mosaRed text-white py-3 rounded-lg font-bold hover:bg-red-900 transition shadow">
+        Send Request
+      </button>
+    </form>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
 </body>
 </html>
