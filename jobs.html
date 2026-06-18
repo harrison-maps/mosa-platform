@@ -1,113 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Board | MOSA</title>
-    <script src="js/navigation.js"></script>
-    <script src="js/main.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        html { scroll-behavior: smooth; }
-        body { background-color: #f9fafb; font-family: 'Inter', sans-serif; }
-        .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Board | MOSA</title>
+<script src="js/navigation.js"></script>
+<script src="js/main.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          mosaBlack: '#1a1a2e',
+          mosaRed:   '#8B0000',
+          mosaGold:  '#D4AF37',
+        },
+        fontFamily: { serif: ['"Playfair Display"', 'Georgia', 'serif'] }
+      }
+    }
+  }
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #f9fafb; font-family: 'Inter', sans-serif; }
+  .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .hover-lift:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.09); }
+  .job-input:focus { outline: none; border-color: #8B0000; box-shadow: 0 0 0 3px rgba(139,0,0,0.1); }
+</style>
 </head>
 <body class="flex flex-col min-h-screen">
+<div id="header-placeholder"></div>
 
-    <div id="header-placeholder"></div>
+<main class="flex-grow">
 
-    <main class="flex-grow">
-        <!-- 💼 HEADER -->
-        <section class="bg-blue-900 text-white py-16">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h1 class="font-serif text-4xl md:text-5xl font-bold mb-4">Mengo Job Board</h1>
-                <p class="text-xl text-blue-200 max-w-2xl mx-auto font-light">
-                    Exclusive career opportunities posted by Mengo Alumni for Mengo Alumni.
-                </p>
-                <div class="mt-8 flex justify-center gap-4">
-                    <button class="bg-white text-blue-900 px-8 py-3 rounded-lg font-bold shadow-lg hover:bg-gray-100 transition whitespace-nowrap">Browse Jobs</button>
-                    <button class="bg-blue-800 border-2 border-blue-400 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-700 transition whitespace-nowrap"><i class="fas fa-plus mr-2"></i> Post a Job</button>
-                </div>
+  <!-- PAGE HEADER -->
+  <section class="bg-mosaBlack text-white py-20 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5" style="background-image:repeating-linear-gradient(45deg,#D4AF37 0,#D4AF37 1px,transparent 0,transparent 50%);background-size:20px 20px;"></div>
+    <div class="absolute right-0 top-0 w-80 h-80 bg-mosaRed opacity-10 rounded-full translate-x-1/2 -translate-y-1/2"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <span class="text-mosaGold font-bold tracking-widest uppercase text-xs mb-3 block">Opportunities for Mengonians</span>
+      <h1 class="font-serif text-5xl md:text-6xl font-black text-white mb-4">MOSA <span class="text-mosaGold">Jobs</span> Board</h1>
+      <p class="text-gray-400 text-lg max-w-xl mx-auto mb-8 font-light leading-relaxed">
+        Exclusive career opportunities posted by Mengo alumni, for Mengo alumni. Your next career move starts here.
+      </p>
+      <div class="flex flex-wrap gap-3 justify-center">
+        <div class="bg-white/10 border border-white/20 text-white px-5 py-2 rounded-full text-sm font-semibold">
+          <i class="fas fa-briefcase text-mosaGold mr-2"></i>42 Active Roles
+        </div>
+        <div class="bg-white/10 border border-white/20 text-white px-5 py-2 rounded-full text-sm font-semibold">
+          <i class="fas fa-globe text-mosaGold mr-2"></i>Uganda & International
+        </div>
+        <div class="bg-white/10 border border-white/20 text-white px-5 py-2 rounded-full text-sm font-semibold">
+          <i class="fas fa-users text-mosaGold mr-2"></i>Alumni-Only Network
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEARCH BAR -->
+  <div class="bg-white border-b border-gray-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+      <div class="flex flex-col md:flex-row gap-3">
+        <div class="flex-1 relative">
+          <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          <input type="text" placeholder="Search by role, company, or skill…"
+            class="job-input w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-sm transition">
+        </div>
+        <select class="job-input md:w-48 px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-700 text-sm transition appearance-none">
+          <option>All Sectors</option>
+          <option>Technology</option>
+          <option>Healthcare</option>
+          <option>Finance</option>
+          <option>Legal</option>
+          <option>Education</option>
+          <option>Engineering</option>
+        </select>
+        <select class="job-input md:w-48 px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-700 text-sm transition appearance-none">
+          <option>All Locations</option>
+          <option>Kampala, UG</option>
+          <option>Nairobi, KE</option>
+          <option>London, UK</option>
+          <option>Remote</option>
+        </select>
+        <button class="bg-mosaRed text-white px-8 py-3 rounded-lg font-bold hover:bg-red-900 transition flex-shrink-0">Search</button>
+        <button class="bg-mosaGold text-mosaBlack px-6 py-3 rounded-lg font-bold hover:bg-yellow-400 transition flex-shrink-0">
+          <i class="fas fa-plus mr-2"></i>Post a Job
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JOBS LIST -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="flex justify-between items-center mb-6">
+      <h3 class="font-serif text-2xl font-bold text-mosaBlack">Latest Postings</h3>
+      <span class="text-sm text-gray-500 font-semibold">Showing 6 of 42 roles</span>
+    </div>
+
+    <div class="space-y-4">
+
+      <!-- Job 1 -->
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover-lift">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div class="flex items-start gap-5">
+            <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 text-xl flex-shrink-0">
+              <i class="fas fa-code"></i>
             </div>
-        </section>
-
-        <!-- 🏢 JOBS LIST -->
-        <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="font-bold text-gray-800 text-xl">Latest Postings</h3>
-                <span class="text-sm text-gray-500 font-semibold">42 Active Roles</span>
+            <div>
+              <h4 class="font-bold text-lg text-mosaBlack mb-0.5">Senior Frontend Developer</h4>
+              <p class="text-gray-500 text-sm mb-2">NexaTech Solutions <span class="text-gray-300 mx-1">·</span> Posted by Grace Atim (Class '12)</p>
+              <div class="flex flex-wrap gap-3 text-xs">
+                <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-semibold"><i class="fas fa-map-marker-alt mr-1 text-mosaGold"></i>Remote</span>
+                <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-semibold"><i class="fas fa-clock mr-1 text-mosaGold"></i>Full-time</span>
+                <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full font-bold">Technology</span>
+              </div>
             </div>
+          </div>
+          <div class="flex gap-2 flex-shrink-0">
+            <span class="text-xs text-gray-400 font-semibold self-center">Closes Jul 30</span>
+            <button class="bg-mosaBlack text-white px-6 py-2.5 rounded-lg font-bold hover:bg-mosaRed transition text-sm">Apply</button>
+          </div>
+        </div>
+      </div>
 
-            <div class="space-y-4">
-                <!-- Job 1 -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col md:flex-row justify-between items-center hover-lift">
-                    <div class="flex items-center gap-6 w-full md:w-auto">
-                        <div class="w-16 h-16 bg-gray-100 rounded flex justify-center items-center text-2xl text-mosaBlack font-bold"><i class="fas fa-code"></i></div>
-                        <div>
-                            <h4 class="font-bold text-lg text-mosaBlack hover:text-mosaRed transition"><a href="#">Senior Frontend Developer</a></h4>
-                            <p class="text-gray-600 text-sm font-semibold mb-1">NexaTech Solutions <span class="text-gray-400 font-normal ml-2">• Posted by Grace Atim</span></p>
-                            <div class="flex gap-3 text-xs text-gray-500">
-                                <span><i class="fas fa-map-marker-alt"></i> Remote</span>
-                                <span><i class="fas fa-money-bill-wave"></i> Competitive</span>
-                                <span><i class="fas fa-clock"></i> Full-time</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-4 md:mt-0 w-full md:w-auto">
-                        <button class="w-full md:w-auto bg-gray-100 text-mosaBlack px-6 py-2 rounded-lg font-bold hover:bg-gray-200 transition">Apply</button>
-                    </div>
-                </div>
-
-                <!-- Job 2 -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col md:flex-row justify-between items-center hover-lift">
-                    <div class="flex items-center gap-6 w-full md:w-auto">
-                        <div class="w-16 h-16 bg-blue-50 rounded flex justify-center items-center text-2xl text-blue-600 font-bold"><i class="fas fa-heartbeat"></i></div>
-                        <div>
-                            <h4 class="font-bold text-lg text-mosaBlack hover:text-mosaRed transition"><a href="#">Pediatric Nurse Practitioner</a></h4>
-                            <p class="text-gray-600 text-sm font-semibold mb-1">Global Health Institute <span class="text-gray-400 font-normal ml-2">• Posted by Dr. Sarah Namazzi</span></p>
-                            <div class="flex gap-3 text-xs text-gray-500">
-                                <span><i class="fas fa-map-marker-alt"></i> London, UK</span>
-                                <span><i class="fas fa-money-bill-wave"></i> £45k - £60k</span>
-                                <span><i class="fas fa-clock"></i> Full-time</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-4 md:mt-0 w-full md:w-auto">
-                        <button class="w-full md:w-auto bg-gray-100 text-mosaBlack px-6 py-2 rounded-lg font-bold hover:bg-gray-200 transition">Apply</button>
-                    </div>
-                </div>
-
-                <!-- Job 3 -->
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col md:flex-row justify-between items-center hover-lift">
-                    <div class="flex items-center gap-6 w-full md:w-auto">
-                        <div class="w-16 h-16 bg-mosaGold/20 rounded flex justify-center items-center text-2xl text-yellow-700 font-bold"><i class="fas fa-chart-line"></i></div>
-                        <div>
-                            <h4 class="font-bold text-lg text-mosaBlack hover:text-mosaRed transition"><a href="#">Marketing Intern (Summer)</a></h4>
-                            <p class="text-gray-600 text-sm font-semibold mb-1">The Golden Bean Cafe <span class="text-gray-400 font-normal ml-2">• Posted by Juliet M.</span></p>
-                            <div class="flex gap-3 text-xs text-gray-500">
-                                <span><i class="fas fa-map-marker-alt"></i> Kampala, UG</span>
-                                <span><i class="fas fa-money-bill-wave"></i> Stipend</span>
-                                <span><i class="fas fa-clock"></i> Internship</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-4 md:mt-0 w-full md:w-auto">
-                        <button class="w-full md:w-auto bg-gray-100 text-mosaBlack px-6 py-2 rounded-lg font-bold hover:bg-gray-200 transition">Apply</button>
-                    </div>
-                </div>
+      <!-- Job 2 -->
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover-lift">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div class="flex items-start gap-5">
+            <div class="w-14 h-14 bg-red-50 rounded-xl flex items-center justify-center text-mosaRed text-xl flex-shrink-0">
+              <i class="fas fa-heartbeat"></i>
             </div>
-
-            <div class="mt-10 text-center">
-                <button class="text-mosaRed font-bold hover:underline">View All Jobs &rarr;</button>
+            <div>
+              <h4 class="font-bold text-lg text-mosaBlack mb-0.5">Pediatric Nurse Practitioner</h4>
+              <p class="text-gray-500 text-sm mb-2">Global Health Institute <span class="text-gray-300 mx-1">·</span> Posted by Dr. Sarah Namazzi (Class '05)</p>
+              <div class="flex flex-wrap gap-3 text-xs">
+                <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-semibold"><i class="fas fa-map-marker-alt mr-1 text-mosaGold"></i>London, UK</span>
+                <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-semibold"><i class="fas fa-clock mr-1 text-mosaGold"></i>Full-time</span>
+                <span class="bg-red-50 text-mosaRed px-3 py-1 rounded-full font-bold">Healthcare</span>
+              </div>
             </div>
-        </section>
-    </main>
+          </div>
+          <div class="flex gap-2 flex-shrink-0">
+            <span class="text-xs text-gray-400 font-semibold self-center">Closes Aug 10</span>
+            <button class="bg-mosaBlack text-white px-6 py-2.5 rounded-lg font-bold hover:bg-mosaRed transition text-sm">Apply</button>
+          </div>
+        </div>
+      </div>
 
-    <div id="footer-placeholder"></div>
+      <!-- Job 3 -->
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover-lift">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div class="flex items-start gap-5">
+            <div class="w-14 h-14 bg-yellow-50 rounded-xl flex items-center justify-center text-yellow-700 text-xl flex-shrink-0">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-lg text-mosaBlack mb-0.5">Marketing Intern (Summer 2026)</h4>
+              <p class="text-gray-500 text-sm mb-2">The Golden Bean Cafe <span class="text-gray-300 mx-1">·</span> Posted by Juliet M. (Class '02)</p>
+              <div class="flex flex-wrap gap-3 text-xs">
+                <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-semibold"><i class="fas fa-map-marker-alt mr-1 text-mosaGold"></i>Kampala, UG</span>
+                <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-semibold"><i class="fas fa-clock mr-1 text-mosaGold"></i>Internship</span>
+                <span class="bg-yellow-50 text-yellow-700 px-3 py-1 rounded-full font-bold">Marketing</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex gap-2 flex-shrink-0">
+            <span class="text-xs text-gray-400 font-semibold self-center">Closes Jul 15</span>
+            <button class="bg-mosaBlack text-white px-6 py-2.5 rounded-lg font-bold hover:bg-mosaRed transition text-sm">Apply</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Job 4 -->
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover-lift">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div class="flex items-start gap-5">
+            <div class="w-14 h-14 bg-green-50 rounded-xl flex items-center justify-center text-green-700 text-xl flex-shrink-0">
+              <i class="fas fa-balance-scale"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-lg text-mosaBlack mb-0.5">Corporate Legal Associate</h4>
+              <p class="text-gray-500 text-sm mb-2">Bbale & Co. Advocates <span class="text-gray-300 mx-1">·</span> Posted by Arthur B. (Class '90)</p>
+              <div class="flex flex-wrap gap-3 text-xs">
+                <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-semibold"><i class="fas fa-map-marker-alt mr-1 text-mosaGold"></i>Kampala, UG</span>
+                <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-semibold"><i class="fas fa-clock mr-1 text-mosaGold"></i>Full-time</span>
+                <span class="bg-green-50 text-green-700 px-3 py-1 rounded-full font-bold">Legal</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex gap-2 flex-shrink-0">
+            <span class="text-xs text-gray-400 font-semibold self-center">Closes Sep 1</span>
+            <button class="bg-mosaBlack text-white px-6 py-2.5 rounded-lg font-bold hover:bg-mosaRed transition text-sm">Apply</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Job 5 -->
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover-lift">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div class="flex items-start gap-5">
+            <div class="w-14 h-14 bg-purple-50 rounded-xl flex items-center justify-center text-purple-700 text-xl flex-shrink-0">
+              <i class="fas fa-building"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-lg text-mosaBlack mb-0.5">Civil Engineer — Site Manager</h4>
+              <p class="text-gray-500 text-sm mb-2">KigoziBuilt Ltd <span class="text-gray-300 mx-1">·</span> Posted by Eng. David K. (Class '98)</p>
+              <div class="flex flex-wrap gap-3 text-xs">
+                <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-semibold"><i class="fas fa-map-marker-alt mr-1 text-mosaGold"></i>Kampala, UG</span>
+                <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-semibold"><i class="fas fa-clock mr-1 text-mosaGold"></i>Contract</span>
+                <span class="bg-purple-50 text-purple-700 px-3 py-1 rounded-full font-bold">Engineering</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex gap-2 flex-shrink-0">
+            <span class="text-xs text-gray-400 font-semibold self-center">Closes Aug 20</span>
+            <button class="bg-mosaBlack text-white px-6 py-2.5 rounded-lg font-bold hover:bg-mosaRed transition text-sm">Apply</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mt-10 flex justify-center gap-4">
+      <button class="border-2 border-gray-200 text-gray-600 px-8 py-3 rounded-lg font-bold hover:border-mosaBlack hover:text-mosaBlack transition">
+        Load More Jobs
+      </button>
+      <button class="bg-mosaGold text-mosaBlack px-8 py-3 rounded-lg font-bold hover:bg-yellow-400 transition shadow">
+        <i class="fas fa-plus mr-2"></i>Post a Job
+      </button>
+    </div>
+  </section>
+
+</main>
+<div id="footer-placeholder"></div>
 </body>
 </html>
