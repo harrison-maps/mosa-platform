@@ -27,88 +27,99 @@
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; }
 
-        /* ── Hover lift ── */
         .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
 
-        /* ════════════════════════════
-           CAROUSEL STYLES
-        ════════════════════════════ */
-
-        /* The track slides left/right */
+        /* ════════════════════════════════
+           CAROUSEL
+        ═════════════════════════════════ */
         .carousel-track {
             display: flex;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
             will-change: transform;
         }
 
-        /* Each slide takes full width */
         .carousel-slide {
             min-width: 100%;
             position: relative;
             overflow: hidden;
+            /* Fixed height — image fills this box */
+            height: 580px;
+            background: #1a1a2e;
+        }
+        @media (max-width: 768px)  { .carousel-slide { height: 480px; } }
+        @media (max-width: 480px)  { .carousel-slide { height: 380px; } }
+
+        /* ── Image wrapper: fills the slide, clips the image ── */
+        .slide-img-wrap {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
         }
 
-        /* The photo */
+        /* ── The actual photo ── */
         .slide-img {
             width: 100%;
-            height: 560px;
+            height: 100%;
             object-fit: cover;
-            object-position: center top;
+            /* Default — can be overridden per-slide */
+            object-position: center 15%;
             display: block;
+            /* Subtle zoom-in on load for quality feel */
+            transform: scale(1.03);
+            transition: transform 8s ease;
         }
-        @media (max-width: 640px) {
-            .slide-img { height: 420px; }
+        .carousel-slide.is-active .slide-img {
+            transform: scale(1);
         }
 
-        /* Dark gradient so text is always readable */
+        /* ── Gradient overlay: strong at bottom, fades to transparent ── */
         .slide-overlay {
             position: absolute;
             inset: 0;
             background: linear-gradient(
                 to top,
-                rgba(26,26,46,0.97) 0%,
-                rgba(26,26,46,0.65) 40%,
-                rgba(26,26,46,0.15) 75%,
-                transparent 100%
+                rgba(26,26,46,0.98) 0%,
+                rgba(26,26,46,0.75) 35%,
+                rgba(26,26,46,0.25) 60%,
+                rgba(26,26,46,0.05) 100%
             );
+            z-index: 1;
         }
 
-        /* Text info at the bottom of the slide */
+        /* ── Text sits above overlay ── */
         .slide-info {
             position: absolute;
             bottom: 0; left: 0; right: 0;
-            padding: 2rem 2.5rem 2.5rem;
+            padding: 2.5rem 3rem 2.5rem;
+            z-index: 2;
         }
         @media (max-width: 640px) {
-            .slide-info { padding: 1.25rem 1.25rem 4.5rem; }
-            .slide-info h3 { font-size: 1.8rem !important; }
-            .slide-info p.text-lg { font-size: 0.9rem; }
+            .slide-info { padding: 1.25rem 1.25rem 5rem; }
         }
 
-        /* Gold animated progress bar */
+        /* ── Gold progress bar ── */
         .progress-bar {
             height: 3px;
             background: #D4AF37;
             width: 0%;
-            transition: width 5s linear;
         }
 
-        /* Left / Right arrow buttons */
+        /* ── Arrow buttons ── */
         .carousel-btn {
             position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
+            top: 50%; transform: translateY(-50%);
             width: 3rem; height: 3rem;
             border-radius: 50%;
-            background: rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.1);
             border: 2px solid rgba(255,255,255,0.3);
             color: #fff;
             display: flex; align-items: center; justify-content: center;
             cursor: pointer;
             transition: all 0.2s;
             z-index: 20;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            backdrop-filter: blur(4px);
         }
         .carousel-btn:hover {
             background: #D4AF37;
@@ -117,77 +128,80 @@
             transform: translateY(-50%) scale(1.1);
         }
 
-        /* Dot indicators */
+        /* ── Dots ── */
         .dot {
-            width: 9px; height: 9px;
+            width: 8px; height: 8px;
             border-radius: 50%;
             background: rgba(255,255,255,0.35);
             border: none; cursor: pointer;
-            transition: all 0.3s;
-            padding: 0;
-            flex-shrink: 0;
+            transition: all 0.3s; padding: 0;
         }
-        .dot.active {
-            background: #D4AF37;
-            transform: scale(1.4);
-        }
+        .dot.active { background: #D4AF37; transform: scale(1.5); }
 
-        /* Thumbnail strip */
+        /* ── Thumbnails ── */
         .thumb {
             width: 5rem; height: 5rem;
             object-fit: cover;
-            object-position: center top;
             border-radius: 8px;
             cursor: pointer;
             border: 3px solid transparent;
             transition: all 0.25s;
-            opacity: 0.55;
+            opacity: 0.5;
+            /* Per-thumb position set inline */
         }
-        .thumb.active,
-        .thumb:hover {
+        .thumb.active, .thumb:hover {
             border-color: #D4AF37;
             opacity: 1;
-            transform: scale(1.08);
+            transform: scale(1.1);
+            box-shadow: 0 4px 16px rgba(212,175,55,0.4);
         }
-        @media (max-width: 480px) {
-            .thumb { width: 3.5rem; height: 3.5rem; }
+        @media (max-width: 480px) { .thumb { width: 3.5rem; height: 3.5rem; } }
+
+        /* ── Person name badge ── */
+        .slide-badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(212,175,55,0.15);
+            border: 1px solid rgba(212,175,55,0.4);
+            color: #D4AF37;
+            font-size: 0.7rem; font-weight: 700;
+            padding: 0.35rem 1rem;
+            border-radius: 999px;
+            margin-bottom: 1rem;
+            backdrop-filter: blur(4px);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
     </style>
 </head>
 <body class="text-gray-800 bg-gray-50 antialiased">
 
-    <!-- HEADER -->
     <div id="header-placeholder"></div>
 
     <!-- ════════════════════════════════════════════
-         HERO SECTION
+         HERO
     ════════════════════════════════════════════════ -->
     <section class="relative bg-mosaBlack text-white overflow-hidden">
-        <div class="absolute inset-0 opacity-10 bg-cover bg-center" style="background-image: url('mosa-logo.png');"></div>
+        <div class="absolute inset-0 opacity-8 bg-cover bg-center" style="background-image:url('mosa-logo.png');"></div>
         <div class="absolute inset-0 bg-gradient-to-r from-mosaBlack via-mosaBlack/80 to-transparent"></div>
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-48 flex flex-col justify-center">
-            <span class="text-mosaGold font-bold tracking-widest uppercase mb-2 block text-sm">
+            <span class="text-mosaGold font-bold tracking-widest uppercase mb-3 block text-sm">
                 <i class="fas fa-globe-africa mr-2"></i>Obunnamengo Bwa Lubeerera
             </span>
-            <h1 class="font-serif text-5xl md:text-7xl font-bold mb-4 leading-tight">
+            <h1 class="font-serif text-5xl md:text-7xl font-bold mb-5 leading-tight">
                 Mengo Old Students<br><span class="text-mosaGold">Association</span>
             </h1>
             <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl font-light leading-relaxed">
                 Connecting Mengonians Around the World. Preserving our legacy, celebrating achievements, and building the future of Mengo Senior School.
             </p>
             <div class="flex flex-wrap gap-4">
-                <a href="register.html" class="bg-mosaGold text-mosaBlack font-bold px-8 py-4 rounded-lg hover:bg-yellow-400 transition shadow-xl text-lg">
-                    Join MOSA
-                </a>
-                <a href="directory.html" class="bg-white/10 border border-white/30 text-white font-bold px-8 py-4 rounded-lg hover:bg-white/20 transition text-lg">
-                    Explore Directory
-                </a>
+                <a href="register.html" class="bg-mosaGold text-mosaBlack font-bold px-8 py-4 rounded-lg hover:bg-yellow-400 transition shadow-xl text-lg">Join MOSA</a>
+                <a href="directory.html" class="bg-white/10 border border-white/30 text-white font-bold px-8 py-4 rounded-lg hover:bg-white/20 transition text-lg">Explore Directory</a>
             </div>
         </div>
     </section>
 
     <!-- ════════════════════════════════════════════
-         STATS BAR
+         STATS
     ════════════════════════════════════════════════ -->
     <section class="bg-mosaGold py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -201,7 +215,7 @@
     </section>
 
     <!-- ════════════════════════════════════════════
-         ABOUT MOSA
+         ABOUT
     ════════════════════════════════════════════════ -->
     <section class="py-20 bg-white">
         <div class="max-w-5xl mx-auto px-4 text-center">
@@ -212,7 +226,7 @@
                 Mengo Old Students Association (MOSA) is a prestigious global network of alumni dedicated to preserving the rich heritage of Mengo Senior School. We exist to foster lifelong connections, celebrate excellence, and invest in the institution that shaped us all.
             </p>
             <div class="flex flex-wrap gap-4 justify-center mt-8">
-                <a href="about.html" class="bg-mosaBlack text-white font-bold px-6 py-3 rounded-lg hover:bg-mosaRed transition">Learn More</a>
+                <a href="about.html"  class="bg-mosaBlack text-white font-bold px-6 py-3 rounded-lg hover:bg-mosaRed transition">Learn More</a>
                 <a href="donate.html" class="border-2 border-mosaBlack text-mosaBlack font-bold px-6 py-3 rounded-lg hover:bg-mosaBlack hover:text-white transition">Give Back</a>
             </div>
         </div>
@@ -224,7 +238,6 @@
     <section class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            <!-- Section header -->
             <div class="flex justify-between items-end mb-10 flex-wrap gap-4">
                 <div>
                     <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-2 block">Excellence Across the Globe</span>
@@ -235,36 +248,42 @@
                 </a>
             </div>
 
-            <!-- CAROUSEL WRAPPER -->
+            <!-- CAROUSEL -->
             <div class="relative rounded-2xl overflow-hidden shadow-2xl" id="mainCarousel">
 
-                <!-- Gold progress bar -->
+                <!-- Progress bar -->
                 <div class="absolute top-0 left-0 right-0 z-30 h-1 bg-white/10">
                     <div class="progress-bar" id="progressBar"></div>
                 </div>
 
-                <!-- LEFT arrow -->
-                <button class="carousel-btn" style="left:1rem;" id="prevBtn" aria-label="Previous slide">
+                <!-- Arrows -->
+                <button class="carousel-btn" style="left:1rem;"  id="prevBtn" aria-label="Previous">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-
-                <!-- RIGHT arrow -->
-                <button class="carousel-btn" style="right:1rem;" id="nextBtn" aria-label="Next slide">
+                <button class="carousel-btn" style="right:1rem;" id="nextBtn" aria-label="Next">
                     <i class="fas fa-chevron-right"></i>
                 </button>
 
-                <!-- Slide track -->
+                <!-- Track -->
                 <div style="overflow:hidden;">
                     <div class="carousel-track" id="carouselTrack">
 
-                        <!-- SLIDE 1 — Dr. Mulwana James -->
-                        <div class="carousel-slide">
-                            <img src="mulwana.jpeg"
-                                 onerror="this.src='mosa-logo.png';this.style.objectPosition='center';this.style.background='#1a1a2e';"
-                                 alt="Dr. Mulwana James" class="slide-img">
+                        <!-- ══ SLIDE 1 — Dr. Mulwana James ══
+                             Portrait photo: face is upper-centre
+                             object-position: center 10% shows face clearly -->
+                        <div class="carousel-slide" id="slide-0">
+                            <div class="slide-img-wrap">
+                                <img src="mulwana.jpeg"
+                                     style="object-position: center 10%;"
+                                     onerror="this.src='mosa-logo.png';this.style.objectPosition='center center';"
+                                     alt="Dr. Mulwana James" class="slide-img">
+                            </div>
                             <div class="slide-overlay"></div>
                             <div class="slide-info">
-                                <h3 class="font-serif text-4xl md:text-5xl font-black text-white mb-2 leading-tight">Dr. Mulwana James</h3>
+                                <div class="slide-badge"><i class="fas fa-star"></i> Featured Mengonian</div>
+                                <h3 class="font-serif text-4xl md:text-5xl font-black text-white mb-2 leading-tight">
+                                    Dr. Mulwana James
+                                </h3>
                                 <p class="text-mosaGold font-bold text-base mb-1">
                                     <i class="fas fa-briefcase mr-2"></i>Industrialist and Businessman
                                 </p>
@@ -272,61 +291,85 @@
                                     <i class="fas fa-map-marker-alt mr-2 text-mosaGold"></i>Kampala, Uganda
                                 </p>
                                 <p class="text-gray-300 text-sm leading-relaxed max-w-2xl hidden sm:block">
-                                    One of Uganda's most celebrated industrialists and a proud product of Mengo Senior School, Dr. Mulwana James built a business empire spanning manufacturing, finance, and real estate leaving a lasting legacy on Uganda's economy.
+                                    One of Uganda's most celebrated industrialists and a proud product of Mengo Senior School, Dr. Mulwana James built a business empire spanning manufacturing, finance, and real estate — leaving a lasting legacy on Uganda's economy.
                                 </p>
                             </div>
                         </div>
 
-                        <!-- SLIDE 2 — Hon. Steven Kavuma -->
-                        <div class="carousel-slide">
-                            <img src="steven.jpeg"
-                                 onerror="this.src='mosa-logo.png';this.style.objectPosition='center';this.style.background='#1a1a2e';"
-                                 alt="Hon. Steven Kavuma" class="slide-img">
+                        <!-- ══ SLIDE 2 — Hon. Steven Kavuma ══
+                             Formal portrait, face centre-upper
+                             object-position: center 8% — keeps face fully visible -->
+                        <div class="carousel-slide" id="slide-1">
+                            <div class="slide-img-wrap">
+                                <img src="steven.jpeg"
+                                     style="object-position: center 8%;"
+                                     onerror="this.src='mosa-logo.png';this.style.objectPosition='center center';"
+                                     alt="Hon. Steven Kavuma" class="slide-img">
+                            </div>
                             <div class="slide-overlay"></div>
                             <div class="slide-info">
-                                <h3 class="font-serif text-4xl md:text-5xl font-black text-white mb-2 leading-tight">Hon. Steven Kavuma</h3>
+                                <div class="slide-badge"><i class="fas fa-star"></i> Featured Mengonian</div>
+                                <h3 class="font-serif text-4xl md:text-5xl font-black text-white mb-2 leading-tight">
+                                    Hon. Steven Kavuma
+                                </h3>
                                 <p class="text-mosaGold font-bold text-base mb-1">
-                                    <i class="fas fa-briefcase mr-2"></i>Judge and Lawyer
+                                    <i class="fas fa-briefcase mr-2"></i>Former Deputy Chief Justice · Court of Appeal
                                 </p>
                                 <p class="text-gray-300 text-sm mb-4">
                                     <i class="fas fa-map-marker-alt mr-2 text-mosaGold"></i>Kampala, Uganda
                                 </p>
                                 <p class="text-gray-300 text-sm leading-relaxed max-w-2xl hidden sm:block">
-                                    A distinguished member of Uganda's judiciary and a respected legal mind, Hon. Steven Kavuma exemplifies the leadership and integrity that Mengo Senior School has cultivated for generations.
+                                    A distinguished jurist and former Deputy Chief Justice of Uganda's Court of Appeal, Hon. Steven Kavuma has spent decades upholding justice with integrity — embodying the leadership and character that Mengo Senior School has cultivated for generations.
                                 </p>
                             </div>
                         </div>
 
-                        <!-- SLIDE 3 — Joseph Mayanja -->
-                        <div class="carousel-slide">
-                            <img src="chameleon.jpeg"
-                                 onerror="this.src='mosa-logo.png';this.style.objectPosition='center';this.style.background='#1a1a2e';"
-                                 alt="Joseph Mayanja" class="slide-img">
+                        <!-- ══ SLIDE 3 — Joseph Mayanja ══
+                             Half-body portrait in red suit, face upper-centre
+                             object-position: center 5% focuses on face -->
+                        <div class="carousel-slide" id="slide-2">
+                            <div class="slide-img-wrap">
+                                <img src="chameleon.jpeg"
+                                     style="object-position: center 5%;"
+                                     onerror="this.src='mosa-logo.png';this.style.objectPosition='center center';"
+                                     alt="Jose Chameleone — Joseph Mayanja" class="slide-img">
+                            </div>
                             <div class="slide-overlay"></div>
                             <div class="slide-info">
-                                <h3 class="font-serif text-4xl md:text-5xl font-black text-white mb-2 leading-tight">Joseph Mayanja</h3>
+                                <div class="slide-badge"><i class="fas fa-star"></i> Featured Mengonian</div>
+                                <h3 class="font-serif text-4xl md:text-5xl font-black text-white mb-2 leading-tight">
+                                    Joseph Mayanja
+                                </h3>
                                 <p class="text-mosaGold font-bold text-base mb-1">
-                                    <i class="fas fa-briefcase mr-2"></i>Musical Phenomenon
+                                    <i class="fas fa-music mr-2"></i>Musical Phenomenon — Jose Chameleone
                                 </p>
                                 <p class="text-gray-300 text-sm mb-4">
                                     <i class="fas fa-map-marker-alt mr-2 text-mosaGold"></i>Kampala, Uganda
                                 </p>
                                 <p class="text-gray-300 text-sm leading-relaxed max-w-2xl hidden sm:block">
-                                    Known across Uganda and East Africa as one of the most gifted musicians of his generation, Joseph Mayanja known as Jose Chameleone is a global ambassador of Ugandan music and a proud Mengonian whose artistry transcends borders.
+                                    Known across Uganda and East Africa as one of the most gifted musicians of his generation, Joseph Mayanja — known as Jose Chameleone — is a global ambassador of Ugandan music and a proud Mengonian whose artistry transcends borders.
                                 </p>
                             </div>
                         </div>
 
-                        <!-- SLIDE 4 — Canon John Fred Kazibwe -->
-                        <div class="carousel-slide">
-                            <img src="kazibwe.jpeg"
-                                 onerror="this.src='mosa-logo.png';this.style.objectPosition='center';this.style.background='#1a1a2e';"
-                                 alt="Canon John Fred Kazibwe" class="slide-img">
+                        <!-- ══ SLIDE 4 — Canon John Fred Kazibwe ══
+                             Conference/formal setting, face visible
+                             object-position: center 12% keeps face in frame -->
+                        <div class="carousel-slide" id="slide-3">
+                            <div class="slide-img-wrap">
+                                <img src="kazibwe.jpeg"
+                                     style="object-position: center 12%;"
+                                     onerror="this.src='mosa-logo.png';this.style.objectPosition='center center';"
+                                     alt="Canon John Fred Kazibwe" class="slide-img">
+                            </div>
                             <div class="slide-overlay"></div>
                             <div class="slide-info">
-                                <h3 class="font-serif text-4xl md:text-5xl font-black text-white mb-2 leading-tight">Canon John Fred Kazibwe</h3>
+                                <div class="slide-badge"><i class="fas fa-star"></i> Featured Mengonian</div>
+                                <h3 class="font-serif text-4xl md:text-5xl font-black text-white mb-2 leading-tight">
+                                    Canon John Fred Kazibwe
+                                </h3>
                                 <p class="text-mosaGold font-bold text-base mb-1">
-                                    <i class="fas fa-briefcase mr-2"></i>Prominent Educator
+                                    <i class="fas fa-chalkboard-teacher mr-2"></i>Prominent Educator
                                 </p>
                                 <p class="text-gray-300 text-sm mb-4">
                                     <i class="fas fa-map-marker-alt mr-2 text-mosaGold"></i>Budo, Uganda
@@ -337,30 +380,59 @@
                             </div>
                         </div>
 
-                    </div><!-- end carousel-track -->
+                    </div><!-- end track -->
                 </div>
 
-                <!-- Dot indicators -->
-                <div class="absolute bottom-5 right-5 flex gap-2 z-20" id="dotsContainer">
+                <!-- Dots -->
+                <div class="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-20">
                     <button class="dot active" data-index="0" aria-label="Slide 1"></button>
-                    <button class="dot" data-index="1" aria-label="Slide 2"></button>
-                    <button class="dot" data-index="2" aria-label="Slide 3"></button>
-                    <button class="dot" data-index="3" aria-label="Slide 4"></button>
+                    <button class="dot"        data-index="1" aria-label="Slide 2"></button>
+                    <button class="dot"        data-index="2" aria-label="Slide 3"></button>
+                    <button class="dot"        data-index="3" aria-label="Slide 4"></button>
                 </div>
 
-                <!-- Slide counter -->
-                <div class="absolute top-4 right-4 bg-black/50 text-white text-xs font-bold px-3 py-1.5 rounded-full z-20">
+                <!-- Counter -->
+                <div class="absolute top-4 right-4 bg-black/50 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-full z-20">
                     <span id="slideCounter">1</span> / 4
                 </div>
 
-            </div><!-- end carousel wrapper -->
+            </div><!-- end carousel -->
 
-            <!-- THUMBNAIL STRIP -->
-            <div class="flex gap-3 mt-5 justify-center flex-wrap">
-                <img src="mulwana.jpeg"  onerror="this.src='mosa-logo.png';" alt="Dr. Mulwana James"        class="thumb active" data-index="0">
-                <img src="steven.jpeg"   onerror="this.src='mosa-logo.png';" alt="Hon. Steven Kavuma"       class="thumb"        data-index="1">
-                <img src="chameleon.jpeg"  onerror="this.src='mosa-logo.png';" alt="Joseph Mayanja"           class="thumb"        data-index="2">
-                <img src="kazibwe.jpeg"  onerror="this.src='mosa-logo.png';" alt="Canon John Fred Kazibwe" class="thumb"        data-index="3">
+            <!-- THUMBNAILS
+                 Each thumbnail has its own object-position to match the slide -->
+            <div class="flex gap-4 mt-5 justify-center flex-wrap">
+                <div class="text-center">
+                    <img src="mulwana.jpeg"
+                         style="object-position:center 10%;"
+                         onerror="this.src='mosa-logo.png';"
+                         alt="Dr. Mulwana James"
+                         class="thumb active" data-index="0">
+                    <p class="text-xs text-gray-500 mt-1 font-semibold hidden sm:block">Dr. Mulwana</p>
+                </div>
+                <div class="text-center">
+                    <img src="steven.jpeg"
+                         style="object-position:center 8%;"
+                         onerror="this.src='mosa-logo.png';"
+                         alt="Hon. Steven Kavuma"
+                         class="thumb" data-index="1">
+                    <p class="text-xs text-gray-500 mt-1 font-semibold hidden sm:block">Hon. Kavuma</p>
+                </div>
+                <div class="text-center">
+                    <img src="chameleon.jpeg"
+                         style="object-position:center 5%;"
+                         onerror="this.src='mosa-logo.png';"
+                         alt="Joseph Mayanja"
+                         class="thumb" data-index="2">
+                    <p class="text-xs text-gray-500 mt-1 font-semibold hidden sm:block">J. Mayanja</p>
+                </div>
+                <div class="text-center">
+                    <img src="kazibwe.jpeg"
+                         style="object-position:center 12%;"
+                         onerror="this.src='mosa-logo.png';"
+                         alt="Canon John Fred Kazibwe"
+                         class="thumb" data-index="3">
+                    <p class="text-xs text-gray-500 mt-1 font-semibold hidden sm:block">Canon Kazibwe</p>
+                </div>
             </div>
 
         </div>
@@ -377,7 +449,6 @@
                 <div class="w-16 h-1 bg-mosaGold mx-auto mt-4"></div>
             </div>
             <div class="space-y-5">
-                <!-- Event 1 -->
                 <div class="flex flex-col md:flex-row bg-white border border-gray-200 rounded-xl overflow-hidden hover-lift shadow-sm">
                     <div class="bg-mosaBlack text-mosaGold flex flex-col justify-center items-center w-full md:w-36 py-6 flex-shrink-0">
                         <span class="text-sm font-black uppercase tracking-widest">Nov</span>
@@ -396,7 +467,6 @@
                         <a href="events.html" class="bg-mosaRed text-white px-6 py-3 rounded-lg font-bold hover:bg-red-900 transition whitespace-nowrap">RSVP Now</a>
                     </div>
                 </div>
-                <!-- Event 2 -->
                 <div class="flex flex-col md:flex-row bg-white border border-gray-200 rounded-xl overflow-hidden hover-lift shadow-sm">
                     <div class="bg-mosaBlack text-mosaGold flex flex-col justify-center items-center w-full md:w-36 py-6 flex-shrink-0">
                         <span class="text-sm font-black uppercase tracking-widest">Dec</span>
@@ -433,36 +503,12 @@
                 <div class="w-16 h-1 bg-mosaGold mx-auto mt-4"></div>
             </div>
             <div class="grid md:grid-cols-3 gap-6">
-                <a href="jobs.html" class="bg-white rounded-2xl p-8 border border-gray-100 hover-lift shadow-sm block group">
-                    <div class="w-12 h-12 bg-mosaBlack rounded-xl flex items-center justify-center mb-4"><i class="fas fa-briefcase text-mosaGold text-xl"></i></div>
-                    <h3 class="font-serif text-xl font-bold text-mosaBlack mb-2 group-hover:text-mosaRed transition">Jobs Board</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">Exclusive opportunities posted by Mengonians, for Mengonians.</p>
-                </a>
-                <a href="mentorship.html" class="bg-white rounded-2xl p-8 border border-gray-100 hover-lift shadow-sm block group">
-                    <div class="w-12 h-12 bg-mosaBlack rounded-xl flex items-center justify-center mb-4"><i class="fas fa-handshake text-mosaGold text-xl"></i></div>
-                    <h3 class="font-serif text-xl font-bold text-mosaBlack mb-2 group-hover:text-mosaRed transition">Mentorship</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">Connect with experienced Mengonians for career and personal guidance.</p>
-                </a>
-                <a href="business.html" class="bg-white rounded-2xl p-8 border border-gray-100 hover-lift shadow-sm block group">
-                    <div class="w-12 h-12 bg-mosaBlack rounded-xl flex items-center justify-center mb-4"><i class="fas fa-store text-mosaGold text-xl"></i></div>
-                    <h3 class="font-serif text-xl font-bold text-mosaBlack mb-2 group-hover:text-mosaRed transition">Business Directory</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">Discover and support businesses owned by MOSA members.</p>
-                </a>
-                <a href="sacco.html" class="bg-white rounded-2xl p-8 border border-gray-100 hover-lift shadow-sm block group">
-                    <div class="w-12 h-12 bg-mosaBlack rounded-xl flex items-center justify-center mb-4"><i class="fas fa-piggy-bank text-mosaGold text-xl"></i></div>
-                    <h3 class="font-serif text-xl font-bold text-mosaBlack mb-2 group-hover:text-mosaRed transition">MOSA SACCO</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">Save, grow, and borrow together. The Mengonian financial family.</p>
-                </a>
-                <a href="league.html" class="bg-white rounded-2xl p-8 border border-gray-100 hover-lift shadow-sm block group">
-                    <div class="w-12 h-12 bg-mosaBlack rounded-xl flex items-center justify-center mb-4"><i class="fas fa-futbol text-mosaGold text-xl"></i></div>
-                    <h3 class="font-serif text-xl font-bold text-mosaBlack mb-2 group-hover:text-mosaRed transition">MOSA Elite League</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">The social football league uniting Mengonians through the beautiful game.</p>
-                </a>
-                <a href="projects.html" class="bg-white rounded-2xl p-8 border border-gray-100 hover-lift shadow-sm block group">
-                    <div class="w-12 h-12 bg-mosaBlack rounded-xl flex items-center justify-center mb-4"><i class="fas fa-heart text-mosaGold text-xl"></i></div>
-                    <h3 class="font-serif text-xl font-bold text-mosaBlack mb-2 group-hover:text-mosaRed transition">MOSA Projects</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">Medical camps, scholarships, school development and more.</p>
-                </a>
+                <a href="jobs.html"       class="bg-white rounded-2xl p-8 border border-gray-100 hover-lift shadow-sm block group"><div class="w-12 h-12 bg-mosaBlack rounded-xl flex items-center justify-center mb-4"><i class="fas fa-briefcase text-mosaGold text-xl"></i></div><h3 class="font-serif text-xl font-bold text-mosaBlack mb-2 group-hover:text-mosaRed transition">Jobs Board</h3><p class="text-gray-500 text-sm leading-relaxed">Exclusive opportunities posted by Mengonians, for Mengonians.</p></a>
+                <a href="mentorship.html" class="bg-white rounded-2xl p-8 border border-gray-100 hover-lift shadow-sm block group"><div class="w-12 h-12 bg-mosaBlack rounded-xl flex items-center justify-center mb-4"><i class="fas fa-handshake text-mosaGold text-xl"></i></div><h3 class="font-serif text-xl font-bold text-mosaBlack mb-2 group-hover:text-mosaRed transition">Mentorship</h3><p class="text-gray-500 text-sm leading-relaxed">Connect with experienced Mengonians for career and personal guidance.</p></a>
+                <a href="business.html"   class="bg-white rounded-2xl p-8 border border-gray-100 hover-lift shadow-sm block group"><div class="w-12 h-12 bg-mosaBlack rounded-xl flex items-center justify-center mb-4"><i class="fas fa-store text-mosaGold text-xl"></i></div><h3 class="font-serif text-xl font-bold text-mosaBlack mb-2 group-hover:text-mosaRed transition">Business Directory</h3><p class="text-gray-500 text-sm leading-relaxed">Discover and support businesses owned by MOSA members.</p></a>
+                <a href="sacco.html"      class="bg-white rounded-2xl p-8 border border-gray-100 hover-lift shadow-sm block group"><div class="w-12 h-12 bg-mosaBlack rounded-xl flex items-center justify-center mb-4"><i class="fas fa-piggy-bank text-mosaGold text-xl"></i></div><h3 class="font-serif text-xl font-bold text-mosaBlack mb-2 group-hover:text-mosaRed transition">MOSA SACCO</h3><p class="text-gray-500 text-sm leading-relaxed">Save, grow, and borrow together. The Mengonian financial family.</p></a>
+                <a href="league.html"     class="bg-white rounded-2xl p-8 border border-gray-100 hover-lift shadow-sm block group"><div class="w-12 h-12 bg-mosaBlack rounded-xl flex items-center justify-center mb-4"><i class="fas fa-futbol text-mosaGold text-xl"></i></div><h3 class="font-serif text-xl font-bold text-mosaBlack mb-2 group-hover:text-mosaRed transition">MOSA Elite League</h3><p class="text-gray-500 text-sm leading-relaxed">The social football league uniting Mengonians through the beautiful game.</p></a>
+                <a href="projects.html"   class="bg-white rounded-2xl p-8 border border-gray-100 hover-lift shadow-sm block group"><div class="w-12 h-12 bg-mosaBlack rounded-xl flex items-center justify-center mb-4"><i class="fas fa-heart text-mosaGold text-xl"></i></div><h3 class="font-serif text-xl font-bold text-mosaBlack mb-2 group-hover:text-mosaRed transition">MOSA Projects</h3><p class="text-gray-500 text-sm leading-relaxed">Medical camps, scholarships, school development and more.</p></a>
             </div>
         </div>
     </section>
@@ -473,124 +519,110 @@
     <section class="py-24 bg-mosaRed text-white text-center">
         <div class="max-w-4xl mx-auto px-4">
             <h2 class="font-serif text-4xl md:text-5xl font-bold mb-6">Join the MOSA Network Today</h2>
-            <p class="text-xl mb-10 text-red-100 leading-relaxed">
-                Unlock access to a global directory, exclusive events, mentorship opportunities, and the power of the Mengo brotherhood and sisterhood.
-            </p>
-            <a href="register.html" class="bg-mosaGold text-mosaBlack font-bold text-xl px-10 py-4 rounded-lg shadow-xl hover:bg-yellow-400 transition">
-                Register / Update Profile
-            </a>
+            <p class="text-xl mb-10 text-red-100 leading-relaxed">Unlock access to a global directory, exclusive events, mentorship opportunities, and the power of the Mengo brotherhood and sisterhood.</p>
+            <a href="register.html" class="bg-mosaGold text-mosaBlack font-bold text-xl px-10 py-4 rounded-lg shadow-xl hover:bg-yellow-400 transition">Register / Update Profile</a>
         </div>
     </section>
 
-    <!-- FOOTER -->
     <div id="footer-placeholder"></div>
 
     <!-- ════════════════════════════════════════════
          CAROUSEL JAVASCRIPT
     ════════════════════════════════════════════════ -->
     <script>
-    (function() {
-        const TOTAL    = 4;
-        const DURATION = 5000; // ms per slide
+    (function () {
+        var TOTAL    = 4;
+        var DURATION = 5000;
 
-        const track    = document.getElementById('carouselTrack');
-        const dots     = document.querySelectorAll('.dot');
-        const thumbs   = document.querySelectorAll('.thumb');
-        const counter  = document.getElementById('slideCounter');
-        const progress = document.getElementById('progressBar');
-        const carousel = document.getElementById('mainCarousel');
+        var track    = document.getElementById('carouselTrack');
+        var dots     = document.querySelectorAll('.dot');
+        var thumbs   = document.querySelectorAll('.thumb');
+        var counter  = document.getElementById('slideCounter');
+        var progress = document.getElementById('progressBar');
+        var carousel = document.getElementById('mainCarousel');
+        var slides   = document.querySelectorAll('.carousel-slide');
 
-        let current = 0;
-        let autoTimer = null;
+        var current   = 0;
+        var autoTimer = null;
 
-        // ── Go to a specific slide ──
-        function goTo(index, fromAuto) {
+        function goTo(index) {
             current = ((index % TOTAL) + TOTAL) % TOTAL;
 
-            // Slide the track
+            // Move track
             track.style.transform = 'translateX(-' + (current * 100) + '%)';
 
-            // Update dots
-            dots.forEach(function(d, i) {
+            // Active slide class (triggers zoom-in animation)
+            slides.forEach(function (s, i) {
+                s.classList.toggle('is-active', i === current);
+            });
+
+            // Dots
+            dots.forEach(function (d, i) {
                 d.classList.toggle('active', i === current);
             });
 
-            // Update thumbnails
-            thumbs.forEach(function(t, i) {
+            // Thumbnails
+            thumbs.forEach(function (t, i) {
                 t.classList.toggle('active', i === current);
             });
 
-            // Update counter
+            // Counter
             counter.textContent = current + 1;
 
-            // Reset progress bar
+            // Progress bar — reset then animate
             progress.style.transition = 'none';
-            progress.style.width = '0%';
-            // Force reflow so transition resets
-            progress.offsetWidth;
+            progress.style.width      = '0%';
+            progress.offsetWidth;            // force reflow
             progress.style.transition = 'width ' + DURATION + 'ms linear';
-            progress.style.width = '100%';
+            progress.style.width      = '100%';
 
-            // Schedule next auto-advance
+            // Schedule next
             clearTimeout(autoTimer);
-            autoTimer = setTimeout(function() {
-                goTo(current + 1, true);
+            autoTimer = setTimeout(function () {
+                goTo(current + 1);
             }, DURATION);
         }
 
-        // ── Arrow buttons ──
-        document.getElementById('prevBtn').addEventListener('click', function() {
-            goTo(current - 1);
-        });
-        document.getElementById('nextBtn').addEventListener('click', function() {
-            goTo(current + 1);
+        // Arrows
+        document.getElementById('prevBtn').addEventListener('click', function () { goTo(current - 1); });
+        document.getElementById('nextBtn').addEventListener('click', function () { goTo(current + 1); });
+
+        // Dots
+        dots.forEach(function (dot) {
+            dot.addEventListener('click', function () { goTo(parseInt(this.dataset.index)); });
         });
 
-        // ── Dot clicks ──
-        dots.forEach(function(dot) {
-            dot.addEventListener('click', function() {
-                goTo(parseInt(this.dataset.index));
-            });
+        // Thumbnails
+        thumbs.forEach(function (thumb) {
+            thumb.addEventListener('click', function () { goTo(parseInt(this.dataset.index)); });
         });
 
-        // ── Thumbnail clicks ──
-        thumbs.forEach(function(thumb) {
-            thumb.addEventListener('click', function() {
-                goTo(parseInt(this.dataset.index));
-            });
-        });
-
-        // ── Keyboard left / right ──
-        document.addEventListener('keydown', function(e) {
+        // Keyboard
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'ArrowLeft')  goTo(current - 1);
             if (e.key === 'ArrowRight') goTo(current + 1);
         });
 
-        // ── Touch / swipe support ──
-        var touchStartX = 0;
-        carousel.addEventListener('touchstart', function(e) {
-            touchStartX = e.touches[0].clientX;
+        // Touch swipe
+        var touchX = 0;
+        carousel.addEventListener('touchstart', function (e) {
+            touchX = e.touches[0].clientX;
         }, { passive: true });
-        carousel.addEventListener('touchend', function(e) {
-            var diff = touchStartX - e.changedTouches[0].clientX;
-            if (Math.abs(diff) > 50) {
-                goTo(diff > 0 ? current + 1 : current - 1);
-            }
+        carousel.addEventListener('touchend', function (e) {
+            var diff = touchX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
         });
 
-        // ── Pause on hover ──
-        carousel.addEventListener('mouseenter', function() {
+        // Pause on hover
+        carousel.addEventListener('mouseenter', function () {
             clearTimeout(autoTimer);
             progress.style.transition = 'none';
         });
-        carousel.addEventListener('mouseleave', function() {
-            // Resume from current width after 1 second
-            autoTimer = setTimeout(function() {
-                goTo(current + 1);
-            }, 1000);
+        carousel.addEventListener('mouseleave', function () {
+            autoTimer = setTimeout(function () { goTo(current + 1); }, 1200);
         });
 
-        // ── Start ──
+        // Boot
         goTo(0);
     })();
     </script>
