@@ -35,19 +35,22 @@
     border: 1px solid rgba(229,231,235,1);
   }
   /* Initials avatar for directory cards */
-  .card-avatar {
-    width: 5rem; height: 5rem;
-    border-radius: 9999px;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem; font-weight: 700;
-    color: #D4AF37;
-    border: 3px solid #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    position: absolute;
-    bottom: -2.5rem; left: 1.5rem;
-    flex-shrink: 0;
+  .card-avatar{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    object-fit:cover;
+    object-position:center;
+    display:block;
+    margin:25px auto 15px;
+    border:4px solid #fff;
+    box-shadow:0 10px 25px rgba(0,0,0,.18);
+    transition:.3s;
   }
+  .group:hover .card-avatar{transform:scale(1.08);}
+  .directory-card{background:#fff;border-radius:18px;padding:25px;text-align:center;border:1px solid #e5e7eb;transition:.3s;box-shadow:0 5px 15px rgba(0,0,0,.05);}
+  .directory-card:hover{transform:translateY(-8px);box-shadow:0 18px 35px rgba(0,0,0,.15);}
+
   /* Logo watermark background - header */
   .watermark-bg {
     position: relative;
@@ -140,7 +143,7 @@
 
   <section class="section-with-watermark max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
     <div class="flex justify-between items-center mb-8">
-      <p class="text-gray-500 font-semibold"><span class="text-mosaBlack font-bold">1,045</span> Alumni Found</p>
+      <p class="text-gray-500 font-semibold"><span class="text-mosaBlack font-bold">1,000</span> Alumni Found</p>
       <div class="flex gap-2">
         <button class="p-2 text-mosaRed bg-red-50 rounded hover:bg-red-100 transition"><i class="fas fa-th-large"></i></button>
         <button class="p-2 text-gray-400 bg-white border border-gray-200 rounded hover:bg-gray-50 transition"><i class="fas fa-list"></i></button>
@@ -149,220 +152,180 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
 
-      <a href="profile.html" class="bg-white rounded-xl overflow-hidden hover-lift border border-gray-100 shadow-sm block group">
-        <div class="h-24 bg-mosaBlack relative">
-          <img src="dennis.jpeg" alt="Dennis" class="card-avatar object-cover">
-        </div>
-        <div class="pt-12 px-6 pb-6">
+      <a href="profile.html" class="directory-card group">
+        <img src="dennis.jpeg" class="card-avatar">
+<div class="px-2 pb-2 text-center">
           <h3 class="font-bold text-lg">Dennis Kakembo</h3>
           <p class="text-mosaGold text-xs font-bold mb-3">Lawyer</p>
           <p class="text-gray-600 text-sm">Founding and Managing Partner at Cristal Advocates.</p>
         </div>
       </a>
 
-      <a href="profile.html" class="bg-white rounded-xl overflow-hidden hover-lift border border-gray-100 shadow-sm block group">
-        <div class="h-24 bg-mosaRed relative">
-          <img src="kasim.jpeg" alt="Kasim" class="card-avatar object-cover">
-        </div>
-        <div class="pt-12 px-6 pb-6">
+      <a href="profile.html" class="directory-card group">
+        <img src="kasim.jpeg" class="card-avatar">
+<div class="px-2 pb-2 text-center">
           <h3 class="font-bold text-lg">Hajji Kassim Kiwanuka Mu</h3>
           <p class="text-mosaGold text-xs font-bold mb-3">Entreprenuer</p>
           <p class="text-gray-600 text-sm">Prominet businessman and proprietor behind Kisozi Complex.</p>
         </div>
       </a>
 
-      <a href="profile.html" class="bg-white rounded-xl overflow-hidden hover-lift border border-gray-100 shadow-sm block group">
-        <div class="h-24 bg-mosaBlack relative">
-          <img src="sonko.jpeg" alt="Sonko" class="card-avatar object-cover">
-        </div>
-        <div class="pt-12 px-6 pb-6">
+      <a href="profile.html" class="directory-card group">
+        <img src="sonko.jpeg" class="card-avatar">
+<div class="px-2 pb-2 text-center">
           <h3 class="font-bold text-lg">Eng.Ssonko Kiwanuka</h3>
           <p class="text-mosaGold text-xs font-bold mb-3">Engineer</p>
           <p class="text-gray-600 text-sm">Director - WSS Services.</p>
         </div>
       </a>
 
-      <a href="profile.html" class="bg-white rounded-xl overflow-hidden hover-lift border border-gray-100 shadow-sm block group">
-        <div class="h-24 bg-mosaRed relative">
-          <img src="ameri.jpeg" alt="Ameri" class="card-avatar object-cover">
-        </div>
-        <div class="pt-12 px-6 pb-6">
+      <a href="profile.html" class="directory-card group">
+        <img src="ameri.jpeg" class="card-avatar">
+<div class="px-2 pb-2 text-center">
           <h3 class="font-bold text-lg">CP. Irene Ameri Kimara</h3>
           <p class="text-mosaGold text-xs font-bold mb-3">Uganda Police</p>
           <p class="text-gray-600 text-sm">Deputy Director for Logistics and enginering Uganda police</p>
         </div>
       </a>
 
-      <a href="profile.html" class="bg-white rounded-xl overflow-hidden hover-lift border border-gray-100 shadow-sm block group">
-        <div class="h-24 bg-mosaBlack relative">
-          <img src="musenze.jpeg" alt="Musenze" class="card-avatar object-cover">
-        </div>
-        <div class="pt-12 px-6 pb-6">
+      <a href="profile.html" class="directory-card group">
+        <img src="musenze.jpeg" class="card-avatar">
+<div class="px-2 pb-2 text-center">
           <h3 class="font-bold text-lg">Dr. Ronald Musenze(PHD)</h3>
           <p class="text-mosaGold text-xs font-bold mb-3">Educationist and Environmental Engineer</p>
           <p class="text-gray-600 text-sm">Dedicated to advancing education and mentorship currently a Lecturer Makerere University.</p>
         </div>
       </a>
 
-      <a href="profile.html" class="bg-white rounded-xl overflow-hidden hover-lift border border-gray-100 shadow-sm block group">
-        <div class="h-24 bg-mosaRed relative">
-          <img src="keneth.jpeg" alt="Keneth" class="card-avatar object-cover">
-        </div>
-        <div class="pt-12 px-6 pb-6">
+      <a href="profile.html" class="directory-card group">
+        <img src="keneth.jpeg" class="card-avatar">
+<div class="px-2 pb-2 text-center">
           <h3 class="font-bold text-lg">Hon.Keneth Bbosa Kiyingi</h3>
           <p class="text-mosaGold text-xs font-bold mb-3">Politician</p>
           <p class="text-gray-600 text-sm">Former Member of parliament Mawokota South in the 9th parliament.</p>
         </div>
       </a>
 
-      <a href="profile.html" class="bg-white rounded-xl overflow-hidden hover-lift border border-gray-100 shadow-sm block group">
-        <div class="h-24 bg-mosaBlack relative">
-          <img src="sebulime.jpeg" alt="Sebulime" class="card-avatar object-cover">
-        </div>
-        <div class="pt-12 px-6 pb-6">
+      <a href="profile.html" class="directory-card group">
+        <img src="sebulime.jpeg" class="card-avatar">
+<div class="px-2 pb-2 text-center">
           <h3 class="font-bold text-lg">Dr.Sebulime Stephen</h3>
           <p class="text-mosaGold text-xs font-bold mb-3">Health Service Provider</p>
           <p class="text-gray-600 text-sm">CEO SEBBI Hospital and one of the leading medical practitioners in the country.</p>
         </div>
       </a>
 
-      <a href="profile.html" class="bg-white rounded-xl overflow-hidden hover-lift border border-gray-100 shadow-sm block group">
-        <div class="h-24 bg-mosaRed relative">
-          <img src="mukasa.jpeg" alt="Mukasa" class="card-avatar object-cover">
-        </div>
-        <div class="pt-12 px-6 pb-6">
+      <a href="profile.html" class="directory-card group">
+        <img src="mukasa.jpeg" class="card-avatar">
+<div class="px-2 pb-2 text-center">
           <h3 class="font-bold text-lg">Maj.General Hudson Mukasa</h3>
           <p class="text-mosaGold text-xs font-bold mb-3">Security and Army </p>
           <p class="text-gray-600 text-sm">Accomplished alumnus making an impact in his field.</p>
         </div>
       </a>
 
-      <a href="profile.html" class="bg-white rounded-xl overflow-hidden hover-lift border border-gray-100 shadow-sm block group">
-        <div class="h-24 bg-mosaBlack relative">
-          <img src="bukenya.jpeg" alt="Bukenya" class="card-avatar object-cover">
-        </div>
-        <div class="pt-12 px-6 pb-6">
+      <a href="profile.html" class="directory-card group">
+        <img src="bukenya.jpeg" class="card-avatar">
+<div class="px-2 pb-2 text-center">
           <h3 class="font-bold text-lg">Bukenya Paul</h3>
           <p class="text-mosaGold text-xs font-bold mb-3">Media and public relations manager</p>
           <p class="text-gray-600 text-sm">Recognized for leadership and service in the Uganda electoral commission.</p>
         </div>
       </a>
 
-      <a href="profile.html" class="bg-white rounded-xl overflow-hidden hover-lift border border-gray-100 shadow-sm block group">
-        <div class="h-24 bg-mosaRed relative">
-          <img src="rabadaba.jpeg" alt="Rabadaba" class="card-avatar object-cover">
-        </div>
-        <div class="pt-12 px-6 pb-6">
+      <a href="profile.html" class="directory-card group">
+        <img src="rabadaba.jpeg" class="card-avatar">
+<div class="px-2 pb-2 text-center">
           <h3 class="font-bold text-lg">Seguya Faisal aka Rabadaba</h3>
           <p class="text-mosaGold text-xs font-bold mb-3">Musician</p>
           <p class="text-gray-600 text-sm">Popular Ugandan recording artist.</p>
         </div>
       </a>
 
-      <a href="profile.html" class="bg-white rounded-xl overflow-hidden hover-lift border border-gray-100 shadow-sm block group">
-        <div class="h-24 bg-mosaBlack relative">
-          <img src="joshua.jpeg" alt="Joshua" class="card-avatar object-cover">
-        </div>
-        <div class="pt-12 px-6 pb-6">
+      <a href="profile.html" class="directory-card group">
+        <img src="joshua.jpeg" class="card-avatar">
+<div class="px-2 pb-2 text-center">
           <h3 class="font-bold text-lg">Joshua Baraka</h3>
           <p class="text-mosaGold text-xs font-bold mb-3">Musician</p>
           <p class="text-gray-600 text-sm">Innovative musician with a passion and community supporter.</p>
         </div>
       </a>
 
-      <a href="profile.html" class="bg-white rounded-xl overflow-hidden hover-lift border border-gray-100 shadow-sm block group">
-        <div class="h-24 bg-mosaRed relative">
-          <img src="pallaso.jpeg" alt="Pallaso" class="card-avatar object-cover">
-        </div>
-        <div class="pt-12 px-6 pb-6">
+      <a href="profile.html" class="directory-card group">
+        <img src="pallaso.jpeg" class="card-avatar">
+<div class="px-2 pb-2 text-center">
           <h3 class="font-bold text-lg">Pius Mayanja aka Pallaso</h3>
           <p class="text-mosaGold text-xs font-bold mb-3">Musician</p>
           <p class="text-gray-600 text-sm">Award-winning Ugandan singer and performer.</p>
         </div>
       </a>
 
-      <a href="profile.html" class="bg-white rounded-xl overflow-hidden hover-lift border border-gray-100 shadow-sm block group">
-        <div class="h-24 bg-mosaBlack relative">
-          <img src="sylvester.jpeg" alt="Sylvester" class="card-avatar object-cover">
-        </div>
-        <div class="pt-12 px-6 pb-6">
+      <a href="profile.html" class="directory-card group">
+        <img src="sylvester.jpeg" class="card-avatar">
+<div class="px-2 pb-2 text-center">
           <h3 class="font-bold text-lg">His Grace Sylvester Kisitu</h3>
           <p class="text-mosaGold text-xs font-bold mb-3">Evangelist</p>
           <p class="text-gray-600 text-sm">The bishop of the orthodox Diocese of Jinja and Eastern Uganda.</p>
         </div>
       </a>
 
-      <a href="profile.html" class="bg-white rounded-xl overflow-hidden hover-lift border border-gray-100 shadow-sm block group">
-        <div class="h-24 bg-mosaRed relative">
-          <img src="paul.jpeg" alt="Paul" class="card-avatar object-cover">
-        </div>
-        <div class="pt-12 px-6 pb-6">
+      <a href="profile.html" class="directory-card group">
+        <img src="paul.jpeg" class="card-avatar">
+<div class="px-2 pb-2 text-center">
           <h3 class="font-bold text-lg">Bishop Eria Paul Luzinda Kizito</h3>
           <p class="text-mosaGold text-xs font-bold mb-3">Evangelist</p>
           <p class="text-gray-600 text-sm">3rd Bishop of Mukono 2002 to 2010.</p>
         </div>
       </a>
 
-      <a href="profile.html" class="bg-white rounded-xl overflow-hidden hover-lift border border-gray-100 shadow-sm block group">
-        <div class="h-24 bg-mosaBlack relative">
-          <img src="allan.jpeg" alt="Allan" class="card-avatar object-cover">
-        </div>
-        <div class="pt-12 px-6 pb-6">
+      <a href="profile.html" class="directory-card group">
+        <img src="allan.jpeg" class="card-avatar">
+<div class="px-2 pb-2 text-center">
           <h3 class="font-bold text-lg">Hon.Allan Ssewanyana</h3>
           <p class="text-mosaGold text-xs font-bold mb-3">Politician</p>
           <p class="text-gray-600 text-sm">Sports Journalist and Former member of parliament Makindye West.</p>
         </div>
       </a>
 
-      <a href="profile.html" class="bg-white rounded-xl overflow-hidden hover-lift border border-gray-100 shadow-sm block group">
-        <div class="h-24 bg-mosaRed relative">
-          <img src="lutaya.jpeg" alt="Lutaya" class="card-avatar object-cover">
-        </div>
-        <div class="pt-12 px-6 pb-6">
+      <a href="profile.html" class="directory-card group">
+        <img src="lutaya.jpeg" class="card-avatar">
+<div class="px-2 pb-2 text-center">
           <h3 class="font-bold text-lg">Ltd.Gen(rtd)Charles Lwanga Lutaaya</h3>
           <p class="text-mosaGold text-xs font-bold mb-3">Army Commander and Former Airforce Commander</p>
           <p class="text-gray-600 text-sm">Great Leadership and governance.</p>
         </div>
       </a>
 
-      <a href="profile.html" class="bg-white rounded-xl overflow-hidden hover-lift border border-gray-100 shadow-sm block group">
-        <div class="h-24 bg-mosaBlack relative">
-          <img src="mbabali.jpeg" alt="Mbabali" class="card-avatar object-cover">
-        </div>
-        <div class="pt-12 px-6 pb-6">
+      <a href="profile.html" class="directory-card group">
+        <img src="mbabali.jpeg" class="card-avatar">
+<div class="px-2 pb-2 text-center">
           <h3 class="font-bold text-lg">Hon.Muyanja Mbabali</h3>
           <p class="text-mosaGold text-xs font-bold mb-3">Politician</p>
           <p class="text-gray-600 text-sm">Former mp Bukoto county south.</p>
         </div>
       </a>
 
-      <a href="profile.html" class="bg-white rounded-xl overflow-hidden hover-lift border border-gray-100 shadow-sm block group">
-        <div class="h-24 bg-mosaRed relative">
-          <img src="senteza.jpeg" alt="Senteza" class="card-avatar object-cover">
-        </div>
-        <div class="pt-12 px-6 pb-6">
+      <a href="profile.html" class="directory-card group">
+        <img src="senteza.jpeg" class="card-avatar">
+<div class="px-2 pb-2 text-center">
           <h3 class="font-bold text-lg">Prof.Senteza Kajubi</h3>
           <p class="text-mosaGold text-xs font-bold mb-3">Educationer</p>
           <p class="text-gray-600 text-sm">Recognized for his deep desire in education and achievements as Former vice chancellor of makerere university and Nkumba University.</p>
         </div>
       </a>
 
-      <a href="profile.html" class="bg-white rounded-xl overflow-hidden hover-lift border border-gray-100 shadow-sm block group">
-        <div class="h-24 bg-mosaBlack relative">
-          <img src="kabuye.jpeg" alt="Kabuye" class="card-avatar object-cover">
-        </div>
-        <div class="pt-12 px-6 pb-6">
+      <a href="profile.html" class="directory-card group">
+        <img src="kabuye.jpeg" class="card-avatar">
+<div class="px-2 pb-2 text-center">
           <h3 class="font-bold text-lg">Hon.Kabuye Kyofatogabye</h3>
           <p class="text-mosaGold text-xs font-bold mb-3">Community Leader</p>
           <p class="text-gray-600 text-sm">Passionate about mentorship, social impact and Minister of state for kampala capital city and metropolitan affairs.</p>
         </div>
       </a>
 
-      <a href="profile.html" class="bg-white rounded-xl overflow-hidden hover-lift border border-gray-100 shadow-sm block group">
-        <div class="h-24 bg-mosaRed relative">
-          <img src="nelson.jpeg" alt="Nelson" class="card-avatar object-cover">
-        </div>
-        <div class="pt-12 px-6 pb-6">
+      <a href="profile.html" class="directory-card group">
+        <img src="nelson.jpeg" class="card-avatar">
+<div class="px-2 pb-2 text-center">
           <h3 class="font-bold text-lg">Owek.Nelson Kawalya</h3>
           <p class="text-mosaGold text-xs font-bold mb-3">Leader and Humanitrian</p>
           <p class="text-gray-600 text-sm">Experienced executive with a strong leadership record and former speaker of Buganda Kingdom's Lukiiko.</p>
