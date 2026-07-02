@@ -238,6 +238,7 @@
 <section class="py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
+        <!-- Header Row -->
         <div class="flex justify-between items-end mb-10 flex-wrap gap-4">
             <div>
                 <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-2 block">Excellence Across the Globe</span>
@@ -248,7 +249,7 @@
             </a>
         </div>
 
-        <!-- CAROUSEL SHELL -->
+        <!-- MAIN CAROUSEL CONTAINER -->
         <div class="relative rounded-2xl overflow-hidden shadow-2xl" id="mainCarousel"
              style="box-shadow: 0 25px 60px rgba(26,26,46,0.35);">
 
@@ -257,7 +258,7 @@
                 <div class="progress-bar" id="progressBar"></div>
             </div>
 
-            <!-- Arrows -->
+            <!-- Navigation Arrows -->
             <button class="carousel-btn" style="left:1.25rem;" id="prevBtn" aria-label="Previous slide">
                 <i class="fas fa-chevron-left"></i>
             </button>
@@ -265,11 +266,12 @@
                 <i class="fas fa-chevron-right"></i>
             </button>
 
-            <!-- Track Container Wrapper -->
+            <!-- Overflow Hidden Window -->
             <div style="overflow:hidden;">
+                <!-- CAROUSEL TRACK (All 5 slides must live inside here) -->
                 <div class="carousel-track" id="carouselTrack">
 
-                    <!-- ══ SLIDE 1 — Dr. Mulwana James ══ -->
+                    <!-- Slide 1 — Dr. Mulwana James -->
                     <div class="relative carousel-slide" id="slide-0">
                         <div class="slide-img-wrap h-[500px] w-full">
                             <img src="mulwana.jpeg"
@@ -293,7 +295,7 @@
                         </div>
                     </div>
 
-                    <!-- ══ SLIDE 2 — Hon. Steven Kavuma ══ -->
+                    <!-- Slide 2 — Hon. Steven Kavuma -->
                     <div class="relative carousel-slide" id="slide-1">
                         <div class="slide-img-wrap h-[500px] w-full">
                             <img src="steven.png"
@@ -317,7 +319,7 @@
                         </div>
                     </div>
 
-                    <!-- ══ SLIDE 3 — Joseph Mayanja ══ -->
+                    <!-- Slide 3 — Joseph Mayanja -->
                     <div class="relative carousel-slide" id="slide-2">
                         <div class="slide-img-wrap h-[500px] w-full">
                             <img src="chameleon.jpeg"
@@ -341,7 +343,7 @@
                         </div>
                     </div>
 
-                    <!-- ══ SLIDE 4 — Canon John Fred Kazibwe ══ -->
+                    <!-- Slide 4 — Canon John Fred Kazibwe -->
                     <div class="relative carousel-slide" id="slide-3">
                         <div class="slide-img-wrap h-[500px] w-full">
                             <img src="kazibwe.jpeg"
@@ -365,7 +367,7 @@
                         </div>
                     </div>
 
-                    <!-- ══ SLIDE 5 — Mr. Hamya Charles (Fixed Location inside Track) ══ -->
+                    <!-- Slide 5 — Mr. Hamya Charles (FIXED: Moved back inside the track) -->
                     <div class="relative carousel-slide" id="slide-4">
                         <div class="slide-img-wrap h-[500px] w-full">
                             <img src="awo.jpeg"
@@ -390,7 +392,7 @@
                     </div>
 
                 </div>
-            </div><!-- End Track Container Wrapper -->
+            </div> <!-- End Track Wrapper -->
 
             <!-- Navigation Indicator Dots -->
             <div class="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-20 items-center">
@@ -401,14 +403,14 @@
                 <button class="dot"        data-index="4" aria-label="Slide 5"></button>
             </div>
 
-            <!-- Counter Info -->
+            <!-- Slide Counter -->
             <div class="absolute top-4 right-4 bg-black/40 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-full z-20 tracking-widest">
                 <span id="slideCounter">1</span> <span class="opacity-50">/</span> 5
             </div>
 
-        </div><!-- End Carousel Shell -->
+        </div> <!-- END CAROUSEL CONTAINER -->
 
-        <!-- THUMBNAILS ROW (All 5 options grouped cleanly below) -->
+        <!-- THUMBNAILS ROW (FIXED: Now includes Mr. Hamya Charles cleanly as the 5th icon) -->
         <div class="flex gap-4 mt-5 justify-center flex-wrap">
             <div class="text-center">
                 <img src="mulwana.jpeg" style="object-position:center 10%;" onerror="this.src='mosa-logo.png';" alt="Dr. Mulwana James" class="thumb active" data-index="0">
