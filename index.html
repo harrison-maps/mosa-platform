@@ -248,13 +248,16 @@
             </a>
         </div>
 
+        <!-- CAROUSEL SHELL -->
         <div class="relative rounded-2xl overflow-hidden shadow-2xl" id="mainCarousel"
              style="box-shadow: 0 25px 60px rgba(26,26,46,0.35);">
 
+            <!-- Progress bar -->
             <div class="absolute top-0 left-0 right-0 z-30 h-0.5 bg-white/10">
                 <div class="progress-bar" id="progressBar"></div>
             </div>
 
+            <!-- Arrows -->
             <button class="carousel-btn" style="left:1.25rem;" id="prevBtn" aria-label="Previous slide">
                 <i class="fas fa-chevron-left"></i>
             </button>
@@ -262,9 +265,11 @@
                 <i class="fas fa-chevron-right"></i>
             </button>
 
+            <!-- Track Container Wrapper -->
             <div style="overflow:hidden;">
                 <div class="carousel-track" id="carouselTrack">
 
+                    <!-- ══ SLIDE 1 — Dr. Mulwana James ══ -->
                     <div class="relative carousel-slide" id="slide-0">
                         <div class="slide-img-wrap h-[500px] w-full">
                             <img src="mulwana.jpeg"
@@ -288,6 +293,7 @@
                         </div>
                     </div>
 
+                    <!-- ══ SLIDE 2 — Hon. Steven Kavuma ══ -->
                     <div class="relative carousel-slide" id="slide-1">
                         <div class="slide-img-wrap h-[500px] w-full">
                             <img src="steven.png"
@@ -311,6 +317,7 @@
                         </div>
                     </div>
 
+                    <!-- ══ SLIDE 3 — Joseph Mayanja ══ -->
                     <div class="relative carousel-slide" id="slide-2">
                         <div class="slide-img-wrap h-[500px] w-full">
                             <img src="chameleon.jpeg"
@@ -334,6 +341,7 @@
                         </div>
                     </div>
 
+                    <!-- ══ SLIDE 4 — Canon John Fred Kazibwe ══ -->
                     <div class="relative carousel-slide" id="slide-3">
                         <div class="slide-img-wrap h-[500px] w-full">
                             <img src="kazibwe.jpeg"
@@ -357,55 +365,8 @@
                         </div>
                     </div>
 
-                </div></div>
-
-            <div class="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-20 items-center">
-                <button class="dot active" data-index="0" aria-label="Slide 1"></button>
-                <button class="dot"        data-index="1" aria-label="Slide 2"></button>
-                <button class="dot"        data-index="2" aria-label="Slide 3"></button>
-                <button class="dot"        data-index="3" aria-label="Slide 4"></button>
-                <button class="dot"        data-index="4" aria-label="Slide 5"></button>
-            </div>
-
-            <div class="absolute top-4 right-4 bg-black/40 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-full z-20 tracking-widest">
-                <span id="slideCounter">1</span> <span class="opacity-50">/</span> 5
-            </div>
-
-        </div><div class="flex gap-4 mt-5 justify-center flex-wrap">
-            <div class="text-center">
-                <img src="mulwana.jpeg"
-                     style="object-position:center 10%;"
-                     onerror="this.src='mosa-logo.png';"
-                     alt="Dr. Mulwana James"
-                     class="thumb active" data-index="0">
-                <p class="text-xs text-gray-500 mt-1.5 font-semibold hidden sm:block">Dr. Mulwana</p>
-            </div>
-            <div class="text-center">
-                <img src="steven.png"
-                     style="object-position:center 55%;"
-                     onerror="this.src='mosa-logo.png';"
-                     alt="Hon. Steven Kavuma"
-                     class="thumb" data-index="1">
-                <p class="text-xs text-gray-500 mt-1.5 font-semibold hidden sm:block">Hon. Kavuma</p>
-            </div>
-            <div class="text-center">
-                <img src="chameleon.jpeg"
-                     style="object-position:center 5%;"
-                     onerror="this.src='mosa-logo.png';"
-                     alt="Joseph Mayanja"
-                     class="thumb" data-index="2">
-                <p class="text-xs text-gray-500 mt-1.5 font-semibold hidden sm:block">J. Mayanja</p>
-            </div>
-            <div class="text-center">
-                <img src="kazibwe.jpeg"
-                     style="object-position:center 12%;"
-                     onerror="this.src='mosa-logo.png';"
-                     alt="Canon John Fred Kazibwe"
-                     class="thumb" data-index="3">
-                <p class="text-xs text-gray-500 mt-1.5 font-semibold hidden sm:block">Canon Kazibwe</p>
-            </div>
-        </div>
-    <div class="relative carousel-slide" id="slide-4">
+                    <!-- ══ SLIDE 5 — Mr. Hamya Charles (Fixed Location inside Track) ══ -->
+                    <div class="relative carousel-slide" id="slide-4">
                         <div class="slide-img-wrap h-[500px] w-full">
                             <img src="awo.jpeg"
                                  style="object-position: center 12%;"
@@ -417,16 +378,59 @@
                         <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10 z-10 text-white slide-info">
                             <p class="text-2xl md:text-3xl font-bold tracking-wide mb-1 slide-name">Mr. Hamya Charles</p>
                             <p class="text-sm md:text-base font-medium text-gray-300 flex items-center gap-2 mb-1 slide-role">
-                                <i class="fas fa-chalkboard-teacher text-mosaRed"></i>Prominent Entreprenuer
+                                <i class="fas fa-briefcase text-mosaRed"></i>Prominent Entrepreneur
                             </p>
                             <p class="text-xs md:text-sm font-semibold text-amber-400 flex items-center gap-2 mb-4 slide-location">
                                 <i class="fas fa-map-marker-alt"></i>Kampala, Uganda
                             </p>
                             <p class="text-sm md:text-base text-gray-200 max-w-3xl leading-relaxed opacity-95 slide-bio">
-                              Business Executive and Former General Manager of MultiChoice Uganda. 
+                                Business Executive and Former General Manager of MultiChoice Uganda. 
                             </p>
                         </div>
                     </div>
+
+                </div>
+            </div><!-- End Track Container Wrapper -->
+
+            <!-- Navigation Indicator Dots -->
+            <div class="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-20 items-center">
+                <button class="dot active" data-index="0" aria-label="Slide 1"></button>
+                <button class="dot"        data-index="1" aria-label="Slide 2"></button>
+                <button class="dot"        data-index="2" aria-label="Slide 3"></button>
+                <button class="dot"        data-index="3" aria-label="Slide 4"></button>
+                <button class="dot"        data-index="4" aria-label="Slide 5"></button>
+            </div>
+
+            <!-- Counter Info -->
+            <div class="absolute top-4 right-4 bg-black/40 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-full z-20 tracking-widest">
+                <span id="slideCounter">1</span> <span class="opacity-50">/</span> 5
+            </div>
+
+        </div><!-- End Carousel Shell -->
+
+        <!-- THUMBNAILS ROW (All 5 options grouped cleanly below) -->
+        <div class="flex gap-4 mt-5 justify-center flex-wrap">
+            <div class="text-center">
+                <img src="mulwana.jpeg" style="object-position:center 10%;" onerror="this.src='mosa-logo.png';" alt="Dr. Mulwana James" class="thumb active" data-index="0">
+                <p class="text-xs text-gray-500 mt-1.5 font-semibold hidden sm:block">Dr. Mulwana</p>
+            </div>
+            <div class="text-center">
+                <img src="steven.png" style="object-position:center 55%;" onerror="this.src='mosa-logo.png';" alt="Hon. Steven Kavuma" class="thumb" data-index="1">
+                <p class="text-xs text-gray-500 mt-1.5 font-semibold hidden sm:block">Hon. Kavuma</p>
+            </div>
+            <div class="text-center">
+                <img src="chameleon.jpeg" style="object-position:center 5%;" onerror="this.src='mosa-logo.png';" alt="Joseph Mayanja" class="thumb" data-index="2">
+                <p class="text-xs text-gray-500 mt-1.5 font-semibold hidden sm:block">J. Mayanja</p>
+            </div>
+            <div class="text-center">
+                <img src="kazibwe.jpeg" style="object-position:center 12%;" onerror="this.src='mosa-logo.png';" alt="Canon John Fred Kazibwe" class="thumb" data-index="3">
+                <p class="text-xs text-gray-500 mt-1.5 font-semibold hidden sm:block">Canon Kazibwe</p>
+            </div>
+            <div class="text-center">
+                <img src="awo.jpeg" style="object-position:center 12%;" onerror="this.src='mosa-logo.png';" alt="Mr. Hamya Charles" class="thumb" data-index="4">
+                <p class="text-xs text-gray-500 mt-1.5 font-semibold hidden sm:block">Mr. Hamya</p>
+            </div>
+        </div>
 
     </div>
 </section>
