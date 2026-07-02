@@ -235,292 +235,178 @@
  <!-- ════════════════════════════════════════════
          FEATURED MENGONIANS — CAROUSEL
     ════════════════════════════════════════════════ -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
- 
-            <div class="flex justify-between items-end mb-10 flex-wrap gap-4">
-                <div>
-                    <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-2 block">Excellence Across the Globe</span>
-                    <h2 class="font-serif text-4xl font-black text-mosaBlack">Featured Mengonians</h2>
-                </div>
-                <a href="directory.html" class="text-mosaRed font-bold hover:underline flex items-center gap-2">
-                    View Full Directory <i class="fas fa-arrow-right text-sm"></i>
-                </a>
-            </div>
- 
-            <!-- CAROUSEL SHELL -->
-            <div class="relative rounded-2xl overflow-hidden shadow-2xl" id="mainCarousel"
-                 style="box-shadow: 0 25px 60px rgba(26,26,46,0.35);">
- 
-                <!-- Gold progress bar -->
-                <div class="absolute top-0 left-0 right-0 z-30 h-0.5 bg-white/10">
-                    <div class="progress-bar" id="progressBar"></div>
-                </div>
- 
-                <!-- Arrows -->
-                <button class="carousel-btn" style="left:1.25rem;" id="prevBtn" aria-label="Previous slide">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="carousel-btn" style="right:1.25rem;" id="nextBtn" aria-label="Next slide">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
- 
-                <!-- Track -->
-                <div style="overflow:hidden;">
-                    <div class="carousel-track" id="carouselTrack">
- 
-                        <!-- ══ SLIDE 1 — Dr. Mulwana James ══
-                             Portrait: face upper-centre
-                             object-position: center 10% keeps face in frame -->
-                        <div class="carousel-slide" id="slide-0">
-                            <div class="slide-img-wrap">
-                                <img src="mulwana.jpeg"
-                                     style="object-position: center 10%;"
-                                     onerror="this.src='mosa-logo.png';this.style.objectFit='contain';this.style.objectPosition='center center';"
-                                     alt="Dr. Mulwana James"
-                                     class="slide-img">
-                            </div>
-                            <div class="slide-overlay"></div>
-                            <div class="slide-info">
-                                <p class="slide-name">Dr. Mulwana James</p>
-                                <p class="slide-role"><i class="fas fa-briefcase mr-2"></i>Industrialist &amp; Businessman</p>
-                                <p class="slide-location"><i class="fas fa-map-marker-alt mr-2 text-mosaGold/70"></i>Kampala, Uganda</p>
-                                <p class="slide-bio">
-                                    One of Uganda's most celebrated industrialists and a proud product of Mengo Senior School, Dr. Mulwana James built a business empire spanning manufacturing, finance, and real estate leaving a lasting legacy on Uganda's economy.
-                                </p>
-                            </div>
-                        </div>
- 
-                        <!-- ══ SLIDE 2 — Hon. Steven Kavuma ══
-                             Formal portrait, very top-heavy
-                             object-position: center 8% — face fully visible -->
-                        <div class="carousel-slide" id="slide-1">
-                            <div class="slide-img-wrap">
-                                <img src="steven.png"
-                                     style="object-position: center 55%;"
-                                     onerror="this.src='mosa-logo.png';this.style.objectFit='contain';this.style.objectPosition='center center';"
-                                     alt="Hon. Steven Kavuma"
-                                     class="slide-img">
-                            </div>
-                            <div class="slide-overlay"></div>
-                            <div class="slide-info">
-                                <p class="slide-name">Hon. Steven Kavuma</p>
-                                <p class="slide-role"><i class="fas fa-gavel mr-2"></i>Former Deputy Chief Justice · Court of Appeal</p>
-                                <p class="slide-location"><i class="fas fa-map-marker-alt mr-2 text-mosaGold/70"></i>Kampala, Uganda</p>
-                                <p class="slide-bio">
-                                    A distinguished jurist and former Deputy Chief Justice of Uganda's Court of Appeal, Hon. Steven Kavuma has spent decades upholding justice with integrity embodying the leadership and character that Mengo Senior School has cultivated for generations.
-                                </p>
-                            </div>
-                        </div>
- 
-                        <!-- ══ SLIDE 3 — Joseph Mayanja ══
-                             Half-body in red suit, face at very top
-                             object-position: center 5% focuses on face -->
-                        <div class="carousel-slide" id="slide-2">
-                            <div class="slide-img-wrap">
-                                <img src="chameleon.jpeg"
-                                     style="object-position: center 5%;"
-                                     onerror="this.src='mosa-logo.png';this.style.objectFit='contain';this.style.objectPosition='center center';"
-                                     alt="Jose Chameleone — Joseph Mayanja"
-                                     class="slide-img">
-                            </div>
-                            <div class="slide-overlay"></div>
-                            <div class="slide-info">
-                                <p class="slide-name">Joseph Mayanja</p>
-                                <p class="slide-role"><i class="fas fa-music mr-2"></i>Musical Phenomenon — Jose Chameleone</p>
-                                <p class="slide-location"><i class="fas fa-map-marker-alt mr-2 text-mosaGold/70"></i>Kampala, Uganda</p>
-                                <p class="slide-bio">
-                                    Known across Uganda and East Africa as one of the most gifted musicians of his generation, Joseph Mayanja — Jose Chameleone — is a global ambassador of Ugandan music and a proud Mengonian whose artistry transcends borders.
-                                </p>
-                            </div>
-                        </div>
- 
-                        <!-- ══ SLIDE 4 — Canon John Fred Kazibwe ══
-                             Conference/standing setting
-                             object-position: center 12% keeps face in frame -->
-                        <div class="carousel-slide" id="slide-3">
-                            <div class="slide-img-wrap">
-                                <img src="kazibwe.jpeg"
-                                     style="object-position: center 12%;"
-                                     onerror="this.src='mosa-logo.png';this.style.objectFit='contain';this.style.objectPosition='center center';"
-                                     alt="Canon John Fred Kazibwe"
-                                     class="slide-img">
-                            </div>
-                            <div class="slide-overlay"></div>
-                            <div class="slide-info">
-                                <p class="slide-name">Canon John Fred Kazibwe</p>
-                                <p class="slide-role"><i class="fas fa-chalkboard-teacher mr-2"></i>Prominent Educator</p>
-                                <p class="slide-location"><i class="fas fa-map-marker-alt mr-2 text-mosaGold/70"></i>Budo, Uganda</p>
-                                <p class="slide-bio">
-                                    A pillar of Uganda's educational landscape, Canon John Fred Kazibwe has dedicated decades to shaping the minds of generations of young Ugandans. His commitment to excellence reflects the very values Mengo Senior School stands for.
-                                </p>
-                            </div>
-                        </div>
- 
-                    </div><!-- end track -->
-                </div>
- 
-                <!-- Dots — pill style -->
-                <div class="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-20 items-center">
-                    <button class="dot active" data-index="0" aria-label="Slide 1"></button>
-                    <button class="dot"        data-index="1" aria-label="Slide 2"></button>
-                    <button class="dot"        data-index="2" aria-label="Slide 3"></button>
-                    <button class="dot"        data-index="3" aria-label="Slide 4"></button>
-                </div>
- 
-                <!-- Counter -->
-                <div class="absolute top-4 right-4 bg-black/40 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-full z-20 tracking-widest">
-                    <span id="slideCounter">1</span> <span class="opacity-50">/</span> 4
-                </div>
- 
-            </div><!-- end carousel -->
- 
-            <!-- THUMBNAILS -->
-            <div class="flex gap-4 mt-5 justify-center flex-wrap">
-                <div class="text-center">
-                    <img src="mulwana.jpeg"
-                         style="object-position:center 10%;"
-                         onerror="this.src='mosa-logo.png';"
-                         alt="Dr. Mulwana James"
-                         class="thumb active" data-index="0">
-                    <p class="text-xs text-gray-500 mt-1.5 font-semibold hidden sm:block">Dr. Mulwana</p>
-                </div>
-                <div class="text-center">
-                    <img src="steven.png"
-                         style="object-position:center 55%;"
-                         onerror="this.src='mosa-logo.png';"
-                         alt="Hon. Steven Kavuma"
-                         class="thumb" data-index="1">
-                    <p class="text-xs text-gray-500 mt-1.5 font-semibold hidden sm:block">Hon. Kavuma</p>
-                </div>
-                <div class="text-center">
-                    <img src="chameleon.jpeg"
-                         style="object-position:center 5%;"
-                         onerror="this.src='mosa-logo.png';"
-                         alt="Joseph Mayanja"
-                         class="thumb" data-index="2">
-                    <p class="text-xs text-gray-500 mt-1.5 font-semibold hidden sm:block">J. Mayanja</p>
-                </div>
-                <div class="text-center">
-                    <img src="kazibwe.jpeg"
-                         style="object-position:center 12%;"
-                         onerror="this.src='mosa-logo.png';"
-                         alt="Canon John Fred Kazibwe"
-                         class="thumb" data-index="3">
-                    <p class="text-xs text-gray-500 mt-1.5 font-semibold hidden sm:block">Canon Kazibwe</p>
-                </div>
-            </div>
- 
-        </div>
-    </section>
- 
-    <!-- ════════════════════════════════════════════
-         UPCOMING EVENTS
-    ════════════════════════════════════════════════ -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-2 block">Don't Miss Out</span>
-                <h2 class="font-serif text-4xl text-mosaBlack font-bold">Upcoming Events</h2>
-                <div class="w-16 h-1 bg-mosaGold mx-auto mt-4"></div>
-            </div>
-            <div class="space-y-5">
-                <div class="flex flex-col md:flex-row bg-white border border-gray-200 rounded-xl overflow-hidden hover-lift shadow-sm">
-                    <div class="bg-mosaBlack text-mosaGold flex flex-col justify-center items-center w-full md:w-36 py-6 flex-shrink-0">
-                        <span class="text-sm font-black uppercase tracking-widest">Nov</span>
-                        <span class="font-serif text-5xl font-black leading-none">15</span>
-                        <span class="text-xs mt-1 opacity-60">2026</span>
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-center">
-                        <h3 class="text-xl font-bold text-mosaBlack mb-2">Annual Grand Alumni Dinner</h3>
-                        <p class="text-gray-500 text-sm mb-3 leading-relaxed">Join us for a night of networking, celebrating achievements, and raising funds for the new ICT block.</p>
-                        <div class="flex flex-wrap gap-4 text-xs text-gray-500 font-semibold">
-                            <span><i class="fas fa-clock mr-1 text-mosaRed"></i>6:00 PM EAT</span>
-                            <span><i class="fas fa-map-marker-alt mr-1 text-mosaRed"></i>Kampala Serena Hotel</span>
-                        </div>
-                    </div>
-                    <div class="p-5 flex items-center justify-center border-t md:border-t-0 md:border-l border-gray-100 flex-shrink-0">
-                        <a href="events.html" class="bg-mosaRed text-white px-6 py-3 rounded-lg font-bold hover:bg-red-900 transition whitespace-nowrap">RSVP Now</a>
-                    </div>
-                </div>
-                <div class="flex flex-col md:flex-row bg-white border border-gray-200 rounded-xl overflow-hidden hover-lift shadow-sm">
-                    <div class="bg-mosaBlack text-mosaGold flex flex-col justify-center items-center w-full md:w-36 py-6 flex-shrink-0">
-                        <span class="text-sm font-black uppercase tracking-widest">Dec</span>
-                        <span class="font-serif text-5xl font-black leading-none">02</span>
-                        <span class="text-xs mt-1 opacity-60">2026</span>
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-center">
-                        <h3 class="text-xl font-bold text-mosaBlack mb-2">Class of 2000 Silver Jubilee</h3>
-                        <p class="text-gray-500 text-sm mb-3 leading-relaxed">A special reunion for the millennium class. Reconnect with old friends and tour the modernized campus.</p>
-                        <div class="flex flex-wrap gap-4 text-xs text-gray-500 font-semibold">
-                            <span><i class="fas fa-clock mr-1 text-mosaRed"></i>10:00 AM EAT</span>
-                            <span><i class="fas fa-map-marker-alt mr-1 text-mosaRed"></i>Mengo Senior School Main Hall</span>
-                        </div>
-                    </div>
-                    <div class="p-5 flex items-center justify-center border-t md:border-t-0 md:border-l border-gray-100 flex-shrink-0">
-                        <a href="events.html" class="border-2 border-mosaBlack text-mosaBlack px-6 py-3 rounded-lg font-bold hover:bg-mosaBlack hover:text-white transition whitespace-nowrap">Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-8">
-                <a href="events.html" class="text-mosaRed font-bold hover:underline">View All Events →</a>
-            </div>
-        </div>
-    </section>
+<section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <!-- ════════════════════════════════════════════
-         UPCOMING EVENTS
-    ════════════════════════════════════════════════ -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-2 block">Don't Miss Out</span>
-                <h2 class="font-serif text-4xl text-mosaBlack font-bold">Upcoming Events</h2>
-                <div class="w-16 h-1 bg-mosaGold mx-auto mt-4"></div>
+        <div class="flex justify-between items-end mb-10 flex-wrap gap-4">
+            <div>
+                <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-2 block">Excellence Across the Globe</span>
+                <h2 class="font-serif text-4xl font-black text-mosaBlack">Featured Mengonians</h2>
             </div>
-            <div class="space-y-5">
-                <div class="flex flex-col md:flex-row bg-white border border-gray-200 rounded-xl overflow-hidden hover-lift shadow-sm">
-                    <div class="bg-mosaBlack text-mosaGold flex flex-col justify-center items-center w-full md:w-36 py-6 flex-shrink-0">
-                        <span class="text-sm font-black uppercase tracking-widest">Nov</span>
-                        <span class="font-serif text-5xl font-black leading-none">15</span>
-                        <span class="text-xs mt-1 opacity-60">2026</span>
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-center">
-                        <h3 class="text-xl font-bold text-mosaBlack mb-2">Annual Grand Alumni Dinner</h3>
-                        <p class="text-gray-500 text-sm mb-3 leading-relaxed">Join us for a night of networking, celebrating achievements, and raising funds for the new ICT block.</p>
-                        <div class="flex flex-wrap gap-4 text-xs text-gray-500 font-semibold">
-                            <span><i class="fas fa-clock mr-1 text-mosaRed"></i>6:00 PM EAT</span>
-                            <span><i class="fas fa-map-marker-alt mr-1 text-mosaRed"></i>Kampala Serena Hotel</span>
+            <a href="directory.html" class="text-mosaRed font-bold hover:underline flex items-center gap-2">
+                View Full Directory <i class="fas fa-arrow-right text-sm"></i>
+            </a>
+        </div>
+
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl" id="mainCarousel"
+             style="box-shadow: 0 25px 60px rgba(26,26,46,0.35);">
+
+            <div class="absolute top-0 left-0 right-0 z-30 h-0.5 bg-white/10">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <button class="carousel-btn" style="left:1.25rem;" id="prevBtn" aria-label="Previous slide">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-btn" style="right:1.25rem;" id="nextBtn" aria-label="Next slide">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <div style="overflow:hidden;">
+                <div class="carousel-track" id="carouselTrack">
+
+                    <div class="relative carousel-slide" id="slide-0">
+                        <div class="slide-img-wrap h-[500px] w-full">
+                            <img src="mulwana.jpeg"
+                                 style="object-position: center 10%;"
+                                 onerror="this.src='mosa-logo.png';this.style.objectFit='contain';this.style.objectPosition='center center';"
+                                 alt="Dr. Mulwana James"
+                                 class="w-full h-full object-cover slide-img">
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent slide-overlay"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10 z-10 text-white slide-info">
+                            <p class="text-2xl md:text-3xl font-bold tracking-wide mb-1 slide-name">Dr. Mulwana James</p>
+                            <p class="text-sm md:text-base font-medium text-gray-300 flex items-center gap-2 mb-1 slide-role">
+                                <i class="fas fa-briefcase text-mosaRed"></i>Industrialist &amp; Businessman
+                            </p>
+                            <p class="text-xs md:text-sm font-semibold text-amber-400 flex items-center gap-2 mb-4 slide-location">
+                                <i class="fas fa-map-marker-alt"></i>Kampala, Uganda
+                            </p>
+                            <p class="text-sm md:text-base text-gray-200 max-w-3xl leading-relaxed opacity-95 slide-bio">
+                                One of Uganda's most celebrated industrialists and a proud product of Mengo Senior School, Dr. Mulwana James built a business empire spanning manufacturing, finance, and real estate leaving a lasting legacy on Uganda's economy.
+                            </p>
                         </div>
                     </div>
-                    <div class="p-5 flex items-center justify-center border-t md:border-t-0 md:border-l border-gray-100 flex-shrink-0">
-                        <a href="events.html" class="bg-mosaRed text-white px-6 py-3 rounded-lg font-bold hover:bg-red-900 transition whitespace-nowrap">RSVP Now</a>
-                    </div>
-                </div>
-                <div class="flex flex-col md:flex-row bg-white border border-gray-200 rounded-xl overflow-hidden hover-lift shadow-sm">
-                    <div class="bg-mosaBlack text-mosaGold flex flex-col justify-center items-center w-full md:w-36 py-6 flex-shrink-0">
-                        <span class="text-sm font-black uppercase tracking-widest">Dec</span>
-                        <span class="font-serif text-5xl font-black leading-none">02</span>
-                        <span class="text-xs mt-1 opacity-60">2026</span>
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-center">
-                        <h3 class="text-xl font-bold text-mosaBlack mb-2">Class of 2000 Silver Jubilee</h3>
-                        <p class="text-gray-500 text-sm mb-3 leading-relaxed">A special reunion for the millennium class. Reconnect with old friends and tour the modernized campus.</p>
-                        <div class="flex flex-wrap gap-4 text-xs text-gray-500 font-semibold">
-                            <span><i class="fas fa-clock mr-1 text-mosaRed"></i>10:00 AM EAT</span>
-                            <span><i class="fas fa-map-marker-alt mr-1 text-mosaRed"></i>Mengo Senior School Main Hall</span>
+
+                    <div class="relative carousel-slide" id="slide-1">
+                        <div class="slide-img-wrap h-[500px] w-full">
+                            <img src="steven.png"
+                                 style="object-position: center 55%;"
+                                 onerror="this.src='mosa-logo.png';this.style.objectFit='contain';this.style.objectPosition='center center';"
+                                 alt="Hon. Steven Kavuma"
+                                 class="w-full h-full object-cover slide-img">
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent slide-overlay"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10 z-10 text-white slide-info">
+                            <p class="text-2xl md:text-3xl font-bold tracking-wide mb-1 slide-name">Hon. Steven Kavuma</p>
+                            <p class="text-sm md:text-base font-medium text-gray-300 flex items-center gap-2 mb-1 slide-role">
+                                <i class="fas fa-gavel text-mosaRed"></i>Former Deputy Chief Justice · Court of Appeal
+                            </p>
+                            <p class="text-xs md:text-sm font-semibold text-amber-400 flex items-center gap-2 mb-4 slide-location">
+                                <i class="fas fa-map-marker-alt"></i>Kampala, Uganda
+                            </p>
+                            <p class="text-sm md:text-base text-gray-200 max-w-3xl leading-relaxed opacity-95 slide-bio">
+                                A distinguished jurist and former Deputy Chief Justice of Uganda's Court of Appeal, Hon. Steven Kavuma has spent decades upholding justice with integrity embodying the leadership and character that Mengo Senior School has cultivated for generations.
+                            </p>
                         </div>
                     </div>
-                    <div class="p-5 flex items-center justify-center border-t md:border-t-0 md:border-l border-gray-100 flex-shrink-0">
-                        <a href="events.html" class="border-2 border-mosaBlack text-mosaBlack px-6 py-3 rounded-lg font-bold hover:bg-mosaBlack hover:text-white transition whitespace-nowrap">Details</a>
+
+                    <div class="relative carousel-slide" id="slide-2">
+                        <div class="slide-img-wrap h-[500px] w-full">
+                            <img src="chameleon.jpeg"
+                                 style="object-position: center 5%;"
+                                 onerror="this.src='mosa-logo.png';this.style.objectFit='contain';this.style.objectPosition='center center';"
+                                 alt="Jose Chameleone — Joseph Mayanja"
+                                 class="w-full h-full object-cover slide-img">
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent slide-overlay"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10 z-10 text-white slide-info">
+                            <p class="text-2xl md:text-3xl font-bold tracking-wide mb-1 slide-name">Joseph Mayanja</p>
+                            <p class="text-sm md:text-base font-medium text-gray-300 flex items-center gap-2 mb-1 slide-role">
+                                <i class="fas fa-music text-mosaRed"></i>Musical Phenomenon — Jose Chameleone
+                            </p>
+                            <p class="text-xs md:text-sm font-semibold text-amber-400 flex items-center gap-2 mb-4 slide-location">
+                                <i class="fas fa-map-marker-alt"></i>Kampala, Uganda
+                            </p>
+                            <p class="text-sm md:text-base text-gray-200 max-w-3xl leading-relaxed opacity-95 slide-bio">
+                                Known across Uganda and East Africa as one of the most gifted musicians of his generation, Joseph Mayanja — Jose Chameleone — is a global ambassador of Ugandan music and a proud Mengonian whose artistry transcends borders.
+                            </p>
+                        </div>
                     </div>
-                </div>
+
+                    <div class="relative carousel-slide" id="slide-3">
+                        <div class="slide-img-wrap h-[500px] w-full">
+                            <img src="kazibwe.jpeg"
+                                 style="object-position: center 12%;"
+                                 onerror="this.src='mosa-logo.png';this.style.objectFit='contain';this.style.objectPosition='center center';"
+                                 alt="Canon John Fred Kazibwe"
+                                 class="w-full h-full object-cover slide-img">
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent slide-overlay"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10 z-10 text-white slide-info">
+                            <p class="text-2xl md:text-3xl font-bold tracking-wide mb-1 slide-name">Canon John Fred Kazibwe</p>
+                            <p class="text-sm md:text-base font-medium text-gray-300 flex items-center gap-2 mb-1 slide-role">
+                                <i class="fas fa-chalkboard-teacher text-mosaRed"></i>Prominent Educator
+                            </p>
+                            <p class="text-xs md:text-sm font-semibold text-amber-400 flex items-center gap-2 mb-4 slide-location">
+                                <i class="fas fa-map-marker-alt"></i>Budo, Uganda
+                            </p>
+                            <p class="text-sm md:text-base text-gray-200 max-w-3xl leading-relaxed opacity-95 slide-bio">
+                                A pillar of Uganda's educational landscape, Canon John Fred Kazibwe has dedicated decades to shaping the minds of generations of young Ugandans. His commitment to excellence reflects the very values Mengo Senior School stands for.
+                            </p>
+                        </div>
+                    </div>
+
+                </div></div>
+
+            <div class="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-20 items-center">
+                <button class="dot active" data-index="0" aria-label="Slide 1"></button>
+                <button class="dot"        data-index="1" aria-label="Slide 2"></button>
+                <button class="dot"        data-index="2" aria-label="Slide 3"></button>
+                <button class="dot"        data-index="3" aria-label="Slide 4"></button>
             </div>
-            <div class="text-center mt-8">
-                <a href="events.html" class="text-mosaRed font-bold hover:underline">View All Events →</a>
+
+            <div class="absolute top-4 right-4 bg-black/40 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-full z-20 tracking-widest">
+                <span id="slideCounter">1</span> <span class="opacity-50">/</span> 4
+            </div>
+
+        </div><div class="flex gap-4 mt-5 justify-center flex-wrap">
+            <div class="text-center">
+                <img src="mulwana.jpeg"
+                     style="object-position:center 10%;"
+                     onerror="this.src='mosa-logo.png';"
+                     alt="Dr. Mulwana James"
+                     class="thumb active" data-index="0">
+                <p class="text-xs text-gray-500 mt-1.5 font-semibold hidden sm:block">Dr. Mulwana</p>
+            </div>
+            <div class="text-center">
+                <img src="steven.png"
+                     style="object-position:center 55%;"
+                     onerror="this.src='mosa-logo.png';"
+                     alt="Hon. Steven Kavuma"
+                     class="thumb" data-index="1">
+                <p class="text-xs text-gray-500 mt-1.5 font-semibold hidden sm:block">Hon. Kavuma</p>
+            </div>
+            <div class="text-center">
+                <img src="chameleon.jpeg"
+                     style="object-position:center 5%;"
+                     onerror="this.src='mosa-logo.png';"
+                     alt="Joseph Mayanja"
+                     class="thumb" data-index="2">
+                <p class="text-xs text-gray-500 mt-1.5 font-semibold hidden sm:block">J. Mayanja</p>
+            </div>
+            <div class="text-center">
+                <img src="kazibwe.jpeg"
+                     style="object-position:center 12%;"
+                     onerror="this.src='mosa-logo.png';"
+                     alt="Canon John Fred Kazibwe"
+                     class="thumb" data-index="3">
+                <p class="text-xs text-gray-500 mt-1.5 font-semibold hidden sm:block">Canon Kazibwe</p>
             </div>
         </div>
-    </section>
+
+    </div>
+</section>
 
     <!-- ════════════════════════════════════════════
          SUB-NETWORKS
