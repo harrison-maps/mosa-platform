@@ -177,29 +177,33 @@
 
     <div id="header-placeholder"></div>
 
-    <!-- ════════════════════════════════════════════
+  <!-- ════════════════════════════════════════════
          HERO
     ════════════════════════════════════════════════ -->
     <section class="relative bg-mosaBlack text-white overflow-hidden">
-        <div class="absolute inset-0 opacity-8 bg-cover bg-center" style="background-image:url('family.png');"></div>
-        <div class="absolute inset-0 bg-gradient-to-r from-mosaBlack via-mosaBlack/80 to-transparent"></div>
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-48 flex flex-col justify-center">
+        <!-- Background Image: Increased opacity and shifted focus to the right on larger screens -->
+        <div class="absolute inset-0 opacity-40 md:opacity-60 bg-cover bg-center md:bg-right transition-opacity duration-500" style="background-image:url('family.png');"></div>
+        
+        <!-- Gradient Overlay: Deep dark on the left for crisp text contrast, fading completely towards the right -->
+        <div class="absolute inset-0 bg-gradient-to-r from-mosaBlack via-mosaBlack/80 md:via-mosaBlack/65 to-transparent z-10"></div>
+        
+        <!-- Content Container -->
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-48 flex flex-col justify-center z-20">
             <span class="text-mosaGold font-bold tracking-widest uppercase mb-3 block text-sm">
                 <i class="fas fa-globe-africa mr-2"></i>Obunnamengo Bwa Lubeerera
             </span>
             <h1 class="font-serif text-5xl md:text-7xl font-bold mb-5 leading-tight">
                 Mengo Old Students<br><span class="text-mosaGold">Association</span>
             </h1>
-            <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl font-light leading-relaxed">
+            <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl font-light leading-relaxed drop-shadow-md">
                 Connecting Mengonians Around the World. Preserving our legacy, celebrating achievements, and building the future of Mengo Senior School.
             </p>
             <div class="flex flex-wrap gap-4">
                 <a href="register.html" class="bg-mosaGold text-mosaBlack font-bold px-8 py-4 rounded-lg hover:bg-yellow-400 transition shadow-xl text-lg">Join MOSA</a>
-                <a href="directory.html" class="bg-white/10 border border-white/30 text-white font-bold px-8 py-4 rounded-lg hover:bg-white/20 transition text-lg">Explore Directory</a>
+                <a href="directory.html" class="bg-white/10 border border-white/30 text-white font-bold px-8 py-4 rounded-lg hover:bg-white/20 transition text-lg backdrop-blur-sm">Explore Directory</a>
             </div>
         </div>
     </section>
-
     <!-- ════════════════════════════════════════════
          STATS
     ════════════════════════════════════════════════ -->
