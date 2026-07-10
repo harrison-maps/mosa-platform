@@ -181,18 +181,18 @@
          HERO
     ════════════════════════════════════════════════ -->
     <section class="relative bg-[#1a1a2e] text-white overflow-hidden w-full">
-        <!-- Background Image: No broken opacity classes. 100% crisp and sharp. -->
+        <!-- Background Image: 100% crisp and clear -->
         <div class="absolute inset-0 bg-cover bg-center md:bg-right" style="background-image:url('family.png');"></div>
         
-        <!-- Gradient Overlay: Rich dark color on the left to read text cleanly, fading completely to absolute transparency on the right -->
-        <div class="absolute inset-0 bg-gradient-to-r from-[#1a1a2e] via-[#1a1a2e]/80 md:via-[#1a1a2e]/60 to-transparent z-10"></div>
+        <!-- Optimized Gradient Overlay: Complete coverage behind text, but clears out rapidly before the 50% mark -->
+        <div class="absolute inset-0 bg-gradient-to-r from-[#1a1a2e] via-[#1a1a2e]/80 to-transparent via-30% md:via-40% z-10"></div>
         
         <!-- Content Container -->
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-48 flex flex-col justify-center z-20">
             <span class="text-mosaGold font-bold tracking-widest uppercase mb-3 block text-sm">
                 <i class="fas fa-globe-africa mr-2"></i>Obunnamengo Bwa Lubeerera
             </span>
-            <h1 class="font-serif text-5xl md:text-7xl font-bold mb-5 leading-tight drop-shadow-sm">
+            <h1 class="font-serif text-5xl md:text-7xl font-bold mb-5 leading-tight drop-shadow-md">
                 Mengo Old Students<br><span class="text-mosaGold">Association</span>
             </h1>
             <p class="text-xl md:text-2xl text-gray-200 mb-10 max-w-2xl font-light leading-relaxed drop-shadow-md">
