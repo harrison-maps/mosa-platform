@@ -35,7 +35,7 @@
         ═════════════════════════════════ */
         .carousel-track {
             display: flex;
-            transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
             will-change: transform;
         }
 
@@ -181,8 +181,8 @@
          HERO
     ════════════════════════════════════════════════ -->
     <section class="relative bg-[#1a1a2e] text-white overflow-hidden w-full">
-        <!-- Background Image: 100% crisp and clear -->
-        <div class="absolute inset-0 bg-cover bg-center md:bg-right" style="background-image:url('family.png');"></div>
+        <!-- Background Image: whole photo visible, no cropping -->
+        <div class="absolute inset-0 bg-contain bg-no-repeat bg-center md:bg-right" style="background-image:url('family.png');"></div>
         
         <!-- Optimized Gradient Overlay: Complete coverage behind text, but clears out rapidly before the 50% mark -->
         <div class="absolute inset-0 bg-gradient-to-r from-[#1a1a2e] via-[#1a1a2e]/80 to-transparent via-30% md:via-40% z-10"></div>
@@ -273,7 +273,7 @@
             <!-- Overflow Hidden Clipping Window -->
             <div style="overflow: hidden; width: 100%;">
                 <!-- CAROUSEL TRACK (Forces items into a single row) -->
-                <div class="carousel-track" id="carouselTrack" style="display: flex; flex-wrap: nowrap; transition: transform 0.5s ease-in-out;">
+                <div class="carousel-track" id="carouselTrack" style="display: flex; flex-wrap: nowrap; transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);">
 
                     <!-- Slide 1 — Dr. Mulwana James -->
                     <div class="relative carousel-slide" id="slide-0" style="flex: 0 0 100%; min-width: 100%;">
@@ -295,8 +295,8 @@
                         </div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent slide-overlay"></div>
                         <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10 z-10 text-white slide-info">
-                            <p class="text-2xl md:text-3xl font-bold tracking-wide mb-1 slide-name">Hon.Justice Steven kavuma </p>
-                            <p class="text-sm md:text-base font-medium text-gray-300 flex items-center gap-2 mb-1 slide-role"></i>Former Deputy Chief Justice · Court of Appeal</p>
+                            <p class="text-2xl md:text-3xl font-bold tracking-wide mb-1 slide-name">Hon. Justice Steven Kavuma</p>
+                            <p class="text-sm md:text-base font-medium text-gray-300 flex items-center gap-2 mb-1 slide-role"><i class="fas fa-gavel text-mosaRed"></i>Former Deputy Chief Justice · Court of Appeal</p>
                             <p class="text-sm md:text-base text-gray-200 max-w-3xl leading-relaxed opacity-95 slide-bio">A distinguished jurist and former Deputy Chief Justice of Uganda's Court of Appeal, Hon. Steven Kavuma has spent decades upholding justice with integrity embodying the leadership and character that Mengo Senior School has cultivated for generations.</p>
                         </div>
                     </div>
@@ -309,7 +309,7 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent slide-overlay"></div>
                         <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10 z-10 text-white slide-info">
                             <p class="text-2xl md:text-3xl font-bold tracking-wide mb-1 slide-name">Prof. Senteza Kajubi</p>
-                            <p class="text-sm md:text-base font-medium text-gray-300 flex items-center gap-2 mb-1 slide-role" Educator</p>
+                            <p class="text-sm md:text-base font-medium text-gray-300 flex items-center gap-2 mb-1 slide-role"><i class="fas fa-graduation-cap text-mosaRed"></i>Educator</p>
                             <p class="text-sm md:text-base text-gray-200 max-w-3xl leading-relaxed opacity-95 slide-bio">Former Vice Chancellor of Makerere University and Nkumba University and profound educator.</p>
                         </div>
                     </div>
@@ -322,39 +322,39 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent slide-overlay"></div>
                         <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10 z-10 text-white slide-info">
                             <p class="text-2xl md:text-3xl font-bold tracking-wide mb-1 slide-name">Canon John Fred Kazibwe</p>
-                            <p class="text-sm md:text-base font-medium text-gray-300 flex items-center gap-2 mb-1 slide-role" Prominent Educator</p>
+                            <p class="text-sm md:text-base font-medium text-gray-300 flex items-center gap-2 mb-1 slide-role"><i class="fas fa-graduation-cap text-mosaRed"></i>Prominent Educator</p>
                             <p class="text-sm md:text-base text-gray-200 max-w-3xl leading-relaxed opacity-95 slide-bio">A prominent Ugandan educator and lay canon. He served with distinction as the 14th headmaster of ⁠King's College Budo from November 2021 until his formal retirement in March 2026. Prior to this, he spent 10 years as headmaster of Mengo Senior School.</p>
                         </div>
                     </div>
 
-                    <!-- Slide 5 — owek.kawalya -->
+                    <!-- Slide 5 — Owek. Nelson Kawalya -->
                     <div class="relative carousel-slide" id="slide-4" style="flex: 0 0 100%; min-width: 100%;">
                         <div class="slide-img-wrap h-[500px] w-full">
                             <img src="nelson.jpeg" style="object-position: center 12%;" onerror="this.src='mosa-logo.png';" alt="Owek.Nelson Kawalya" class="w-full h-full object-cover slide-img">
                         </div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent slide-overlay"></div>
                         <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10 z-10 text-white slide-info">
-                            <p class="text-2xl md:text-3xl font-bold tracking-wide mb-1 slide-name">Owek.Nelson Kawalya</p>
-                            <p class="text-sm md:text-base font-medium text-gray-300 flex items-center gap-2 mb-1 slide-role"></i>Former Speaker of Lukiko of Buganda Kingdom </p>
-                            <p class="text-sm md:text-base text-gray-200 max-w-3xl leading-relaxed opacity-95 slide-bio">Former Speaker of Lukiko of Buganda Kingdom</p>
+                            <p class="text-2xl md:text-3xl font-bold tracking-wide mb-1 slide-name">Owek. Nelson Kawalya</p>
+                            <p class="text-sm md:text-base font-medium text-gray-300 flex items-center gap-2 mb-1 slide-role"><i class="fas fa-landmark text-mosaRed"></i>Former Speaker of Lukiko of Buganda Kingdom</p>
+                            <p class="text-sm md:text-base text-gray-200 max-w-3xl leading-relaxed opacity-95 slide-bio">Former Speaker of Lukiko of Buganda Kingdom.</p>
                         </div>
                     </div>
 
-                </div>
-            </div>
-                                <!-- Slide 6 —Dr.Samuel Majwega Musoke -->
-                    <div class="relative carousel-slide" id="slide-1" style="flex: 0 0 100%; min-width: 100%;">
+                    <!-- Slide 6 — Dr. Samuel Majwega Musoke -->
+                    <div class="relative carousel-slide" id="slide-5" style="flex: 0 0 100%; min-width: 100%;">
                         <div class="slide-img-wrap h-[500px] w-full">
                             <img src="samuel.jpeg" style="object-position: center 55%;" onerror="this.src='mosa-logo.png';" alt="Dr.Samuel Majwega Musoke" class="w-full h-full object-cover slide-img">
                         </div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent slide-overlay"></div>
                         <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10 z-10 text-white slide-info">
-                            <p class="text-2xl md:text-3xl font-bold tracking-wide mb-1 slide-name">Dr.Samuel Majwega Musoke</p>
-                            <p class="text-sm md:text-base font-medium text-gray-300 flex items-center gap-2 mb-1 slide-role"></i>Former Minister and owner of Avance International University </p>
-                            <p class="text-sm md:text-base text-gray-200 max-w-3xl leading-relaxed opacity-95 slide-bio">Chief Director of MK. Publishers LTd and former Minister </p>
+                            <p class="text-2xl md:text-3xl font-bold tracking-wide mb-1 slide-name">Dr. Samuel Majwega Musoke</p>
+                            <p class="text-sm md:text-base font-medium text-gray-300 flex items-center gap-2 mb-1 slide-role"><i class="fas fa-briefcase text-mosaRed"></i>Former Minister &amp; Owner of Avance International University</p>
+                            <p class="text-sm md:text-base text-gray-200 max-w-3xl leading-relaxed opacity-95 slide-bio">Chief Director of MK Publishers Ltd and former Minister.</p>
                         </div>
                     </div>
 
+                </div>
+            </div>
             <!-- End Track Window -->
 
             <!-- Center Navigation Pagination Dots -->
@@ -364,11 +364,12 @@
                 <button class="dot"        data-index="2" aria-label="Slide 3"></button>
                 <button class="dot"        data-index="3" aria-label="Slide 4"></button>
                 <button class="dot"        data-index="4" aria-label="Slide 5"></button>
+                <button class="dot"        data-index="5" aria-label="Slide 6"></button>
             </div>
 
             <!-- Total Counter Indicator -->
             <div class="absolute top-4 right-4 bg-black/40 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-full z-20 tracking-widest">
-                <span id="slideCounter">1</span> <span class="opacity-50">/</span> 5
+                <span id="slideCounter">1</span> <span class="opacity-50">/</span> 6
             </div>
 
         </div> <!-- END MAIN CAROUSEL BOX -->
@@ -392,8 +393,12 @@
                 <p class="text-xs text-gray-500 mt-1.5 font-semibold hidden sm:block">Canon Kazibwe</p>
             </div>
             <div class="text-center">
-                <img src="nelson.jpeg" style="object-position:center 12%; width:70px; height:70px;" onerror="this.src='mosa-logo.png';" alt="Mr. Hamya" class="thumb" data-index="4">
+                <img src="nelson.jpeg" style="object-position:center 12%; width:70px; height:70px;" onerror="this.src='mosa-logo.png';" alt="Owek. Nelson Kawalya" class="thumb" data-index="4">
                 <p class="text-xs text-gray-500 mt-1.5 font-semibold hidden sm:block">Owek. Nelson Kawalya</p>
+            </div>
+            <div class="text-center">
+                <img src="samuel.jpeg" style="object-position:center 55%; width:70px; height:70px;" onerror="this.src='mosa-logo.png';" alt="Dr. Samuel Musoke" class="thumb" data-index="5">
+                <p class="text-xs text-gray-500 mt-1.5 font-semibold hidden sm:block">Dr. Samuel Musoke</p>
             </div>
         </div>
 
@@ -438,8 +443,8 @@
     ════════════════════════════════════════════════ -->
     <script>
     (function () {
-        var TOTAL    = 5;
-        var DURATION = 5000;
+        var TOTAL    = 6;
+        var DURATION = 8000;
 
         var track    = document.getElementById('carouselTrack');
         var dots     = document.querySelectorAll('.dot');
