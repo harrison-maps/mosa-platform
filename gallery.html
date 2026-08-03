@@ -1,146 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MOSA Gallery | Life at MOSA</title>
-<script src="js/navigation.js"></script>
-<script src="js/main.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          mosaBlack: '#1a1a2e',
-          mosaRed:    '#8B0000',
-          mosaGold:  '#D4AF37',
-        },
-        fontFamily: {
-          serif: ['"Playfair Display"', 'Georgia', 'serif'],
-        }
-      }
-    }
-  }
-</script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+<script>tailwind.config={theme:{extend:{colors:{mosaInk:'#1c1410',mosaClay:'#c81e2a',mosaGold:'#FFD500',mosaCream:'#F6F1E7'},fontFamily:{serif:['"Fraunces"','"Playfair Display"','Georgia','serif'],sans:['"Inter"','sans-serif']}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="js/navigation.js"></script><script src="js/main.js"></script>
 <style>
-  html { scroll-behavior: smooth; }
-  body { background-color: #f9fafb; font-family: 'Inter', sans-serif; }
-
-  .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-  .hover-lift:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.12); }
-
-  .hero-bg {
-    background:
-      radial-gradient(ellipse at 80% 20%, rgba(139,0,0,0.3) 0%, transparent 55%),
-      radial-gradient(ellipse at 10% 90%, rgba(212,175,55,0.1) 0%, transparent 50%),
-      #1a1a2e;
-  }
-  .hero-bg::before {
-    content: '';
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-    background-size: 56px 56px;
-    pointer-events: none;
-  }
-
-  .stat-pill {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 999px; padding: 0.4rem 1rem;
-    font-size: 0.8rem; font-weight: 600; color: #fff;
-  }
-
-  /* Gallery tab pills — reused from projects.html proj-tab */
-  .proj-tab {
-    padding: 0.6rem 1.4rem; border-radius: 999px;
-    font-size: 0.85rem; font-weight: 600; cursor: pointer;
-    border: 2px solid transparent; transition: all 0.2s;
-    white-space: nowrap;
-  }
-  .proj-tab:hover { border-color: #8B0000; color: #8B0000; }
-  .proj-tab.active { background: #8B0000; color: #fff; border-color: #8B0000; }
-
-  /* Gallery grid photo tile */
-  .g-tile {
-    position: relative;
-    border-radius: 0.9rem;
-    overflow: hidden;
-    background: #e5e7eb;
-    aspect-ratio: 4 / 3;
-    cursor: pointer;
-  }
-  .g-tile img {
-    width: 100%; height: 100%; object-fit: cover;
-    transition: transform 0.4s ease;
-  }
-  .g-tile:hover img { transform: scale(1.08); }
-  .g-tile::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 40%);
-    opacity: 0; transition: opacity 0.3s ease;
-  }
-  .g-tile:hover::after { opacity: 1; }
-  .g-tile .g-caption {
-    position: absolute; left: 0.75rem; bottom: 0.6rem;
-    color: #fff; font-size: 0.7rem; font-weight: 600;
-    opacity: 0; transform: translateY(6px);
-    transition: all 0.3s ease;
-  }
-  .g-tile:hover .g-caption { opacity: 1; transform: translateY(0); }
-
-  /* Category section panel */
-  .gallery-panel { display: none; }
-  .gallery-panel.active { display: block; }
-
-  /* Lightbox */
-  #lightbox { display: none; }
-  #lightbox.open { display: flex; }
+html{scroll-behavior:smooth;} body{font-family:'Inter',sans-serif;background:#fbfaf7;color:#1c1410;}
+.hover-lift{transition:transform .3s,box-shadow .3s;} .hover-lift:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(28,20,16,.12);}
+.mengo-texture{position:relative;background:#1c1410;overflow:hidden;}
+.mengo-texture::before{content:'';position:absolute;inset:0;background-image:repeating-radial-gradient(circle at 0 0,transparent 0,transparent 26px,rgba(201,162,75,.045) 27px,transparent 28px),repeating-radial-gradient(circle at 40px 40px,transparent 0,transparent 26px,rgba(201,162,75,.045) 27px,transparent 28px);background-size:80px 80px;pointer-events:none;}
+.mengo-texture::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 75% 15%,rgba(122,31,31,.35) 0%,transparent 55%),radial-gradient(ellipse at 15% 95%,rgba(201,162,75,.10) 0%,transparent 50%);pointer-events:none;}
+.mengo-texture>*{position:relative;z-index:1;}
+.tagline-signature{font-family:'Fraunces','Playfair Display',serif;font-style:italic;font-weight:400;}
+.eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#FFD500;}
+.stat-pill{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:.4rem 1rem;font-size:.8rem;font-weight:600;color:#fff;}
+.proj-tab{padding:.6rem 1.4rem;border-radius:999px;font-size:.85rem;font-weight:600;cursor:pointer;border:2px solid transparent;transition:all .2s;white-space:nowrap;}
+.proj-tab:hover{border-color:#c81e2a;color:#c81e2a;} .proj-tab.active{background:#c81e2a;color:#fff;border-color:#c81e2a;}
+.g-tile{position:relative;border-radius:.9rem;overflow:hidden;background:#e5e7eb;aspect-ratio:4/3;cursor:pointer;}
+.g-tile img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;} .g-tile:hover img{transform:scale(1.08);}
+.g-tile::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55) 0%,transparent 40%);opacity:0;transition:opacity .3s;} .g-tile:hover::after{opacity:1;}
+.g-tile .g-caption{position:absolute;left:.75rem;bottom:.6rem;color:#fff;font-size:.7rem;font-weight:600;opacity:0;transform:translateY(6px);transition:all .3s;} .g-tile:hover .g-caption{opacity:1;transform:translateY(0);}
+.gallery-panel{display:none;} .gallery-panel.active{display:block;}
+#lightbox{display:none;} #lightbox.open{display:flex;}
 </style>
 </head>
 <body class="flex flex-col min-h-screen">
-<div id="header-placeholder"></div>
+<header class="sticky top-0 z-50 bg-mosaInk/95 backdrop-blur border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex items-center justify-between h-20">
+    <a href="index.html" class="flex items-center gap-3"><img src="mosa-logo.png" class="w-10 h-10 object-contain" onerror="this.style.display='none'"><div class="leading-tight"><span class="block font-serif font-bold text-white text-lg">MOSA</span><span class="block text-[10px] text-mosaGold tracking-widest uppercase">Est. 1895</span></div></a>
+    <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-white/75">
+      <a href="about.html" class="hover:text-mosaGold transition">About</a><a href="directory.html" class="hover:text-mosaGold transition">Directory</a><a href="events.html" class="hover:text-mosaGold transition">Events</a><a href="projects.html" class="hover:text-mosaGold transition">Projects</a><a href="news.html" class="hover:text-mosaGold transition">News</a><a href="gallery.html" class="text-mosaGold">Gallery</a><a href="donate.html" class="hover:text-mosaGold transition">Give Back</a>
+    </nav>
+    <div class="hidden lg:flex items-center gap-3"><a href="login.html" class="text-sm font-semibold text-white/75 hover:text-mosaGold px-3">Sign In</a><a href="register.html" class="bg-mosaGold text-mosaInk text-sm font-bold px-5 py-2.5 rounded-lg hover:bg-yellow-400 transition">Join MOSA</a></div>
+    <button id="mobileMenuBtn" class="lg:hidden text-white text-xl"><i class="fas fa-bars"></i></button>
+  </div></div>
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-white/10 bg-mosaInk"><nav class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1 text-sm font-semibold text-white/80">
+    <a href="about.html" class="py-2.5 hover:text-mosaGold">About</a><a href="directory.html" class="py-2.5 hover:text-mosaGold">Directory</a><a href="events.html" class="py-2.5 hover:text-mosaGold">Events</a><a href="projects.html" class="py-2.5 hover:text-mosaGold">Projects</a><a href="news.html" class="py-2.5 hover:text-mosaGold">News</a><a href="gallery.html" class="py-2.5 text-mosaGold">Gallery</a><a href="donate.html" class="py-2.5 hover:text-mosaGold">Give Back</a>
+    <div class="flex gap-3 pt-3 mt-2 border-t border-white/10"><a href="login.html" class="flex-1 text-center py-2.5 border border-white/20 rounded-lg">Sign In</a><a href="register.html" class="flex-1 text-center py-2.5 bg-mosaGold text-mosaInk rounded-lg font-bold">Join</a></div>
+  </nav></div>
+</header>
+<script>(function(){var b=document.getElementById('mobileMenuBtn'),m=document.getElementById('mobileMenu');if(b&&m)b.addEventListener('click',function(){m.classList.toggle('hidden');});})();</script>
 
 <main class="flex-grow">
-
-  <!-- ══════════════════════════════════════════════
-       HERO
-  ═══════════════════════════════════════════════════ -->
-  <section class="hero-bg relative min-h-[55vh] flex items-center overflow-hidden">
+  <section class="mengo-texture relative min-h-[50vh] flex items-center overflow-hidden text-white">
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20">
       <div class="max-w-3xl">
-        <div class="inline-flex items-center gap-2 bg-mosaGold/10 border border-mosaGold/30 text-mosaGold text-xs font-bold tracking-widest uppercase px-5 py-2 rounded-full mb-8">
-          <i class="fas fa-images"></i> Mengo Old Students Association
-        </div>
-        <h1 class="font-serif text-6xl md:text-7xl font-black text-white leading-none mb-5">
-          MOSA<br><span class="text-mosaGold">Gallery</span>
-        </h1>
-        <p class="text-gray-300 text-xl leading-relaxed max-w-xl mb-10">
-          Beyond the projects this is what community, brotherhood, and fellowship look like for Mengonians.
-        </p>
+        <p class="tagline-signature text-mosaGold text-xl mb-4">Life at MOSA</p>
+        <h1 class="font-serif text-6xl md:text-7xl font-black leading-none mb-5">MOSA Gallery</h1>
+        <p class="text-white/70 text-xl leading-relaxed max-w-xl mb-10">Beyond the projects &mdash; this is what community, brotherhood, and fellowship look like for Mengonians.</p>
         <div class="flex flex-wrap gap-3">
           <span class="stat-pill"><i class="fas fa-briefcase text-mosaGold"></i> Careers Day</span>
-          <span class="stat-pill"><i class="fas fa-church text-mosaRed"></i> Church Gatherings</span>
+          <span class="stat-pill"><i class="fas fa-church" style="color:#e8888c;"></i> Church Gatherings</span>
           <span class="stat-pill"><i class="fas fa-futbol text-green-400"></i> Sports</span>
           <span class="stat-pill"><i class="fas fa-hands-helping text-blue-400"></i> Outreaches</span>
         </div>
       </div>
     </div>
-    <div class="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-mosaRed opacity-5 translate-x-1/2 pointer-events-none"></div>
   </section>
 
-  <!-- ══════════════════════════════════════════════
-       TAB NAV
-  ═══════════════════════════════════════════════════ -->
-  <div class="bg-white border-b border-gray-100 sticky top-0 z-40 shadow-sm">
+  <div class="bg-white border-b border-black/5 sticky top-20 z-40 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center gap-3 overflow-x-auto py-3 scrollbar-hide" id="gallery-tabs">
+      <div class="flex items-center gap-3 overflow-x-auto py-3" id="gallery-tabs">
         <button class="proj-tab active" data-target="careers-day"><i class="fas fa-briefcase mr-2"></i>Careers Day</button>
         <button class="proj-tab" data-target="thanksgiving"><i class="fas fa-award mr-2"></i>Thanksgiving Ceremony</button>
         <button class="proj-tab" data-target="church"><i class="fas fa-church mr-2"></i>Church Get-Togethers</button>
@@ -151,166 +75,88 @@
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════════
-       GALLERY PANELS
-  ═══════════════════════════════════════════════════ -->
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-
-    <!-- Careers Day -->
     <div class="gallery-panel active" id="panel-careers-day">
-      <div class="mb-10">
-        <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-3 block">Mentorship</span>
-        <h2 class="font-serif text-4xl text-mosaBlack font-bold mb-3"><i class="fas fa-briefcase text-mosaGold mr-2"></i>Careers Day</h2>
-        <div class="w-16 h-1 bg-mosaGold mb-4"></div>
-        <p class="text-gray-600 max-w-2xl leading-relaxed">
-          MOSA members return to Mengo Senior School to speak directly to students about career paths, professional life, and the choices ahead of them a Mengonian mentoring the next Mengonian.
-        </p>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" data-gallery="careers-day">
-        <!-- Add photos: images/gallery/careers-day/careers-day-01.jpg, etc. -->
-        <div class="g-tile"><img src="careers-day-01.jpeg" alt="Careers Day talk"><span class="g-caption">Careers Day</span></div>
-        <div class="g-tile"><img src="careers-day-02.jpeg" alt="Careers Day talk"><span class="g-caption">Careers Day</span></div>
-        <div class="g-tile"><img src="careers-day-03.jpeg" alt="Careers Day talk"><span class="g-caption">Careers Day</span></div>
-        <div class="g-tile"><img src="careers-day-04.jpeg" alt="Careers Day talk"><span class="g-caption">Careers Day</span></div>
-        <div class="g-tile"><img src="careers-day-05.jpeg" alt="Careers Day talk"><span class="g-caption">Careers Day</span></div>
-        <div class="g-tile"><img src="careers-day-06.jpeg" alt="Careers Day talk"><span class="g-caption">Careers Day</span></div>
+      <div class="mb-10"><span class="eyebrow mb-3 block" style="color:#c81e2a;">Mentorship</span><h2 class="font-serif text-4xl text-mosaInk font-bold mb-3"><i class="fas fa-briefcase text-mosaGold mr-2"></i>Careers Day</h2><div class="w-16 h-[3px] bg-mosaGold mb-4"></div><p class="text-gray-600 max-w-2xl leading-relaxed">MOSA members return to Mengo Senior School to speak directly to students about career paths, professional life, and the choices ahead &mdash; a Mengonian mentoring the next Mengonian.</p></div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div class="g-tile"><img src="careers-day-01.jpeg" alt="Careers Day"><span class="g-caption">Careers Day</span></div>
+        <div class="g-tile"><img src="careers-day-02.jpeg" alt="Careers Day"><span class="g-caption">Careers Day</span></div>
+        <div class="g-tile"><img src="careers-day-03.jpeg" alt="Careers Day"><span class="g-caption">Careers Day</span></div>
+        <div class="g-tile"><img src="careers-day-04.jpeg" alt="Careers Day"><span class="g-caption">Careers Day</span></div>
+        <div class="g-tile"><img src="careers-day-05.jpeg" alt="Careers Day"><span class="g-caption">Careers Day</span></div>
+        <div class="g-tile"><img src="careers-day-06.jpeg" alt="Careers Day"><span class="g-caption">Careers Day</span></div>
       </div>
     </div>
-
-    <!-- Thanksgiving / Scholarship Beneficiaries -->
     <div class="gallery-panel" id="panel-thanksgiving">
-      <div class="mb-10">
-        <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-3 block">Celebrating Impact</span>
-        <h2 class="font-serif text-4xl text-mosaBlack font-bold mb-3"><i class="fas fa-award text-mosaGold mr-2"></i>Thanksgiving Ceremony</h2>
-        <div class="w-16 h-1 bg-mosaGold mb-4"></div>
-        <p class="text-gray-600 max-w-2xl leading-relaxed">
-          Where MOSA introduces each year's scholarship beneficiaries to the wider alumni family a moment of gratitude for the students, and proof for donors of what their giving makes possible.
-        </p>
+      <div class="mb-10"><span class="eyebrow mb-3 block" style="color:#c81e2a;">Celebrating Impact</span><h2 class="font-serif text-4xl text-mosaInk font-bold mb-3"><i class="fas fa-award text-mosaGold mr-2"></i>Thanksgiving Ceremony</h2><div class="w-16 h-[3px] bg-mosaGold mb-4"></div><p class="text-gray-600 max-w-2xl leading-relaxed">Where MOSA introduces each year's scholarship beneficiaries to the wider alumni family &mdash; gratitude for the students, and proof for donors of what their giving makes possible.</p></div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div class="g-tile"><img src="thanksgiving-01.jpeg" alt="Thanksgiving"><span class="g-caption">Thanksgiving Ceremony</span></div>
+        <div class="g-tile"><img src="thanksgiving-02.jpeg" alt="Thanksgiving"><span class="g-caption">Thanksgiving Ceremony</span></div>
       </div>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" data-gallery="thanksgiving">
-        <div class="g-tile"><img src="thanksgiving-01.jpeg" alt="Thanksgiving ceremony"><span class="g-caption">Thanksgiving Ceremony</span></div>
-        <div class="g-tile"><img src="thanksgiving-02.jpeg" alt="Thanksgiving ceremony"><span class="g-caption">Thanksgiving Ceremony</span></div>
-        </div>
     </div>
-
-    <!-- Church Get-Togethers -->
     <div class="gallery-panel" id="panel-church">
-      <div class="mb-10">
-        <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-3 block">Fellowship</span>
-        <h2 class="font-serif text-4xl text-mosaBlack font-bold mb-3"><i class="fas fa-church text-mosaGold mr-2"></i>Church Get-Togethers</h2>
-        <div class="w-16 h-1 bg-mosaGold mb-4"></div>
-        <p class="text-gray-600 max-w-2xl leading-relaxed">
-          Mengonians gathering in faith and fellowship worship services and church-based reunions that keep the MOSA family connected beyond business and school ties.
-        </p>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" data-gallery="church">
-        <div class="g-tile"><img src="church-01.jpeg" alt="Church gathering"><span class="g-caption">Church Get-Together</span></div>
-        <div class="g-tile"><img src="church-02.jpeg" alt="Church gathering"><span class="g-caption">Church Get-Together</span></div>
-        <div class="g-tile"><img src="church-03.jpeg" alt="Church gathering"><span class="g-caption">Church Get-Together</span></div>
-        <div class="g-tile"><img src="church-04.jpeg" alt="Church gathering"><span class="g-caption">Church Get-Together</span></div>
+      <div class="mb-10"><span class="eyebrow mb-3 block" style="color:#c81e2a;">Fellowship</span><h2 class="font-serif text-4xl text-mosaInk font-bold mb-3"><i class="fas fa-church text-mosaGold mr-2"></i>Church Get-Togethers</h2><div class="w-16 h-[3px] bg-mosaGold mb-4"></div><p class="text-gray-600 max-w-2xl leading-relaxed">Mengonians gathering in faith and fellowship &mdash; worship services and church-based reunions that keep the MOSA family connected beyond business and school ties.</p></div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div class="g-tile"><img src="church-01.jpeg" alt="Church"><span class="g-caption">Church Get-Together</span></div>
+        <div class="g-tile"><img src="church-02.jpeg" alt="Church"><span class="g-caption">Church Get-Together</span></div>
+        <div class="g-tile"><img src="church-03.jpeg" alt="Church"><span class="g-caption">Church Get-Together</span></div>
+        <div class="g-tile"><img src="church-04.jpeg" alt="Church"><span class="g-caption">Church Get-Together</span></div>
       </div>
     </div>
-
-    <!-- MOSA Sports -->
     <div class="gallery-panel" id="panel-sports">
-      <div class="mb-10">
-        <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-3 block">Team Spirit</span>
-        <h2 class="font-serif text-4xl text-mosaBlack font-bold mb-3"><i class="fas fa-futbol text-mosaGold mr-2"></i>MOSA Sports</h2>
-        <div class="w-16 h-1 bg-mosaGold mb-4"></div>
-        <p class="text-gray-600 max-w-2xl leading-relaxed">
-          Friendly competition and old-school camaraderie MOSA sports days bring Mengonians of every generation back onto the field together.
-        </p>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" data-gallery="sports">
-        <div class="g-tile"><img src="sports-01.jpeg" alt="MOSA sports day"><span class="g-caption">MOSA Sports</span></div>
-        <div class="g-tile"><img src="sports-02.jpeg" alt="MOSA sports day"><span class="g-caption">MOSA Sports</span></div>
-        <div class="g-tile"><img src="sports-03.jpeg" alt="MOSA sports day"><span class="g-caption">MOSA Sports</span></div>
-        <div class="g-tile"><img src="sports-04.jpeg" alt="MOSA sports day"><span class="g-caption">MOSA Sports</span></div>
+      <div class="mb-10"><span class="eyebrow mb-3 block" style="color:#c81e2a;">Team Spirit</span><h2 class="font-serif text-4xl text-mosaInk font-bold mb-3"><i class="fas fa-futbol text-mosaGold mr-2"></i>MOSA Sports</h2><div class="w-16 h-[3px] bg-mosaGold mb-4"></div><p class="text-gray-600 max-w-2xl leading-relaxed">Friendly competition and old-school camaraderie &mdash; MOSA sports days bring Mengonians of every generation back onto the field together.</p></div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div class="g-tile"><img src="sports-01.jpeg" alt="Sports"><span class="g-caption">MOSA Sports</span></div>
+        <div class="g-tile"><img src="sports-02.jpeg" alt="Sports"><span class="g-caption">MOSA Sports</span></div>
+        <div class="g-tile"><img src="sports-03.jpeg" alt="Sports"><span class="g-caption">MOSA Sports</span></div>
+        <div class="g-tile"><img src="sports-04.jpeg" alt="Sports"><span class="g-caption">MOSA Sports</span></div>
       </div>
     </div>
-
-    <!-- Outreaches -->
     <div class="gallery-panel" id="panel-outreaches">
-      <div class="mb-10">
-        <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-3 block">Giving Back</span>
-        <h2 class="font-serif text-4xl text-mosaBlack font-bold mb-3"><i class="fas fa-hands-helping text-mosaGold mr-2"></i>Outreaches</h2>
-        <div class="w-16 h-1 bg-mosaGold mb-4"></div>
-        <p class="text-gray-600 max-w-2xl leading-relaxed">
-          MOSA teams visiting homes and communities beyond Mengo Hill like the Wellspring Home Lukaaya outreach carrying support, supplies, and time to those who need it.
-        </p>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" data-gallery="outreaches">
-        <div class="g-tile"><img src="outreach-01.jpeg" alt="Community outreach"><span class="g-caption">Wellspring Home Outreach</span></div>
-        <div class="g-tile"><img src="outreach-02.jpeg" alt="Community outreach"><span class="g-caption">Wellspring Home Outreach</span></div>
-        <div class="g-tile"><img src="outreach-03.jpeg" alt="Community outreach"><span class="g-caption">Wellspring Home Outreach</span></div>
-        <div class="g-tile"><img src="outreach-04.jpeg" alt="Community outreach"><span class="g-caption">Wellspring Home Outreach</span></div>
+      <div class="mb-10"><span class="eyebrow mb-3 block" style="color:#c81e2a;">Giving Back</span><h2 class="font-serif text-4xl text-mosaInk font-bold mb-3"><i class="fas fa-hands-helping text-mosaGold mr-2"></i>Outreaches</h2><div class="w-16 h-[3px] bg-mosaGold mb-4"></div><p class="text-gray-600 max-w-2xl leading-relaxed">MOSA teams visiting homes and communities beyond Mengo Hill &mdash; like the Wellspring Home Lukaaya outreach &mdash; carrying support, supplies, and time to those who need it.</p></div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div class="g-tile"><img src="outreach-01.jpeg" alt="Outreach"><span class="g-caption">Wellspring Home Outreach</span></div>
+        <div class="g-tile"><img src="outreach-02.jpeg" alt="Outreach"><span class="g-caption">Wellspring Home Outreach</span></div>
+        <div class="g-tile"><img src="outreach-03.jpeg" alt="Outreach"><span class="g-caption">Wellspring Home Outreach</span></div>
+        <div class="g-tile"><img src="outreach-04.jpeg" alt="Outreach"><span class="g-caption">Wellspring Home Outreach</span></div>
       </div>
     </div>
-
-    <!-- In Memoriam -->
     <div class="gallery-panel" id="panel-memorials">
-      <div class="mb-10">
-        <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-3 block">Honoring Our Own</span>
-        <h2 class="font-serif text-4xl text-mosaBlack font-bold mb-3"><i class="fas fa-dove text-mosaGold mr-2"></i>In Memoriam</h2>
-        <div class="w-16 h-1 bg-mosaGold mb-4"></div>
-        <p class="text-gray-600 max-w-2xl leading-relaxed">
-          When a Mengonian passes on, MOSA stands with the family represented at funeral and farewell services by the president and executive members. We never forget our own.
-        </p>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" data-gallery="memorials">
-        <div class="g-tile"><img src="memorial-01.jpeg" alt="MOSA memorial service"><span class="g-caption">Farewell Service</span></div>
-        <div class="g-tile"><img src="memorial-02.jpeg" alt="MOSA memorial service"><span class="g-caption">Farewell Service</span></div>
-        <div class="g-tile"><img src="memorial-03.jpeg" alt="MOSA memorial service"><span class="g-caption">Farewell Service</span></div>
-        <div class="g-tile"><img src="memorial-04.jpeg" alt="MOSA memorial service"><span class="g-caption">Farewell Service</span></div>
+      <div class="mb-10"><span class="eyebrow mb-3 block" style="color:#c81e2a;">Honoring Our Own</span><h2 class="font-serif text-4xl text-mosaInk font-bold mb-3"><i class="fas fa-dove text-mosaGold mr-2"></i>In Memoriam</h2><div class="w-16 h-[3px] bg-mosaGold mb-4"></div><p class="text-gray-600 max-w-2xl leading-relaxed">When a Mengonian passes on, MOSA stands with the family &mdash; represented at funeral and farewell services by the president and executive members. We never forget our own.</p></div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div class="g-tile"><img src="memorial-01.jpeg" alt="Memorial"><span class="g-caption">Farewell Service</span></div>
+        <div class="g-tile"><img src="memorial-02.jpeg" alt="Memorial"><span class="g-caption">Farewell Service</span></div>
+        <div class="g-tile"><img src="memorial-03.jpeg" alt="Memorial"><span class="g-caption">Farewell Service</span></div>
+        <div class="g-tile"><img src="memorial-04.jpeg" alt="Memorial"><span class="g-caption">Farewell Service</span></div>
       </div>
     </div>
-
   </div>
-
 </main>
 
-<!-- Lightbox -->
 <div id="lightbox" class="fixed inset-0 bg-black/90 z-50 items-center justify-center p-6">
   <button id="lightbox-close" class="absolute top-6 right-6 text-white text-3xl hover:text-mosaGold transition"><i class="fas fa-times"></i></button>
   <img id="lightbox-img" src="" alt="" class="max-h-[85vh] max-w-[90vw] object-contain rounded-lg shadow-2xl">
 </div>
 
-<footer class="bg-mosaBlack text-gray-400 text-xs py-8 border-t border-white/5">
-  <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
-    <p>&copy; 2026 Mengo Old Students Association (MOSA). All Rights Reserved.</p>
+<footer class="mengo-texture text-white/70 pt-16 pb-8 border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-4 gap-10 mb-12">
+      <div><div class="flex items-center gap-3 mb-4"><img src="mosa-logo.png" class="w-10 h-10 object-contain" onerror="this.style.display='none'"><span class="font-serif font-bold text-white text-lg">MOSA</span></div><p class="tagline-signature text-mosaGold text-lg mb-3">Obunnamengo Bwa Lubeerera</p><p class="text-sm leading-relaxed">Connecting Mengonians around the world since 1895.</p></div>
+      <div><h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Explore</h4><ul class="space-y-2 text-sm"><li><a href="about.html" class="hover:text-mosaGold">About MOSA</a></li><li><a href="directory.html" class="hover:text-mosaGold">Alumni Directory</a></li><li><a href="events.html" class="hover:text-mosaGold">Events & Reunions</a></li><li><a href="news.html" class="hover:text-mosaGold">News & Updates</a></li><li><a href="gallery.html" class="hover:text-mosaGold">Gallery</a></li></ul></div>
+      <div><h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Network</h4><ul class="space-y-2 text-sm"><li><a href="mentorship.html" class="hover:text-mosaGold">Mentorship</a></li><li><a href="sacco.html" class="hover:text-mosaGold">MOSA SACCO</a></li><li><a href="league.html" class="hover:text-mosaGold">Elite League</a></li><li><a href="projects.html" class="hover:text-mosaGold">MOSA Projects</a></li></ul></div>
+      <div><h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Get Involved</h4><ul class="space-y-2 text-sm"><li><a href="register.html" class="hover:text-mosaGold">Join MOSA</a></li><li><a href="donate.html" class="hover:text-mosaGold">Give Back</a></li></ul></div>
+    </div>
+    <div class="pt-8 border-t border-white/10 text-center text-xs text-white/40"><p>&copy; 2026 Mengo Old Students Association (MOSA). All Rights Reserved.</p></div>
   </div>
 </footer>
 
 <script>
-  // Tab switching
-  const tabs = document.querySelectorAll('#gallery-tabs .proj-tab');
-  const panels = document.querySelectorAll('.gallery-panel');
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      panels.forEach(p => p.classList.remove('active'));
-      tab.classList.add('active');
-      document.getElementById('panel-' + tab.dataset.target).classList.add('active');
-    });
-  });
-
-  // Simple lightbox
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-  document.querySelectorAll('.g-tile img').forEach(img => {
-    img.addEventListener('click', () => {
-      lightboxImg.src = img.src;
-      lightboxImg.alt = img.alt;
-      lightbox.classList.add('open');
-    });
-  });
-  document.getElementById('lightbox-close').addEventListener('click', () => {
-    lightbox.classList.remove('open');
-  });
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) lightbox.classList.remove('open');
-  });
+  var tabs=document.querySelectorAll('#gallery-tabs .proj-tab'), panels=document.querySelectorAll('.gallery-panel');
+  tabs.forEach(function(tab){tab.addEventListener('click',function(){tabs.forEach(function(t){t.classList.remove('active');});panels.forEach(function(p){p.classList.remove('active');});tab.classList.add('active');document.getElementById('panel-'+tab.dataset.target).classList.add('active');});});
+  var lightbox=document.getElementById('lightbox'), lbImg=document.getElementById('lightbox-img');
+  document.querySelectorAll('.g-tile img').forEach(function(img){img.addEventListener('click',function(){lbImg.src=img.src;lbImg.alt=img.alt;lightbox.classList.add('open');});});
+  document.getElementById('lightbox-close').addEventListener('click',function(){lightbox.classList.remove('open');});
+  lightbox.addEventListener('click',function(e){if(e.target===lightbox)lightbox.classList.remove('open');});
 </script>
-
 </body>
 </html>
