@@ -4,270 +4,186 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About MOSA | Legacy & Mission</title>
-<script src="js/navigation.js"></script>
-<script src="js/main.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          mosaBlack: '#1a1a2e',
-          mosaRed:   '#8B0000',
-          mosaGold:  '#D4AF37',
-        },
-        fontFamily: {
-          serif: ['"Playfair Display"', 'Georgia', 'serif'],
-        }
-      }
-    }
-  }
+  tailwind.config = { theme: { extend: {
+    colors: { mosaInk:'#1c1410', mosaClay:'#c81e2a', mosaGold:'#FFD500', mosaCream:'#F6F1E7' },
+    fontFamily: { serif: ['"Fraunces"','"Playfair Display"','Georgia','serif'], sans:['"Inter"','sans-serif'] }
+  }}}
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="js/navigation.js"></script>
+<script src="js/main.js"></script>
 <style>
-  html { scroll-behavior: smooth; }
-  body { background-color: #f9fafb; font-family: 'Inter', sans-serif; }
-  .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-  .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.12); }
-  .avatar-initials {
-    width: 8rem; height: 8rem;
-    border-radius: 9999px;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem; font-weight: 700;
-    color: #D4AF37;
-    background-color: #1a1a2e;
-    border: 4px solid #fff;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    margin: 0 auto 1rem;
-    flex-shrink: 0;
-  }
-  /* Logo watermark background - header */
-  .watermark-bg {
-    position: relative;
-    overflow: hidden;
-  }
-  .watermark-bg::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url('mosa-logo.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 60%;
-    opacity: 0.05;
-    pointer-events: none;
-    z-index: 0;
-  }
-  .watermark-bg > * {
-    position: relative;
-    z-index: 1;
-  }
-  /* Section watermark overlay */
-  .section-with-watermark {
-    position: relative;
-  }
-  .section-with-watermark::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url('mosa-logo.png');
-    background-repeat: repeat;
-    background-size: 300px;
-    background-position: center;
-    opacity: 0.04;
-    pointer-events: none;
-  }
-  .section-with-watermark > * {
-    position: relative;
-    z-index: 1;
-  }
-  /* SACCO join form modal */
-  #saccoModal {
-    display: none;
-    position: fixed; inset: 0; z-index: 999;
-    background: rgba(0,0,0,0.6);
-    align-items: center; justify-content: center;
-    padding: 1rem;
-  }
-  #saccoModal.open { display: flex; }
+  html{scroll-behavior:smooth;} body{font-family:'Inter',sans-serif;background:#fbfaf7;color:#1c1410;}
+  .hover-lift{transition:transform .3s,box-shadow .3s;} .hover-lift:hover{transform:translateY(-5px);box-shadow:0 14px 32px rgba(28,20,16,.12);}
+  .mengo-texture{position:relative;background:#1c1410;overflow:hidden;}
+  .mengo-texture::before{content:'';position:absolute;inset:0;background-image:repeating-radial-gradient(circle at 0 0,transparent 0,transparent 26px,rgba(201,162,75,.045) 27px,transparent 28px),repeating-radial-gradient(circle at 40px 40px,transparent 0,transparent 26px,rgba(201,162,75,.045) 27px,transparent 28px);background-size:80px 80px;pointer-events:none;}
+  .mengo-texture::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 75% 15%,rgba(122,31,31,.35) 0%,transparent 55%),radial-gradient(ellipse at 15% 95%,rgba(201,162,75,.10) 0%,transparent 50%);pointer-events:none;}
+  .mengo-texture>*{position:relative;z-index:1;}
+  .tagline-signature{font-family:'Fraunces','Playfair Display',serif;font-style:italic;font-weight:400;letter-spacing:.01em;}
+  .eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#FFD500;}
 </style>
 </head>
 <body class="flex flex-col min-h-screen">
-<div id="header-placeholder"></div>
+
+<header class="sticky top-0 z-50 bg-mosaInk/95 backdrop-blur border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <a href="index.html" class="flex items-center gap-3"><img src="mosa-logo.png" class="w-10 h-10 object-contain" onerror="this.style.display='none'"><div class="leading-tight"><span class="block font-serif font-bold text-white text-lg">MOSA</span><span class="block text-[10px] text-mosaGold tracking-widest uppercase">Est. 1895</span></div></a>
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-white/75">
+        <a href="about.html" class="text-mosaGold">About</a>
+        <a href="directory.html" class="hover:text-mosaGold transition">Directory</a>
+        <a href="events.html" class="hover:text-mosaGold transition">Events</a>
+        <a href="projects.html" class="hover:text-mosaGold transition">Projects</a>
+        <a href="news.html" class="hover:text-mosaGold transition">News</a>
+        <a href="gallery.html" class="hover:text-mosaGold transition">Gallery</a>
+        <a href="donate.html" class="hover:text-mosaGold transition">Give Back</a>
+      </nav>
+      <div class="hidden lg:flex items-center gap-3">
+        <a href="login.html" class="text-sm font-semibold text-white/75 hover:text-mosaGold px-3">Sign In</a>
+        <a href="register.html" class="bg-mosaGold text-mosaInk text-sm font-bold px-5 py-2.5 rounded-lg hover:bg-yellow-400 transition">Join MOSA</a>
+      </div>
+      <button id="mobileMenuBtn" class="lg:hidden text-white text-xl"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-white/10 bg-mosaInk">
+    <nav class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1 text-sm font-semibold text-white/80">
+      <a href="about.html" class="py-2.5 text-mosaGold">About</a><a href="directory.html" class="py-2.5 hover:text-mosaGold">Directory</a><a href="events.html" class="py-2.5 hover:text-mosaGold">Events</a><a href="projects.html" class="py-2.5 hover:text-mosaGold">Projects</a><a href="news.html" class="py-2.5 hover:text-mosaGold">News</a><a href="gallery.html" class="py-2.5 hover:text-mosaGold">Gallery</a><a href="donate.html" class="py-2.5 hover:text-mosaGold">Give Back</a>
+      <div class="flex gap-3 pt-3 mt-2 border-t border-white/10"><a href="login.html" class="flex-1 text-center py-2.5 border border-white/20 rounded-lg">Sign In</a><a href="register.html" class="flex-1 text-center py-2.5 bg-mosaGold text-mosaInk rounded-lg font-bold">Join</a></div>
+    </nav>
+  </div>
+</header>
+<script>(function(){var b=document.getElementById('mobileMenuBtn'),m=document.getElementById('mobileMenu');if(b&&m)b.addEventListener('click',function(){m.classList.toggle('hidden');});})();</script>
 
 <main class="flex-grow">
 
-  <!-- PAGE HEADER WITH WATERMARK -->
-  <section class="watermark-bg relative bg-mosaBlack text-white py-24 overflow-hidden">
-    <div class="absolute inset-0 z-0 opacity-5">
-      <img src="mosa-logo.png" alt="" class="w-full h-full object-cover">
-    </div>
-    <div class="absolute inset-0 bg-gradient-to-t from-mosaBlack via-mosaBlack/80 to-transparent z-10"></div>
-    <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <span class="text-mosaGold font-bold tracking-widest uppercase text-sm mb-3 block">Our Heritage</span>
+  <!-- HERO -->
+  <section class="mengo-texture text-white py-24 text-center">
+    <div class="max-w-3xl mx-auto px-4">
+      <p class="tagline-signature text-mosaGold text-xl mb-4">Our Heritage</p>
       <h1 class="font-serif text-5xl md:text-6xl font-bold mb-6">About MOSA</h1>
-      <p class="text-xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed">
-        Preserving the legacy of Mengo Senior School and uniting generations of excellence since 1895.
-      </p>
+      <p class="text-xl text-white/70 font-light leading-relaxed">Preserving the legacy of Mengo Senior School and uniting generations of excellence since 1895.</p>
     </div>
   </section>
 
-  <!-- MISSION & VISION WITH WATERMARK -->
-  <section class="section-with-watermark py-20 bg-white">
+  <!-- MISSION & VISION -->
+  <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid md:grid-cols-2 gap-16 items-center">
         <div>
-          <h2 class="font-serif text-4xl text-mosaBlack font-bold mb-4">Our Mission</h2>
-          <div class="w-20 h-1 bg-mosaRed mb-8"></div>
+          <h2 class="font-serif text-4xl text-mosaInk font-bold mb-4">Our Mission</h2>
+          <div class="w-16 h-[3px] bg-mosaClay mb-8"></div>
           <p class="text-lg text-gray-600 leading-relaxed mb-8">
             The Mengo Old Students Association (MOSA) exists to foster a lifelong and mutually beneficial relationship between Mengo Senior School and its alumni. We are dedicated to promoting professional and social standards; supporting the school in its educational mission; and creating opportunities for alumni to reconnect, network, and contribute to society.
           </p>
-          <h2 class="font-serif text-3xl text-mosaBlack font-bold mb-4">Our Vision</h2>
-          <div class="w-16 h-1 bg-mosaGold mb-6"></div>
+          <h2 class="font-serif text-3xl text-mosaInk font-bold mb-4">Our Vision</h2>
+          <div class="w-16 h-[3px] bg-mosaGold mb-6"></div>
           <p class="text-lg text-gray-600 leading-relaxed">
             To be the most vibrant, impactful, and globally connected alumni association in Uganda, empowering our members and ensuring Mengo Senior School remains a premier institution of learning, character building, and leadership.
           </p>
         </div>
         <div class="relative">
-          <div class="absolute inset-0 bg-mosaGold rounded-2xl transform translate-x-4 translate-y-4 opacity-30"></div>
-          <div class="relative z-10 bg-mosaBlack rounded-2xl p-12 flex flex-col items-center justify-center text-center min-h-64 border-4 border-white shadow-xl">
+          <div class="absolute inset-0 bg-mosaGold rounded-2xl transform translate-x-4 translate-y-4 opacity-25"></div>
+          <div class="relative z-10 mengo-texture rounded-2xl p-12 flex flex-col items-center justify-center text-center min-h-64 border-4 border-white shadow-xl">
             <img src="mosa-logo.png" alt="MOSA Logo" class="w-32 h-32 object-contain mb-6">
             <p class="text-mosaGold font-serif text-2xl font-bold">Est. 1895</p>
-            <p class="text-gray-400 text-sm mt-2 tracking-widest uppercase"> Mengo Old Students Association </p>
+            <p class="tagline-signature text-white/60 text-base mt-2">Obunnamengo Bwa Lubeerera</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-<!-- EXECUTIVE COMMITTEE WITH WATERMARK -->
-<section class="section-with-watermark py-20 bg-gray-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-3 block">Steering the Association</span>
-    <h2 class="font-serif text-4xl text-mosaBlack font-bold mb-4">The Executive Committee</h2>
-    <div class="w-20 h-1 bg-mosaRed mx-auto mb-6"></div>
-    <p class="text-gray-600 max-w-2xl mx-auto mb-16 text-lg leading-relaxed">
-      Meet the dedicated individuals volunteering their time and expertise to steer the Mengo Old Students Association towards greater heights.
-    </p>
+  <!-- EXECUTIVE COMMITTEE -->
+  <section class="py-20 bg-[#f4efe4]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="eyebrow mb-3 block" style="color:#c81e2a;">Steering the Association</span>
+      <h2 class="font-serif text-4xl text-mosaInk font-bold mb-4">The Executive Committee</h2>
+      <div class="w-20 h-[3px] bg-mosaClay mx-auto mb-6"></div>
+      <p class="text-gray-600 max-w-2xl mx-auto mb-16 text-lg leading-relaxed">
+        Meet the dedicated individuals volunteering their time and expertise to steer the Mengo Old Students Association towards greater heights.
+      </p>
 
-    <!-- Executive Grid -->
-    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 items-stretch">
-
-      <!-- President -->
-      <div class="exec-card bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover-lift text-center transition-all duration-300 flex flex-col justify-between">
-        <div>
-          <img class="exec-photo w-28 h-28 mx-auto rounded-full object-cover object-top shadow-sm mb-4 bg-gray-100" 
-               src="mzee.jpeg" 
-               alt="Derrick Matovu"
-               onerror="this.src='mosa-logo.png';this.style.objectFit='contain';">
-          <h3 class="font-bold text-lg text-mosaBlack leading-snug">Derrick Matovu</h3>
-          <p class="text-mosaRed font-semibold text-xs mt-1 mb-2 uppercase tracking-wide">President</p>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 items-stretch">
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-black/5 hover-lift text-center flex flex-col justify-between">
+          <div><img class="w-28 h-28 mx-auto rounded-full object-cover object-top shadow-sm mb-4 bg-gray-100" src="mzee.jpeg" alt="Derrick Matovu" onerror="this.src='mosa-logo.png';this.style.objectFit='contain';">
+          <h3 class="font-bold text-lg text-mosaInk leading-snug">Derrick Matovu</h3>
+          <p class="font-semibold text-xs mt-1 mb-2 uppercase tracking-wide" style="color:#c81e2a;">President</p></div>
+          <div class="w-8 h-0.5 bg-mosaGold mx-auto mt-2"></div>
         </div>
-        <div class="w-8 h-0.5 bg-mosaGold mx-auto mt-2"></div>
-      </div>
-
-      <!-- Vice President -->
-      <div class="exec-card bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover-lift text-center transition-all duration-300 flex flex-col justify-between">
-        <div>
-          <img class="exec-photo w-28 h-28 mx-auto rounded-full object-cover object-top shadow-sm mb-4 bg-gray-100" 
-               src="mutagobya.jpeg" 
-               alt="Barbara Nankya Mutagobya"
-               onerror="this.src='mosa-logo.png';this.style.objectFit='contain';">
-          <h3 class="font-bold text-lg text-mosaBlack leading-snug">Barbara Nankya Mutagobya</h3>
-          <p class="text-mosaRed font-semibold text-xs mt-1 mb-2 uppercase tracking-wide">Vice President</p>
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-black/5 hover-lift text-center flex flex-col justify-between">
+          <div><img class="w-28 h-28 mx-auto rounded-full object-cover object-top shadow-sm mb-4 bg-gray-100" src="mutagobya.jpeg" alt="Barbara Nankya Mutagobya" onerror="this.src='mosa-logo.png';this.style.objectFit='contain';">
+          <h3 class="font-bold text-lg text-mosaInk leading-snug">Barbara Nankya Mutagobya</h3>
+          <p class="font-semibold text-xs mt-1 mb-2 uppercase tracking-wide" style="color:#c81e2a;">Vice President</p></div>
+          <div class="w-8 h-0.5 bg-mosaGold mx-auto mt-2"></div>
         </div>
-        <div class="w-8 h-0.5 bg-mosaGold mx-auto mt-2"></div>
-      </div>
-
-      <!-- General Secretary -->
-      <div class="exec-card bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover-lift text-center transition-all duration-300 flex flex-col justify-between">
-        <div>
-          <img class="exec-photo w-28 h-28 mx-auto rounded-full object-cover object-top shadow-sm mb-4 bg-gray-100" 
-               src="rinah.jpeg" 
-               alt="Ritah Nakubulwa"
-               onerror="this.src='mosa-logo.png';this.style.objectFit='contain';">
-          <h3 class="font-bold text-lg text-mosaBlack leading-snug">Ritah Nakubulwa</h3>
-          <p class="text-mosaRed font-semibold text-xs mt-1 mb-2 uppercase tracking-wide">General Secretary</p>
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-black/5 hover-lift text-center flex flex-col justify-between">
+          <div><img class="w-28 h-28 mx-auto rounded-full object-cover object-top shadow-sm mb-4 bg-gray-100" src="rinah.jpeg" alt="Ritah Nakubulwa" onerror="this.src='mosa-logo.png';this.style.objectFit='contain';">
+          <h3 class="font-bold text-lg text-mosaInk leading-snug">Ritah Nakubulwa</h3>
+          <p class="font-semibold text-xs mt-1 mb-2 uppercase tracking-wide" style="color:#c81e2a;">General Secretary</p></div>
+          <div class="w-8 h-0.5 bg-mosaGold mx-auto mt-2"></div>
         </div>
-        <div class="w-8 h-0.5 bg-mosaGold mx-auto mt-2"></div>
-      </div>
-
-      <!-- Treasurer -->
-      <div class="exec-card bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover-lift text-center transition-all duration-300 flex flex-col justify-between">
-        <div>
-          <img class="exec-photo w-28 h-28 mx-auto rounded-full object-cover object-top shadow-sm mb-4 bg-gray-100" 
-               src="gwok.jpeg" 
-               alt="Hellen Gwokyalya"
-               onerror="this.src='mosa-logo.png';this.style.objectFit='contain';">
-          <h3 class="font-bold text-lg text-mosaBlack leading-snug">Hellen Gwokyalya</h3>
-          <p class="text-mosaRed font-semibold text-xs mt-1 mb-2 uppercase tracking-wide">Treasurer</p>
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-black/5 hover-lift text-center flex flex-col justify-between">
+          <div><img class="w-28 h-28 mx-auto rounded-full object-cover object-top shadow-sm mb-4 bg-gray-100" src="gwok.jpeg" alt="Hellen Gwokyalya" onerror="this.src='mosa-logo.png';this.style.objectFit='contain';">
+          <h3 class="font-bold text-lg text-mosaInk leading-snug">Hellen Gwokyalya</h3>
+          <p class="font-semibold text-xs mt-1 mb-2 uppercase tracking-wide" style="color:#c81e2a;">Treasurer</p></div>
+          <div class="w-8 h-0.5 bg-mosaGold mx-auto mt-2"></div>
         </div>
-        <div class="w-8 h-0.5 bg-mosaGold mx-auto mt-2"></div>
-      </div>
-
-      <!-- Deputy Head Teacher -->
-      <div class="exec-card bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover-lift text-center transition-all duration-300 flex flex-col justify-between">
-        <div>
-          <img class="exec-photo w-28 h-28 mx-auto rounded-full object-cover object-top shadow-sm mb-4 bg-gray-100" 
-               src="nagero.jpeg" 
-               alt="Rebecca Najjero"
-               onerror="this.src='mosa-logo.png';this.style.objectFit='contain';">
-          <h3 class="font-bold text-lg text-mosaBlack leading-snug">Rebecca Najjero</h3>
-          <p class="text-mosaRed font-semibold text-xs mt-1 mb-2 uppercase tracking-wide">Dep. Head Teacher</p>
-          <p class="text-gray-400 text-[11px] leading-tight mt-1 px-1">Incharge of Old Students Liaison</p>
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-black/5 hover-lift text-center flex flex-col justify-between">
+          <div><img class="w-28 h-28 mx-auto rounded-full object-cover object-top shadow-sm mb-4 bg-gray-100" src="nagero.jpeg" alt="Rebecca Najjero" onerror="this.src='mosa-logo.png';this.style.objectFit='contain';">
+          <h3 class="font-bold text-lg text-mosaInk leading-snug">Rebecca Najjero</h3>
+          <p class="font-semibold text-xs mt-1 mb-2 uppercase tracking-wide" style="color:#c81e2a;">Dep. Head Teacher</p>
+          <p class="text-gray-400 text-[11px] leading-tight mt-1 px-1">Incharge of Old Students Liaison</p></div>
+          <div class="w-8 h-0.5 bg-mosaGold mx-auto mt-3"></div>
         </div>
-        <div class="w-8 h-0.5 bg-mosaGold mx-auto mt-3"></div>
       </div>
-
     </div>
-  </div>
-</section>
-  <!-- UNIVERSITY CHAPTERS WITH WATERMARK -->
-  <section id="chapters" class="watermark-bg py-20 bg-mosaBlack text-white">
+  </section>
+
+  <!-- UNIVERSITY CHAPTERS -->
+  <section id="chapters" class="mengo-texture py-20 text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-6">
         <div>
           <h2 class="font-serif text-4xl font-bold mb-4">University Chapters</h2>
-          <div class="w-20 h-1 bg-mosaGold mb-6"></div>
-          <p class="text-gray-400 max-w-xl text-lg leading-relaxed">
-            No matter where life takes you, there is always a Mengonian nearby. Connect with our university chapters around the country.
-          </p>
+          <div class="w-20 h-[3px] bg-mosaGold mb-6"></div>
+          <p class="text-white/60 max-w-xl text-lg leading-relaxed">No matter where life takes you, there is always a Mengonian nearby. Connect with our university chapters around the country.</p>
         </div>
-        <a href="register.html" class="bg-mosaGold text-mosaBlack font-bold px-8 py-3 rounded-lg hover:bg-yellow-400 transition shadow-lg whitespace-nowrap flex-shrink-0">
-          Join a Chapter
-        </a>
+        <a href="register.html" class="bg-mosaGold text-mosaInk font-bold px-8 py-3 rounded-lg hover:bg-yellow-400 transition shadow-lg whitespace-nowrap flex-shrink-0">Join a Chapter</a>
       </div>
       <div class="grid md:grid-cols-3 gap-6">
         <div class="bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition">
           <i class="fas fa-globe-europe text-3xl text-mosaGold mb-4 block"></i>
           <h3 class="text-xl font-bold mb-3">Makerere University Chapter</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">A strong network of students within Makerere University fostering business connections, relations and mentorship.</p>
+          <p class="text-white/50 text-sm leading-relaxed">A strong network of students within Makerere University fostering business connections, relations and mentorship.</p>
         </div>
         <div class="bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition">
           <i class="fas fa-globe-europe text-3xl text-mosaGold mb-4 block"></i>
           <h3 class="text-xl font-bold mb-3">Makerere University Business School Chapter</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">A strong network of students within MUBS fostering business connections, relations and mentorship.</p>
+          <p class="text-white/50 text-sm leading-relaxed">A strong network of students within MUBS fostering business connections, relations and mentorship.</p>
         </div>
         <div class="bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition">
-          <i class="fas fa-globe-americas text-3xl text-blue-400 mb-4 block"></i>
+          <i class="fas fa-globe-africa text-3xl text-mosaGold mb-4 block"></i>
           <h3 class="text-xl font-bold mb-3">Kyambogo Chapter</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">A strong network of students within Kyambogo University fostering business connections, relations and mentorship.</p>
+          <p class="text-white/50 text-sm leading-relaxed">A strong network of students within Kyambogo University fostering business connections, relations and mentorship.</p>
         </div>
       </div>
     </div>
   </section>
 </main>
 
-<div id="footer-placeholder"></div>
-
-<script>
-  function handleSaccoSubmit(e) {
-    e.preventDefault();
-    document.getElementById('saccoForm').classList.add('hidden');
-    document.getElementById('saccoSuccess').classList.remove('hidden');
-  }
-</script>
+<footer class="mengo-texture text-white/70 pt-16 pb-8 border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-4 gap-10 mb-12">
+      <div><div class="flex items-center gap-3 mb-4"><img src="mosa-logo.png" class="w-10 h-10 object-contain" onerror="this.style.display='none'"><span class="font-serif font-bold text-white text-lg">MOSA</span></div><p class="tagline-signature text-mosaGold text-lg mb-3">Obunnamengo Bwa Lubeerera</p><p class="text-sm leading-relaxed">Connecting Mengonians around the world since 1895.</p></div>
+      <div><h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Explore</h4><ul class="space-y-2 text-sm"><li><a href="about.html" class="hover:text-mosaGold">About MOSA</a></li><li><a href="directory.html" class="hover:text-mosaGold">Alumni Directory</a></li><li><a href="events.html" class="hover:text-mosaGold">Events & Reunions</a></li><li><a href="news.html" class="hover:text-mosaGold">News & Updates</a></li><li><a href="gallery.html" class="hover:text-mosaGold">Gallery</a></li></ul></div>
+      <div><h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Network</h4><ul class="space-y-2 text-sm"><li><a href="mentorship.html" class="hover:text-mosaGold">Mentorship</a></li><li><a href="sacco.html" class="hover:text-mosaGold">MOSA SACCO</a></li><li><a href="league.html" class="hover:text-mosaGold">Elite League</a></li><li><a href="jobs.html" class="hover:text-mosaGold">Jobs Board</a></li><li><a href="projects.html" class="hover:text-mosaGold">MOSA Projects</a></li></ul></div>
+      <div><h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Get Involved</h4><ul class="space-y-2 text-sm mb-5"><li><a href="register.html" class="hover:text-mosaGold">Join MOSA</a></li><li><a href="donate.html" class="hover:text-mosaGold">Give Back</a></li></ul></div>
+    </div>
+    <div class="pt-8 border-t border-white/10 text-center text-xs text-white/40"><p>&copy; 2026 Mengo Old Students Association (MOSA). All Rights Reserved.</p></div>
+  </div>
+</footer>
 </body>
 </html>
