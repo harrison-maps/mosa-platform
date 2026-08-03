@@ -1,663 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MOSA Elite League | Mengo Old Students Association</title>
-<script src="js/navigation.js"></script>
-<script src="js/main.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          mosaBlack: '#111111',
-          mosaGold:  '#FFD700',
-          mosaRed:   '#CC0000',
-          mosaWhite: '#FFFFFF',
-        },
-        fontFamily: {
-          serif: ['"Playfair Display"', 'serif'],
-          sans:  ['"Inter"', 'sans-serif'],
-        }
-      }
-    }
-  }
-</script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+<script>tailwind.config={theme:{extend:{colors:{mosaInk:'#1c1410',mosaClay:'#c81e2a',mosaGold:'#FFD500'},fontFamily:{serif:['"Fraunces"','"Playfair Display"','Georgia','serif'],sans:['"Inter"','sans-serif']}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="js/navigation.js"></script><script src="js/main.js"></script>
 <style>
-  html { scroll-behavior: smooth; }
-  body { background-color: #f9fafb; font-family: 'Inter', sans-serif; }
-  .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-  .hover-lift:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.13); }
-  .hero-overlay {
-    background: linear-gradient(135deg, rgba(204,0,0,0.85) 0%, rgba(17,17,17,0.92) 55%, rgba(17,17,17,0.97) 100%);
-  }
-  .team-badge {
-    width: 5rem; height: 5rem; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem; font-weight: 900; flex-shrink: 0;
-  }
-  .league-input:focus { outline: none; border-color: #CC0000; box-shadow: 0 0 0 3px rgba(204,0,0,0.12); }
-  .step-line::after {
-    content: ''; position: absolute; top: 1.75rem; left: 75%;
-    width: 50%; height: 2px;
-    background: linear-gradient(to right, #FFD700, rgba(255,215,0,0.15));
-  }
-  @media(max-width:768px){ .step-line::after { display:none; } }
-  @keyframes popIn {
-    0%   { transform: scale(0); opacity: 0; }
-    70%  { transform: scale(1.15); }
-    100% { transform: scale(1); opacity: 1; }
-  }
-  .pop-in { animation: popIn 0.5s ease forwards; }
-  @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-  .ticker-track { animation: ticker 24s linear infinite; }
-  .ticker-track:hover { animation-play-state: paused; }
-
-  /* ── Redirect banner ── */
-  .mel-banner {
-    background: linear-gradient(90deg, #CC0000 0%, #8B0000 100%);
-    border-bottom: 3px solid #FFD700;
-  }
+html{scroll-behavior:smooth;} body{font-family:'Inter',sans-serif;background:#fbfaf7;color:#1c1410;}
+.hover-lift{transition:transform .3s,box-shadow .3s;} .hover-lift:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(28,20,16,.13);}
+.mengo-texture{position:relative;background:#1c1410;overflow:hidden;}
+.mengo-texture::before{content:'';position:absolute;inset:0;background-image:repeating-radial-gradient(circle at 0 0,transparent 0,transparent 26px,rgba(201,162,75,.045) 27px,transparent 28px),repeating-radial-gradient(circle at 40px 40px,transparent 0,transparent 26px,rgba(201,162,75,.045) 27px,transparent 28px);background-size:80px 80px;pointer-events:none;}
+.mengo-texture::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 75% 15%,rgba(122,31,31,.35) 0%,transparent 55%),radial-gradient(ellipse at 15% 95%,rgba(201,162,75,.1) 0%,transparent 50%);pointer-events:none;}
+.mengo-texture>*{position:relative;z-index:1;}
+.tagline-signature{font-family:'Fraunces','Playfair Display',serif;font-style:italic;font-weight:400;}
+.eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#FFD500;}
+.team-badge{width:5rem;height:5rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:1.2rem;font-weight:900;flex-shrink:0;}
+.league-input:focus{outline:none;border-color:#c81e2a;box-shadow:0 0 0 3px rgba(122,31,31,.12);}
+.step-line::after{content:'';position:absolute;top:1.75rem;left:75%;width:50%;height:2px;background:linear-gradient(to right,#FFD500,rgba(201,162,75,.15));}
+@media(max-width:768px){.step-line::after{display:none;}}
+@keyframes popIn{0%{transform:scale(0);opacity:0;}70%{transform:scale(1.15);}100%{transform:scale(1);opacity:1;}}
+.pop-in{animation:popIn .5s ease forwards;}
+@keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.ticker-track{animation:ticker 24s linear infinite;} .ticker-track:hover{animation-play-state:paused;}
+.mel-banner{background:linear-gradient(90deg,#c81e2a 0%,#4a1212 100%);border-bottom:3px solid #FFD500;}
 </style>
 </head>
 <body class="flex flex-col min-h-screen">
-<div id="header-placeholder"></div>
+<header class="sticky top-0 z-50 bg-mosaInk/95 backdrop-blur border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex items-center justify-between h-20">
+    <a href="index.html" class="flex items-center gap-3"><img src="mosa-logo.png" class="w-10 h-10 object-contain" onerror="this.style.display='none'"><div class="leading-tight"><span class="block font-serif font-bold text-white text-lg">MOSA</span><span class="block text-[10px] text-mosaGold tracking-widest uppercase">Est. 1895</span></div></a>
+    <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-white/75">
+      <a href="about.html" class="hover:text-mosaGold transition">About</a><a href="directory.html" class="hover:text-mosaGold transition">Directory</a><a href="events.html" class="hover:text-mosaGold transition">Events</a><a href="projects.html" class="hover:text-mosaGold transition">Projects</a><a href="news.html" class="hover:text-mosaGold transition">News</a><a href="league.html" class="text-mosaGold">Elite League</a><a href="donate.html" class="hover:text-mosaGold transition">Give Back</a>
+    </nav>
+    <div class="hidden lg:flex items-center gap-3"><a href="login.html" class="text-sm font-semibold text-white/75 hover:text-mosaGold px-3">Sign In</a><a href="register.html" class="bg-mosaGold text-mosaInk text-sm font-bold px-5 py-2.5 rounded-lg hover:bg-yellow-400 transition">Join MOSA</a></div>
+    <button id="mobileMenuBtn" class="lg:hidden text-white text-xl"><i class="fas fa-bars"></i></button>
+  </div></div>
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-white/10 bg-mosaInk"><nav class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1 text-sm font-semibold text-white/80">
+    <a href="about.html" class="py-2.5 hover:text-mosaGold">About</a><a href="directory.html" class="py-2.5 hover:text-mosaGold">Directory</a><a href="events.html" class="py-2.5 hover:text-mosaGold">Events</a><a href="projects.html" class="py-2.5 hover:text-mosaGold">Projects</a><a href="news.html" class="py-2.5 hover:text-mosaGold">News</a><a href="league.html" class="py-2.5 text-mosaGold">Elite League</a><a href="donate.html" class="py-2.5 hover:text-mosaGold">Give Back</a>
+    <div class="flex gap-3 pt-3 mt-2 border-t border-white/10"><a href="login.html" class="flex-1 text-center py-2.5 border border-white/20 rounded-lg">Sign In</a><a href="register.html" class="flex-1 text-center py-2.5 bg-mosaGold text-mosaInk rounded-lg font-bold">Join</a></div>
+  </nav></div>
+</header>
+<script>(function(){var b=document.getElementById('mobileMenuBtn'),m=document.getElementById('mobileMenu');if(b&&m)b.addEventListener('click',function(){m.classList.toggle('hidden');});})();</script>
 
 <main class="flex-grow">
-
-  <!-- ══════════════════════════════════════════════
-       REDIRECT BANNER — links to official MEL site
-  ═══════════════════════════════════════════════════ -->
   <div class="mel-banner text-white py-3 px-4">
     <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
-      <div class="flex items-center gap-3">
-        <i class="fas fa-external-link-alt text-mosaGold"></i>
-        <span class="text-sm font-semibold">
-          The Mengo Elite League has its own official website with live results, fixtures & standings.
-        </span>
-      </div>
-      <a href="https://mengoeliteleague.org" target="_blank" rel="noopener noreferrer"
-         class="inline-flex items-center gap-2 bg-mosaGold text-black font-bold text-sm px-5 py-2 rounded-lg hover:bg-yellow-400 transition whitespace-nowrap">
-        Visit mengoeliteleague.org <i class="fas fa-arrow-right"></i>
-      </a>
+      <div class="flex items-center gap-3"><i class="fas fa-external-link-alt text-mosaGold"></i><span class="text-sm font-semibold">The Mengo Elite League has its own official website with live results, fixtures & standings.</span></div>
+      <a href="https://mengoeliteleague.org" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-mosaGold text-black font-bold text-sm px-5 py-2 rounded-lg hover:bg-yellow-400 transition whitespace-nowrap">Visit mengoeliteleague.org <i class="fas fa-arrow-right"></i></a>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════════
-       1. HERO
-  ═══════════════════════════════════════════════════ -->
-  <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-mosaBlack">
-    <div class="absolute inset-0 opacity-5"
-         style="background-image: repeating-linear-gradient(45deg, #FFD700 0, #FFD700 1px, transparent 0, transparent 50%); background-size: 20px 20px;"></div>
-    <div class="absolute inset-0 hero-overlay"></div>
-    <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-mosaRed opacity-10"></div>
-    <div class="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-mosaGold opacity-5"></div>
-
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden mengo-texture text-white">
     <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="inline-flex items-center gap-2 bg-mosaGold/10 border border-mosaGold/30 text-mosaGold text-xs font-bold tracking-widest uppercase px-5 py-2 rounded-full mb-8">
-        <i class="fas fa-futbol"></i> Mengo Old Students Association · Est. 1895
-      </div>
-
+      <div class="inline-flex items-center gap-2 bg-mosaGold/10 border border-mosaGold/30 text-mosaGold text-xs font-bold tracking-widest uppercase px-5 py-2 rounded-full mb-8"><i class="fas fa-futbol"></i> Mengo Old Students Association &middot; Est. 1895</div>
       <div class="flex items-center justify-center gap-6 mb-6">
-        <img src="https://mengoeliteleague.org/wp-content/uploads/2022/08/League_Logo.png"
-             alt="Mengo Elite League Logo"
-             class="w-24 h-24 object-contain"
-             onerror="this.style.display='none'">
-        <h1 class="font-serif text-6xl md:text-8xl font-black text-white leading-none text-left">
-          MOSA<br>
-          <span class="text-mosaGold">Elite</span>
-          <span class="text-mosaRed"> League</span>
-        </h1>
+        <img src="https://mengoeliteleague.org/wp-content/uploads/2022/08/League_Logo.png" alt="Mengo Elite League Logo" class="w-24 h-24 object-contain" onerror="this.style.display='none'">
+        <h1 class="font-serif text-6xl md:text-8xl font-black text-white leading-none text-left">MOSA<br><span class="text-mosaGold">Elite</span> <span style="color:#e8888c;">League</span></h1>
       </div>
-
-      <p class="text-xl md:text-2xl text-gray-300 font-light max-w-2xl mx-auto leading-relaxed mb-4">
-        Bringing together old students of Mengo Senior School through the beautiful game.
-      </p>
-      <p class="text-gray-500 text-sm max-w-xl mx-auto mb-12">
-        A social football league conceived in 2019 to strengthen lost ties through sports, networking, and community impact. Open to all Mengo old students.
-      </p>
-
+      <p class="text-xl md:text-2xl text-white/70 font-light max-w-2xl mx-auto leading-relaxed mb-4">Bringing together old students of Mengo Senior School through the beautiful game.</p>
+      <p class="text-white/40 text-sm max-w-xl mx-auto mb-12">A social football league conceived in 2019 to strengthen lost ties through sports, networking, and community impact. Open to all Mengo old students.</p>
       <div class="flex flex-wrap gap-4 justify-center">
-        <a href="#join" class="inline-flex items-center gap-2 bg-mosaRed text-white font-bold px-10 py-4 rounded-lg hover:bg-red-700 transition shadow-xl text-lg">
-          <i class="fas fa-futbol"></i> Join a Team
-        </a>
-        <a href="https://mengoeliteleague.org" target="_blank" rel="noopener noreferrer"
-           class="inline-flex items-center gap-2 bg-mosaGold text-black font-bold px-10 py-4 rounded-lg hover:bg-yellow-400 transition shadow-xl text-lg">
-          <i class="fas fa-external-link-alt"></i> Official MEL Website
-        </a>
-        <a href="#teams" class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white font-semibold px-8 py-4 rounded-lg hover:bg-white/20 transition text-lg">
-          <i class="fas fa-users"></i> View Teams
-        </a>
+        <a href="#join" class="inline-flex items-center gap-2 text-white font-bold px-10 py-4 rounded-lg hover:bg-red-700 transition shadow-xl text-lg" style="background:#c81e2a;"><i class="fas fa-futbol"></i> Join a Team</a>
+        <a href="https://mengoeliteleague.org" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-mosaGold text-black font-bold px-10 py-4 rounded-lg hover:bg-yellow-400 transition shadow-xl text-lg"><i class="fas fa-external-link-alt"></i> Official MEL Website</a>
+        <a href="#teams" class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white font-semibold px-8 py-4 rounded-lg hover:bg-white/20 transition text-lg"><i class="fas fa-users"></i> View Teams</a>
       </div>
-
-      <!-- Real stats from the site -->
       <div class="grid grid-cols-3 gap-6 mt-20 max-w-xl mx-auto">
-        <div class="text-center">
-          <div class="font-serif text-3xl font-black text-mosaGold">3</div>
-          <div class="text-gray-500 text-xs uppercase tracking-wider mt-1">Seasons Completed</div>
-        </div>
-        <div class="text-center border-x border-white/10">
-          <div class="font-serif text-3xl font-black text-mosaGold">12</div>
-          <div class="text-gray-500 text-xs uppercase tracking-wider mt-1">Teams in Season 3</div>
-        </div>
-        <div class="text-center">
-          <div class="font-serif text-3xl font-black text-mosaGold">2019</div>
-          <div class="text-gray-500 text-xs uppercase tracking-wider mt-1">Founded</div>
-        </div>
+        <div class="text-center"><div class="font-serif text-3xl font-black text-mosaGold">3</div><div class="text-white/40 text-xs uppercase tracking-wider mt-1">Seasons Completed</div></div>
+        <div class="text-center border-x border-white/10"><div class="font-serif text-3xl font-black text-mosaGold">12</div><div class="text-white/40 text-xs uppercase tracking-wider mt-1">Teams in Season 3</div></div>
+        <div class="text-center"><div class="font-serif text-3xl font-black text-mosaGold">2019</div><div class="text-white/40 text-xs uppercase tracking-wider mt-1">Founded</div></div>
       </div>
-    </div>
-
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-600 text-xs flex flex-col items-center gap-2">
-      <span class="uppercase tracking-widest">Scroll</span>
-      <i class="fas fa-chevron-down animate-bounce"></i>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════════
-       TICKER
-  ═══════════════════════════════════════════════════ -->
   <div class="bg-mosaGold py-3 overflow-hidden">
-    <div class="ticker-track flex items-center gap-12 whitespace-nowrap" style="width: max-content;">
+    <div class="ticker-track flex items-center gap-12 whitespace-nowrap" style="width:max-content;">
       <template id="tickerContent">
-        <span class="font-bold text-black text-sm tracking-wide uppercase"><i class="fas fa-trophy mr-2"></i>Season 3 Champions: Class 2018</span>
-        <span class="text-black/30 mx-4">✦</span>
-        <span class="font-bold text-black text-sm tracking-wide uppercase"><i class="fas fa-futbol mr-2"></i>Format: 7-a-side · 6 Gents + 1 Lady</span>
-        <span class="text-black/30 mx-4">✦</span>
-        <span class="font-bold text-black text-sm tracking-wide uppercase"><i class="fas fa-map-marker-alt mr-2"></i>Played at Mengo Senior School Pitch</span>
-        <span class="text-black/30 mx-4">✦</span>
-        <span class="font-bold text-black text-sm tracking-wide uppercase"><i class="fas fa-envelope mr-2"></i>Join: mengoleague@gmail.com</span>
-        <span class="text-black/30 mx-4">✦</span>
-        <span class="font-bold text-black text-sm tracking-wide uppercase"><i class="fas fa-globe mr-2"></i>Full site: mengoeliteleague.org</span>
-        <span class="text-black/30 mx-4">✦</span>
+        <span class="font-bold text-black text-sm tracking-wide uppercase"><i class="fas fa-trophy mr-2"></i>Season 3 Champions: Class 2018</span><span class="text-black/30 mx-4">&#10022;</span>
+        <span class="font-bold text-black text-sm tracking-wide uppercase"><i class="fas fa-futbol mr-2"></i>Format: 7-a-side &middot; 6 Gents + 1 Lady</span><span class="text-black/30 mx-4">&#10022;</span>
+        <span class="font-bold text-black text-sm tracking-wide uppercase"><i class="fas fa-map-marker-alt mr-2"></i>Played at Mengo Senior School Pitch</span><span class="text-black/30 mx-4">&#10022;</span>
+        <span class="font-bold text-black text-sm tracking-wide uppercase"><i class="fas fa-envelope mr-2"></i>Join: mengoleague@gmail.com</span><span class="text-black/30 mx-4">&#10022;</span>
+        <span class="font-bold text-black text-sm tracking-wide uppercase"><i class="fas fa-globe mr-2"></i>Full site: mengoeliteleague.org</span><span class="text-black/30 mx-4">&#10022;</span>
       </template>
-      <script>
-        const t = document.getElementById('tickerContent');
-        t.parentElement.innerHTML = t.innerHTML + t.innerHTML;
-      </script>
+      <script>var t=document.getElementById('tickerContent'); t.parentElement.innerHTML=t.innerHTML+t.innerHTML;</script>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════════
-       2. ABOUT THE LEAGUE (real content from site)
-  ═══════════════════════════════════════════════════ -->
   <section class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid md:grid-cols-2 gap-20 items-center">
         <div>
-          <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-3 block">Est. 2019 · Kampala, Uganda</span>
-          <h2 class="font-serif text-4xl md:text-5xl text-mosaBlack font-bold mb-4">What Is the Mengo Elite League?</h2>
-          <div class="w-20 h-1 bg-mosaRed mb-8"></div>
-          <p class="text-gray-600 leading-relaxed mb-5 text-lg">
-            The <strong class="text-mosaBlack">Mengo Elite League (MEL)</strong> is an idea conceived in 2019 by a group of Mengo old students with the goal of bringing together and strengthening lost ties through sports specifically football (soccer).
-          </p>
-          <p class="text-gray-600 leading-relaxed mb-5">
-            Its core aim is to uphold Mengo Senior School's values through sports, networking, and making a difference in people's lives through engagement in life-changing activities. We recognised that many had lost touch with colleagues due to busy schedules, and the league was born to bridge that gap.
-          </p>
-          <p class="text-gray-600 leading-relaxed mb-8">
-            The league uses a <strong class="text-mosaBlack">7-a-side format</strong> (6 gentlemen + 1 lady per team) played at <strong class="text-mosaBlack">Mengo Senior School's official pitch</strong>, with teams organised by graduation year, all the way through to group stages and a grand final.
-          </p>
-          <!-- Real social links from site -->
+          <span class="eyebrow mb-3 block" style="color:#c81e2a;">Est. 2019 &middot; Kampala, Uganda</span>
+          <h2 class="font-serif text-4xl md:text-5xl text-mosaInk font-bold mb-4">What Is the Mengo Elite League?</h2>
+          <div class="w-20 h-[3px] mb-8" style="background:#c81e2a;"></div>
+          <p class="text-gray-600 leading-relaxed mb-5 text-lg">The <strong class="text-mosaInk">Mengo Elite League (MEL)</strong> is an idea conceived in 2019 by a group of Mengo old students with the goal of bringing together and strengthening lost ties through sports &mdash; specifically football (soccer).</p>
+          <p class="text-gray-600 leading-relaxed mb-5">Its core aim is to uphold Mengo Senior School's values through sports, networking, and making a difference in people's lives through engagement in life-changing activities. We recognised that many had lost touch with colleagues due to busy schedules, and the league was born to bridge that gap.</p>
+          <p class="text-gray-600 leading-relaxed mb-8">The league uses a <strong class="text-mosaInk">7-a-side format</strong> (6 gentlemen + 1 lady per team) played at <strong class="text-mosaInk">Mengo Senior School's official pitch</strong>, with teams organised by graduation year, all the way through to group stages and a grand final.</p>
           <div class="flex gap-4">
-            <a href="https://www.facebook.com/MengoEliteLeague" target="_blank" rel="noopener noreferrer"
-               class="w-10 h-10 bg-mosaBlack rounded-full flex items-center justify-center text-white hover:bg-mosaRed transition">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://twitter.com/MengoElite" target="_blank" rel="noopener noreferrer"
-               class="w-10 h-10 bg-mosaBlack rounded-full flex items-center justify-center text-white hover:bg-mosaRed transition">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="https://www.instagram.com/mengoeliteleague_official/" target="_blank" rel="noopener noreferrer"
-               class="w-10 h-10 bg-mosaBlack rounded-full flex items-center justify-center text-white hover:bg-mosaRed transition">
-              <i class="fab fa-instagram"></i>
-            </a>
+            <a href="https://www.facebook.com/MengoEliteLeague" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-mosaInk rounded-full flex items-center justify-center text-white hover:bg-[#c81e2a] transition"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/MengoElite" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-mosaInk rounded-full flex items-center justify-center text-white hover:bg-[#c81e2a] transition"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/mengoeliteleague_official/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-mosaInk rounded-full flex items-center justify-center text-white hover:bg-[#c81e2a] transition"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
-
-        <!-- Objectives cards -->
         <div class="grid grid-cols-2 gap-5">
-          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 hover-lift">
-            <div class="w-12 h-12 bg-mosaBlack rounded-xl flex items-center justify-center mb-4">
-              <i class="fas fa-futbol text-mosaGold text-xl"></i>
-            </div>
-            <h4 class="font-bold text-mosaBlack mb-2">Sports & Fitness</h4>
-            <p class="text-gray-500 text-sm leading-relaxed">Improving health and fitness of old students through active participation in football.</p>
-          </div>
-          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 hover-lift">
-            <div class="w-12 h-12 bg-mosaBlack rounded-xl flex items-center justify-center mb-4">
-              <i class="fas fa-handshake text-mosaGold text-xl"></i>
-            </div>
-            <h4 class="font-bold text-mosaBlack mb-2">Networking</h4>
-            <p class="text-gray-500 text-sm leading-relaxed">Bridging the gap between old students across different graduation years through shared passion.</p>
-          </div>
-          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 hover-lift">
-            <div class="w-12 h-12 bg-mosaBlack rounded-xl flex items-center justify-center mb-4">
-              <i class="fas fa-female text-mosaGold text-xl"></i>
-            </div>
-            <h4 class="font-bold text-mosaBlack mb-2">Gender Inclusion</h4>
-            <p class="text-gray-500 text-sm leading-relaxed">Every team must include at least 1 lady ensuring equal opportunity for all Mengonians.</p>
-          </div>
-          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 hover-lift">
-            <div class="w-12 h-12 bg-mosaBlack rounded-xl flex items-center justify-center mb-4">
-              <i class="fas fa-school text-mosaGold text-xl"></i>
-            </div>
-            <h4 class="font-bold text-mosaBlack mb-2">Giving Back</h4>
-            <p class="text-gray-500 text-sm leading-relaxed">League funds contribute to community and school development through corporate social responsibility.</p>
-          </div>
+          <div class="bg-[#f4efe4] rounded-2xl p-6 border border-black/5 hover-lift"><div class="w-12 h-12 bg-mosaInk rounded-xl flex items-center justify-center mb-4"><i class="fas fa-futbol text-mosaGold text-xl"></i></div><h4 class="font-bold text-mosaInk mb-2">Sports & Fitness</h4><p class="text-gray-500 text-sm leading-relaxed">Improving health and fitness of old students through active participation in football.</p></div>
+          <div class="bg-[#f4efe4] rounded-2xl p-6 border border-black/5 hover-lift"><div class="w-12 h-12 bg-mosaInk rounded-xl flex items-center justify-center mb-4"><i class="fas fa-handshake text-mosaGold text-xl"></i></div><h4 class="font-bold text-mosaInk mb-2">Networking</h4><p class="text-gray-500 text-sm leading-relaxed">Bridging the gap between old students across different graduation years through shared passion.</p></div>
+          <div class="bg-[#f4efe4] rounded-2xl p-6 border border-black/5 hover-lift"><div class="w-12 h-12 bg-mosaInk rounded-xl flex items-center justify-center mb-4"><i class="fas fa-female text-mosaGold text-xl"></i></div><h4 class="font-bold text-mosaInk mb-2">Gender Inclusion</h4><p class="text-gray-500 text-sm leading-relaxed">Every team must include at least 1 lady &mdash; ensuring equal opportunity for all Mengonians.</p></div>
+          <div class="bg-[#f4efe4] rounded-2xl p-6 border border-black/5 hover-lift"><div class="w-12 h-12 bg-mosaInk rounded-xl flex items-center justify-center mb-4"><i class="fas fa-school text-mosaGold text-xl"></i></div><h4 class="font-bold text-mosaInk mb-2">Giving Back</h4><p class="text-gray-500 text-sm leading-relaxed">League funds contribute to community and school development through corporate social responsibility.</p></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════════
-       3. SEASON 3 STANDINGS (real data from site)
-  ═══════════════════════════════════════════════════ -->
-  <section id="teams" class="py-24 bg-mosaBlack text-white">
+  <section id="teams" class="mengo-texture py-24 text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-6">
-        <div>
-          <span class="text-mosaGold font-bold tracking-widest uppercase text-xs mb-3 block">Mengo Elite League Season 3</span>
-          <h2 class="font-serif text-4xl md:text-5xl font-bold mb-4">League Standings</h2>
-          <div class="w-20 h-1 bg-mosaRed mb-4"></div>
-          <p class="text-gray-400 max-w-lg leading-relaxed">Real standings from the Mengo Elite League. These are the actual teams competing your graduation year crew might be on here!</p>
-        </div>
-        <a href="https://mengoeliteleague.org/table/mengo-elite-league-season-3/" target="_blank" rel="noopener noreferrer"
-           class="bg-mosaGold text-black font-bold px-8 py-3 rounded-lg hover:bg-yellow-400 transition shadow-lg whitespace-nowrap flex-shrink-0 inline-flex items-center gap-2">
-          <i class="fas fa-external-link-alt"></i> Full Table on MEL Site
-        </a>
+        <div><span class="tagline-signature text-mosaGold text-xl mb-3 block">Mengo Elite League Season 3</span><h2 class="font-serif text-4xl md:text-5xl font-bold mb-4">League Standings</h2><div class="w-20 h-[3px] mb-4" style="background:#c81e2a;"></div><p class="text-white/50 max-w-lg leading-relaxed">Real standings from the Mengo Elite League. These are the actual teams competing &mdash; your graduation year crew might be on here!</p></div>
+        <a href="https://mengoeliteleague.org/table/mengo-elite-league-season-3/" target="_blank" rel="noopener noreferrer" class="bg-mosaGold text-black font-bold px-8 py-3 rounded-lg hover:bg-yellow-400 transition shadow-lg whitespace-nowrap flex-shrink-0 inline-flex items-center gap-2"><i class="fas fa-external-link-alt"></i> Full Table on MEL Site</a>
       </div>
-
       <div class="grid lg:grid-cols-2 gap-8">
-        <!-- Standings table -->
         <div class="bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
-          <div class="bg-mosaRed px-6 py-4 flex items-center gap-3">
-            <i class="fas fa-table text-mosaGold"></i>
-            <span class="font-bold uppercase tracking-wider text-sm">Season 3 Table</span>
-          </div>
+          <div class="px-6 py-4 flex items-center gap-3" style="background:#c81e2a;"><i class="fas fa-table text-mosaGold"></i><span class="font-bold uppercase tracking-wider text-sm">Season 3 Table</span></div>
           <table class="w-full text-sm">
-            <thead>
-              <tr class="border-b border-white/10 text-gray-500 text-xs uppercase tracking-wider">
-                <th class="px-4 py-3 text-left">Pos</th>
-                <th class="px-4 py-3 text-left">Club</th>
-                <th class="px-4 py-3 text-center">W</th>
-                <th class="px-4 py-3 text-center">D</th>
-                <th class="px-4 py-3 text-center">L</th>
-                <th class="px-4 py-3 text-center font-black text-mosaGold">Pts</th>
-              </tr>
-            </thead>
+            <thead><tr class="border-b border-white/10 text-white/40 text-xs uppercase tracking-wider"><th class="px-4 py-3 text-left">Pos</th><th class="px-4 py-3 text-left">Club</th><th class="px-4 py-3 text-center">W</th><th class="px-4 py-3 text-center">D</th><th class="px-4 py-3 text-center">L</th><th class="px-4 py-3 text-center font-black text-mosaGold">Pts</th></tr></thead>
             <tbody>
-              <!-- Real Season 2 data from site (Season 3 full table on official site) -->
-              <tr class="border-b border-white/5 bg-mosaGold/10">
-                <td class="px-4 py-3 font-black text-mosaGold">1</td>
-                <td class="px-4 py-3 font-bold flex items-center gap-2"><i class="fas fa-crown text-mosaGold text-xs"></i> Class 2018</td>
-                <td class="px-4 py-3 text-center">7</td><td class="px-4 py-3 text-center">3</td>
-                <td class="px-4 py-3 text-center">1</td><td class="px-4 py-3 text-center font-black text-mosaGold">24</td>
-              </tr>
-              <tr class="border-b border-white/5">
-                <td class="px-4 py-3 font-bold text-gray-300">2</td>
-                <td class="px-4 py-3 text-gray-200">Expendables</td>
-                <td class="px-4 py-3 text-center text-gray-400">7</td><td class="px-4 py-3 text-center text-gray-400">1</td>
-                <td class="px-4 py-3 text-center text-gray-400">3</td><td class="px-4 py-3 text-center font-bold text-gray-200">22</td>
-              </tr>
-              <tr class="border-b border-white/5">
-                <td class="px-4 py-3 font-bold text-gray-300">3</td>
-                <td class="px-4 py-3 text-gray-200">Kentutsi</td>
-                <td class="px-4 py-3 text-center text-gray-400">6</td><td class="px-4 py-3 text-center text-gray-400">1</td>
-                <td class="px-4 py-3 text-center text-gray-400">4</td><td class="px-4 py-3 text-center font-bold text-gray-200">19</td>
-              </tr>
-              <tr class="border-b border-white/5">
-                <td class="px-4 py-3 font-bold text-gray-300">4</td>
-                <td class="px-4 py-3 text-gray-200">Akabwai</td>
-                <td class="px-4 py-3 text-center text-gray-400">5</td><td class="px-4 py-3 text-center text-gray-400">2</td>
-                <td class="px-4 py-3 text-center text-gray-400">4</td><td class="px-4 py-3 text-center font-bold text-gray-200">17</td>
-              </tr>
-              <tr class="border-b border-white/5">
-                <td class="px-4 py-3 font-bold text-gray-300">5</td>
-                <td class="px-4 py-3 text-gray-200">Galacticos</td>
-                <td class="px-4 py-3 text-center text-gray-400">4</td><td class="px-4 py-3 text-center text-gray-400">4</td>
-                <td class="px-4 py-3 text-center text-gray-400">3</td><td class="px-4 py-3 text-center font-bold text-gray-200">16</td>
-              </tr>
-              <tr class="border-b border-white/5">
-                <td class="px-4 py-3 font-bold text-gray-300">6</td>
-                <td class="px-4 py-3 text-gray-200">Higi Haga</td>
-                <td class="px-4 py-3 text-center text-gray-400">—</td><td class="px-4 py-3 text-center text-gray-400">—</td>
-                <td class="px-4 py-3 text-center text-gray-400">—</td><td class="px-4 py-3 text-center font-bold text-gray-200">—</td>
-              </tr>
-              <tr class="border-b border-white/5">
-                <td class="px-4 py-3 font-bold text-gray-300">7</td>
-                <td class="px-4 py-3 text-gray-200">Opobo</td>
-                <td class="px-4 py-3 text-center text-gray-400">—</td><td class="px-4 py-3 text-center text-gray-400">—</td>
-                <td class="px-4 py-3 text-center text-gray-400">—</td><td class="px-4 py-3 text-center font-bold text-gray-200">—</td>
-              </tr>
-              <tr class="border-b border-white/5">
-                <td class="px-4 py-3 font-bold text-gray-300">8</td>
-                <td class="px-4 py-3 text-gray-200">One Touch FC</td>
-                <td class="px-4 py-3 text-center text-gray-400">—</td><td class="px-4 py-3 text-center text-gray-400">—</td>
-                <td class="px-4 py-3 text-center text-gray-400">—</td><td class="px-4 py-3 text-center font-bold text-gray-200">—</td>
-              </tr>
+              <tr class="border-b border-white/5 bg-mosaGold/10"><td class="px-4 py-3 font-black text-mosaGold">1</td><td class="px-4 py-3 font-bold flex items-center gap-2"><i class="fas fa-crown text-mosaGold text-xs"></i> Class 2018</td><td class="px-4 py-3 text-center">7</td><td class="px-4 py-3 text-center">3</td><td class="px-4 py-3 text-center">1</td><td class="px-4 py-3 text-center font-black text-mosaGold">24</td></tr>
+              <tr class="border-b border-white/5"><td class="px-4 py-3 font-bold text-white/60">2</td><td class="px-4 py-3 text-white/80">Expendables</td><td class="px-4 py-3 text-center text-white/40">7</td><td class="px-4 py-3 text-center text-white/40">1</td><td class="px-4 py-3 text-center text-white/40">3</td><td class="px-4 py-3 text-center font-bold text-white/80">22</td></tr>
+              <tr class="border-b border-white/5"><td class="px-4 py-3 font-bold text-white/60">3</td><td class="px-4 py-3 text-white/80">Kentutsi</td><td class="px-4 py-3 text-center text-white/40">6</td><td class="px-4 py-3 text-center text-white/40">1</td><td class="px-4 py-3 text-center text-white/40">4</td><td class="px-4 py-3 text-center font-bold text-white/80">19</td></tr>
+              <tr class="border-b border-white/5"><td class="px-4 py-3 font-bold text-white/60">4</td><td class="px-4 py-3 text-white/80">Akabwai</td><td class="px-4 py-3 text-center text-white/40">5</td><td class="px-4 py-3 text-center text-white/40">2</td><td class="px-4 py-3 text-center text-white/40">4</td><td class="px-4 py-3 text-center font-bold text-white/80">17</td></tr>
+              <tr class="border-b border-white/5"><td class="px-4 py-3 font-bold text-white/60">5</td><td class="px-4 py-3 text-white/80">Galacticos</td><td class="px-4 py-3 text-center text-white/40">4</td><td class="px-4 py-3 text-center text-white/40">4</td><td class="px-4 py-3 text-center text-white/40">3</td><td class="px-4 py-3 text-center font-bold text-white/80">16</td></tr>
+              <tr class="border-b border-white/5"><td class="px-4 py-3 font-bold text-white/60">6</td><td class="px-4 py-3 text-white/80">Higi Haga</td><td class="px-4 py-3 text-center text-white/40">&mdash;</td><td class="px-4 py-3 text-center text-white/40">&mdash;</td><td class="px-4 py-3 text-center text-white/40">&mdash;</td><td class="px-4 py-3 text-center font-bold text-white/80">&mdash;</td></tr>
+              <tr class="border-b border-white/5"><td class="px-4 py-3 font-bold text-white/60">7</td><td class="px-4 py-3 text-white/80">Opobo</td><td class="px-4 py-3 text-center text-white/40">&mdash;</td><td class="px-4 py-3 text-center text-white/40">&mdash;</td><td class="px-4 py-3 text-center text-white/40">&mdash;</td><td class="px-4 py-3 text-center font-bold text-white/80">&mdash;</td></tr>
+              <tr class="border-b border-white/5"><td class="px-4 py-3 font-bold text-white/60">8</td><td class="px-4 py-3 text-white/80">One Touch FC</td><td class="px-4 py-3 text-center text-white/40">&mdash;</td><td class="px-4 py-3 text-center text-white/40">&mdash;</td><td class="px-4 py-3 text-center text-white/40">&mdash;</td><td class="px-4 py-3 text-center font-bold text-white/80">&mdash;</td></tr>
             </tbody>
           </table>
-          <div class="px-6 py-4 border-t border-white/10 text-xs text-gray-500 flex items-center justify-between">
-            <span>Source: mengoeliteleague.org</span>
-            <a href="https://mengoeliteleague.org/table/mengo-elite-league-season-3/" target="_blank" class="text-mosaGold hover:underline">View full table →</a>
-          </div>
+          <div class="px-6 py-4 border-t border-white/10 text-xs text-white/40 flex items-center justify-between"><span>Source: mengoeliteleague.org</span><a href="https://mengoeliteleague.org/table/mengo-elite-league-season-3/" target="_blank" class="text-mosaGold hover:underline">View full table &rarr;</a></div>
         </div>
-
-        <!-- Team cards (real teams from site) -->
         <div class="grid grid-cols-2 gap-4">
-          <div class="bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 transition text-center">
-            <div class="team-badge mx-auto mb-3 bg-yellow-900 text-yellow-300">C18</div>
-            <h3 class="font-bold text-sm mb-1">Class 2018</h3>
-            <div class="inline-block bg-mosaGold text-black text-xs font-black px-2 py-0.5 rounded-full">🏆 Champions</div>
-          </div>
-          <div class="bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 transition text-center">
-            <div class="team-badge mx-auto mb-3 bg-blue-900 text-blue-300">EXP</div>
-            <h3 class="font-bold text-sm mb-1">Expendables</h3>
-            <div class="text-gray-500 text-xs mt-1">2nd Place</div>
-          </div>
-          <div class="bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 transition text-center">
-            <div class="team-badge mx-auto mb-3 bg-green-900 text-green-300">KNT</div>
-            <h3 class="font-bold text-sm mb-1">Kentutsi</h3>
-            <div class="text-gray-500 text-xs mt-1">3rd Place</div>
-          </div>
-          <div class="bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 transition text-center">
-            <div class="team-badge mx-auto mb-3 bg-orange-900 text-orange-300">AKB</div>
-            <h3 class="font-bold text-sm mb-1">Akabwai</h3>
-            <div class="text-gray-500 text-xs mt-1">4th Place</div>
-          </div>
-          <div class="bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 transition text-center">
-            <div class="team-badge mx-auto mb-3 bg-purple-900 text-purple-300">GAL</div>
-            <h3 class="font-bold text-sm mb-1">Galacticos</h3>
-            <div class="text-gray-500 text-xs mt-1">5th Place</div>
-          </div>
-          <div class="bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 transition text-center">
-            <div class="team-badge mx-auto mb-3 bg-red-900 text-red-300">HH</div>
-            <h3 class="font-bold text-sm mb-1">Higi Haga</h3>
-            <div class="text-gray-500 text-xs mt-1">Season 3</div>
-          </div>
-          <!-- More teams on official site CTA -->
-          <div class="col-span-2 bg-mosaGold/10 border border-dashed border-mosaGold/40 rounded-xl p-4 text-center">
-            <p class="text-mosaGold text-sm font-semibold mb-2">+ 6 more teams including Opobo, One Touch FC, Team JFK, Class 99, Team Bakka & Team Baddo</p>
-            <a href="https://mengoeliteleague.org/table/mengo-elite-league-season-3/" target="_blank"
-               class="inline-flex items-center gap-2 text-mosaGold text-xs font-bold hover:underline">
-              View all on official site <i class="fas fa-external-link-alt"></i>
-            </a>
-          </div>
+          <div class="bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 transition text-center"><div class="team-badge mx-auto mb-3 bg-yellow-900 text-yellow-300">C18</div><h3 class="font-bold text-sm mb-1">Class 2018</h3><div class="inline-block bg-mosaGold text-black text-xs font-black px-2 py-0.5 rounded-full">&#127942; Champions</div></div>
+          <div class="bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 transition text-center"><div class="team-badge mx-auto mb-3 bg-blue-900 text-blue-300">EXP</div><h3 class="font-bold text-sm mb-1">Expendables</h3><div class="text-white/40 text-xs mt-1">2nd Place</div></div>
+          <div class="bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 transition text-center"><div class="team-badge mx-auto mb-3 bg-green-900 text-green-300">KNT</div><h3 class="font-bold text-sm mb-1">Kentutsi</h3><div class="text-white/40 text-xs mt-1">3rd Place</div></div>
+          <div class="bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 transition text-center"><div class="team-badge mx-auto mb-3 bg-orange-900 text-orange-300">AKB</div><h3 class="font-bold text-sm mb-1">Akabwai</h3><div class="text-white/40 text-xs mt-1">4th Place</div></div>
+          <div class="bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 transition text-center"><div class="team-badge mx-auto mb-3 bg-purple-900 text-purple-300">GAL</div><h3 class="font-bold text-sm mb-1">Galacticos</h3><div class="text-white/40 text-xs mt-1">5th Place</div></div>
+          <div class="bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 transition text-center"><div class="team-badge mx-auto mb-3 bg-red-900 text-red-300">HH</div><h3 class="font-bold text-sm mb-1">Higi Haga</h3><div class="text-white/40 text-xs mt-1">Season 3</div></div>
+          <div class="col-span-2 bg-mosaGold/10 border border-dashed border-mosaGold/40 rounded-xl p-4 text-center"><p class="text-mosaGold text-sm font-semibold mb-2">+ 6 more teams including Opobo, One Touch FC, Team JFK, Class 99, Team Bakka & Team Baddo</p><a href="https://mengoeliteleague.org/table/mengo-elite-league-season-3/" target="_blank" class="inline-flex items-center gap-2 text-mosaGold text-xs font-bold hover:underline">View all on official site <i class="fas fa-external-link-alt"></i></a></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════════
-       4. HOW THE LEAGUE WORKS (real rules from site)
-  ═══════════════════════════════════════════════════ -->
   <section class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-3 block">The League Structure</span>
-        <h2 class="font-serif text-4xl md:text-5xl text-mosaBlack font-bold mb-4">How the MEL Works</h2>
-        <div class="w-20 h-1 bg-mosaGold mx-auto"></div>
-      </div>
+      <div class="text-center mb-16"><span class="eyebrow mb-3 block" style="color:#c81e2a;">The League Structure</span><h2 class="font-serif text-4xl md:text-5xl text-mosaInk font-bold mb-4">How the MEL Works</h2><div class="w-20 h-[3px] bg-mosaGold mx-auto"></div></div>
       <div class="grid md:grid-cols-4 gap-6 text-center">
-        <div class="relative step-line">
-          <div class="w-14 h-14 bg-mosaRed rounded-full flex items-center justify-center mx-auto mb-5 shadow-lg">
-            <span class="text-white font-serif font-bold text-xl">1</span>
-          </div>
-          <h4 class="font-bold text-mosaBlack text-lg mb-2">Form Your Team</h4>
-          <p class="text-gray-500 text-sm leading-relaxed">Gather 7 players, 6 gentlemen and at least 1 lady ideally from the same graduation year. Pay the team registration fee.</p>
-        </div>
-        <div class="relative step-line">
-          <div class="w-14 h-14 bg-mosaRed rounded-full flex items-center justify-center mx-auto mb-5 shadow-lg">
-            <span class="text-white font-serif font-bold text-xl">2</span>
-          </div>
-          <h4 class="font-bold text-mosaBlack text-lg mb-2">Group Stage</h4>
-          <p class="text-gray-500 text-sm leading-relaxed">All teams compete in group stages at Mengo Senior School's official pitch, with qualified referees and linesmen officiating.</p>
-        </div>
-        <div class="relative step-line">
-          <div class="w-14 h-14 bg-mosaRed rounded-full flex items-center justify-center mx-auto mb-5 shadow-lg">
-            <span class="text-white font-serif font-bold text-xl">3</span>
-          </div>
-          <h4 class="font-bold text-mosaBlack text-lg mb-2">Knockout Rounds</h4>
-          <p class="text-gray-500 text-sm leading-relaxed">Top teams advance through knockout rounds. League rules are strictly enforced violations attract penalties.</p>
-        </div>
-        <div>
-          <div class="w-14 h-14 bg-mosaGold rounded-full flex items-center justify-center mx-auto mb-5 shadow-lg">
-            <i class="fas fa-trophy text-black text-xl"></i>
-          </div>
-          <h4 class="font-bold text-mosaBlack text-lg mb-2">Grand Final</h4>
-          <p class="text-gray-500 text-sm leading-relaxed">Champions are crowned at the Grand Final. The winning team earns the MEL title and the season prize pool.</p>
-        </div>
+        <div class="relative step-line"><div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-5 shadow-lg" style="background:#c81e2a;"><span class="text-white font-serif font-bold text-xl">1</span></div><h4 class="font-bold text-mosaInk text-lg mb-2">Form Your Team</h4><p class="text-gray-500 text-sm leading-relaxed">Gather 7 players, 6 gentlemen and at least 1 lady, ideally from the same graduation year. Pay the team registration fee.</p></div>
+        <div class="relative step-line"><div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-5 shadow-lg" style="background:#c81e2a;"><span class="text-white font-serif font-bold text-xl">2</span></div><h4 class="font-bold text-mosaInk text-lg mb-2">Group Stage</h4><p class="text-gray-500 text-sm leading-relaxed">All teams compete in group stages at Mengo Senior School's official pitch, with qualified referees and linesmen officiating.</p></div>
+        <div class="relative step-line"><div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-5 shadow-lg" style="background:#c81e2a;"><span class="text-white font-serif font-bold text-xl">3</span></div><h4 class="font-bold text-mosaInk text-lg mb-2">Knockout Rounds</h4><p class="text-gray-500 text-sm leading-relaxed">Top teams advance through knockout rounds. League rules are strictly enforced &mdash; violations attract penalties.</p></div>
+        <div><div class="w-14 h-14 bg-mosaGold rounded-full flex items-center justify-center mx-auto mb-5 shadow-lg"><i class="fas fa-trophy text-black text-xl"></i></div><h4 class="font-bold text-mosaInk text-lg mb-2">Grand Final</h4><p class="text-gray-500 text-sm leading-relaxed">Champions are crowned at the Grand Final. The winning team earns the MEL title and the season prize pool.</p></div>
       </div>
-
-      <!-- Rules CTA -->
-      <div class="mt-12 text-center">
-        <a href="https://mengoeliteleague.org/mengo-elite-league-rules/" target="_blank" rel="noopener noreferrer"
-           class="inline-flex items-center gap-2 bg-gray-100 text-mosaBlack font-bold px-8 py-3 rounded-lg hover:bg-gray-200 transition border border-gray-200">
-          <i class="fas fa-book-open text-mosaRed"></i> Read the Full Official MEL Rules
-          <i class="fas fa-external-link-alt text-xs text-gray-400 ml-1"></i>
-        </a>
-      </div>
+      <div class="mt-12 text-center"><a href="https://mengoeliteleague.org/mengo-elite-league-rules/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-gray-100 text-mosaInk font-bold px-8 py-3 rounded-lg hover:bg-gray-200 transition border border-gray-200"><i class="fas fa-book-open" style="color:#c81e2a;"></i> Read the Full Official MEL Rules <i class="fas fa-external-link-alt text-xs text-gray-400 ml-1"></i></a></div>
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════════
-       5. REDIRECT CTA + SOCIAL
-  ═══════════════════════════════════════════════════ -->
-  <section class="py-20 bg-gray-50">
+  <section class="py-20 bg-[#f4efe4]">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-mosaBlack rounded-2xl p-10 text-center text-white overflow-hidden relative">
-        <div class="absolute top-0 right-0 w-48 h-48 bg-mosaRed opacity-10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
-        <div class="relative z-10">
-          <img src="https://mengoeliteleague.org/wp-content/uploads/2022/08/League_Logo.png"
-               alt="MEL" class="w-20 h-20 object-contain mx-auto mb-4" onerror="this.style.display='none'">
-          <h2 class="font-serif text-3xl font-black text-white mb-3">The Full MEL Experience</h2>
-          <div class="w-16 h-1 bg-mosaRed mx-auto mb-5"></div>
-          <p class="text-gray-400 max-w-xl mx-auto mb-8 leading-relaxed">
-            For live results, full fixtures, match reports, gallery, and everything Mengo Elite League visit the official website. This MOSA page gives you a summary; the full experience is over there.
-          </p>
-          <div class="flex flex-wrap gap-4 justify-center mb-8">
-            <a href="https://mengoeliteleague.org" target="_blank" rel="noopener noreferrer"
-               class="inline-flex items-center gap-2 bg-mosaGold text-black font-bold px-8 py-4 rounded-lg hover:bg-yellow-400 transition shadow-lg text-lg">
-              <i class="fas fa-globe"></i> mengoeliteleague.org
-            </a>
-            <a href="https://mengoeliteleague.org/results/" target="_blank" rel="noopener noreferrer"
-               class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white font-semibold px-8 py-4 rounded-lg hover:bg-white/20 transition text-lg">
-              <i class="fas fa-futbol"></i> Latest Results
-            </a>
-          </div>
-          <!-- Real social links -->
-          <div class="flex gap-4 justify-center">
-            <a href="https://www.facebook.com/MengoEliteLeague" target="_blank" rel="noopener noreferrer"
-               class="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-blue-700 transition">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://twitter.com/MengoElite" target="_blank" rel="noopener noreferrer"
-               class="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-sky-500 transition">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="https://www.instagram.com/mengoeliteleague_official/" target="_blank" rel="noopener noreferrer"
-               class="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-pink-600 transition">
-              <i class="fab fa-instagram"></i>
-            </a>
-          </div>
+      <div class="mengo-texture rounded-2xl p-10 text-center text-white">
+        <img src="https://mengoeliteleague.org/wp-content/uploads/2022/08/League_Logo.png" alt="MEL" class="w-20 h-20 object-contain mx-auto mb-4" onerror="this.style.display='none'">
+        <h2 class="font-serif text-3xl font-black text-white mb-3">The Full MEL Experience</h2>
+        <div class="w-16 h-[3px] mx-auto mb-5" style="background:#c81e2a;"></div>
+        <p class="text-white/50 max-w-xl mx-auto mb-8 leading-relaxed">For live results, full fixtures, match reports, gallery, and everything Mengo Elite League &mdash; visit the official website. This MOSA page gives you a summary; the full experience is over there.</p>
+        <div class="flex flex-wrap gap-4 justify-center mb-8">
+          <a href="https://mengoeliteleague.org" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-mosaGold text-black font-bold px-8 py-4 rounded-lg hover:bg-yellow-400 transition shadow-lg text-lg"><i class="fas fa-globe"></i> mengoeliteleague.org</a>
+          <a href="https://mengoeliteleague.org/results/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white font-semibold px-8 py-4 rounded-lg hover:bg-white/20 transition text-lg"><i class="fas fa-futbol"></i> Latest Results</a>
+        </div>
+        <div class="flex gap-4 justify-center">
+          <a href="https://www.facebook.com/MengoEliteLeague" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-blue-700 transition"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://twitter.com/MengoElite" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-sky-500 transition"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.instagram.com/mengoeliteleague_official/" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-pink-600 transition"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
     </div>
   </section>
- <section class="py-20 bg-gray-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    
-    <!-- Optional Section Header -->
-    <div class="text-center mb-12">
-      <h2 class="font-serif text-3xl md:text-4xl font-bold text-gray-900">Gallery</h2>
-      <div class="w-16 h-1 bg-mosaRed mx-auto mt-3"></div>
-    </div>
 
- <section class="py-20 bg-gray-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      
-      <!-- Main Featured Image -->
-      <div class="md:col-span-2 overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300">
-        <img src="13.jpeg" alt="Straight to Morocco 1" class="w-full h-72 md:h-[420px] object-cover object-center">
-      </div>
-
-      <!-- Side Stacked Images -->
-      <div class="grid grid-cols-1 gap-6">
-        <div class="overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300">
-          <img src="15.jpeg" alt="Straight to Morocco 2" class="w-full h-48 md:h-[198px] object-cover object-center">
-        </div>
-        <div class="overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300">
-          <img src="16.jpeg" alt="Straight to Morocco 3" class="w-full h-48 md:h-[198px] object-cover object-center">
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-  <!-- ══════════════════════════════════════════════
-       6. JOIN / CONTACT FORM
-  ═══════════════════════════════════════════════════ -->
-  <section id="join" class="py-24 bg-gray-50">
+  <section class="py-20 bg-[#f4efe4]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <span class="text-mosaRed font-bold tracking-widest uppercase text-xs mb-3 block">Get Involved</span>
-        <h2 class="font-serif text-4xl md:text-5xl text-mosaBlack font-bold mb-4">Join the League</h2>
-        <div class="w-20 h-1 bg-mosaGold mx-auto mb-6"></div>
-        <p class="text-gray-600 max-w-xl mx-auto text-lg leading-relaxed">
-          Ready to represent your graduation year? Fill in your details and our league coordinator will get in touch. You can also email directly at <a href="mailto:mengoleague@gmail.com" class="text-mosaRed font-semibold hover:underline">mengoleague@gmail.com</a>.
-        </p>
+      <div class="text-center mb-12"><h2 class="font-serif text-3xl md:text-4xl font-bold text-mosaInk">Gallery</h2><div class="w-16 h-[3px] bg-mosaGold mx-auto mt-3"></div></div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="md:col-span-2 overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300"><img src="13.jpeg" alt="Straight to Morocco 1" class="w-full h-72 md:h-[420px] object-cover object-center"></div>
+        <div class="grid grid-cols-1 gap-6">
+          <div class="overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300"><img src="15.jpeg" alt="Straight to Morocco 2" class="w-full h-48 md:h-[198px] object-cover object-center"></div>
+          <div class="overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300"><img src="16.jpeg" alt="Straight to Morocco 3" class="w-full h-48 md:h-[198px] object-cover object-center"></div>
+        </div>
       </div>
+    </div>
+  </section>
 
+  <section id="join" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16"><span class="eyebrow mb-3 block" style="color:#c81e2a;">Get Involved</span><h2 class="font-serif text-4xl md:text-5xl text-mosaInk font-bold mb-4">Join the League</h2><div class="w-20 h-[3px] bg-mosaGold mx-auto mb-6"></div><p class="text-gray-600 max-w-xl mx-auto text-lg leading-relaxed">Ready to represent your graduation year? Fill in your details and our league coordinator will get in touch. You can also email directly at <a href="mailto:mengoleague@gmail.com" class="font-semibold hover:underline" style="color:#c81e2a;">mengoleague@gmail.com</a>.</p></div>
       <div class="grid lg:grid-cols-5 gap-12 items-start">
-
-        <!-- Left panel -->
         <div class="lg:col-span-2">
-          <div class="bg-mosaBlack rounded-2xl p-8 text-white sticky top-24">
+          <div class="mengo-texture rounded-2xl p-8 text-white sticky top-24">
             <i class="fas fa-futbol text-4xl text-mosaGold mb-5 block"></i>
             <h3 class="font-serif text-2xl font-bold mb-2">What You Need to Join</h3>
-            <div class="w-12 h-1 bg-mosaRed mb-6"></div>
+            <div class="w-12 h-[3px] mb-6" style="background:#c81e2a;"></div>
             <ul class="space-y-4 text-sm">
-              <li class="flex items-start gap-3 text-gray-300">
-                <span class="w-6 h-6 bg-mosaRed rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">1</span>
-                A team of <strong class="text-white">7 players</strong> at least 6 gents and 1 lady, preferably from the same graduation year.
-              </li>
-              <li class="flex items-start gap-3 text-gray-300">
-                <span class="w-6 h-6 bg-mosaRed rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">2</span>
-                A <strong class="text-white">team name</strong> and a designated captain to represent your team.
-              </li>
-              <li class="flex items-start gap-3 text-gray-300">
-                <span class="w-6 h-6 bg-mosaRed rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">3</span>
-                Payment of the <strong class="text-white">non-refundable registration fee</strong> before the season starts.
-              </li>
-              <li class="flex items-start gap-3 text-gray-300">
-                <span class="w-6 h-6 bg-mosaGold rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5 text-black">4</span>
-                Commitment to <strong class="text-white">fair play</strong> and the Mengo Elite League rules.
-              </li>
+              <li class="flex items-start gap-3 text-white/70"><span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5" style="background:#c81e2a;">1</span>A team of <strong class="text-white">7 players</strong> &mdash; at least 6 gents and 1 lady, preferably from the same graduation year.</li>
+              <li class="flex items-start gap-3 text-white/70"><span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5" style="background:#c81e2a;">2</span>A <strong class="text-white">team name</strong> and a designated captain to represent your team.</li>
+              <li class="flex items-start gap-3 text-white/70"><span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5" style="background:#c81e2a;">3</span>Payment of the <strong class="text-white">non-refundable registration fee</strong> before the season starts.</li>
+              <li class="flex items-start gap-3 text-white/70"><span class="w-6 h-6 bg-mosaGold rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5 text-mosaInk">4</span>Commitment to <strong class="text-white">fair play</strong> and the Mengo Elite League rules.</li>
             </ul>
-            <div class="mt-8 pt-6 border-t border-white/10 space-y-2 text-xs text-gray-500">
+            <div class="mt-8 pt-6 border-t border-white/10 space-y-2 text-xs text-white/40">
               <div><i class="fas fa-envelope mr-2 text-mosaGold"></i><a href="mailto:mengoleague@gmail.com" class="text-mosaGold hover:underline">mengoleague@gmail.com</a></div>
               <div><i class="fas fa-globe mr-2 text-mosaGold"></i><a href="https://mengoeliteleague.org" target="_blank" class="text-mosaGold hover:underline">mengoeliteleague.org</a></div>
             </div>
           </div>
         </div>
-
-        <!-- Right: form -->
         <div class="lg:col-span-3">
-          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-10">
+          <div class="bg-white rounded-2xl shadow-sm border border-black/5 p-10">
             <form id="leagueForm" onsubmit="handleLeagueSubmit(event)">
-              <h4 class="font-serif text-xl font-bold text-mosaBlack mb-5 pb-3 border-b border-gray-100">
-                <i class="fas fa-users mr-2 text-mosaRed"></i>Team Registration
-              </h4>
+              <h4 class="font-serif text-xl font-bold text-mosaInk mb-5 pb-3 border-b border-gray-100"><i class="fas fa-users mr-2" style="color:#c81e2a;"></i>Team Registration</h4>
               <div class="grid md:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label class="block text-sm font-semibold text-gray-700 mb-1">Team Name <span class="text-mosaRed"></span></label>
-                  <input type="text" required placeholder="e.g. Class 2010 Warriors" class="league-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition">
-                </div>
-                <div>
-                  <label class="block text-sm font-semibold text-gray-700 mb-1">Captain's Name <span class="text-mosaRed"></span></label>
-                  <input type="text" required placeholder="Full name" class="league-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition">
-                </div>
+                <div><label class="block text-sm font-semibold text-gray-700 mb-1">Team Name</label><input type="text" required placeholder="e.g. Class 2010 Warriors" class="league-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition"></div>
+                <div><label class="block text-sm font-semibold text-gray-700 mb-1">Captain's Name</label><input type="text" required placeholder="Full name" class="league-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition"></div>
               </div>
               <div class="grid md:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label class="block text-sm font-semibold text-gray-700 mb-1">Email <span class="text-mosaRed"></span></label>
-                  <input type="email" required placeholder="you@email.com" class="league-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition">
-                </div>
-                <div>
-                  <label class="block text-sm font-semibold text-gray-700 mb-1">Phone <span class="text-mosaRed"></span></label>
-                  <input type="tel" required placeholder="+256 7XX XXX XXX" class="league-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition">
-                </div>
+                <div><label class="block text-sm font-semibold text-gray-700 mb-1">Email</label><input type="email" required placeholder="you@email.com" class="league-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition"></div>
+                <div><label class="block text-sm font-semibold text-gray-700 mb-1">Phone</label><input type="tel" required placeholder="+256 7XX XXX XXX" class="league-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition"></div>
               </div>
               <div class="grid md:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label class="block text-sm font-semibold text-gray-700 mb-1">Final Year <span class="text-mosaRed">*</span></label>
-                  <select required class="league-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition appearance-none">
-                    <option value="">Select year…</option>
-                    <script>for(let y=2025;y>=1980;y--) document.write(`<option value="${y}">${y}</option>`)</script>
-                  </select>
-                </div>
-                <div>
-                  <label class="block text-sm font-semibold text-gray-700 mb-1">Number of Players <span class="text-mosaRed">*</span></label>
-                  <select required class="league-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition appearance-none">
-                    <option value="">Select…</option>
-                    <option>7 players (minimum)</option>
-                    <option>8–10 players</option>
-                    <option>11+ players (full squad)</option>
-                  </select>
-                </div>
+                <div><label class="block text-sm font-semibold text-gray-700 mb-1">Final Year</label><select required class="league-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition appearance-none"><option value="">Select year&hellip;</option><script>for(let y=2025;y>=1980;y--) document.write('<option value="'+y+'">'+y+'</option>')</script></select></div>
+                <div><label class="block text-sm font-semibold text-gray-700 mb-1">Number of Players</label><select required class="league-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition appearance-none"><option value="">Select&hellip;</option><option>7 players (minimum)</option><option>8&ndash;10 players</option><option>11+ players (full squad)</option></select></div>
               </div>
-              <div class="mb-6">
-                <label class="block text-sm font-semibold text-gray-700 mb-1">Anything else? (optional)</label>
-                <textarea rows="3" placeholder="Tell us about your team, any sponsorship interest, collaboration ideas…"
-                  class="league-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition resize-none"></textarea>
-              </div>
-              <button type="submit"
-                class="w-full bg-mosaRed text-white font-bold py-4 rounded-xl hover:bg-red-700 transition shadow-lg text-lg flex items-center justify-center gap-3">
-                <i class="fas fa-futbol"></i> Submit Registration Interest
-              </button>
-              <p class="text-xs text-gray-400 text-center mt-3">
-                Our coordinator will reply within 48 hours. Or email directly:
-                <a href="mailto:mengoleague@gmail.com" class="text-mosaRed">mengoleague@gmail.com</a>
-              </p>
+              <div class="mb-6"><label class="block text-sm font-semibold text-gray-700 mb-1">Anything else? (optional)</label><textarea rows="3" placeholder="Tell us about your team, any sponsorship interest, collaboration ideas&hellip;" class="league-input w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 text-gray-800 transition resize-none"></textarea></div>
+              <button type="submit" class="w-full text-white font-bold py-4 rounded-xl hover:bg-red-700 transition shadow-lg text-lg flex items-center justify-center gap-3" style="background:#c81e2a;"><i class="fas fa-futbol"></i> Submit Registration Interest</button>
+              <p class="text-xs text-gray-400 text-center mt-3">Our coordinator will reply within 48 hours. Or email directly: <a href="mailto:mengoleague@gmail.com" style="color:#c81e2a;">mengoleague@gmail.com</a></p>
             </form>
-
-            <!-- Success state -->
             <div id="leagueSuccess" class="hidden text-center py-12">
-              <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 pop-in">
-                <i class="fas fa-check text-green-600 text-3xl"></i>
-              </div>
-              <h3 class="font-serif text-2xl font-bold text-mosaBlack mb-3">Registration Received!</h3>
-              <p class="text-gray-500 leading-relaxed max-w-sm mx-auto mb-6">
-                Our league coordinator will contact you within 48 hours. In the meantime, follow the official MEL channels for updates.
-              </p>
-              <a href="https://mengoeliteleague.org" target="_blank"
-                 class="inline-flex items-center gap-2 bg-mosaGold text-black font-bold px-6 py-3 rounded-lg hover:bg-yellow-400 transition">
-                <i class="fas fa-globe"></i> Visit mengoeliteleague.org
-              </a>
+              <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 pop-in"><i class="fas fa-check text-green-600 text-3xl"></i></div>
+              <h3 class="font-serif text-2xl font-bold text-mosaInk mb-3">Registration Received!</h3>
+              <p class="text-gray-500 leading-relaxed max-w-sm mx-auto mb-6">Our league coordinator will contact you within 48 hours. In the meantime, follow the official MEL channels for updates.</p>
+              <a href="https://mengoeliteleague.org" target="_blank" class="inline-flex items-center gap-2 bg-mosaGold text-black font-bold px-6 py-3 rounded-lg hover:bg-yellow-400 transition"><i class="fas fa-globe"></i> Visit mengoeliteleague.org</a>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-
 </main>
 
-<div id="footer-placeholder"></div>
+<footer class="mengo-texture text-white/70 pt-16 pb-8 border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-4 gap-10 mb-12">
+      <div><div class="flex items-center gap-3 mb-4"><img src="mosa-logo.png" class="w-10 h-10 object-contain" onerror="this.style.display='none'"><span class="font-serif font-bold text-white text-lg">MOSA</span></div><p class="tagline-signature text-mosaGold text-lg mb-3">Obunnamengo Bwa Lubeerera</p><p class="text-sm leading-relaxed">Connecting Mengonians around the world since 1895.</p></div>
+      <div><h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Explore</h4><ul class="space-y-2 text-sm"><li><a href="about.html" class="hover:text-mosaGold">About MOSA</a></li><li><a href="directory.html" class="hover:text-mosaGold">Alumni Directory</a></li><li><a href="events.html" class="hover:text-mosaGold">Events & Reunions</a></li><li><a href="news.html" class="hover:text-mosaGold">News & Updates</a></li></ul></div>
+      <div><h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Network</h4><ul class="space-y-2 text-sm"><li><a href="mentorship.html" class="hover:text-mosaGold">Mentorship</a></li><li><a href="sacco.html" class="hover:text-mosaGold">MOSA SACCO</a></li><li><a href="league.html" class="hover:text-mosaGold">Elite League</a></li><li><a href="projects.html" class="hover:text-mosaGold">MOSA Projects</a></li></ul></div>
+      <div><h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Get Involved</h4><ul class="space-y-2 text-sm"><li><a href="register.html" class="hover:text-mosaGold">Join MOSA</a></li><li><a href="donate.html" class="hover:text-mosaGold">Give Back</a></li></ul></div>
+    </div>
+    <div class="pt-8 border-t border-white/10 text-center text-xs text-white/40"><p>&copy; 2026 Mengo Old Students Association (MOSA). All Rights Reserved.</p></div>
+  </div>
+</footer>
 
 <script>
-  function handleLeagueSubmit(e) {
-    e.preventDefault();
-    document.getElementById('leagueForm').classList.add('hidden');
-    const s = document.getElementById('leagueSuccess');
-    s.classList.remove('hidden');
-    s.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
+function handleLeagueSubmit(e){
+  e.preventDefault();
+  document.getElementById('leagueForm').classList.add('hidden');
+  var s=document.getElementById('leagueSuccess'); s.classList.remove('hidden'); s.scrollIntoView({behavior:'smooth',block:'center'});
+}
 </script>
 </body>
 </html>
