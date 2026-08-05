@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>University Chapters | MOSA</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: { mosaInk:'#1c1410', mosaClay:'#c81e2a', mosaGold:'#FFD500', mosaCream:'#F6F1E7' },
+    fontFamily: { serif: ['"Fraunces"','"Playfair Display"','Georgia','serif'], sans:['"Inter"','sans-serif'] }
+  }}}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="js/navigation.js"></script>
+<script src="js/main.js"></script>
+<style>
+  html{scroll-behavior:smooth;} body{font-family:'Inter',sans-serif;background:#fbfaf7;color:#1c1410;}
+  .hover-lift{transition:transform .3s,box-shadow .3s;} .hover-lift:hover{transform:translateY(-6px);box-shadow:0 14px 32px rgba(28,20,16,.12);}
+  .mengo-texture{position:relative;background:#1c1410;overflow:hidden;}
+  .mengo-texture::before{content:'';position:absolute;inset:0;background-image:repeating-radial-gradient(circle at 0 0,transparent 0,transparent 26px,rgba(201,162,75,.045) 27px,transparent 28px),repeating-radial-gradient(circle at 40px 40px,transparent 0,transparent 26px,rgba(201,162,75,.045) 27px,transparent 28px);background-size:80px 80px;pointer-events:none;}
+  .mengo-texture::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 75% 15%,rgba(122,31,31,.35) 0%,transparent 55%),radial-gradient(ellipse at 15% 95%,rgba(201,162,75,.10) 0%,transparent 50%);pointer-events:none;}
+  .mengo-texture>*{position:relative;z-index:1;}
+  .tagline-signature{font-family:'Fraunces','Playfair Display',serif;font-style:italic;font-weight:400;letter-spacing:.01em;}
+  .eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#c81e2a;}
+</style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+<header class="sticky top-0 z-50 bg-mosaInk/95 backdrop-blur border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <a href="index.html" class="flex items-center gap-3"><img src="mosa-logo.png" class="w-10 h-10 object-contain" onerror="this.style.display='none'"><div class="leading-tight"><span class="block font-serif font-bold text-white text-lg">MOSA</span><span class="block text-[10px] text-mosaGold tracking-widest uppercase">Est. 1895</span></div></a>
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-white/75">
+        <a href="about.html" class="hover:text-mosaGold transition">About</a>
+        <a href="directory.html" class="hover:text-mosaGold transition">Directory</a>
+        <a href="chapters.html" class="text-mosaGold">Chapters</a>
+        <a href="events.html" class="hover:text-mosaGold transition">Events</a>
+        <a href="projects.html" class="hover:text-mosaGold transition">Projects</a>
+        <a href="news.html" class="hover:text-mosaGold transition">News</a>
+        <a href="gallery.html" class="hover:text-mosaGold transition">Gallery</a>
+        <a href="donate.html" class="hover:text-mosaGold transition">Give Back</a>
+      </nav>
+      <div class="hidden lg:flex items-center gap-3">
+        <a href="login.html" class="text-sm font-semibold text-white/75 hover:text-mosaGold px-3">Sign In</a>
+        <a href="register.html" class="bg-mosaGold text-mosaInk text-sm font-bold px-5 py-2.5 rounded-lg hover:bg-yellow-400 transition">Join MOSA</a>
+      </div>
+      <button id="mobileMenuBtn" class="lg:hidden text-white text-xl"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-white/10 bg-mosaInk">
+    <nav class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1 text-sm font-semibold text-white/80">
+      <a href="about.html" class="py-2.5 hover:text-mosaGold">About</a><a href="directory.html" class="py-2.5 hover:text-mosaGold">Directory</a><a href="chapters.html" class="py-2.5 text-mosaGold">Chapters</a><a href="events.html" class="py-2.5 hover:text-mosaGold">Events</a><a href="projects.html" class="py-2.5 hover:text-mosaGold">Projects</a><a href="news.html" class="py-2.5 hover:text-mosaGold">News</a><a href="gallery.html" class="py-2.5 hover:text-mosaGold">Gallery</a><a href="donate.html" class="py-2.5 hover:text-mosaGold">Give Back</a>
+      <div class="flex gap-3 pt-3 mt-2 border-t border-white/10"><a href="login.html" class="flex-1 text-center py-2.5 border border-white/20 rounded-lg">Sign In</a><a href="register.html" class="flex-1 text-center py-2.5 bg-mosaGold text-mosaInk rounded-lg font-bold">Join</a></div>
+    </nav>
+  </div>
+</header>
+<script>(function(){var b=document.getElementById('mobileMenuBtn'),m=document.getElementById('mobileMenu');if(b&&m)b.addEventListener('click',function(){m.classList.toggle('hidden');});})();</script>
+
+<main class="flex-grow">
+
+  <!-- HERO -->
+  <section class="mengo-texture text-white py-24 text-center">
+    <div class="max-w-3xl mx-auto px-4">
+      <p class="tagline-signature text-mosaGold text-xl mb-4">Wherever You Are</p>
+      <h1 class="font-serif text-5xl md:text-6xl font-bold mb-6">University Chapters</h1>
+      <p class="text-xl text-white/70 font-light leading-relaxed">No matter where life takes you, there is always a Mengonian nearby. Find your chapter and meet its leadership.</p>
+    </div>
+  </section>
+
+  <!-- CHAPTER CARDS -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="eyebrow mb-3 block text-center">Find Your Network</span>
+      <h2 class="font-serif text-4xl text-mosaInk font-bold mb-4 text-center">Our Chapters</h2>
+      <div class="w-20 h-[3px] bg-mosaGold mx-auto mb-16"></div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <a href="chapter-makerere.html" class="bg-[#f4efe4] rounded-2xl p-8 hover-lift block border border-black/5">
+          <i class="fas fa-globe-europe text-3xl text-mosaClay mb-4 block"></i>
+          <h3 class="font-serif text-xl font-bold text-mosaInk mb-2">Makerere University Chapter</h3>
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">A strong network of students within Makerere University fostering business connections, relations and mentorship.</p>
+          <span class="text-mosaClay text-sm font-semibold">Meet the leadership &rarr;</span>
+        </a>
+
+        <a href="chapter-mubs.html" class="bg-[#f4efe4] rounded-2xl p-8 hover-lift block border border-black/5">
+          <i class="fas fa-globe-europe text-3xl text-mosaClay mb-4 block"></i>
+          <h3 class="font-serif text-xl font-bold text-mosaInk mb-2">Makerere University Business School Chapter</h3>
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">A strong network of students within MUBS fostering business connections, relations and mentorship.</p>
+          <span class="text-mosaClay text-sm font-semibold">Meet the leadership &rarr;</span>
+        </a>
+
+        <a href="chapter-kyambogo.html" class="bg-[#f4efe4] rounded-2xl p-8 hover-lift block border border-black/5">
+          <i class="fas fa-globe-africa text-3xl text-mosaClay mb-4 block"></i>
+          <h3 class="font-serif text-xl font-bold text-mosaInk mb-2">Kyambogo University Chapter</h3>
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">A strong network of students within Kyambogo University fostering business connections, relations and mentorship.</p>
+          <span class="text-mosaClay text-sm font-semibold">Meet the leadership &rarr;</span>
+        </a>
+
+        <a href="chapter-gulu.html" class="bg-[#f4efe4] rounded-2xl p-8 hover-lift block border border-black/5">
+          <i class="fas fa-globe-africa text-3xl text-mosaClay mb-4 block"></i>
+          <h3 class="font-serif text-xl font-bold text-mosaInk mb-2">Gulu University Chapter</h3>
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">A strong network of students within Gulu University fostering business connections, relations and mentorship.</p>
+          <span class="text-mosaClay text-sm font-semibold">Meet the leadership &rarr;</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- START A CHAPTER CTA -->
+  <section class="mengo-texture text-white py-16 text-center">
+    <div class="max-w-2xl mx-auto px-4">
+      <h2 class="font-serif text-3xl font-bold mb-4">Don't See Your University?</h2>
+      <p class="text-white/60 mb-8 leading-relaxed">If there's a cluster of Mengonians at your institution, reach out and we'll help you start a chapter.</p>
+      <a href="register.html" class="bg-mosaGold text-mosaInk font-bold px-8 py-3 rounded-lg hover:bg-yellow-400 transition shadow-lg inline-block">Start a Chapter</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="mengo-texture text-white/70 pt-16 pb-8 border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-4 gap-10 mb-12">
+      <div><div class="flex items-center gap-3 mb-4"><img src="mosa-logo.png" class="w-10 h-10 object-contain" onerror="this.style.display='none'"><span class="font-serif font-bold text-white text-lg">MOSA</span></div><p class="tagline-signature text-mosaGold text-lg mb-3">Obunnamengo Bwa Lubeerera</p><p class="text-sm leading-relaxed">Connecting Mengonians around the world since 1895.</p></div>
+      <div><h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Explore</h4><ul class="space-y-2 text-sm"><li><a href="about.html" class="hover:text-mosaGold">About MOSA</a></li><li><a href="directory.html" class="hover:text-mosaGold">Alumni Directory</a></li><li><a href="events.html" class="hover:text-mosaGold">Events & Reunions</a></li><li><a href="news.html" class="hover:text-mosaGold">News & Updates</a></li><li><a href="gallery.html" class="hover:text-mosaGold">Gallery</a></li></ul></div>
+      <div><h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Network</h4><ul class="space-y-2 text-sm"><li><a href="mentorship.html" class="hover:text-mosaGold">Mentorship</a></li><li><a href="sacco.html" class="hover:text-mosaGold">MOSA SACCO</a></li><li><a href="league.html" class="hover:text-mosaGold">Elite League</a></li><li><a href="jobs.html" class="hover:text-mosaGold">Jobs Board</a></li><li><a href="chapters.html" class="hover:text-mosaGold">University Chapters</a></li></ul></div>
+      <div><h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Get Involved</h4><ul class="space-y-2 text-sm mb-5"><li><a href="register.html" class="hover:text-mosaGold">Join MOSA</a></li><li><a href="donate.html" class="hover:text-mosaGold">Give Back</a></li></ul></div>
+    </div>
+    <div class="pt-8 border-t border-white/10 text-center text-xs text-white/40"><p>&copy; 2026 Mengo Old Students Association (MOSA). All Rights Reserved.</p></div>
+  </div>
+</footer>
+</body>
+</html>
